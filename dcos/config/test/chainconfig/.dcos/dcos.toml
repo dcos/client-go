@@ -1,0 +1,13 @@
+[core]
+dcos_acs_token = ".dcos.toml file"
+ssl_verify = ".dcos.toml file"
+dcos_url = ".dcos.toml file"
+[cluster]
+name = ".dcos.toml file"
+[job]
+service_name = ".dcos.toml file"
+url = ".dcos.toml file"
+[marathon]
+url = ".dcos.toml file"
+[package]
+cosmos_url = ".dcos.toml file"

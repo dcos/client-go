@@ -1,0 +1,6 @@
+[core]
+dcos_acs_token = ".dcos-folder"
+ssl_verify = "False"
+dcos_url = "https://mydcoscluster.mesosphere.io"
+[cluster]
+name = "MainDCOSCluster"

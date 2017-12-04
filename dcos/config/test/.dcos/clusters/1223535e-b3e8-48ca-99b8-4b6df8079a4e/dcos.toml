@@ -1,0 +1,6 @@
+[core]
+dcos_acs_token = "xu1Ohpuo6gi5ietiaHohr5EeCahwaizohcheugioNgoh0oThez0oobees4us"
+ssl_verify = "False"
+dcos_url = "https://mydcosclusterunattached2.mesosphere.io"
+[cluster]
+name = "UnAttachedCluster2"

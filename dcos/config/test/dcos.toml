@@ -1,0 +1,13 @@
+[core]
+dcos_acs_token = "xu1Ohpuo6gi5ietiaHohr5EeCahwaizohcheugioNgoh0oThez0oobees4us"
+ssl_verify = "False"
+dcos_url = "https://mydcoscluster.mesosphere.io"
+[cluster]
+name = "MainDCOSCluster"
+[job]
+service_name = "Job Service Name"
+url = "https://mydcoscluster.mesosphere.io/jobservice"
+[marathon]
+url = "https://mydcoscluster.mesosphere.io/marathon"
+[package]
+cosmos_url = "https://localhost:7070"

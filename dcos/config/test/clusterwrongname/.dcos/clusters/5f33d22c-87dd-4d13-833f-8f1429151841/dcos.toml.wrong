@@ -1,0 +1,6 @@
+[core]
+dcos_acs_token = ".dcos-folder"
+ssl_verify = "False"
+dcos_url = "https://mydcosclusterwrongfilename.mesosphere.io"
+[cluster]
+name = "MainDCOSClusterWrongFilename"
