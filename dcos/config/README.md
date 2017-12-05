@@ -74,7 +74,7 @@ type Config struct {
     Package  *Package  `toml:"package"`
 }
 ```
-Config reoresents the whike DC/OS client configuration.
+Config represents the whole DC/OS client configuration.
 
 
 

@@ -18,7 +18,7 @@ const DCOS_DIR = ".dcos"
 // is relative to DCOS_DIR
 const CLUSTER_DIR = "clusters"
 
-// Config reoresents the whike DC/OS client configuration.
+// Config represents the whole DC/OS client configuration.
 type Config struct {
 	Core     *Core     `toml:"core"`
 	Cluster  *Cluster  `toml:"cluster"`
