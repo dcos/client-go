@@ -10,7 +10,7 @@ The main purpose if this project is to support the development of a DC/OS terraf
 dcos-go is compatible with [dcos-cli](https://github.com/dcos/dcos-cli). It can
 parse the configuration from a chain of common configuration options.
 
-See: [config package](./config)
+See: [config package](./dcos/config)
 
 `config.NewConfigFromChain` tries to read `~/.dcos/dcos.toml`, the
 `~/.dcos/clusters/<attached cluster>/dcos.toml` or tries to find whatever is in
