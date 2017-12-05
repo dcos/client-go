@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 	"io/ioutil"
+	"net/http"
 	"net/url"
 	"os"
 	"path"
@@ -42,6 +43,18 @@ func (c *Config) Valid() bool {
 		return true
 	}
 	return false
+}
+
+// SetAuthHeader adds the token header to the provided *http.Request
+//
+// TODO: check if it makes sense to have an config refresh method befor adding
+// the header. The best case would be using refresh tokens and oauth2 in here
+// but thats currently not supported by DC/OS.
+func (c *Config) SetAuthHeader(req *http.Request) {
+	// c.Refresh()
+	if c.Valid() {
+		req.Header.Set("Authorization", "token="+c.Core.DcosAcsToken)
+	}
 }
 
 func getDCOSDir() (string, error) {
