@@ -57,6 +57,10 @@ func (c *Config) SetAuthHeader(req *http.Request) {
 	}
 }
 
+func (c *Config) GetDCOSUrl() (*url.URL, error) {
+	return url.Parse(c.Core.DcosUrl)
+}
+
 func getDCOSDir() (string, error) {
 	dir := os.Getenv("DCOS_DIR")
 	if dir == "" {
