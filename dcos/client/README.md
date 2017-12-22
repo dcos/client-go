@@ -11,7 +11,7 @@
 
 
 ## <a name="pkg-index">Index</a>
-* [func NewClient(conf *config.Config) *http.Client](#NewClient)
+* [func NewHttpClient(conf *config.Config) *http.Client](#NewHttpClient)
 * [type Transport](#Transport)
   * [func (t *Transport) RoundTrip(req *http.Request) (*http.Response, error)](#Transport.RoundTrip)
 
@@ -23,16 +23,16 @@
 
 
 
-## <a name="NewClient">func</a> [NewClient](/src/target/client.go?s=1176:1224#L49)
+## <a name="NewHttpClient">func</a> [NewHttpClient](/src/target/client.go?s=1277:1329#L58)
 ``` go
-func NewClient(conf *config.Config) *http.Client
+func NewHttpClient(conf *config.Config) *http.Client
 ```
-NewClient creates an *http.Client from an DCOS configuration *config.Config
+NewHttpClient creates an *http.Client from an DCOS configuration *config.Config
 
 
 
 
-## <a name="Transport">type</a> [Transport](/src/target/client.go?s=335:556#L14)
+## <a name="Transport">type</a> [Transport](/src/target/client.go?s=432:653#L23)
 ``` go
 type Transport struct {
     // The DC/OS config to get the token from
@@ -57,7 +57,7 @@ This basic logic is taken from <a href="https://github.com/google/go-github">htt
 
 
 
-### <a name="Transport.RoundTrip">func</a> (\*Transport) [RoundTrip](/src/target/client.go?s=756:828#L32)
+### <a name="Transport.RoundTrip">func</a> (\*Transport) [RoundTrip](/src/target/client.go?s=853:925#L41)
 ``` go
 func (t *Transport) RoundTrip(req *http.Request) (*http.Response, error)
 ```

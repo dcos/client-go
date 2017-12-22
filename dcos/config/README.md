@@ -21,6 +21,8 @@
   * [func NewConfigFromCommonFile() *Config](#NewConfigFromCommonFile)
   * [func NewConfigFromEnv() *Config](#NewConfigFromEnv)
   * [func NewConfigFromFile(file string) (*Config, error)](#NewConfigFromFile)
+  * [func (c *Config) GetDCOSUrl() (*url.URL, error)](#Config.GetDCOSUrl)
+  * [func (c *Config) SetAuthHeader(req *http.Request)](#Config.SetAuthHeader)
   * [func (c *Config) Valid() bool](#Config.Valid)
 * [type Core](#Core)
 * [type Job](#Job)
@@ -64,7 +66,7 @@ Cluster
 
 
 
-## <a name="Config">type</a> [Config](/src/target/config.go?s=347:548#L22)
+## <a name="Config">type</a> [Config](/src/target/config.go?s=359:560#L23)
 ``` go
 type Config struct {
     Core     *Core     `toml:"core"`
@@ -82,7 +84,7 @@ Config represents the whole DC/OS client configuration.
 
 
 
-### <a name="NewConfigFromChain">func</a> [NewConfigFromChain](/src/target/config.go?s=4012:4054#L171)
+### <a name="NewConfigFromChain">func</a> [NewConfigFromChain](/src/target/config.go?s=4541:4583#L188)
 ``` go
 func NewConfigFromChain() (config *Config)
 ```
@@ -91,7 +93,7 @@ merges the results. First Common File `~/.dcos/dcos.toml` then attached
 cluster and afterwards the cluster set with `DCOS_CLUSTER`
 
 
-### <a name="NewConfigFromClusterAttached">func</a> [NewConfigFromClusterAttached](/src/target/config.go?s=2005:2048#L93)
+### <a name="NewConfigFromClusterAttached">func</a> [NewConfigFromClusterAttached](/src/target/config.go?s=2534:2577#L110)
 ``` go
 func NewConfigFromClusterAttached() *Config
 ```
@@ -99,7 +101,7 @@ NewConfigFromClusterAttached looks for an attached cluster (`dcos cluster attach
 and reads it into and Config object
 
 
-### <a name="NewConfigFromClusterEnv">func</a> [NewConfigFromClusterEnv](/src/target/config.go?s=2732:2770#L124)
+### <a name="NewConfigFromClusterEnv">func</a> [NewConfigFromClusterEnv](/src/target/config.go?s=3261:3299#L141)
 ``` go
 func NewConfigFromClusterEnv() *Config
 ```
@@ -107,7 +109,7 @@ NewConfigFromClusterEnv tries to find a cluster by its ID, Name or URL and
 returns its configuration
 
 
-### <a name="NewConfigFromCommonFile">func</a> [NewConfigFromCommonFile](/src/target/config.go?s=1684:1722#L79)
+### <a name="NewConfigFromCommonFile">func</a> [NewConfigFromCommonFile](/src/target/config.go?s=2213:2251#L96)
 ``` go
 func NewConfigFromCommonFile() *Config
 ```
@@ -115,7 +117,7 @@ NewConfigFromCommonFile expects and `dcos.toml` in `DCOS_DIR` by
 default `DCOS_DIR` is `$HOME/.dcos`
 
 
-### <a name="NewConfigFromEnv">func</a> [NewConfigFromEnv](/src/target/config.go?s=3732:3763#L163)
+### <a name="NewConfigFromEnv">func</a> [NewConfigFromEnv](/src/target/config.go?s=4261:4292#L180)
 ``` go
 func NewConfigFromEnv() *Config
 ```
@@ -124,7 +126,7 @@ NewConfigFromEnv reads the configuration from Environment variables.
 `DCOS_<section>_<confiration>=<value>`. This is not yet implemented.
 
 
-### <a name="NewConfigFromFile">func</a> [NewConfigFromFile](/src/target/config.go?s=1291:1343#L61)
+### <a name="NewConfigFromFile">func</a> [NewConfigFromFile](/src/target/config.go?s=1820:1872#L78)
 ``` go
 func NewConfigFromFile(file string) (*Config, error)
 ```
@@ -135,7 +137,27 @@ struct. It returns an empty Config and an error if the could not be read.
 
 
 
-### <a name="Config.Valid">func</a> (\*Config) [Valid](/src/target/config.go?s=616:645#L31)
+### <a name="Config.GetDCOSUrl">func</a> (\*Config) [GetDCOSUrl](/src/target/config.go?s=1344:1391#L60)
+``` go
+func (c *Config) GetDCOSUrl() (*url.URL, error)
+```
+
+
+
+### <a name="Config.SetAuthHeader">func</a> (\*Config) [SetAuthHeader](/src/target/config.go?s=1190:1239#L53)
+``` go
+func (c *Config) SetAuthHeader(req *http.Request)
+```
+SetAuthHeader adds the token header to the provided *http.Request
+
+TODO: check if it makes sense to have an config refresh method befor adding
+the header. The best case would be using refresh tokens and oauth2 in here
+but thats currently not supported by DC/OS.
+
+
+
+
+### <a name="Config.Valid">func</a> (\*Config) [Valid](/src/target/config.go?s=628:657#L32)
 ``` go
 func (c *Config) Valid() bool
 ```
