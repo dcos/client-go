@@ -13,6 +13,15 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestBase(t *testing.T) {
+	c := &Transport{
+		Base: nil,
+	}
+	rt := c.base()
+
+	assert.ObjectsAreEqual(http.DefaultTransport, rt)
+}
+
 // Lets do an samle request and see if we find the token header
 func TestNewClient(t *testing.T) {
 	testtoken := "Testtoken"

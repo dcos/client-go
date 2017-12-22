@@ -1,10 +1,8 @@
 package client
 
 import (
-	"bytes"
 	"crypto/tls"
 	"crypto/x509"
-	"encoding/json"
 	"encoding/pem"
 	"errors"
 	"fmt"
@@ -54,69 +52,6 @@ func (t *Transport) RoundTrip(req *http.Request) (*http.Response, error) {
 	}
 
 	return res, nil
-}
-
-type APIClient struct {
-	HTTPClient *http.Client
-}
-
-// NewAPIClient creates a new APIClient and adds a HTTPclient from Config
-func NewAPIClient(conf *config.Config) *APIClient {
-	c := APIClient{}
-	c.HTTPClient = NewHttpClient(conf)
-	return &c
-}
-
-// NewAPIClient creates a new APIClient and adds a HTTPclient from Config
-func NewAPIClientWithHTTPClient(hc *http.Client) *APIClient {
-	c := APIClient{}
-	c.HTTPClient = hc
-	return &c
-}
-
-func (a *APIClient) Post(url, contentType, accept string, input, output interface{}) (err error) {
-	in, err := json.Marshal(input)
-	if err != nil {
-		return err
-	}
-
-	req, err := http.NewRequest("POST", url, bytes.NewBuffer(in))
-	if err != nil {
-		return err
-	}
-
-	req.Header.Add("Accept", accept)
-	req.Header.Add("Content-Type", contentType)
-
-	resp, err := a.HTTPClient.Do(req)
-	if err != nil {
-		return err
-	}
-
-	if resp.StatusCode == http.StatusUnauthorized {
-		return fmt.Errorf("Unauthorized. You're not allowed to request this enpoint")
-	}
-
-	if resp.StatusCode >= 400 {
-		b, _ := ioutil.ReadAll(resp.Body)
-		return fmt.Errorf("Request error got: %d - body: %s", resp.StatusCode, b)
-	}
-
-	b, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return err
-	}
-
-	err = json.Unmarshal(b, output)
-	if err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (a *APIClient) Get(url, output interface{}) (err error) {
-	return nil
 }
 
 // NewHttpClient creates an *http.Client from an DCOS configuration *config.Config
