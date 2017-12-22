@@ -16,6 +16,11 @@ import (
 	"github.com/mesosphere/dcos-go/dcos/config"
 )
 
+const (
+	libraryVersion = "1"
+	userAgent      = "dcos-go/" + libraryVersion
+)
+
 // Transport is an http.RoundTripper that makes Authorized Requests,
 // wrapping a base RoundTripper and adding an Authorization header
 // with a token from the config.
@@ -23,6 +28,8 @@ import (
 type Transport struct {
 	// The DC/OS config to get the token from
 	Config *config.Config
+
+	UserAgent string
 
 	// Base is the base RoundTripper used to make HTTP requests.
 	// If nil, http.DefaultTransport is used.
@@ -45,6 +52,10 @@ func (t *Transport) RoundTrip(req *http.Request) (*http.Response, error) {
 
 	//set the auth header
 	t.Config.SetAuthHeader(req)
+
+	if t.UserAgent != "" {
+		req.Header.Set("User-Agent", t.UserAgent)
+	}
 
 	res, err := t.base().RoundTrip(req)
 	if err != nil {
@@ -106,8 +117,9 @@ func NewHttpClient(conf *config.Config) *http.Client {
 
 	return &http.Client{
 		Transport: &Transport{
-			Config: conf,
-			Base:   transport,
+			UserAgent: userAgent,
+			Config:    conf,
+			Base:      transport,
 		},
 	}
 }

@@ -252,3 +252,28 @@ func TestNewClientWithoutSSLVerify(t *testing.T) {
 	_, err = c1.Get(ts.URL)
 	assert.Error(t, err)
 }
+
+func TestNewClientUserAgent(t *testing.T) {
+	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Header.Get("User-Agent") == userAgent {
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("OK"))
+			return
+		}
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("Wrong user agent"))
+	}))
+	testtoken := "foobar"
+	conf := config.Config{
+		Core: &config.Core{
+			DcosUrl:      s.URL,
+			DcosAcsToken: testtoken,
+			SslVerify:    "false",
+		},
+	}
+
+	c := NewHttpClient(&conf)
+	resp, err := c.Get(s.URL)
+	assert.NoError(t, err)
+	assert.Equal(t, http.StatusOK, resp.StatusCode)
+}
