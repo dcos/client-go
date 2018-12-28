@@ -13,7 +13,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/mesosphere/dcos-go/dcos/config"
+	"github.com/mesosphere/dcos-api-go/dcos/config"
 )
 
 const (

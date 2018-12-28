@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/mesosphere/dcos-go/dcos/config"
+	"github.com/mesosphere/dcos-api-go/dcos/config"
 	"github.com/stretchr/testify/assert"
 )
 

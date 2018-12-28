@@ -1,7 +1,7 @@
 
 
 # client
-`import "github.com/mesosphere/dcos-go/dcos/client"`
+`import "github.com/mesosphere/dcos-api-go/dcos/client"`
 
 * [Overview](#pkg-overview)
 * [Index](#pkg-index)
@@ -17,7 +17,7 @@
 
 
 #### <a name="pkg-files">Package files</a>
-[client.go](/src/github.com/mesosphere/dcos-go/dcos/client/client.go) 
+[client.go](/src/github.com/mesosphere/dcos-api-go/dcos/client/client.go) 
 
 
 

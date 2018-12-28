@@ -1,7 +1,7 @@
 
 
 # common
-`import "github.com/mesosphere/dcos-go/dcos/common"`
+`import "github.com/mesosphere/dcos-api-go/dcos/common"`
 
 * [Overview](#pkg-overview)
 * [Index](#pkg-index)
@@ -19,7 +19,7 @@
 
 
 #### <a name="pkg-files">Package files</a>
-[common.go](/src/github.com/mesosphere/dcos-go/dcos/common/common.go) 
+[common.go](/src/github.com/mesosphere/dcos-api-go/dcos/common/common.go) 
 
 
 

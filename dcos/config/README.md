@@ -1,7 +1,7 @@
 
 
 # config
-`import "github.com/mesosphere/dcos-go/dcos/config"`
+`import "github.com/mesosphere/dcos-api-go/dcos/config"`
 
 * [Overview](#pkg-overview)
 * [Index](#pkg-index)
@@ -31,7 +31,7 @@
 
 
 #### <a name="pkg-files">Package files</a>
-[cluster.go](/src/github.com/mesosphere/dcos-go/dcos/config/cluster.go) [config.go](/src/github.com/mesosphere/dcos-go/dcos/config/config.go) [core.go](/src/github.com/mesosphere/dcos-go/dcos/config/core.go) [job.go](/src/github.com/mesosphere/dcos-go/dcos/config/job.go) [marathon.go](/src/github.com/mesosphere/dcos-go/dcos/config/marathon.go) [package.go](/src/github.com/mesosphere/dcos-go/dcos/config/package.go) 
+[cluster.go](/src/github.com/mesosphere/dcos-api-go/dcos/config/cluster.go) [config.go](/src/github.com/mesosphere/dcos-api-go/dcos/config/config.go) [core.go](/src/github.com/mesosphere/dcos-api-go/dcos/config/core.go) [job.go](/src/github.com/mesosphere/dcos-api-go/dcos/config/job.go) [marathon.go](/src/github.com/mesosphere/dcos-api-go/dcos/config/marathon.go) [package.go](/src/github.com/mesosphere/dcos-api-go/dcos/config/package.go) 
 
 
 ## <a name="pkg-constants">Constants</a>

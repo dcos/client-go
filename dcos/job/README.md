@@ -1,7 +1,7 @@
 
 
 # job
-`import "github.com/mesosphere/dcos-go/dcos/job"`
+`import "github.com/mesosphere/dcos-api-go/dcos/job"`
 
 * [Overview](#pkg-overview)
 * [Index](#pkg-index)
@@ -21,7 +21,7 @@
 
 
 #### <a name="pkg-files">Package files</a>
-[job.go](/src/github.com/mesosphere/dcos-go/dcos/job/job.go) 
+[job.go](/src/github.com/mesosphere/dcos-api-go/dcos/job/job.go) 
 
 
 

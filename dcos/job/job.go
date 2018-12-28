@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/mesosphere/dcos-go/dcos/common"
-	"github.com/mesosphere/dcos-go/dcos/config"
+	"github.com/mesosphere/dcos-api-go/dcos/common"
+	"github.com/mesosphere/dcos-api-go/dcos/config"
 )
 
 // PackageService represents access to package API
