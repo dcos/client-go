@@ -18,7 +18,7 @@ import (
 
 const (
 	libraryVersion = "1"
-	userAgent      = "dcos-go/" + libraryVersion
+	userAgent      = "dcos-api-go/" + libraryVersion
 )
 
 // Transport is an http.RoundTripper that makes Authorized Requests,
