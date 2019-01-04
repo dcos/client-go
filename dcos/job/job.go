@@ -33,9 +33,22 @@ type Volume struct {
 	Mode          string `json:"mode"`
 }
 
+// Restart defines the restart policy
 type Restart struct {
 	ActiveDeadlineSeconds int    `json:"activeDeadlineSeconds,omitempty"`
 	Policy                string `json:"policy,omitempty"`
+}
+
+// Constraint describes
+type Constraint struct {
+	Attribute string `json:"attribute"`
+	Operator  string `json:"operator"`
+	Value     string `json:"value,omitempty"`
+}
+
+// Placement contains a list of Constraints
+type Placement struct {
+	Constraints []*Constraint `json:"constraints,omitempty"`
 }
 
 // Run describes a Job Run
@@ -49,16 +62,10 @@ type Run struct {
 	Env            map[string]string `json:"env,omitempty"`
 	MaxLaunchDelay int               `json:"maxLaunchDelay,omitempty"`
 	Mem            float64           `json:"mem"`
-	Placement      *struct {
-		Constraints []struct {
-			Attribute string `json:"attribute"`
-			Operator  string `json:"operator"`
-			Value     string `json:"value,omitempty"`
-		} `json:"constraints,omitempty"`
-	} `json:"placement,omitempty"`
-	Restart *Restart  `json:"restart,omitempty"`
-	User    string    `json:"user,omitempty"`
-	Volumes []*Volume `json:"volumes,omitempty"`
+	Placement      *Placement        `json:"placement,omitempty"`
+	Restart        *Restart          `json:"restart,omitempty"`
+	User           string            `json:"user,omitempty"`
+	Volumes        []*Volume         `json:"volumes,omitempty"`
 }
 
 // Schedule describes a Job schedule
@@ -104,6 +111,7 @@ func (j *JobService) List() ([]*Job, error) {
 	return nil, nil
 }
 
+// Job gets a Job from the API by its jobid
 func (j *JobService) Job(jobid string) (*Job, error) {
 	var job Job
 	if jobid == "" {
@@ -117,6 +125,7 @@ func (j *JobService) Job(jobid string) (*Job, error) {
 	return &job, nil
 }
 
+// CreateJob posts the Job definition to the API. Job.ID has to be unique
 func (j *JobService) CreateJob(job *Job) (*Job, error) {
 	if !job.Valid() {
 		return nil, fmt.Errorf("Job %v is invalid", job)
@@ -129,9 +138,14 @@ func (j *JobService) CreateJob(job *Job) (*Job, error) {
 	return receiveObject, nil
 }
 
-func (j *JobService) UpdateJob(job *Job) (*Job, error) {
+// UpdateJob puts a new definition for a jobid onto the API
+func (j *JobService) UpdateJob(jobid string, job *Job) (*Job, error) {
 	if !job.Valid() {
 		return nil, fmt.Errorf("Job %v is invalid", job)
+	}
+
+	if jobid != job.ID {
+		return nil, fmt.Errorf("Job.ID is different to the target jobid")
 	}
 
 	receiveObject := &Job{}
@@ -142,6 +156,7 @@ func (j *JobService) UpdateJob(job *Job) (*Job, error) {
 	return receiveObject, nil
 }
 
+// DeleteJob deletes a job by its jobid from the API
 func (j *JobService) DeleteJob(id string) error {
 	err := j.Service.Delete(fmt.Sprintf("/v1/jobs/%s", id))
 	if err != nil {
