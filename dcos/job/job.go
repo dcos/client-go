@@ -172,8 +172,15 @@ func (j *JobService) UpdateJob(jobid string, job *Job) (*Job, error) {
 }
 
 // DeleteJob deletes a job by its jobid from the API
-func (j *JobService) DeleteJob(id string) error {
-	err := j.Service.Delete(fmt.Sprintf("/v1/jobs/%s", id))
+func (j *JobService) DeleteJob(jobid string) error {
+	err := j.Service.Delete(fmt.Sprintf("/v1/jobs/%s", jobid))
+
+	if reqErr, ok := err.(*common.RequestError); ok {
+		if reqErr.StatusCode() == 404 {
+			return fmt.Errorf("Job ID unknown")
+		}
+		return reqErr
+	}
 	if err != nil {
 		return err
 	}
