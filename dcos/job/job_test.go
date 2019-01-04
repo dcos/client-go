@@ -31,7 +31,7 @@ func TestNewJobService(t *testing.T) {
 
 }
 
-func TestNewJobValid(t *testing.T) {
+func TestJobValid(t *testing.T) {
 	var job, job2 Job
 	job.ID = "test"
 	job.Run = &Run{
@@ -43,6 +43,15 @@ func TestNewJobValid(t *testing.T) {
 
 	assert.True(t, job.Valid())
 	assert.False(t, job2.Valid())
+}
+
+func TestNewJobCmd(t *testing.T) {
+	j := newJobService()
+	job, err := j.NewJobCmd("test", "echo foo")
+
+	assert.NoError(t, err)
+	assert.True(t, job.Valid())
+
 }
 
 func TestJobEmptyName(t *testing.T) {

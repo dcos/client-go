@@ -125,6 +125,21 @@ func (j *JobService) Job(jobid string) (*Job, error) {
 	return &job, nil
 }
 
+// NewJobCmd creates a new Job and expect jobid and cmd as input..
+func (j *JobService) NewJobCmd(jobid string, cmd string) (*Job, error) {
+	job := Job{
+		ID: jobid,
+		Run: &Run{
+			Cmd:  cmd,
+			Cpus: 0.1,
+			Disk: 0,
+			Mem:  128,
+		},
+	}
+
+	return &job, nil
+}
+
 // CreateJob posts the Job definition to the API. Job.ID has to be unique
 func (j *JobService) CreateJob(job *Job) (*Job, error) {
 	if !job.Valid() {
