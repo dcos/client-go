@@ -20,7 +20,7 @@
 * [type JobService](#JobService)
   * [func NewJobService(config *config.Config, client *http.Client) *JobService](#NewJobService)
   * [func (j *JobService) CreateJob(job *Job) (*Job, error)](#JobService.CreateJob)
-  * [func (j *JobService) DeleteJob(id string) error](#JobService.DeleteJob)
+  * [func (j *JobService) DeleteJob(jobid string) error](#JobService.DeleteJob)
   * [func (j *JobService) Job(jobid string) (*Job, error)](#JobService.Job)
   * [func (j *JobService) List() ([]*Job, error)](#JobService.List)
   * [func (j *JobService) NewJobCmd(jobid string, cmd string) (*Job, error)](#JobService.NewJobCmd)
@@ -160,9 +160,9 @@ CreateJob posts the Job definition to the API. Job.ID has to be unique
 
 
 
-### <a name="JobService.DeleteJob">func</a> (\*JobService) [DeleteJob](/src/target/job.go?s=4831:4878#L175)
+### <a name="JobService.DeleteJob">func</a> (\*JobService) [DeleteJob](/src/target/job.go?s=4831:4881#L175)
 ``` go
-func (j *JobService) DeleteJob(id string) error
+func (j *JobService) DeleteJob(jobid string) error
 ```
 DeleteJob deletes a job by its jobid from the API
 
