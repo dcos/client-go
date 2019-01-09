@@ -78,6 +78,14 @@ type Schedule struct {
 	Timezone                string `json:"timezone,omitempty"`
 }
 
+func (s *Schedule) Valid() bool {
+	// TODO: ideally use a cron parser
+	if s.ID != "" && s.Cron != "" {
+		return true
+	}
+	return false
+}
+
 // Job is an metronom job
 type Job struct {
 	Description string            `json:"description,omitempty"`
@@ -107,6 +115,7 @@ func NewJobService(config *config.Config, client *http.Client) *JobService {
 	return &j
 }
 
+// List gives a list of all Jobs defined
 func (j *JobService) List() ([]*Job, error) {
 	return nil, nil
 }
@@ -125,8 +134,8 @@ func (j *JobService) Job(jobid string) (*Job, error) {
 	return &job, nil
 }
 
-// NewJobCmd creates a new Job and expect jobid and cmd as input..
-func (j *JobService) NewJobCmd(jobid string, cmd string) (*Job, error) {
+// NewJobWithCmd creates a new Job and expect jobid and cmd as input..
+func NewJobWithCmd(jobid string, cmd string) (*Job, error) {
 	job := Job{
 		ID: jobid,
 		Run: &Run{
@@ -146,11 +155,119 @@ func (j *JobService) CreateJob(job *Job) (*Job, error) {
 		return nil, fmt.Errorf("Job %v is invalid", job)
 	}
 	receiveObject := &Job{}
-	err := j.PostJSON("/v0/scheduled-jobs", job, receiveObject)
+	err := j.PostJSON("/v1/jobs", job, receiveObject)
 	if err != nil {
 		return nil, err
 	}
 	return receiveObject, nil
+}
+
+// Exists checks if the given jobid already exists
+func (j *JobService) Exists(jobid string) bool {
+	var job Job
+	err := j.GetJSON(fmt.Sprintf("/v1/jobs/%s", jobid), &job)
+
+	if err != nil {
+		return false
+	}
+
+	if job.ID == jobid {
+		return true
+	}
+
+	// this will be unexpected.
+	return false
+}
+
+// CreateSchedule adds a new schedule to Job with jobid
+func (j *JobService) CreateSchedule(jobid string, schedule *Schedule) (*Schedule, error) {
+	if !schedule.Valid() {
+		return nil, fmt.Errorf("Schedule is invalid")
+	}
+
+	if !j.Exists(jobid) {
+		return nil, fmt.Errorf("jobid unknown")
+	}
+
+	s := &Schedule{}
+
+	err := j.PostJSON(fmt.Sprintf("/v1/jobs/%s/schedules", jobid), schedule, s)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return s, nil
+}
+
+// UpdateSchedule puts a new schedule definition for given scheduleid of a Job with jobid into the API
+func (j *JobService) UpdateSchedule(jobid string, scheduleid string, schedule *Schedule) (*Schedule, error) {
+	if !schedule.Valid() {
+		return nil, fmt.Errorf("Schedule is invalid")
+	}
+
+	if !j.Exists(jobid) {
+		return nil, fmt.Errorf("jobid unknown")
+	}
+
+	s := &Schedule{}
+
+	err := j.PutJSON(fmt.Sprintf("/v1/jobs/%s/schedules/%s", jobid, scheduleid), schedule, s)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return s, nil
+}
+
+// DeleteSchedule deletes a schedule identified by scheduleid and jobid
+func (j *JobService) DeleteSchedule(jobid string, scheduleid string) error {
+	if !j.Exists(jobid) {
+		return fmt.Errorf("jobid unknown")
+	}
+
+	err := j.Delete(fmt.Sprintf("/v1/jobs/%s/schedules/%s", jobid, scheduleid))
+
+	return err
+}
+
+// GetSchedules get all schedules by jobid
+func (j *JobService) GetSchedules(jobid string) (schedules []Schedule, err error) {
+	if !j.Exists(jobid) {
+		return nil, fmt.Errorf("jobid unknown")
+	}
+
+	err = j.GetJSON(fmt.Sprintf("/v1/jobs/%s/schedules", jobid), &schedules)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return
+}
+
+// GetSchedule gets a Schedule specified by jobid and scheduleid
+func (j *JobService) GetSchedule(jobid string, scheduleid string) (*Schedule, error) {
+	if !j.Exists(jobid) {
+		return nil, fmt.Errorf("jobid unknown")
+	}
+
+	s := &Schedule{}
+	err := j.GetJSON(fmt.Sprintf("/v1/jobs/%s/schedules/%s", jobid, scheduleid), s)
+
+	if err != nil {
+		if e, ok := err.(*common.RequestError); ok {
+			if e.StatusCode() == 404 {
+				return nil, fmt.Errorf("Schedule with id %s not found", scheduleid)
+			}
+
+			return nil, err
+		}
+		return nil, err
+	}
+
+	return s, nil
 }
 
 // UpdateJob puts a new definition for a jobid onto the API
@@ -164,7 +281,7 @@ func (j *JobService) UpdateJob(jobid string, job *Job) (*Job, error) {
 	}
 
 	receiveObject := &Job{}
-	err := j.PutJSON("/v0/scheduled-jobs", job, receiveObject)
+	err := j.PutJSON(fmt.Sprintf("/v1/jobs/%s", jobid), job, receiveObject)
 	if err != nil {
 		return nil, err
 	}

@@ -46,8 +46,7 @@ func TestJobValid(t *testing.T) {
 }
 
 func TestNewJobCmd(t *testing.T) {
-	j := newJobService()
-	job, err := j.NewJobCmd("test", "echo foo")
+	job, err := NewJobWithCmd("test", "echo foo")
 
 	assert.NoError(t, err)
 	assert.True(t, job.Valid())
@@ -88,4 +87,37 @@ func TestJobNotFound(t *testing.T) {
 	assert.Error(t, err)
 	assert.IsType(t, &common.RequestError{}, err)
 	assert.Equal(t, err.(*common.RequestError).StatusCode(), 404)
+}
+
+func TestGetSchedules(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+	httpmock.RegisterResponder("GET", "https://foobar.dcos.io/service/metronome/v1/jobs/test",
+		httpmock.NewStringResponder(200, `{"id": "test","labels": {},"run": {"cpus": 0.01,"mem": 128,"disk": 0,"cmd": "echo foo","env": {},"placement": {"constraints": []},"artifacts": [],"maxLaunchDelay": 3600,"volumes": [],"restart": {"policy": "NEVER"},"secrets": {}}}`))
+	httpmock.RegisterResponder("GET", "https://foobar.dcos.io/service/metronome/v1/jobs/test/schedules",
+		httpmock.NewStringResponder(200, `[
+  {
+    "id": "everyminute",
+    "cron": "* * * * *",
+    "concurrencyPolicy": "ALLOW",
+    "enabled": true,
+    "startingDeadlineSeconds": 60,
+    "timezone": "America/Chicago"
+  },
+  {
+    "id": "christmas",
+    "cron": "* * * * *",
+    "concurrencyPolicy": "ALLOW",
+    "enabled": true,
+    "startingDeadlineSeconds": 60,
+    "timezone": "America/Chicago"
+  }
+]`))
+	j := newJobService()
+	schedules, err := j.GetSchedules("test")
+
+	assert.NoError(t, err)
+	assert.Equal(t, 2, len(schedules))
+	assert.Equal(t, "everyminute", schedules[0].ID)
+
 }
