@@ -1,7 +1,7 @@
 
 
 # job
-`import "github.com/mesosphere/dcos-api-go/dcos/job"`
+`import "./"`
 
 * [Overview](#pkg-overview)
 * [Index](#pkg-index)
@@ -16,24 +16,31 @@
 * [type Constraint](#Constraint)
 * [type Docker](#Docker)
 * [type Job](#Job)
+  * [func NewJobWithCmd(jobid string, cmd string) (*Job, error)](#NewJobWithCmd)
   * [func (j *Job) Valid() bool](#Job.Valid)
 * [type JobService](#JobService)
   * [func NewJobService(config *config.Config, client *http.Client) *JobService](#NewJobService)
   * [func (j *JobService) CreateJob(job *Job) (*Job, error)](#JobService.CreateJob)
+  * [func (j *JobService) CreateSchedule(jobid string, schedule *Schedule) (*Schedule, error)](#JobService.CreateSchedule)
   * [func (j *JobService) DeleteJob(jobid string) error](#JobService.DeleteJob)
+  * [func (j *JobService) DeleteSchedule(jobid string, scheduleid string) error](#JobService.DeleteSchedule)
+  * [func (j *JobService) Exists(jobid string) bool](#JobService.Exists)
+  * [func (j *JobService) GetSchedule(jobid string, scheduleid string) (*Schedule, error)](#JobService.GetSchedule)
+  * [func (j *JobService) GetSchedules(jobid string) (schedules []Schedule, err error)](#JobService.GetSchedules)
   * [func (j *JobService) Job(jobid string) (*Job, error)](#JobService.Job)
   * [func (j *JobService) List() ([]*Job, error)](#JobService.List)
-  * [func (j *JobService) NewJobCmd(jobid string, cmd string) (*Job, error)](#JobService.NewJobCmd)
   * [func (j *JobService) UpdateJob(jobid string, job *Job) (*Job, error)](#JobService.UpdateJob)
+  * [func (j *JobService) UpdateSchedule(jobid string, scheduleid string, schedule *Schedule) (*Schedule, error)](#JobService.UpdateSchedule)
 * [type Placement](#Placement)
 * [type Restart](#Restart)
 * [type Run](#Run)
 * [type Schedule](#Schedule)
+  * [func (s *Schedule) Valid() bool](#Schedule.Valid)
 * [type Volume](#Volume)
 
 
 #### <a name="pkg-files">Package files</a>
-[job.go](/src/github.com/mesosphere/dcos-api-go/dcos/job/job.go) 
+[job.go](/src/target/job.go) 
 
 
 
@@ -96,7 +103,7 @@ Docker describes the docker settings for Job
 
 
 
-## <a name="Job">type</a> [Job](/src/target/job.go?s=2482:2767#L82)
+## <a name="Job">type</a> [Job](/src/target/job.go?s=2619:2904#L90)
 ``` go
 type Job struct {
     Description string            `json:"description,omitempty"`
@@ -114,10 +121,17 @@ Job is an metronom job
 
 
 
+### <a name="NewJobWithCmd">func</a> [NewJobWithCmd](/src/target/job.go?s=3954:4012#L138)
+``` go
+func NewJobWithCmd(jobid string, cmd string) (*Job, error)
+```
+NewJobWithCmd creates a new Job and expect jobid and cmd as input..
 
 
 
-### <a name="Job.Valid">func</a> (\*Job) [Valid](/src/target/job.go?s=2896:2922#L92)
+
+
+### <a name="Job.Valid">func</a> (\*Job) [Valid](/src/target/job.go?s=3033:3059#L100)
 ``` go
 func (j *Job) Valid() bool
 ```
@@ -141,7 +155,7 @@ JobService represents access to package API
 
 
 
-### <a name="NewJobService">func</a> [NewJobService](/src/target/job.go?s=3134:3208#L100)
+### <a name="NewJobService">func</a> [NewJobService](/src/target/job.go?s=3271:3345#L108)
 ``` go
 func NewJobService(config *config.Config, client *http.Client) *JobService
 ```
@@ -151,7 +165,7 @@ NewJobService create an *JobService instance from *config.Config and *http.Clien
 
 
 
-### <a name="JobService.CreateJob">func</a> (\*JobService) [CreateJob](/src/target/job.go?s=4042:4096#L144)
+### <a name="JobService.CreateJob">func</a> (\*JobService) [CreateJob](/src/target/job.go?s=4212:4266#L153)
 ``` go
 func (j *JobService) CreateJob(job *Job) (*Job, error)
 ```
@@ -160,7 +174,16 @@ CreateJob posts the Job definition to the API. Job.ID has to be unique
 
 
 
-### <a name="JobService.DeleteJob">func</a> (\*JobService) [DeleteJob](/src/target/job.go?s=4831:4881#L175)
+### <a name="JobService.CreateSchedule">func</a> (\*JobService) [CreateSchedule](/src/target/job.go?s=4837:4925#L183)
+``` go
+func (j *JobService) CreateSchedule(jobid string, schedule *Schedule) (*Schedule, error)
+```
+CreateSchedule adds a new schedule to Job with jobid
+
+
+
+
+### <a name="JobService.DeleteJob">func</a> (\*JobService) [DeleteJob](/src/target/job.go?s=7454:7504#L292)
 ``` go
 func (j *JobService) DeleteJob(jobid string) error
 ```
@@ -169,7 +192,43 @@ DeleteJob deletes a job by its jobid from the API
 
 
 
-### <a name="JobService.Job">func</a> (\*JobService) [Job](/src/target/job.go?s=3448:3500#L115)
+### <a name="JobService.DeleteSchedule">func</a> (\*JobService) [DeleteSchedule](/src/target/job.go?s=5825:5899#L225)
+``` go
+func (j *JobService) DeleteSchedule(jobid string, scheduleid string) error
+```
+DeleteSchedule deletes a schedule identified by scheduleid and jobid
+
+
+
+
+### <a name="JobService.Exists">func</a> (\*JobService) [Exists](/src/target/job.go?s=4537:4583#L166)
+``` go
+func (j *JobService) Exists(jobid string) bool
+```
+Exists checks if the given jobid already exists
+
+
+
+
+### <a name="JobService.GetSchedule">func</a> (\*JobService) [GetSchedule](/src/target/job.go?s=6445:6529#L251)
+``` go
+func (j *JobService) GetSchedule(jobid string, scheduleid string) (*Schedule, error)
+```
+GetSchedule gets a Schedule specified by jobid and scheduleid
+
+
+
+
+### <a name="JobService.GetSchedules">func</a> (\*JobService) [GetSchedules](/src/target/job.go?s=6102:6183#L236)
+``` go
+func (j *JobService) GetSchedules(jobid string) (schedules []Schedule, err error)
+```
+GetSchedules get all schedules by jobid
+
+
+
+
+### <a name="JobService.Job">func</a> (\*JobService) [Job](/src/target/job.go?s=3626:3678#L124)
 ``` go
 func (j *JobService) Job(jobid string) (*Job, error)
 ```
@@ -178,27 +237,29 @@ Job gets a Job from the API by its jobid
 
 
 
-### <a name="JobService.List">func</a> (\*JobService) [List](/src/target/job.go?s=3338:3381#L110)
+### <a name="JobService.List">func</a> (\*JobService) [List](/src/target/job.go?s=3516:3559#L119)
 ``` go
 func (j *JobService) List() ([]*Job, error)
 ```
-
-
-
-### <a name="JobService.NewJobCmd">func</a> (\*JobService) [NewJobCmd](/src/target/job.go?s=3772:3842#L129)
-``` go
-func (j *JobService) NewJobCmd(jobid string, cmd string) (*Job, error)
-```
-NewJobCmd creates a new Job and expect jobid and cmd as input..
+List gives a list of all Jobs defined
 
 
 
 
-### <a name="JobService.UpdateJob">func</a> (\*JobService) [UpdateJob](/src/target/job.go?s=4386:4454#L157)
+### <a name="JobService.UpdateJob">func</a> (\*JobService) [UpdateJob](/src/target/job.go?s=6996:7064#L274)
 ``` go
 func (j *JobService) UpdateJob(jobid string, job *Job) (*Job, error)
 ```
 UpdateJob puts a new definition for a jobid onto the API
+
+
+
+
+### <a name="JobService.UpdateSchedule">func</a> (\*JobService) [UpdateSchedule](/src/target/job.go?s=5330:5437#L204)
+``` go
+func (j *JobService) UpdateSchedule(jobid string, scheduleid string, schedule *Schedule) (*Schedule, error)
+```
+UpdateSchedule puts a new schedule definition for given scheduleid of a Job with jobid into the API
 
 
 
@@ -286,6 +347,13 @@ Schedule describes a Job schedule
 
 
 
+
+
+
+### <a name="Schedule.Valid">func</a> (\*Schedule) [Valid](/src/target/job.go?s=2456:2487#L81)
+``` go
+func (s *Schedule) Valid() bool
+```
 
 
 
