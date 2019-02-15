@@ -9,5 +9,8 @@ type Client struct {
 }
 
 func NewClient(httpClient *http.Client) (*Client, error) {
+	if httpClient == nil {
+		httpClient = http.DefaultClient
+	}
 	return &Client{HttpClient: httpClient}, nil
 }
