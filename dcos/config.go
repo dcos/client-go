@@ -6,11 +6,12 @@ import (
 
 type Config struct {
 	// TODO
+	Authentication Authentication
 }
 
 func (c *Config) TLS(roundtripper http.RoundTripper) {
 	// if SslVerify is bool and false
-	roundtripper.(*http.Transport).TLSClientConfig.InsecureSkipVerify = false
+	// roundtripper.(*http.Transport).TLSClientConfig.InsecureSkipVerify = false
 
 	// otherwise add cert
 	// transport.(*http.Transport).TLSClientConfig.RootCAs = x509.NewCertPool()

@@ -26,14 +26,31 @@ func (t *DefaultTransport) base() http.RoundTripper {
 }
 
 func (t *DefaultTransport) RoundTrip(req *http.Request) (*http.Response, error) {
-	res, err := t.base().RoundTrip(req)
+	// meet the requirements of RoundTripper and only modify a copy
+	req2 := cloneRequest(req)
 
-	return res, err
+	// TODO: we might need to check Expiry before.
+	t.Config.Authentication.AddHeaders(req2)
+
+	return t.base().RoundTrip(req2)
+}
+
+func cloneRequest(req *http.Request) *http.Request {
+	req2 := new(http.Request)
+	*req2 = *req
+
+	// until now we only clone headers as we only modify those.
+	req2.Header = make(http.Header, len(req.Header))
+	for k, s := range req.Header {
+		req2.Header[k] = append([]string(nil), s...)
+	}
+
+	return req2
 }
 
 // NewHTTPClient provides a http.Client able to communicate to dcos in an authenticated way
 func NewHTTPClient(config *Config) *http.Client {
-	client := http.DefaultClient
+	client := &http.Client{}
 	client.Transport = &http.Transport{
 
 		// Allow http_proxy, https_proxy, and no_proxy.
