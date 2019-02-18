@@ -4,4 +4,4 @@ package dcos
 const Version = "0.0.1"
 
 // ClientName represents the libraries name
-const ClientName = "dcos/client-go"
+const ClientName = "dcos-client-go"
