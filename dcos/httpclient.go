@@ -7,8 +7,12 @@ import (
 )
 
 const (
-	DefaultHTTPClientDialContextTimeout  = 10 * time.Second
+	// Set a 10 seconds timeout for the connection to be established.
+	DefaultHTTPClientDialContextTimeout = 10 * time.Second
+	// Set it to 10 seconds as well for the TLS handshake when using HTTPS.
 	DefaultHTTPClientTLSHandshakeTimeout = 10 * time.Second
+	// The client will be dealing with a single host (the one in baseURL),
+	// set max idle conne
 	DefaultHTTPClientMaxIdleConns        = 30
 	DefaultHTTPClientMaxIdleConnsPerHost = 30
 )
@@ -56,28 +60,24 @@ func NewHTTPClient(config *Config) *http.Client {
 		// Allow http_proxy, https_proxy, and no_proxy.
 		Proxy: http.ProxyFromEnvironment,
 
-		// Set a 10 seconds timeout for the connection to be established.
 		DialContext: (&net.Dialer{
 			Timeout: DefaultHTTPClientDialContextTimeout,
 		}).DialContext,
 
-		// Set it to 10 seconds as well for the TLS handshake when using HTTPS.
 		TLSHandshakeTimeout: DefaultHTTPClientTLSHandshakeTimeout,
 
-		// The client will be dealing with a single host (the one in baseURL),
-		// set max idle connections to 30 regardless of the host.
 		MaxIdleConns:        DefaultHTTPClientMaxIdleConns,
 		MaxIdleConnsPerHost: DefaultHTTPClientMaxIdleConnsPerHost,
 	}
 
 	// Set the TLS configuration as specified in the context.
-	config.TLS(client.Transport)
+	client.Transport.(*http.Transport).TLSClientConfig = config.TLS()
 
-	return ConfigureHTTPClient(config, client)
+	return ConfigureHTTPClient(client, config)
 }
 
 // ConfigureHTTPClient adds dcos.DefaultTransport to http.Client to add dcos authentication
-func ConfigureHTTPClient(config *Config, client *http.Client) *http.Client {
+func ConfigureHTTPClient(client *http.Client, config *Config) *http.Client {
 	transport := DefaultTransport{
 		Config: config,
 		Base:   client.Transport,

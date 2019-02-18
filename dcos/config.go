@@ -1,17 +1,18 @@
 package dcos
 
-import (
-	"net/http"
-)
+import "crypto/tls"
 
 type Config struct {
 	// TODO
 	Authentication Authentication
 }
 
-func (c *Config) TLS(roundtripper http.RoundTripper) {
+func (c *Config) TLS() *tls.Config {
 	// if SslVerify is bool and false
 	// roundtripper.(*http.Transport).TLSClientConfig.InsecureSkipVerify = false
+	return &tls.Config{
+		InsecureSkipVerify: false,
+	}
 
 	// otherwise add cert
 	// transport.(*http.Transport).TLSClientConfig.RootCAs = x509.NewCertPool()
