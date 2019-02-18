@@ -7,29 +7,31 @@ import (
 )
 
 const (
-	userAgent = ClientName + " - " + Version
+	DefaultHTTPClientDialContextTimeout  = 10 * time.Second
+	DefaultHTTPClientTLSHandshakeTimeout = 10 * time.Second
+	DefaultHTTPClientMaxIdleConns        = 30
+	DefaultHTTPClientMaxIdleConnsPerHost = 30
 )
 
-type DCOSTransport struct {
+type DefaultTransport struct {
 	Config *Config
 	Base   http.RoundTripper
 }
 
-func (t *DCOSTransport) base() http.RoundTripper {
+func (t *DefaultTransport) base() http.RoundTripper {
 	if t.Base != nil {
 		return t.Base
 	}
 	return http.DefaultTransport
 }
 
-func (t *DCOSTransport) RoundTrip(req *http.Request) (*http.Response, error) {
+func (t *DefaultTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	res, err := t.base().RoundTrip(req)
-
-	req.Header.Set("User-Agent", userAgent)
 
 	return res, err
 }
 
+// NewHTTPClient provides a http.Client able to communicate to dcos in an authenticated way
 func NewHTTPClient(config *Config) *http.Client {
 	client := http.DefaultClient
 	client.Transport = &http.Transport{
@@ -39,26 +41,27 @@ func NewHTTPClient(config *Config) *http.Client {
 
 		// Set a 10 seconds timeout for the connection to be established.
 		DialContext: (&net.Dialer{
-			Timeout: 10 * time.Second,
+			Timeout: DefaultHTTPClientDialContextTimeout,
 		}).DialContext,
 
 		// Set it to 10 seconds as well for the TLS handshake when using HTTPS.
-		TLSHandshakeTimeout: 10 * time.Second,
+		TLSHandshakeTimeout: DefaultHTTPClientTLSHandshakeTimeout,
 
 		// The client will be dealing with a single host (the one in baseURL),
 		// set max idle connections to 30 regardless of the host.
-		MaxIdleConns:        30,
-		MaxIdleConnsPerHost: 30,
+		MaxIdleConns:        DefaultHTTPClientMaxIdleConns,
+		MaxIdleConnsPerHost: DefaultHTTPClientMaxIdleConnsPerHost,
 	}
 
 	// Set the TLS configuration as specified in the context.
 	config.TLS(client.Transport)
 
-	return NewHttpClientWithHTTPClient(config, client)
+	return ConfigureHTTPClient(config, client)
 }
 
-func NewHttpClientWithHTTPClient(config *Config, client *http.Client) *http.Client {
-	transport := DCOSTransport{
+// ConfigureHTTPClient adds dcos.DefaultTransport to http.Client to add dcos authentication
+func ConfigureHTTPClient(config *Config, client *http.Client) *http.Client {
+	transport := DefaultTransport{
 		Config: config,
 		Base:   client.Transport,
 	}
