@@ -61,7 +61,7 @@ type Config struct {
 	id    string
 }
 
-// NewConfig returns a new cluster for a given config, if omitted it uses an empty config.
+// NewConfig returns a new config for a given store, if omitted it uses an empty store.
 func NewConfig(store *ConfigStore) *Config {
 	if store == nil {
 		store = NewConfigStore(nil)
