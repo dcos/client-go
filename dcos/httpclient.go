@@ -76,8 +76,8 @@ func NewHTTPClient(config *Config) *http.Client {
 	return ConfigureHTTPClient(client, config)
 }
 
-// ConfigureHTTPClient adds dcos.DefaultTransport to http.Client to add dcos authentication
-func ConfigureHTTPClient(client *http.Client, config *Config) *http.Client {
+// AddTransportHTTPClient adds dcos.DefaultTransport to http.Client to add dcos authentication
+func AddTransportHTTPClient(client *http.Client, config *Config) *http.Client {
 	transport := DefaultTransport{
 		Config: config,
 		Base:   client.Transport,
