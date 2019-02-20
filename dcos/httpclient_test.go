@@ -1,7 +1,6 @@
 package dcos
 
 import (
-	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -48,13 +47,9 @@ func TestDefaultHTTPClientAuth(t *testing.T) {
 
 	resp, err := c.Get(s.URL)
 	assert.NoError(t, err)
-	assert.Equal(t, 200, resp.StatusCode)
-	respBody, _ := ioutil.ReadAll(resp.Body)
-	assert.Contains(t, string(respBody), "Success")
+	assert.Equal(t, 200, resp.StatusCode, "using the dcos.NewHTTPClient should respond with 200")
 
 	respDflt, err := http.DefaultClient.Get(s.URL)
 	assert.NoError(t, err)
-	assert.Equal(t, 401, respDflt.StatusCode)
-	respDfltbody, _ := ioutil.ReadAll(respDflt.Body)
-	assert.Contains(t, string(respDfltbody), "Forbidden")
+	assert.Equal(t, 401, respDflt.StatusCode, "expect a forbidden state with http.DefaultClient")
 }
