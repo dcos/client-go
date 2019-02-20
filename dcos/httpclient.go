@@ -67,6 +67,10 @@ func NewHTTPClient(config *Config) *http.Client {
 		}).DialContext,
 
 		TLSHandshakeTimeout: DefaultHTTPClientTLSHandshakeTimeout,
+		TLSClientConfig: &tls.Config{
+			InsecureSkipVerify: config.TLS().Insecure,
+			RootCAs:            config.TLS().RootCAs,
+		},
 
 		MaxIdleConns:        DefaultHTTPClientMaxIdleConns,
 		MaxIdleConnsPerHost: DefaultHTTPClientMaxIdleConnsPerHost,
@@ -80,12 +84,6 @@ func AddTransportHTTPClient(client *http.Client, config *Config) *http.Client {
 	transport := DefaultTransport{
 		Config: config,
 		Base:   client.Transport,
-	}
-
-	// Set the TLS configuration as specified in the context.
-	client.Transport.(*http.Transport).TLSClientConfig = &tls.Config{
-		InsecureSkipVerify: config.TLS().Insecure,
-		RootCAs:            config.TLS().RootCAs,
 	}
 
 	client.Transport = &transport
