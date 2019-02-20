@@ -14,7 +14,7 @@ const (
 	// Set it to 10 seconds as well for the TLS handshake when using HTTPS.
 	DefaultHTTPClientTLSHandshakeTimeout = 10 * time.Second
 	// The client will be dealing with a single host (the one in baseURL),
-	// set max idle conne
+	// set max idle connections to 30 regardless of the host.
 	DefaultHTTPClientMaxIdleConns        = 30
 	DefaultHTTPClientMaxIdleConnsPerHost = 30
 )
