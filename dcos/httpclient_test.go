@@ -28,9 +28,8 @@ func TestDefaultTransportBase(t *testing.T) {
 
 func TestDefaultHTTPClientAuth(t *testing.T) {
 	tokenValue := "TestDefaultHTTPClientAuth-token"
-	store := NewConfigStore(nil)
-	store.Set("core.dcos_acs_token", tokenValue)
-	config := NewConfig(store)
+	config := NewConfig(nil)
+	config.SetACSToken(tokenValue)
 
 	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Header.Get("Authorization") == "token="+tokenValue {
