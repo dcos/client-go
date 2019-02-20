@@ -1,6 +1,8 @@
 package dcos
 
 import (
+	"crypto/tls"
+	"fmt"
 	"net"
 	"net/http"
 	"time"
@@ -17,6 +19,7 @@ const (
 	DefaultHTTPClientMaxIdleConnsPerHost = 30
 )
 
+// DefaultTransport is a http.RoundTripper that adds authentication based on Config
 type DefaultTransport struct {
 	Config *Config
 	Base   http.RoundTripper
@@ -29,12 +32,11 @@ func (t *DefaultTransport) base() http.RoundTripper {
 	return http.DefaultTransport
 }
 
+// RoundTrip authorizes requests to DC/OS by adding dcos_acs_token to Authorization header
 func (t *DefaultTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	// meet the requirements of RoundTripper and only modify a copy
 	req2 := cloneRequest(req)
-
-	// TODO: we might need to check Expiry before.
-	t.Config.Authentication.AddHeaders(req2)
+	req2.Header.Set("Authorization", fmt.Sprintf("token=%s", t.Config.ACSToken()))
 
 	return t.base().RoundTrip(req2)
 }
@@ -70,10 +72,7 @@ func NewHTTPClient(config *Config) *http.Client {
 		MaxIdleConnsPerHost: DefaultHTTPClientMaxIdleConnsPerHost,
 	}
 
-	// Set the TLS configuration as specified in the context.
-	client.Transport.(*http.Transport).TLSClientConfig = config.TLS()
-
-	return ConfigureHTTPClient(client, config)
+	return AddTransportHTTPClient(client, config)
 }
 
 // AddTransportHTTPClient adds dcos.DefaultTransport to http.Client to add dcos authentication
@@ -81,6 +80,12 @@ func AddTransportHTTPClient(client *http.Client, config *Config) *http.Client {
 	transport := DefaultTransport{
 		Config: config,
 		Base:   client.Transport,
+	}
+
+	// Set the TLS configuration as specified in the context.
+	client.Transport.(*http.Transport).TLSClientConfig = &tls.Config{
+		InsecureSkipVerify: config.TLS().Insecure,
+		RootCAs:            config.TLS().RootCAs,
 	}
 
 	client.Transport = &transport

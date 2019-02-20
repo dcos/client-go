@@ -29,9 +29,9 @@ func TestDefaultTransportBase(t *testing.T) {
 
 func TestDefaultHTTPClientAuth(t *testing.T) {
 	tokenValue := "TestDefaultHTTPClientAuth-token"
-	config := &Config{
-		Authentication: &TestAuthentication{Token: tokenValue},
-	}
+	store := NewConfigStore(nil)
+	store.Set("core.dcos_acs_token", tokenValue)
+	config := NewConfig(store)
 
 	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Header.Get("Authorization") == "token="+tokenValue {
@@ -57,5 +57,4 @@ func TestDefaultHTTPClientAuth(t *testing.T) {
 	assert.Equal(t, 401, respDflt.StatusCode)
 	respDfltbody, _ := ioutil.ReadAll(respDflt.Body)
 	assert.Contains(t, string(respDfltbody), "Forbidden")
-
 }
