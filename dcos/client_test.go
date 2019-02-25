@@ -14,12 +14,14 @@ import (
 func TestNewClient(t *testing.T) {
 	homedir.DisableCache = true
 	wd, err := os.Getwd()
-	testdir := filepath.Join(wd, "testdata", "config", "single_config_attached")
 	require.NoError(t, err)
+	testdir := filepath.Join(wd, "testdata", "config", "single_config_attached")
 	os.Setenv("HOME", testdir)
+
 	c, err := NewClient()
 
-	require.NoErrorf(t, err, "NewClient returned unexpected error: %s - %s", err, testdir)
+	require.NoErrorf(t, err, "NewClient returned unexpected error: %s - testdir: %s", err, testdir)
+	require.Equal(t, "single_config_attached", c.Config.Name())
 	require.IsTypef(t, &DefaultTransport{}, c.HTTPClient.Transport, "HTTPClient.Transport type different")
 }
 
@@ -32,4 +34,10 @@ func TestNewClientWithOptions(t *testing.T) {
 
 	require.NoErrorf(t, err, "NewClientWithOptions returned unexpected error: %s", err)
 	require.Equal(t, baseClient, c.HTTPClient, "NewClientWithOptions should leave HTTPClient unchanged")
+
+	_, err = NewClientWithOptions(nil, config)
+	require.Error(t, err)
+
+	_, err = NewClientWithOptions(baseClient, nil)
+	require.Error(t, err)
 }
