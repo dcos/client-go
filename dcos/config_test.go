@@ -15,12 +15,6 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestMain(m *testing.M) {
-	homedir.DisableCache = true
-	// call flag.Parse() here if TestMain uses flags
-	os.Exit(m.Run())
-}
-
 func TestConfigGetters(t *testing.T) {
 	store := NewConfigStore(nil)
 
@@ -542,6 +536,7 @@ func TestConfigAttach(t *testing.T) {
 }
 
 func TestExpandHomedir(t *testing.T) {
+	homedir.DisableCache = true
 	os.Setenv("HOME", "/home/testuser")
 	dir := ExpandHomeDir()
 

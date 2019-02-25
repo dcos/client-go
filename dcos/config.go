@@ -455,12 +455,6 @@ func ExpandHomeDir() string {
 	return dir
 }
 
-var DefaultConfigManagerOpts = &ConfigManagerOpts{
-	Fs:        afero.NewOsFs(),
-	Dir:       ExpandHomeDir(),
-	EnvLookup: os.LookupEnv,
-}
-
 // ConfigManager is able to retrieve, create, and delete configs.
 type ConfigManager struct {
 	fs        afero.Fs
@@ -480,6 +474,10 @@ func NewConfigManager(opts *ConfigManagerOpts) *ConfigManager {
 
 	if opts.EnvLookup == nil {
 		opts.EnvLookup = os.LookupEnv
+	}
+
+	if opts.Dir == "" {
+		opts.Dir = ExpandHomeDir()
 	}
 
 	return &ConfigManager{
