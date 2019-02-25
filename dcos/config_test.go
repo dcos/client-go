@@ -541,7 +541,7 @@ func TestConfigAttach(t *testing.T) {
 	require.True(t, manager.fileExists(attachedFilePath))
 }
 
-func TestexpandHomedir(t *testing.T) {
+func TestExpandHomedir(t *testing.T) {
 	os.Setenv("HOME", "/home/testuser")
 	dir := ExpandHomeDir()
 
