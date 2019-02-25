@@ -2,28 +2,34 @@ package dcos
 
 import (
 	"net/http"
+	"os"
+	"path/filepath"
 	"testing"
+	"time"
+
+	homedir "github.com/mitchellh/go-homedir"
+	"github.com/stretchr/testify/require"
 )
 
-func TestClientNew(t *testing.T) {
-	baseClient := &http.Client{}
-	c, err := NewClient(baseClient)
-	if err != nil {
-		t.Fatalf("NewClient returned unexpected error: %s", err)
-	}
+func TestNewClient(t *testing.T) {
+	homedir.DisableCache = true
+	wd, err := os.Getwd()
+	testdir := filepath.Join(wd, "testdata", "config", "single_config_attached")
+	require.NoError(t, err)
+	os.Setenv("HOME", testdir)
+	c, err := NewClient()
 
-	if c.HttpClient != baseClient {
-		t.Errorf("client.HttpClient wrong. got=%+v, want=%+v",
-			c.HttpClient, baseClient)
-	}
+	require.NoErrorf(t, err, "NewClient returned unexpected error: %s - %s", err, testdir)
+	require.IsTypef(t, &DefaultTransport{}, c.HTTPClient.Transport, "HTTPClient.Transport type different")
+}
 
-	c, err = NewClient(nil)
-	if err != nil {
-		t.Fatalf("NewClient returned unexpected error: %s", err)
-	}
+func TestNewClientWithOptions(t *testing.T) {
+	timeout := 7 * time.Second
+	baseClient := &http.Client{Timeout: timeout}
+	config := NewConfig(nil)
+	config.SetACSToken("test")
+	c, err := NewClientWithOptions(baseClient, config)
 
-	if c.HttpClient != http.DefaultClient {
-		t.Errorf("client.HttpClient not http.Defaultclient. got=%+v",
-			c.HttpClient)
-	}
+	require.NoErrorf(t, err, "NewClientWithOptions returned unexpected error: %s", err)
+	require.Equal(t, baseClient, c.HTTPClient, "NewClientWithOptions should leave HTTPClient unchanged")
 }

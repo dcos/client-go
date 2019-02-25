@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestDefaultTransportBaseNil(t *testing.T) {
@@ -23,7 +24,7 @@ func TestDefaultTransportBase(t *testing.T) {
 	}
 	rt := c.base()
 
-	assert.IsType(t, &DefaultTransport{}, rt)
+	require.IsType(t, &DefaultTransport{}, rt)
 }
 
 func TestDefaultHTTPClientAuth(t *testing.T) {
@@ -42,13 +43,17 @@ func TestDefaultHTTPClientAuth(t *testing.T) {
 	}))
 	defer s.Close()
 
-	c := NewHTTPClient(config)
+	_, err := NewHTTPClient(nil)
+	require.Error(t, err)
+
+	c, err := NewHTTPClient(config)
+	require.NoError(t, err)
 
 	resp, err := c.Get(s.URL)
-	assert.NoError(t, err)
-	assert.Equal(t, 200, resp.StatusCode, "using the dcos.NewHTTPClient should respond with 200")
+	require.NoError(t, err)
+	require.Equal(t, 200, resp.StatusCode, "using the dcos.NewHTTPClient should respond with 200")
 
 	respDflt, err := http.DefaultClient.Get(s.URL)
-	assert.NoError(t, err)
-	assert.Equal(t, 401, respDflt.StatusCode, "expect a forbidden state with http.DefaultClient")
+	require.NoError(t, err)
+	require.Equal(t, 401, respDflt.StatusCode, "expect a forbidden state with http.DefaultClient")
 }
