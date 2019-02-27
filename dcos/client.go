@@ -3,6 +3,12 @@ package dcos
 import (
 	"fmt"
 	"net/http"
+	"net/url"
+
+	"github.com/dcos/client-go/cosmos"
+	"github.com/go-openapi/runtime"
+
+	httptransport "github.com/go-openapi/runtime/client"
 )
 
 // Client
@@ -10,6 +16,7 @@ type Client struct {
 	HTTPClient *http.Client
 	Config     *Config
 	UserAgent  string
+	Cosmos     *cosmos.Client
 }
 
 // NewClient returns a Client which will detect its Config through the well
@@ -38,9 +45,17 @@ func NewClientWithOptions(httpClient *http.Client, config *Config) (*Client, err
 		return nil, fmt.Errorf("config cannot be nil")
 	}
 
+	transport, _ := newTransport(httpClient, config)
+
 	return &Client{
 		HTTPClient: httpClient,
 		Config:     config,
 		UserAgent:  fmt.Sprintf("%s(%s)", ClientName, Version),
+		Cosmos:     cosmos.New(transport, nil),
 	}, nil
+}
+
+func newTransport(httpClient *http.Client, config *Config) (runtime.ClientTransport, error) {
+	configurl, _ := url.Parse(config.URL())
+	return httptransport.NewWithClient(configurl.Hostname(), configurl.Path, nil, httpClient), nil
 }
