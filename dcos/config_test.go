@@ -538,7 +538,7 @@ func TestConfigAttach(t *testing.T) {
 func TestExpandHomedir(t *testing.T) {
 	homedir.DisableCache = true
 	os.Setenv("HOME", "/home/testuser")
-	dir := ExpandHomeDir()
+	dir := expandHomeDir()
 
 	require.Equal(t, dir, "/home/testuser/.dcos", "wrong return")
 }

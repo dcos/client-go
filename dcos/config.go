@@ -447,7 +447,7 @@ type ConfigManagerOpts struct {
 	Dir string
 }
 
-func ExpandHomeDir() string {
+func expandHomeDir() string {
 	dir, err := homedir.Expand(dcosDefaultFolder)
 	if err != nil {
 		return dcosDefaultFolder
@@ -477,7 +477,7 @@ func NewConfigManager(opts *ConfigManagerOpts) *ConfigManager {
 	}
 
 	if opts.Dir == "" {
-		opts.Dir = ExpandHomeDir()
+		opts.Dir = expandHomeDir()
 	}
 
 	return &ConfigManager{
