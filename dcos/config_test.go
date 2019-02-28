@@ -9,7 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pelletier/go-toml"
+	homedir "github.com/mitchellh/go-homedir"
+	toml "github.com/pelletier/go-toml"
 	"github.com/spf13/afero"
 	"github.com/stretchr/testify/require"
 )
@@ -532,4 +533,12 @@ func TestConfigAttach(t *testing.T) {
 	require.False(t, manager.fileExists(attachedFilePath))
 	require.NoError(t, manager.Attach(conf))
 	require.True(t, manager.fileExists(attachedFilePath))
+}
+
+func TestExpandHomedir(t *testing.T) {
+	homedir.DisableCache = true
+	os.Setenv("HOME", "/home/testuser")
+	dir := expandHomeDir()
+
+	require.Equal(t, dir, "/home/testuser/.dcos", "wrong return")
 }

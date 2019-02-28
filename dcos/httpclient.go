@@ -55,7 +55,10 @@ func cloneRequest(req *http.Request) *http.Request {
 }
 
 // NewHTTPClient provides a http.Client able to communicate to dcos in an authenticated way
-func NewHTTPClient(config *Config) *http.Client {
+func NewHTTPClient(config *Config) (*http.Client, error) {
+	if config == nil {
+		return nil, fmt.Errorf("Config should not be nil")
+	}
 	client := &http.Client{}
 	client.Transport = &http.Transport{
 
@@ -76,7 +79,7 @@ func NewHTTPClient(config *Config) *http.Client {
 		MaxIdleConnsPerHost: DefaultHTTPClientMaxIdleConnsPerHost,
 	}
 
-	return AddTransportHTTPClient(client, config)
+	return AddTransportHTTPClient(client, config), nil
 }
 
 // AddTransportHTTPClient adds dcos.DefaultTransport to http.Client to add dcos authentication

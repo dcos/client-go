@@ -1,16 +1,46 @@
 package dcos
 
-import "net/http"
+import (
+	"fmt"
+	"net/http"
+)
 
+// Client
 type Client struct {
-	HttpClient *http.Client
-
-	baseURL string
+	HTTPClient *http.Client
+	Config     *Config
+	UserAgent  string
 }
 
-func NewClient(httpClient *http.Client) (*Client, error) {
-	if httpClient == nil {
-		httpClient = http.DefaultClient
+// NewClient returns a Client which will detect its Config through the well
+// known process and use a default http.Client with DC/OS authentication.
+func NewClient() (*Client, error) {
+	config, err := NewConfigManager(nil).Current()
+	if err != nil {
+		return nil, err
 	}
-	return &Client{HttpClient: httpClient}, nil
+
+	httpClient, err := NewHTTPClient(config)
+	if err != nil {
+		return nil, err
+	}
+
+	return NewClientWithOptions(httpClient, config)
+}
+
+// NewClientWithOptions creates a Client from a given *http.Client and *Config
+func NewClientWithOptions(httpClient *http.Client, config *Config) (*Client, error) {
+	if httpClient == nil {
+		return nil, fmt.Errorf("httpClient cannot be nil")
+	}
+
+	if config == nil {
+		return nil, fmt.Errorf("config cannot be nil")
+	}
+
+	return &Client{
+		HTTPClient: httpClient,
+		Config:     config,
+		UserAgent:  fmt.Sprintf("%s(%s)", ClientName, Version),
+	}, nil
 }

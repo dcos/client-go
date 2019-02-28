@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	homedir "github.com/mitchellh/go-homedir"
 	toml "github.com/pelletier/go-toml"
 	"github.com/spf13/afero"
 	"github.com/spf13/cast"
@@ -30,6 +31,7 @@ const (
 	configKeyMesosMasterURL = "core.mesos_master_url"
 	configKeyPromptLogin    = "core.prompt_login"
 	configKeyClusterName    = "cluster.name"
+	dcosDefaultFolder       = "~/.dcos"
 )
 
 // Environment variables for the DC/OS configuration.
@@ -445,6 +447,14 @@ type ConfigManagerOpts struct {
 	Dir string
 }
 
+func expandHomeDir() string {
+	dir, err := homedir.Expand(dcosDefaultFolder)
+	if err != nil {
+		return dcosDefaultFolder
+	}
+	return dir
+}
+
 // ConfigManager is able to retrieve, create, and delete configs.
 type ConfigManager struct {
 	fs        afero.Fs
@@ -464,6 +474,10 @@ func NewConfigManager(opts *ConfigManagerOpts) *ConfigManager {
 
 	if opts.EnvLookup == nil {
 		opts.EnvLookup = os.LookupEnv
+	}
+
+	if opts.Dir == "" {
+		opts.Dir = expandHomeDir()
 	}
 
 	return &ConfigManager{
