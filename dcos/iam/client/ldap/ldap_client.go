@@ -29,7 +29,7 @@ DeleteLdapConfig deletes current l d a p configuration
 
 Delete current directory (LDAP) back-end configuration. This deactivates the LDAP authentication.
 */
-func (a *Client) DeleteLdapConfig(params *DeleteLdapConfigParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteLdapConfigNoContent, error) {
+func (a *Client) DeleteLdapConfig(params *DeleteLdapConfigParams) (*DeleteLdapConfigNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteLdapConfigParams()
@@ -44,7 +44,6 @@ func (a *Client) DeleteLdapConfig(params *DeleteLdapConfigParams, authInfo runti
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &DeleteLdapConfigReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -60,7 +59,7 @@ GetLdapConfig retrieves current l d a p configuration
 
 Retrieve current directory (LDAP) back-end configuration.
 */
-func (a *Client) GetLdapConfig(params *GetLdapConfigParams, authInfo runtime.ClientAuthInfoWriter) (*GetLdapConfigOK, error) {
+func (a *Client) GetLdapConfig(params *GetLdapConfigParams) (*GetLdapConfigOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetLdapConfigParams()
@@ -75,7 +74,6 @@ func (a *Client) GetLdapConfig(params *GetLdapConfigParams, authInfo runtime.Cli
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetLdapConfigReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -91,7 +89,7 @@ PostLdapConfigTest tests connection to the l d a p back end
 
 Perform basic feature tests. Verify that the current directory (LDAP) configuration parameters allow for a successful connection to the directory back-end. For instance, this endpoint simulates the procedure for authentication via LDAP, but provides more useful feedback upon failure than the actual login endpoint.
 */
-func (a *Client) PostLdapConfigTest(params *PostLdapConfigTestParams, authInfo runtime.ClientAuthInfoWriter) (*PostLdapConfigTestOK, error) {
+func (a *Client) PostLdapConfigTest(params *PostLdapConfigTestParams) (*PostLdapConfigTestOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostLdapConfigTestParams()
@@ -106,7 +104,6 @@ func (a *Client) PostLdapConfigTest(params *PostLdapConfigTestParams, authInfo r
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PostLdapConfigTestReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -122,7 +119,7 @@ PostLdapImportgroup imports an l d a p group
 
 Attempt to import a group of users from the configured directory (LDAP) back-end. See docs/ldap.md for details on group import.
 */
-func (a *Client) PostLdapImportgroup(params *PostLdapImportgroupParams, authInfo runtime.ClientAuthInfoWriter) (*PostLdapImportgroupCreated, error) {
+func (a *Client) PostLdapImportgroup(params *PostLdapImportgroupParams) (*PostLdapImportgroupCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostLdapImportgroupParams()
@@ -137,7 +134,6 @@ func (a *Client) PostLdapImportgroup(params *PostLdapImportgroupParams, authInfo
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PostLdapImportgroupReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -153,7 +149,7 @@ PostLdapImportuser imports an l d a p user
 
 Attempt to import a user from the configured directory (LDAP) back-end.
 */
-func (a *Client) PostLdapImportuser(params *PostLdapImportuserParams, authInfo runtime.ClientAuthInfoWriter) (*PostLdapImportuserCreated, error) {
+func (a *Client) PostLdapImportuser(params *PostLdapImportuserParams) (*PostLdapImportuserCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostLdapImportuserParams()
@@ -168,7 +164,6 @@ func (a *Client) PostLdapImportuser(params *PostLdapImportuserParams, authInfo r
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PostLdapImportuserReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -184,7 +179,7 @@ PutLdapConfig sets new l d a p configuration
 
 Set new directory (LDAP) back-end configuration. Replace current configuration, if existing.
 */
-func (a *Client) PutLdapConfig(params *PutLdapConfigParams, authInfo runtime.ClientAuthInfoWriter) (*PutLdapConfigOK, error) {
+func (a *Client) PutLdapConfig(params *PutLdapConfigParams) (*PutLdapConfigOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutLdapConfigParams()
@@ -199,7 +194,6 @@ func (a *Client) PutLdapConfig(params *PutLdapConfigParams, authInfo runtime.Cli
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PutLdapConfigReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})

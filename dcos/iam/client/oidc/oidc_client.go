@@ -29,7 +29,7 @@ DeleteAuthOidcProvidersProviderID deletes provider
 
 Delete provider (disables authentication with that provider).
 */
-func (a *Client) DeleteAuthOidcProvidersProviderID(params *DeleteAuthOidcProvidersProviderIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteAuthOidcProvidersProviderIDNoContent, error) {
+func (a *Client) DeleteAuthOidcProvidersProviderID(params *DeleteAuthOidcProvidersProviderIDParams) (*DeleteAuthOidcProvidersProviderIDNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAuthOidcProvidersProviderIDParams()
@@ -44,7 +44,6 @@ func (a *Client) DeleteAuthOidcProvidersProviderID(params *DeleteAuthOidcProvide
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &DeleteAuthOidcProvidersProviderIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -60,7 +59,7 @@ GetAuthOidcCallback opens ID connect callback URL
 
 After successfully logging in to an OpenID Connect identity provider, the end-user is being redirected back to the IAM via this callback URL. API consumers are not required to explicitly interact with this endpoint. This URL usually needs to be handed over to an OpenID Connect provider (often called "redirect" or "callback" URL).
 */
-func (a *Client) GetAuthOidcCallback(params *GetAuthOidcCallbackParams, authInfo runtime.ClientAuthInfoWriter) error {
+func (a *Client) GetAuthOidcCallback(params *GetAuthOidcCallbackParams) error {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAuthOidcCallbackParams()
@@ -75,7 +74,6 @@ func (a *Client) GetAuthOidcCallback(params *GetAuthOidcCallbackParams, authInfo
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAuthOidcCallbackReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -91,7 +89,7 @@ GetAuthOidcProviders gets an overview for the configured o ID c providers
 
 Get an overview for the configured OIDC providers. The response contains a JSON object, with each key being an OIDC provider ID, and each value being the corresponding provider description string. This endpoint does not expose sensitive provider configuration details.
 */
-func (a *Client) GetAuthOidcProviders(params *GetAuthOidcProvidersParams, authInfo runtime.ClientAuthInfoWriter) (*GetAuthOidcProvidersOK, error) {
+func (a *Client) GetAuthOidcProviders(params *GetAuthOidcProvidersParams) (*GetAuthOidcProvidersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAuthOidcProvidersParams()
@@ -106,7 +104,6 @@ func (a *Client) GetAuthOidcProviders(params *GetAuthOidcProvidersParams, authIn
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAuthOidcProvidersReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -122,7 +119,7 @@ GetAuthOidcProvidersProviderID gets configuration for a specific provider
 
 Get configuration for a specific provider.
 */
-func (a *Client) GetAuthOidcProvidersProviderID(params *GetAuthOidcProvidersProviderIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetAuthOidcProvidersProviderIDOK, error) {
+func (a *Client) GetAuthOidcProvidersProviderID(params *GetAuthOidcProvidersProviderIDParams) (*GetAuthOidcProvidersProviderIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAuthOidcProvidersProviderIDParams()
@@ -137,7 +134,6 @@ func (a *Client) GetAuthOidcProvidersProviderID(params *GetAuthOidcProvidersProv
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAuthOidcProvidersProviderIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -153,7 +149,7 @@ PatchAuthOidcProvidersProviderID updates o ID c provider config
 
 Update config for existing OIDC provider.
 */
-func (a *Client) PatchAuthOidcProvidersProviderID(params *PatchAuthOidcProvidersProviderIDParams, authInfo runtime.ClientAuthInfoWriter) (*PatchAuthOidcProvidersProviderIDNoContent, error) {
+func (a *Client) PatchAuthOidcProvidersProviderID(params *PatchAuthOidcProvidersProviderIDParams) (*PatchAuthOidcProvidersProviderIDNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPatchAuthOidcProvidersProviderIDParams()
@@ -168,7 +164,6 @@ func (a *Client) PatchAuthOidcProvidersProviderID(params *PatchAuthOidcProviders
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PatchAuthOidcProvidersProviderIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -184,7 +179,7 @@ PutAuthOidcProvidersProviderID configures a new o ID c provider
 
 Set up OIDC provider with the ID as specified in the URL, and with the config as specified via JSON in the request body.
 */
-func (a *Client) PutAuthOidcProvidersProviderID(params *PutAuthOidcProvidersProviderIDParams, authInfo runtime.ClientAuthInfoWriter) (*PutAuthOidcProvidersProviderIDCreated, error) {
+func (a *Client) PutAuthOidcProvidersProviderID(params *PutAuthOidcProvidersProviderIDParams) (*PutAuthOidcProvidersProviderIDCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutAuthOidcProvidersProviderIDParams()
@@ -199,7 +194,6 @@ func (a *Client) PutAuthOidcProvidersProviderID(params *PutAuthOidcProvidersProv
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PutAuthOidcProvidersProviderIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})

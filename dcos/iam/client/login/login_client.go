@@ -29,7 +29,7 @@ GetAuthLogin logs in using an external identity provider
 
 Log in using an external identity provider (via e.g. OpenID Connect), as specified via query parameter. This request initiates a single sign-on flow.
 */
-func (a *Client) GetAuthLogin(params *GetAuthLoginParams, authInfo runtime.ClientAuthInfoWriter) (*GetAuthLoginOK, error) {
+func (a *Client) GetAuthLogin(params *GetAuthLoginParams) (*GetAuthLoginOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAuthLoginParams()
@@ -44,7 +44,6 @@ func (a *Client) GetAuthLogin(params *GetAuthLoginParams, authInfo runtime.Clien
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAuthLoginReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -60,7 +59,7 @@ PostAuthLogin logs in obtain a d c o s authentication token
 
 Exchange user credentials (regular user account: uid and password; service user account: uid and service login token) for a DC/OS authentication token. The resulting DC/OS authentication token is an RFC 7519 JSON Web Token (JWT) of type RS256. It has a limited lifetime which depends on the IAM configuration (only, i.e. the lifetime cannot be chosen as part of the login HTTP request). The DC/OS authentication token can be verified out-of-band using a standards-compliant RS256 JWT verification procedure based on the long-lived public key material presented by the IAM's /auth/jwks endpoint, and by requiring the two claims `exp` and `uid` to be present.
 */
-func (a *Client) PostAuthLogin(params *PostAuthLoginParams, authInfo runtime.ClientAuthInfoWriter) (*PostAuthLoginOK, error) {
+func (a *Client) PostAuthLogin(params *PostAuthLoginParams) (*PostAuthLoginOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostAuthLoginParams()
@@ -75,7 +74,6 @@ func (a *Client) PostAuthLogin(params *PostAuthLoginParams, authInfo runtime.Cli
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PostAuthLoginReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})

@@ -46,7 +46,7 @@ func ListUsers(token string) error {
 		return err
 	}
 
-	users, err := client.IAM.Users.GetUsers(nil, nil)
+	users, err := client.IAM.Users.GetUsers(nil)
 	if err != nil {
 		return err
 	}

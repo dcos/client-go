@@ -29,7 +29,7 @@ DeleteUsersUID deletes account
 
 Delete account.
 */
-func (a *Client) DeleteUsersUID(params *DeleteUsersUIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteUsersUIDNoContent, error) {
+func (a *Client) DeleteUsersUID(params *DeleteUsersUIDParams) (*DeleteUsersUIDNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteUsersUIDParams()
@@ -44,7 +44,6 @@ func (a *Client) DeleteUsersUID(params *DeleteUsersUIDParams, authInfo runtime.C
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &DeleteUsersUIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -60,7 +59,7 @@ GetUsers retrieves all regular user accounts or service user accounts
 
 Retrieve `User` objects. By default the list consists of regular user accounts, only. Alternatively, service user accounts may be requested instead.
 */
-func (a *Client) GetUsers(params *GetUsersParams, authInfo runtime.ClientAuthInfoWriter) (*GetUsersOK, error) {
+func (a *Client) GetUsers(params *GetUsersParams) (*GetUsersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUsersParams()
@@ -75,7 +74,6 @@ func (a *Client) GetUsers(params *GetUsersParams, authInfo runtime.ClientAuthInf
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetUsersReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -91,7 +89,7 @@ GetUsersUID gets single user object
 
 Get specific `User` object.
 */
-func (a *Client) GetUsersUID(params *GetUsersUIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetUsersUIDOK, error) {
+func (a *Client) GetUsersUID(params *GetUsersUIDParams) (*GetUsersUIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUsersUIDParams()
@@ -106,7 +104,6 @@ func (a *Client) GetUsersUID(params *GetUsersUIDParams, authInfo runtime.ClientA
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetUsersUIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -122,7 +119,7 @@ GetUsersUIDGroups retrieves groups the user is member of
 
 Retrieve groups the user is member of.
 */
-func (a *Client) GetUsersUIDGroups(params *GetUsersUIDGroupsParams, authInfo runtime.ClientAuthInfoWriter) (*GetUsersUIDGroupsOK, error) {
+func (a *Client) GetUsersUIDGroups(params *GetUsersUIDGroupsParams) (*GetUsersUIDGroupsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUsersUIDGroupsParams()
@@ -137,7 +134,6 @@ func (a *Client) GetUsersUIDGroups(params *GetUsersUIDGroupsParams, authInfo run
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetUsersUIDGroupsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -153,7 +149,7 @@ GetUsersUIDPermissions retrieves permissions an account has
 
 Retrieve the permissions for this account with direct permissions distinguished from those that are obtained through group membership.
 */
-func (a *Client) GetUsersUIDPermissions(params *GetUsersUIDPermissionsParams, authInfo runtime.ClientAuthInfoWriter) (*GetUsersUIDPermissionsOK, error) {
+func (a *Client) GetUsersUIDPermissions(params *GetUsersUIDPermissionsParams) (*GetUsersUIDPermissionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetUsersUIDPermissionsParams()
@@ -168,7 +164,6 @@ func (a *Client) GetUsersUIDPermissions(params *GetUsersUIDPermissionsParams, au
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetUsersUIDPermissionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -184,7 +179,7 @@ PatchUsersUID updates user account
 
 Update existing user account (meta data and/or password).
 */
-func (a *Client) PatchUsersUID(params *PatchUsersUIDParams, authInfo runtime.ClientAuthInfoWriter) (*PatchUsersUIDNoContent, error) {
+func (a *Client) PatchUsersUID(params *PatchUsersUIDParams) (*PatchUsersUIDNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPatchUsersUIDParams()
@@ -199,7 +194,6 @@ func (a *Client) PatchUsersUID(params *PatchUsersUIDParams, authInfo runtime.Cli
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PatchUsersUIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -215,7 +209,7 @@ PutUsersUID creates user account
 
 Create user (uid in url, details incl. credentials in body).
 */
-func (a *Client) PutUsersUID(params *PutUsersUIDParams, authInfo runtime.ClientAuthInfoWriter) (*PutUsersUIDCreated, error) {
+func (a *Client) PutUsersUID(params *PutUsersUIDParams) (*PutUsersUIDCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutUsersUIDParams()
@@ -230,7 +224,6 @@ func (a *Client) PutUsersUID(params *PutUsersUIDParams, authInfo runtime.ClientA
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PutUsersUIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})

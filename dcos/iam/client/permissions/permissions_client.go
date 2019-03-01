@@ -29,7 +29,7 @@ DeleteAclsRid deletes ACL for a certain resource
 
 Delete ACL of resource with ID `rid`.
 */
-func (a *Client) DeleteAclsRid(params *DeleteAclsRidParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteAclsRidNoContent, error) {
+func (a *Client) DeleteAclsRid(params *DeleteAclsRidParams) (*DeleteAclsRidNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAclsRidParams()
@@ -44,7 +44,6 @@ func (a *Client) DeleteAclsRid(params *DeleteAclsRidParams, authInfo runtime.Cli
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &DeleteAclsRidReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -60,7 +59,7 @@ DeleteAclsRidGroupsGid forbids all actions of given group to given resource
 
 Forbid all actions of given group to given resource.
 */
-func (a *Client) DeleteAclsRidGroupsGid(params *DeleteAclsRidGroupsGidParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteAclsRidGroupsGidNoContent, error) {
+func (a *Client) DeleteAclsRidGroupsGid(params *DeleteAclsRidGroupsGidParams) (*DeleteAclsRidGroupsGidNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAclsRidGroupsGidParams()
@@ -75,7 +74,6 @@ func (a *Client) DeleteAclsRidGroupsGid(params *DeleteAclsRidGroupsGidParams, au
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &DeleteAclsRidGroupsGidReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -91,7 +89,7 @@ DeleteAclsRidGroupsGidAction forbids single action for given resource and group
 
 Forbid single action for given resource and group.
 */
-func (a *Client) DeleteAclsRidGroupsGidAction(params *DeleteAclsRidGroupsGidActionParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteAclsRidGroupsGidActionNoContent, error) {
+func (a *Client) DeleteAclsRidGroupsGidAction(params *DeleteAclsRidGroupsGidActionParams) (*DeleteAclsRidGroupsGidActionNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAclsRidGroupsGidActionParams()
@@ -106,7 +104,6 @@ func (a *Client) DeleteAclsRidGroupsGidAction(params *DeleteAclsRidGroupsGidActi
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &DeleteAclsRidGroupsGidActionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -122,7 +119,7 @@ DeleteAclsRidUsersUID forbids all actions of given account to given resource
 
 Forbid all actions of given account to given resource.
 */
-func (a *Client) DeleteAclsRidUsersUID(params *DeleteAclsRidUsersUIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteAclsRidUsersUIDNoContent, error) {
+func (a *Client) DeleteAclsRidUsersUID(params *DeleteAclsRidUsersUIDParams) (*DeleteAclsRidUsersUIDNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAclsRidUsersUIDParams()
@@ -137,7 +134,6 @@ func (a *Client) DeleteAclsRidUsersUID(params *DeleteAclsRidUsersUIDParams, auth
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &DeleteAclsRidUsersUIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -153,7 +149,7 @@ DeleteAclsRidUsersUIDAction forbids single action for given account and resource
 
 Forbid single action for given account and resource.
 */
-func (a *Client) DeleteAclsRidUsersUIDAction(params *DeleteAclsRidUsersUIDActionParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteAclsRidUsersUIDActionNoContent, error) {
+func (a *Client) DeleteAclsRidUsersUIDAction(params *DeleteAclsRidUsersUIDActionParams) (*DeleteAclsRidUsersUIDActionNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAclsRidUsersUIDActionParams()
@@ -168,7 +164,6 @@ func (a *Client) DeleteAclsRidUsersUIDAction(params *DeleteAclsRidUsersUIDAction
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &DeleteAclsRidUsersUIDActionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -184,7 +179,7 @@ GetAcls retrieves all ACL objects
 
 Get array of `ACL` objects.
 */
-func (a *Client) GetAcls(params *GetAclsParams, authInfo runtime.ClientAuthInfoWriter) (*GetAclsOK, error) {
+func (a *Client) GetAcls(params *GetAclsParams) (*GetAclsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAclsParams()
@@ -199,7 +194,6 @@ func (a *Client) GetAcls(params *GetAclsParams, authInfo runtime.ClientAuthInfoW
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAclsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -215,7 +209,7 @@ GetAclsRid retrieves ACL for a certain resource
 
 Retrieve single `ACL` object, for a specific resource.
 */
-func (a *Client) GetAclsRid(params *GetAclsRidParams, authInfo runtime.ClientAuthInfoWriter) (*GetAclsRidOK, error) {
+func (a *Client) GetAclsRid(params *GetAclsRidParams) (*GetAclsRidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAclsRidParams()
@@ -230,7 +224,6 @@ func (a *Client) GetAclsRid(params *GetAclsRidParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAclsRidReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -246,7 +239,7 @@ GetAclsRidGroupsGid gets allowed actions for given resource and group
 
 Get allowed actions for given resource and group.
 */
-func (a *Client) GetAclsRidGroupsGid(params *GetAclsRidGroupsGidParams, authInfo runtime.ClientAuthInfoWriter) (*GetAclsRidGroupsGidOK, error) {
+func (a *Client) GetAclsRidGroupsGid(params *GetAclsRidGroupsGidParams) (*GetAclsRidGroupsGidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAclsRidGroupsGidParams()
@@ -261,7 +254,6 @@ func (a *Client) GetAclsRidGroupsGid(params *GetAclsRidGroupsGidParams, authInfo
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAclsRidGroupsGidReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -277,7 +269,7 @@ GetAclsRidGroupsGidAction queries whether action is allowed or not
 
 Query whether action is allowed or not.
 */
-func (a *Client) GetAclsRidGroupsGidAction(params *GetAclsRidGroupsGidActionParams, authInfo runtime.ClientAuthInfoWriter) (*GetAclsRidGroupsGidActionOK, error) {
+func (a *Client) GetAclsRidGroupsGidAction(params *GetAclsRidGroupsGidActionParams) (*GetAclsRidGroupsGidActionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAclsRidGroupsGidActionParams()
@@ -292,7 +284,6 @@ func (a *Client) GetAclsRidGroupsGidAction(params *GetAclsRidGroupsGidActionPara
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAclsRidGroupsGidActionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -308,7 +299,7 @@ GetAclsRidPermissions retrieves all permissions for resource
 
 Retrieve all permissions that are set for a specific resource.
 */
-func (a *Client) GetAclsRidPermissions(params *GetAclsRidPermissionsParams, authInfo runtime.ClientAuthInfoWriter) (*GetAclsRidPermissionsOK, error) {
+func (a *Client) GetAclsRidPermissions(params *GetAclsRidPermissionsParams) (*GetAclsRidPermissionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAclsRidPermissionsParams()
@@ -323,7 +314,6 @@ func (a *Client) GetAclsRidPermissions(params *GetAclsRidPermissionsParams, auth
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAclsRidPermissionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -339,7 +329,7 @@ GetAclsRidUsersUID gets allowed actions for given resource and user
 
 Get allowed actions for given resource and user.
 */
-func (a *Client) GetAclsRidUsersUID(params *GetAclsRidUsersUIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetAclsRidUsersUIDOK, error) {
+func (a *Client) GetAclsRidUsersUID(params *GetAclsRidUsersUIDParams) (*GetAclsRidUsersUIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAclsRidUsersUIDParams()
@@ -354,7 +344,6 @@ func (a *Client) GetAclsRidUsersUID(params *GetAclsRidUsersUIDParams, authInfo r
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAclsRidUsersUIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -370,7 +359,7 @@ GetAclsRidUsersUIDAction queries whether action is allowed or not
 
 Query whether action is allowed or not.
 */
-func (a *Client) GetAclsRidUsersUIDAction(params *GetAclsRidUsersUIDActionParams, authInfo runtime.ClientAuthInfoWriter) (*GetAclsRidUsersUIDActionOK, error) {
+func (a *Client) GetAclsRidUsersUIDAction(params *GetAclsRidUsersUIDActionParams) (*GetAclsRidUsersUIDActionOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAclsRidUsersUIDActionParams()
@@ -385,7 +374,6 @@ func (a *Client) GetAclsRidUsersUIDAction(params *GetAclsRidUsersUIDActionParams
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAclsRidUsersUIDActionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -401,7 +389,7 @@ PatchAclsRid updates ACL for a certain resource
 
 Update ACL for resource with ID `rid`.
 */
-func (a *Client) PatchAclsRid(params *PatchAclsRidParams, authInfo runtime.ClientAuthInfoWriter) (*PatchAclsRidNoContent, error) {
+func (a *Client) PatchAclsRid(params *PatchAclsRidParams) (*PatchAclsRidNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPatchAclsRidParams()
@@ -416,7 +404,6 @@ func (a *Client) PatchAclsRid(params *PatchAclsRidParams, authInfo runtime.Clien
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PatchAclsRidReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -432,7 +419,7 @@ PutAclsRid creates ACL for a certain resource
 
 Create new ACL for resource with ID `rid` (description in body, no permissions by default).
 */
-func (a *Client) PutAclsRid(params *PutAclsRidParams, authInfo runtime.ClientAuthInfoWriter) (*PutAclsRidCreated, error) {
+func (a *Client) PutAclsRid(params *PutAclsRidParams) (*PutAclsRidCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutAclsRidParams()
@@ -447,7 +434,6 @@ func (a *Client) PutAclsRid(params *PutAclsRidParams, authInfo runtime.ClientAut
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PutAclsRidReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -463,7 +449,7 @@ PutAclsRidGroupsGidAction permits single action for given resource and group
 
 Permit single action for given resource and group.
 */
-func (a *Client) PutAclsRidGroupsGidAction(params *PutAclsRidGroupsGidActionParams, authInfo runtime.ClientAuthInfoWriter) (*PutAclsRidGroupsGidActionNoContent, error) {
+func (a *Client) PutAclsRidGroupsGidAction(params *PutAclsRidGroupsGidActionParams) (*PutAclsRidGroupsGidActionNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutAclsRidGroupsGidActionParams()
@@ -478,7 +464,6 @@ func (a *Client) PutAclsRidGroupsGidAction(params *PutAclsRidGroupsGidActionPara
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PutAclsRidGroupsGidActionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -494,7 +479,7 @@ PutAclsRidUsersUIDAction permits single action for given account and resource
 
 Permit single action for given account and resource.
 */
-func (a *Client) PutAclsRidUsersUIDAction(params *PutAclsRidUsersUIDActionParams, authInfo runtime.ClientAuthInfoWriter) (*PutAclsRidUsersUIDActionNoContent, error) {
+func (a *Client) PutAclsRidUsersUIDAction(params *PutAclsRidUsersUIDActionParams) (*PutAclsRidUsersUIDActionNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutAclsRidUsersUIDActionParams()
@@ -509,7 +494,6 @@ func (a *Client) PutAclsRidUsersUIDAction(params *PutAclsRidUsersUIDActionParams
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PutAclsRidUsersUIDActionReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})

@@ -29,7 +29,7 @@ DeleteGroupsGid deletes group
 
 Delete group.
 */
-func (a *Client) DeleteGroupsGid(params *DeleteGroupsGidParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteGroupsGidNoContent, error) {
+func (a *Client) DeleteGroupsGid(params *DeleteGroupsGidParams) (*DeleteGroupsGidNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteGroupsGidParams()
@@ -44,7 +44,6 @@ func (a *Client) DeleteGroupsGid(params *DeleteGroupsGidParams, authInfo runtime
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &DeleteGroupsGidReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -60,7 +59,7 @@ DeleteGroupsGidUsersUID deletes user account from group
 
 Delete user account from group.
 */
-func (a *Client) DeleteGroupsGidUsersUID(params *DeleteGroupsGidUsersUIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteGroupsGidUsersUIDNoContent, error) {
+func (a *Client) DeleteGroupsGidUsersUID(params *DeleteGroupsGidUsersUIDParams) (*DeleteGroupsGidUsersUIDNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteGroupsGidUsersUIDParams()
@@ -75,7 +74,6 @@ func (a *Client) DeleteGroupsGidUsersUID(params *DeleteGroupsGidUsersUIDParams, 
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &DeleteGroupsGidUsersUIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -91,7 +89,7 @@ GetGroups retrieves all group objects
 
 Retrieve array of `Group` objects.
 */
-func (a *Client) GetGroups(params *GetGroupsParams, authInfo runtime.ClientAuthInfoWriter) (*GetGroupsOK, error) {
+func (a *Client) GetGroups(params *GetGroupsParams) (*GetGroupsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetGroupsParams()
@@ -106,7 +104,6 @@ func (a *Client) GetGroups(params *GetGroupsParams, authInfo runtime.ClientAuthI
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetGroupsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -122,7 +119,7 @@ GetGroupsGid gets single group object
 
 Get specific `Group` object.
 */
-func (a *Client) GetGroupsGid(params *GetGroupsGidParams, authInfo runtime.ClientAuthInfoWriter) (*GetGroupsGidOK, error) {
+func (a *Client) GetGroupsGid(params *GetGroupsGidParams) (*GetGroupsGidOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetGroupsGidParams()
@@ -137,7 +134,6 @@ func (a *Client) GetGroupsGid(params *GetGroupsGidParams, authInfo runtime.Clien
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetGroupsGidReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -153,7 +149,7 @@ GetGroupsGidPermissions retrieves group permissions
 
 Retrieve permissions of this group.
 */
-func (a *Client) GetGroupsGidPermissions(params *GetGroupsGidPermissionsParams, authInfo runtime.ClientAuthInfoWriter) (*GetGroupsGidPermissionsOK, error) {
+func (a *Client) GetGroupsGidPermissions(params *GetGroupsGidPermissionsParams) (*GetGroupsGidPermissionsOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetGroupsGidPermissionsParams()
@@ -168,7 +164,6 @@ func (a *Client) GetGroupsGidPermissions(params *GetGroupsGidPermissionsParams, 
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetGroupsGidPermissionsReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -184,7 +179,7 @@ GetGroupsGidUsers retrieves members of a group
 
 Retrieve users that are member of this group. Allows to query service accounts, defaults to list only user accounts.
 */
-func (a *Client) GetGroupsGidUsers(params *GetGroupsGidUsersParams, authInfo runtime.ClientAuthInfoWriter) (*GetGroupsGidUsersOK, error) {
+func (a *Client) GetGroupsGidUsers(params *GetGroupsGidUsersParams) (*GetGroupsGidUsersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetGroupsGidUsersParams()
@@ -199,7 +194,6 @@ func (a *Client) GetGroupsGidUsers(params *GetGroupsGidUsersParams, authInfo run
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetGroupsGidUsersReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -215,7 +209,7 @@ PatchGroupsGid updates group
 
 Update existing group (description).
 */
-func (a *Client) PatchGroupsGid(params *PatchGroupsGidParams, authInfo runtime.ClientAuthInfoWriter) (*PatchGroupsGidNoContent, error) {
+func (a *Client) PatchGroupsGid(params *PatchGroupsGidParams) (*PatchGroupsGidNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPatchGroupsGidParams()
@@ -230,7 +224,6 @@ func (a *Client) PatchGroupsGid(params *PatchGroupsGidParams, authInfo runtime.C
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PatchGroupsGidReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -246,7 +239,7 @@ PutGroupsGid creates a group
 
 Create a group.
 */
-func (a *Client) PutGroupsGid(params *PutGroupsGidParams, authInfo runtime.ClientAuthInfoWriter) (*PutGroupsGidCreated, error) {
+func (a *Client) PutGroupsGid(params *PutGroupsGidParams) (*PutGroupsGidCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutGroupsGidParams()
@@ -261,7 +254,6 @@ func (a *Client) PutGroupsGid(params *PutGroupsGidParams, authInfo runtime.Clien
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PutGroupsGidReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -277,7 +269,7 @@ PutGroupsGidUsersUID adds account to group
 
 Add account to group.
 */
-func (a *Client) PutGroupsGidUsersUID(params *PutGroupsGidUsersUIDParams, authInfo runtime.ClientAuthInfoWriter) (*PutGroupsGidUsersUIDNoContent, error) {
+func (a *Client) PutGroupsGidUsersUID(params *PutGroupsGidUsersUIDParams) (*PutGroupsGidUsersUIDNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutGroupsGidUsersUIDParams()
@@ -292,7 +284,6 @@ func (a *Client) PutGroupsGidUsersUID(params *PutGroupsGidUsersUIDParams, authIn
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PutGroupsGidUsersUIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})

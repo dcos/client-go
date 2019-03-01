@@ -29,7 +29,7 @@ DeleteAuthSamlProvidersProviderID deletes provider
 
 Delete provider (disables authentication with that provider).
 */
-func (a *Client) DeleteAuthSamlProvidersProviderID(params *DeleteAuthSamlProvidersProviderIDParams, authInfo runtime.ClientAuthInfoWriter) (*DeleteAuthSamlProvidersProviderIDNoContent, error) {
+func (a *Client) DeleteAuthSamlProvidersProviderID(params *DeleteAuthSamlProvidersProviderIDParams) (*DeleteAuthSamlProvidersProviderIDNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewDeleteAuthSamlProvidersProviderIDParams()
@@ -44,7 +44,6 @@ func (a *Client) DeleteAuthSamlProvidersProviderID(params *DeleteAuthSamlProvide
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &DeleteAuthSamlProvidersProviderIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -60,7 +59,7 @@ GetAuthSamlProviders gets an overview for the configured s a m l 2 0 providers
 
 Get an overview for the configured SAML 2.0 providers. The response contains a JSON object, with each key being a SAML provider ID, and each value being the corresponding provider description string. This endpoint does not expose sensitive provider configuration details.
 */
-func (a *Client) GetAuthSamlProviders(params *GetAuthSamlProvidersParams, authInfo runtime.ClientAuthInfoWriter) (*GetAuthSamlProvidersOK, error) {
+func (a *Client) GetAuthSamlProviders(params *GetAuthSamlProvidersParams) (*GetAuthSamlProvidersOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAuthSamlProvidersParams()
@@ -75,7 +74,6 @@ func (a *Client) GetAuthSamlProviders(params *GetAuthSamlProvidersParams, authIn
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAuthSamlProvidersReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -91,7 +89,7 @@ GetAuthSamlProvidersProviderID gets configuration for a specific s a m l provide
 
 Get configuration for a specific SAML provider.
 */
-func (a *Client) GetAuthSamlProvidersProviderID(params *GetAuthSamlProvidersProviderIDParams, authInfo runtime.ClientAuthInfoWriter) (*GetAuthSamlProvidersProviderIDOK, error) {
+func (a *Client) GetAuthSamlProvidersProviderID(params *GetAuthSamlProvidersProviderIDParams) (*GetAuthSamlProvidersProviderIDOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAuthSamlProvidersProviderIDParams()
@@ -106,7 +104,6 @@ func (a *Client) GetAuthSamlProvidersProviderID(params *GetAuthSamlProvidersProv
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAuthSamlProvidersProviderIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -122,7 +119,7 @@ GetAuthSamlProvidersProviderIDAcsCallbackURL gets the authentication callback UR
 
 The IAM acts as SAML service provider (SP). A SAML identity provider (IdP) usually requires to be configured with the Assertion Consumer Service (ACS) callback URL of the SP (which is where the IdP makes the end-user submit the authentication response).
 */
-func (a *Client) GetAuthSamlProvidersProviderIDAcsCallbackURL(params *GetAuthSamlProvidersProviderIDAcsCallbackURLParams, authInfo runtime.ClientAuthInfoWriter) (*GetAuthSamlProvidersProviderIDAcsCallbackURLOK, error) {
+func (a *Client) GetAuthSamlProvidersProviderIDAcsCallbackURL(params *GetAuthSamlProvidersProviderIDAcsCallbackURLParams) (*GetAuthSamlProvidersProviderIDAcsCallbackURLOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAuthSamlProvidersProviderIDAcsCallbackURLParams()
@@ -137,7 +134,6 @@ func (a *Client) GetAuthSamlProvidersProviderIDAcsCallbackURL(params *GetAuthSam
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAuthSamlProvidersProviderIDAcsCallbackURLReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -153,7 +149,7 @@ GetAuthSamlProvidersProviderIDSpMetadata gets s p metadata XML
 
 The IAM acts as SAML service provider (SP). This endpoint provides the SP metadata as an XML document. Certain identity providers (IdPs) may want to directly consume this document.
 */
-func (a *Client) GetAuthSamlProvidersProviderIDSpMetadata(params *GetAuthSamlProvidersProviderIDSpMetadataParams, authInfo runtime.ClientAuthInfoWriter) (*GetAuthSamlProvidersProviderIDSpMetadataOK, error) {
+func (a *Client) GetAuthSamlProvidersProviderIDSpMetadata(params *GetAuthSamlProvidersProviderIDSpMetadataParams) (*GetAuthSamlProvidersProviderIDSpMetadataOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAuthSamlProvidersProviderIDSpMetadataParams()
@@ -168,7 +164,6 @@ func (a *Client) GetAuthSamlProvidersProviderIDSpMetadata(params *GetAuthSamlPro
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAuthSamlProvidersProviderIDSpMetadataReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -184,7 +179,7 @@ PatchAuthSamlProvidersProviderID updates s a m l provider config
 
 Update config for existing SAML provider.
 */
-func (a *Client) PatchAuthSamlProvidersProviderID(params *PatchAuthSamlProvidersProviderIDParams, authInfo runtime.ClientAuthInfoWriter) (*PatchAuthSamlProvidersProviderIDNoContent, error) {
+func (a *Client) PatchAuthSamlProvidersProviderID(params *PatchAuthSamlProvidersProviderIDParams) (*PatchAuthSamlProvidersProviderIDNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPatchAuthSamlProvidersProviderIDParams()
@@ -199,7 +194,6 @@ func (a *Client) PatchAuthSamlProvidersProviderID(params *PatchAuthSamlProviders
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PatchAuthSamlProvidersProviderIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -215,7 +209,7 @@ PostAuthSamlProvidersProviderIDAcsCallback thes s p a c s callback endpoint
 
 The IAM acts as SAML service provider (SP). As part of the authentication flow, a SAML identity provider (IdP) makes the end-user submit an authentication response to this endpoint.
 */
-func (a *Client) PostAuthSamlProvidersProviderIDAcsCallback(params *PostAuthSamlProvidersProviderIDAcsCallbackParams, authInfo runtime.ClientAuthInfoWriter) error {
+func (a *Client) PostAuthSamlProvidersProviderIDAcsCallback(params *PostAuthSamlProvidersProviderIDAcsCallbackParams) error {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPostAuthSamlProvidersProviderIDAcsCallbackParams()
@@ -230,7 +224,6 @@ func (a *Client) PostAuthSamlProvidersProviderIDAcsCallback(params *PostAuthSaml
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PostAuthSamlProvidersProviderIDAcsCallbackReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
@@ -246,7 +239,7 @@ PutAuthSamlProvidersProviderID configures a new s a m l provider
 
 Set up a SAML provider with the ID as specified in the URL, and with the config as given by the JSON document in the request body.
 */
-func (a *Client) PutAuthSamlProvidersProviderID(params *PutAuthSamlProvidersProviderIDParams, authInfo runtime.ClientAuthInfoWriter) (*PutAuthSamlProvidersProviderIDCreated, error) {
+func (a *Client) PutAuthSamlProvidersProviderID(params *PutAuthSamlProvidersProviderIDParams) (*PutAuthSamlProvidersProviderIDCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPutAuthSamlProvidersProviderIDParams()
@@ -261,7 +254,6 @@ func (a *Client) PutAuthSamlProvidersProviderID(params *PutAuthSamlProvidersProv
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &PutAuthSamlProvidersProviderIDReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})

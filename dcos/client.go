@@ -79,7 +79,7 @@ func (c *Client) Login(username, password string) (string, error) {
 	loginObject := &iammodels.LoginObject{UID: username, Password: password}
 	params := iamlogin.NewPostAuthLoginParams().WithLoginObject(loginObject)
 
-	result, err := c.IAM.Login.PostAuthLogin(params, nil)
+	result, err := c.IAM.Login.PostAuthLogin(params)
 	if err != nil {
 		return "", err
 	}

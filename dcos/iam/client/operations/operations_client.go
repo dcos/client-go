@@ -29,7 +29,7 @@ GetAuthJwks gets the i a m s JSON web key set j w k s according to r f cs 7517 7
 
 This endpoint provides the IAM's JSON Web Key Set (JWKS), exposing public key details required for the process of DC/OS authentication token verification: the public key material can be used for verifying authentication tokens signed by the IAM's private key. The DC/OS authentication token is a JSON Web Token (JWT) of type RS256, and is required to have the two claims `exp` and `uid`. For interpretation of the data provided by the JWKS endpoint see https://tools.ietf.org/html/rfc7517 and https://tools.ietf.org/html/rfc7518.
 */
-func (a *Client) GetAuthJwks(params *GetAuthJwksParams, authInfo runtime.ClientAuthInfoWriter) (*GetAuthJwksOK, error) {
+func (a *Client) GetAuthJwks(params *GetAuthJwksParams) (*GetAuthJwksOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewGetAuthJwksParams()
@@ -44,7 +44,6 @@ func (a *Client) GetAuthJwks(params *GetAuthJwksParams, authInfo runtime.ClientA
 		Schemes:            []string{"http", "https"},
 		Params:             params,
 		Reader:             &GetAuthJwksReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
