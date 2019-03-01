@@ -20,9 +20,6 @@ type AuthToken struct {
 	// token
 	// Required: true
 	Token *string `json:"token"`
-
-	// uid
-	UID string `json:"uid,omitempty"`
 }
 
 // Validate validates this auth token
