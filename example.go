@@ -7,7 +7,7 @@ import (
 	"github.com/dcos/client-go/dcos"
 )
 
-const serverURL = "http://tball-client-go-0-680322110.us-east-1.elb.amazonaws.com"
+const serverURL = "http://tball-client-go-0-1598387033.us-east-1.elb.amazonaws.com"
 
 func Login(username, password string) (string, error) {
 	config := dcos.NewConfig(nil)
