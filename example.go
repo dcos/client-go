@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/dcos/client-go/dcos"
 )
@@ -61,12 +62,16 @@ func ListUsers(token string) error {
 }
 
 func main() {
+	if len(os.Args) != 3 {
+		log.Fatalf("Usage: go run example.org USERNAME PASSWORD")
+	}
+
 	err := ListUsers("")
 	if err != nil {
 		log.Printf("Listing users WITHOUT token failed: %s\n", err)
 	}
 
-	token, err := Login("USERNAME", "PASSWORD")
+	token, err := Login(os.Args[1], os.Args[2])
 	if err != nil {
 		log.Fatalf("Login failed: %s\n", err)
 	}
