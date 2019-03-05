@@ -7,10 +7,13 @@ import (
 
 	secretsclient "github.com/dcos/client-go/dcos/secrets/client"
 
+	cosmosclient "github.com/dcos/client-go/dcos/cosmos/client"
+
 	iamclient "github.com/dcos/client-go/dcos/iam/client"
 	iamlogin "github.com/dcos/client-go/dcos/iam/client/login"
 	iammodels "github.com/dcos/client-go/dcos/iam/models"
 
+	"github.com/go-openapi/runtime"
 	runtimeClient "github.com/go-openapi/runtime/client"
 )
 
@@ -21,6 +24,7 @@ type Client struct {
 
 	IAM     *iamclient.IdentityAndAccessManagement
 	Secrets *secretsclient.DCOSSecrets
+	Cosmos  *cosmosclient.Cosmos
 }
 
 // NewClient returns a Client which will detect its Config through the well
@@ -59,11 +63,17 @@ func NewClientWithOptions(httpClient *http.Client, config *Config) (*Client, err
 		return nil, fmt.Errorf("could not create Secrets client: %s", err)
 	}
 
+	cosmosClient, err := newCosmosClient(config.URL(), httpClient)
+	if err != nil {
+		return nil, fmt.Errorf("could not create Cosmos client: %s", err)
+	}
+
 	return &Client{
 		HTTPClient: httpClient,
 		Config:     config,
 		IAM:        iamClient,
 		Secrets:    secretsClient,
+		Cosmos:     cosmosClient,
 	}, nil
 }
 
@@ -109,4 +119,34 @@ func newSecretsClient(clusterURL string, client *http.Client) (*secretsclient.DC
 	)
 
 	return secretsclient.New(secretsRuntime, nil), nil
+}
+
+func newCosmosClient(clusterURL string, client *http.Client) (*cosmosclient.Cosmos, error) {
+	dcosURL, err := url.Parse(clusterURL)
+	if err != nil {
+		return nil, fmt.Errorf("Invalid DC/OS cluster URL '%s': %v", clusterURL, err)
+	}
+
+	cosmosRuntime := runtimeClient.NewWithClient(
+		dcosURL.Host,
+		cosmosclient.DefaultBasePath,
+		[]string{dcosURL.Scheme},
+		client,
+	)
+
+	cosmosRuntime.Consumers["application/vnd.dcos.package.install-response+json"] = cosmosRuntime.Consumers[runtime.JSONMime]
+	cosmosRuntime.Producers["application/vnd.dcos.package.install-request+json;charset=utf-8;version=v1"] = cosmosRuntime.Producers[runtime.JSONMime]
+	cosmosRuntime.Consumers["application/vnd.dcos.package.uninstall-response+json"] = cosmosRuntime.Consumers[runtime.JSONMime]
+	cosmosRuntime.Producers["application/vnd.dcos.package.uninstall-request+json;charset=utf-8;version=v1"] = cosmosRuntime.Producers[runtime.JSONMime]
+	cosmosRuntime.Consumers["application/vnd.dcos.package.error+json"] = cosmosRuntime.Consumers[runtime.JSONMime]
+	cosmosRuntime.Consumers["application/vnd.dcos.service.update-response+json"] = cosmosRuntime.Consumers[runtime.JSONMime]
+	cosmosRuntime.Producers["application/vnd.dcos.service.update-request+json;charset=utf-8;version=v1"] = cosmosRuntime.Producers[runtime.JSONMime]
+	cosmosRuntime.Consumers["application/vnd.dcos.package.repository.add-response+json"] = cosmosRuntime.Consumers[runtime.JSONMime]
+	cosmosRuntime.Producers["application/vnd.dcos.package.repository.add-request+json;charset=utf-8;version=v1"] = cosmosRuntime.Producers[runtime.JSONMime]
+	cosmosRuntime.Consumers["application/vnd.dcos.package.repository.delete-response+json"] = cosmosRuntime.Consumers[runtime.JSONMime]
+	cosmosRuntime.Producers["application/vnd.dcos.package.repository.delete-request+json;charset=utf-8;version=v1"] = cosmosRuntime.Producers[runtime.JSONMime]
+	cosmosRuntime.Consumers["application/vnd.dcos.service.describe-response+json"] = cosmosRuntime.Consumers[runtime.JSONMime]
+	cosmosRuntime.Producers["application/vnd.dcos.service.describe-request+json;charset=utf-8;version=v1"] = cosmosRuntime.Producers[runtime.JSONMime]
+
+	return cosmosclient.New(cosmosRuntime, nil), nil
 }
