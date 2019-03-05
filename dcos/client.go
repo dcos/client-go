@@ -77,6 +77,8 @@ func NewClientWithOptions(httpClient *http.Client, config *Config) (*Client, err
 	}, nil
 }
 
+// Login uses the IAM client to create a new authentication token for the given
+// username and password
 func (c *Client) Login(username, password string) (string, error) {
 	loginObject := &iammodels.LoginObject{UID: username, Password: password}
 	params := iamlogin.NewPostAuthLoginParams().WithLoginObject(loginObject)
