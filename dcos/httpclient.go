@@ -5,7 +5,11 @@ import (
 	"fmt"
 	"net"
 	"net/http"
+	"net/http/httputil"
+	"os"
 	"time"
+
+	"github.com/sirupsen/logrus"
 )
 
 const (
@@ -25,6 +29,7 @@ const (
 type DefaultTransport struct {
 	Config *Config
 	Base   http.RoundTripper
+	Logger *logrus.Logger
 }
 
 func (t *DefaultTransport) base() http.RoundTripper {
@@ -41,7 +46,27 @@ func (t *DefaultTransport) RoundTrip(req *http.Request) (*http.Response, error) 
 	req2.Header.Set("Authorization", fmt.Sprintf("token=%s", t.Config.ACSToken()))
 	req2.Header.Set("User-Agent", fmt.Sprintf("%s(%s)", ClientName, Version))
 
-	return t.base().RoundTrip(req2)
+	if t.Logger != nil && os.Getenv("DCOS_DEBUG") != "" {
+		reqDump, err := httputil.DumpRequestOut(req2, false)
+		if err != nil {
+			t.Logger.Debugf("Couldn't dump request: %s", err)
+		} else {
+			t.Logger.Debug(string(reqDump))
+		}
+	}
+
+	resp, err := t.base().RoundTrip(req2)
+
+	if t.Logger != nil && os.Getenv("DCOS_DEBUG") != "" {
+		respDump, err := httputil.DumpResponse(resp, false)
+		if err != nil {
+			t.Logger.Debugf("Couldn't dump response: %s", err)
+		} else {
+			t.Logger.Debug(string(respDump))
+		}
+	}
+
+	return resp, err
 }
 
 func cloneRequest(req *http.Request) *http.Request {
@@ -84,10 +109,16 @@ func NewHTTPClient(config *Config) (*http.Client, error) {
 		MaxIdleConnsPerHost: defaultTransportMaxIdleConns,
 	}
 
+	logger := logrus.New()
+	if os.Getenv("DCOS_DEBUG") != "" {
+		logger.SetLevel(logrus.DebugLevel)
+	}
+
 	client := &http.Client{}
 	client.Transport = &DefaultTransport{
 		Config: config,
 		Base:   baseTransport,
+		Logger: logger,
 	}
 
 	return client, nil
