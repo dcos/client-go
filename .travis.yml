@@ -1,13 +1,18 @@
 sudo: false
+
 language: go
+
 go:
   - "1.11.x"
-  - "1.10.x"
-  - "1.9.x"
-matrix:
-  fast_finish: true
+  - "1.12.x"
+
+go_import_path: github.com/dcos/client-go
+
+env:
+ - GO111MODULE=on
+
+before_install:
+ - env GO111MODULE=off go get -u golang.org/x/lint/golint
+
 script:
-  - go get -t -v ./...
-  - diff -u <(echo -n) <(gofmt -d -s .)
-  - go tool vet .
-  - go test -v -race ./...
+  - make test
