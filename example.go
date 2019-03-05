@@ -9,11 +9,12 @@ import (
 	"github.com/dcos/client-go/dcos/secrets/client/secrets"
 	secretsmodels "github.com/dcos/client-go/dcos/secrets/models"
 
+	"github.com/dcos/client-go/dcos/cosmos"
 	cosmosoperations "github.com/dcos/client-go/dcos/cosmos/client/operations"
 	cosmosmodels "github.com/dcos/client-go/dcos/cosmos/models"
 )
 
-const serverURL = "http://tball-client-go-0-1598387033.us-east-1.elb.amazonaws.com"
+const serverURL = "http://tball-client-go-0-23411561.us-east-1.elb.amazonaws.com"
 
 func Login(username, password string) (string, error) {
 	config := dcos.NewConfig(nil)
@@ -132,7 +133,7 @@ func GetSecret(token, secretName string) error {
 	return nil
 }
 
-func InstallPackage(token, packageName string) error {
+func InstallPackage(token, packageName string, options *cosmos.PackageOptions) error {
 	config := dcos.NewConfig(nil)
 	config.SetURL(serverURL)
 	config.SetACSToken(token)
@@ -149,7 +150,10 @@ func InstallPackage(token, packageName string) error {
 
 	paramsPackageInstall := cosmosoperations.
 		NewPackageInstallParams().
-		WithBody(&cosmosmodels.InstallRequest{PackageName: &packageName})
+		WithBody(&cosmosmodels.InstallRequest{
+			PackageName: &packageName,
+			Options:     options,
+		})
 
 	result, err := client.Cosmos.Operations.PackageInstall(paramsPackageInstall)
 	if err != nil {
@@ -199,8 +203,19 @@ func main() {
 		log.Fatalf("Creating secrets failed: %s\n", err)
 	}
 
-	err = InstallPackage(token, "marathon-lb")
+	err = InstallPackage(token, "marathon-lb", nil)
 	if err != nil {
-		log.Fatalf("Creating secrets failed: %s\n", err)
+		log.Fatalf("Installing package failed: %s\n", err)
+	}
+
+	jenkinsOptions := &cosmos.PackageOptions{
+		Security: cosmos.PackageSecurityOptions{
+			StrictMode: true,
+		},
+	}
+
+	err = InstallPackage(token, "jenkins", jenkinsOptions)
+	if err != nil {
+		log.Fatalf("Installing package failed: %s\n", err)
 	}
 }
