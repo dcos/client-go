@@ -6,6 +6,8 @@ import (
 	"os"
 
 	"github.com/dcos/client-go/dcos"
+	"github.com/dcos/client-go/dcos/secrets/client/secrets"
+	secretsmodels "github.com/dcos/client-go/dcos/secrets/models"
 )
 
 const serverURL = "http://tball-client-go-0-1598387033.us-east-1.elb.amazonaws.com"
@@ -61,6 +63,67 @@ func ListUsers(token string) error {
 	return nil
 }
 
+func CreateSecret(token, secretName, secretValue string) error {
+	config := dcos.NewConfig(nil)
+	config.SetURL(serverURL)
+	config.SetACSToken(token)
+
+	httpClient, err := dcos.NewHTTPClient(config)
+	if err != nil {
+		return err
+	}
+
+	client, err := dcos.NewClientWithOptions(httpClient, config)
+	if err != nil {
+		return err
+	}
+
+	paramsSecret := secrets.
+		NewPutSecretStorePathToSecretParams().
+		WithStore("default").
+		WithPathToSecret(secretName).
+		WithBody(&secretsmodels.Secret{Value: secretValue})
+
+	result, err := client.Secrets.Secrets.PutSecretStorePathToSecret(paramsSecret)
+	if err != nil {
+		return err
+	}
+
+	log.Printf("Secret created: %+v\n", result)
+
+	return nil
+}
+
+func GetSecret(token, secretName string) error {
+	config := dcos.NewConfig(nil)
+	config.SetURL(serverURL)
+	config.SetACSToken(token)
+
+	httpClient, err := dcos.NewHTTPClient(config)
+	if err != nil {
+		return err
+	}
+
+	client, err := dcos.NewClientWithOptions(httpClient, config)
+	if err != nil {
+		return err
+	}
+
+	paramsSecret := secrets.
+		NewGetSecretStorePathToSecretParams().
+		WithStore("default").
+		WithPathToSecret(secretName)
+
+	result, err := client.Secrets.Secrets.GetSecretStorePathToSecret(paramsSecret)
+	if err != nil {
+		return err
+	}
+
+	log.Printf("Secret fetched: %+v\n", result)
+
+	return nil
+}
+
 func main() {
 	if len(os.Args) != 3 {
 		log.Fatalf("Usage: go run example.org USERNAME PASSWORD")
@@ -81,5 +144,15 @@ func main() {
 	err = ListUsers(token)
 	if err != nil {
 		log.Fatalf("Listing users failed: %s\n", err)
+	}
+
+	err = CreateSecret(token, "biggestsecret", "i am a dog")
+	if err != nil {
+		log.Fatalf("Creating secrets failed: %s\n", err)
+	}
+
+	err = GetSecret(token, "biggestsecret")
+	if err != nil {
+		log.Fatalf("Creating secrets failed: %s\n", err)
 	}
 }

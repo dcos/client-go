@@ -5,9 +5,12 @@ import (
 	"net/http"
 	"net/url"
 
+	secretsclient "github.com/dcos/client-go/dcos/secrets/client"
+
 	iamclient "github.com/dcos/client-go/dcos/iam/client"
 	iamlogin "github.com/dcos/client-go/dcos/iam/client/login"
 	iammodels "github.com/dcos/client-go/dcos/iam/models"
+
 	runtimeClient "github.com/go-openapi/runtime/client"
 )
 
@@ -16,7 +19,8 @@ type Client struct {
 	HTTPClient *http.Client
 	Config     *Config
 
-	IAM *iamclient.IdentityAndAccessManagement
+	IAM     *iamclient.IdentityAndAccessManagement
+	Secrets *secretsclient.DCOSSecrets
 }
 
 // NewClient returns a Client which will detect its Config through the well
@@ -50,11 +54,29 @@ func NewClientWithOptions(httpClient *http.Client, config *Config) (*Client, err
 		return nil, fmt.Errorf("could not create IAM client: %s", err)
 	}
 
+	secretsClient, err := newSecretsClient(config.URL(), httpClient)
+	if err != nil {
+		return nil, fmt.Errorf("could not create Secrets client: %s", err)
+	}
+
 	return &Client{
 		HTTPClient: httpClient,
 		Config:     config,
 		IAM:        iamClient,
+		Secrets:    secretsClient,
 	}, nil
+}
+
+func (c *Client) Login(username, password string) (string, error) {
+	loginObject := &iammodels.LoginObject{UID: username, Password: password}
+	params := iamlogin.NewPostAuthLoginParams().WithLoginObject(loginObject)
+
+	result, err := c.IAM.Login.PostAuthLogin(params)
+	if err != nil {
+		return "", err
+	}
+
+	return *result.Payload.Token, nil
 }
 
 func newIamClient(clusterURL string, client *http.Client) (*iamclient.IdentityAndAccessManagement, error) {
@@ -73,14 +95,18 @@ func newIamClient(clusterURL string, client *http.Client) (*iamclient.IdentityAn
 	return iamclient.New(iamRuntime, nil), nil
 }
 
-func (c *Client) Login(username, password string) (string, error) {
-	loginObject := &iammodels.LoginObject{UID: username, Password: password}
-	params := iamlogin.NewPostAuthLoginParams().WithLoginObject(loginObject)
-
-	result, err := c.IAM.Login.PostAuthLogin(params)
+func newSecretsClient(clusterURL string, client *http.Client) (*secretsclient.DCOSSecrets, error) {
+	dcosURL, err := url.Parse(clusterURL)
 	if err != nil {
-		return "", err
+		return nil, fmt.Errorf("Invalid DC/OS cluster URL '%s': %v", clusterURL, err)
 	}
 
-	return *result.Payload.Token, nil
+	secretsRuntime := runtimeClient.NewWithClient(
+		dcosURL.Host,
+		secretsclient.DefaultBasePath,
+		[]string{dcosURL.Scheme},
+		client,
+	)
+
+	return secretsclient.New(secretsRuntime, nil), nil
 }
