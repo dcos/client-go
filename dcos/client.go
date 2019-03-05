@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-// Client
+// Client is a client for DC/OS.
 type Client struct {
 	HTTPClient *http.Client
 	Config     *Config

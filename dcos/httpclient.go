@@ -9,14 +9,16 @@ import (
 )
 
 const (
-	// Set a 10 seconds timeout for the connection to be established.
-	DefaultHTTPClientDialContextTimeout = 10 * time.Second
-	// Set it to 10 seconds as well for the TLS handshake when using HTTPS.
-	DefaultHTTPClientTLSHandshakeTimeout = 10 * time.Second
-	// The client will be dealing with a single host (the one in baseURL),
-	// set max idle connections to 30 regardless of the host.
-	DefaultHTTPClientMaxIdleConns        = 30
-	DefaultHTTPClientMaxIdleConnsPerHost = 30
+	// defaultTransportDialTimeout specifies the maximum amount of time
+	// waiting for a connection to be established.
+	defaultTransportDialTimeout = 10 * time.Second
+
+	// defaultTransportTLSHandshakeTimeout specifies the maximum
+	// amount of time waiting to wait for a TLS handshake.
+	defaultTransportTLSHandshakeTimeout = 10 * time.Second
+
+	// defaultTransportMaxIdleConns specifies the maximum number of idle connections.
+	defaultTransportMaxIdleConns = 30
 )
 
 // DefaultTransport is a http.RoundTripper that adds authentication based on Config
@@ -66,17 +68,20 @@ func NewHTTPClient(config *Config) (*http.Client, error) {
 		Proxy: http.ProxyFromEnvironment,
 
 		DialContext: (&net.Dialer{
-			Timeout: DefaultHTTPClientDialContextTimeout,
+			Timeout: defaultTransportDialTimeout,
 		}).DialContext,
 
-		TLSHandshakeTimeout: DefaultHTTPClientTLSHandshakeTimeout,
 		TLSClientConfig: &tls.Config{
 			InsecureSkipVerify: config.TLS().Insecure,
 			RootCAs:            config.TLS().RootCAs,
 		},
 
-		MaxIdleConns:        DefaultHTTPClientMaxIdleConns,
-		MaxIdleConnsPerHost: DefaultHTTPClientMaxIdleConnsPerHost,
+		TLSHandshakeTimeout: defaultTransportTLSHandshakeTimeout,
+
+		// As the client is dealing with a single host (the DC/OS master node),
+		// set both MaxIdleConns and MaxIdleConnsPerHost to the same value.
+		MaxIdleConns:        defaultTransportMaxIdleConns,
+		MaxIdleConnsPerHost: defaultTransportMaxIdleConns,
 	}
 
 	return AddTransportHTTPClient(client, config), nil
