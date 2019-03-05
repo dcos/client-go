@@ -15,7 +15,6 @@ import (
 type Client struct {
 	HTTPClient *http.Client
 	Config     *Config
-	UserAgent  string
 
 	IAM *iamclient.IdentityAndAccessManagement
 }
@@ -54,7 +53,6 @@ func NewClientWithOptions(httpClient *http.Client, config *Config) (*Client, err
 	return &Client{
 		HTTPClient: httpClient,
 		Config:     config,
-		UserAgent:  fmt.Sprintf("%s(%s)", ClientName, Version),
 		IAM:        iamClient,
 	}, nil
 }

@@ -39,6 +39,7 @@ func (t *DefaultTransport) RoundTrip(req *http.Request) (*http.Response, error) 
 	// meet the requirements of RoundTripper and only modify a copy
 	req2 := cloneRequest(req)
 	req2.Header.Set("Authorization", fmt.Sprintf("token=%s", t.Config.ACSToken()))
+	req2.Header.Set("User-Agent", fmt.Sprintf("%s(%s)", ClientName, Version))
 
 	return t.base().RoundTrip(req2)
 }
@@ -61,9 +62,8 @@ func NewHTTPClient(config *Config) (*http.Client, error) {
 	if config == nil {
 		return nil, fmt.Errorf("Config should not be nil")
 	}
-	client := &http.Client{}
-	client.Transport = &http.Transport{
 
+	baseTransport := &http.Transport{
 		// Allow http_proxy, https_proxy, and no_proxy.
 		Proxy: http.ProxyFromEnvironment,
 
@@ -84,7 +84,13 @@ func NewHTTPClient(config *Config) (*http.Client, error) {
 		MaxIdleConnsPerHost: defaultTransportMaxIdleConns,
 	}
 
-	return AddTransportHTTPClient(client, config), nil
+	client := &http.Client{}
+	client.Transport = &DefaultTransport{
+		Config: config,
+		Base:   baseTransport,
+	}
+
+	return client, nil
 }
 
 // AddTransportHTTPClient adds dcos.DefaultTransport to http.Client to add dcos authentication
