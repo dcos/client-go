@@ -16,43 +16,7 @@ import (
 
 const serverURL = "http://tball-client-go-0-23411561.us-east-1.elb.amazonaws.com"
 
-func Login(username, password string) (string, error) {
-	config := dcos.NewConfig(nil)
-	config.SetURL(serverURL)
-
-	httpClient, err := dcos.NewHTTPClient(config)
-	if err != nil {
-		return "", err
-	}
-
-	client, err := dcos.NewClientWithOptions(httpClient, config)
-	if err != nil {
-		return "", err
-	}
-
-	token, err := client.Login(username, password)
-	if err != nil {
-		return "", err
-	}
-
-	return token, nil
-}
-
-func ListUsers(token string) error {
-	config := dcos.NewConfig(nil)
-	config.SetURL(serverURL)
-	config.SetACSToken(token)
-
-	httpClient, err := dcos.NewHTTPClient(config)
-	if err != nil {
-		return err
-	}
-
-	client, err := dcos.NewClientWithOptions(httpClient, config)
-	if err != nil {
-		return err
-	}
-
+func listUsers(client *dcos.Client) error {
 	users, err := client.IAM.Users.GetUsers(nil)
 	if err != nil {
 		return err
@@ -67,21 +31,7 @@ func ListUsers(token string) error {
 	return nil
 }
 
-func CreateSecret(token, secretName, secretValue string) error {
-	config := dcos.NewConfig(nil)
-	config.SetURL(serverURL)
-	config.SetACSToken(token)
-
-	httpClient, err := dcos.NewHTTPClient(config)
-	if err != nil {
-		return err
-	}
-
-	client, err := dcos.NewClientWithOptions(httpClient, config)
-	if err != nil {
-		return err
-	}
-
+func createSecret(client *dcos.Client, secretName, secretValue string) error {
 	paramsSecret := secrets.
 		NewPutSecretStorePathToSecretParams().
 		WithStore("default").
@@ -103,21 +53,7 @@ func CreateSecret(token, secretName, secretValue string) error {
 	return nil
 }
 
-func GetSecret(token, secretName string) error {
-	config := dcos.NewConfig(nil)
-	config.SetURL(serverURL)
-	config.SetACSToken(token)
-
-	httpClient, err := dcos.NewHTTPClient(config)
-	if err != nil {
-		return err
-	}
-
-	client, err := dcos.NewClientWithOptions(httpClient, config)
-	if err != nil {
-		return err
-	}
-
+func getSecret(client *dcos.Client, secretName string) error {
 	paramsSecret := secrets.
 		NewGetSecretStorePathToSecretParams().
 		WithStore("default").
@@ -133,21 +69,7 @@ func GetSecret(token, secretName string) error {
 	return nil
 }
 
-func InstallPackage(token, packageName string, options *cosmos.PackageOptions) error {
-	config := dcos.NewConfig(nil)
-	config.SetURL(serverURL)
-	config.SetACSToken(token)
-
-	httpClient, err := dcos.NewHTTPClient(config)
-	if err != nil {
-		return err
-	}
-
-	client, err := dcos.NewClientWithOptions(httpClient, config)
-	if err != nil {
-		return err
-	}
-
+func installPackage(client *dcos.Client, packageName string, options *cosmos.PackageOptions) error {
 	paramsPackageInstall := cosmosoperations.
 		NewPackageInstallParams().
 		WithBody(&cosmosmodels.InstallRequest{
@@ -176,34 +98,59 @@ func main() {
 		log.Fatalf("Usage: go run example.org USERNAME PASSWORD")
 	}
 
-	err := ListUsers("")
+	config := dcos.NewConfig(nil)
+	config.SetURL(serverURL)
+
+	httpClient, err := dcos.NewHTTPClient(config)
+	if err != nil {
+		log.Fatalf("Creating new HTTP client failed: %s\n", err)
+	}
+
+	client, err := dcos.NewClientWithOptions(httpClient, config)
+	if err != nil {
+		log.Fatalf("Creating new client failed: %s\n", err)
+	}
+
+	err = listUsers(client)
 	if err != nil {
 		log.Printf("Listing users WITHOUT token failed: %s\n", err)
 	}
 
-	token, err := Login(os.Args[1], os.Args[2])
+	token, err := client.Login(os.Args[1], os.Args[2])
 	if err != nil {
 		log.Fatalf("Login failed: %s\n", err)
 	}
 
+	config.SetACSToken(token)
+
+	httpClient, err = dcos.NewHTTPClient(config)
+	if err != nil {
+		log.Fatalf("Creating new HTTP client failed: %s\n", err)
+	}
+
+	authClient, err := dcos.NewClientWithOptions(httpClient, config)
+	if err != nil {
+		log.Fatalf("Creating new client failed: %s\n", err)
+	}
+
 	log.Printf("Login successful")
 
-	err = ListUsers(token)
+	err = listUsers(authClient)
 	if err != nil {
 		log.Fatalf("Listing users failed: %s\n", err)
 	}
 
-	err = CreateSecret(token, "biggestsecret3", "i am a dog")
+	err = createSecret(authClient, "biggestsecret3", "i am a dog")
 	if err != nil {
 		log.Fatalf("Creating secrets failed: %s\n", err)
 	}
 
-	err = GetSecret(token, "biggestsecret3")
+	err = getSecret(authClient, "biggestsecret3")
 	if err != nil {
 		log.Fatalf("Creating secrets failed: %s\n", err)
 	}
 
-	err = InstallPackage(token, "marathon-lb", nil)
+	err = installPackage(authClient, "marathon-lb", nil)
 	if err != nil {
 		log.Fatalf("Installing package failed: %s\n", err)
 	}
@@ -214,7 +161,7 @@ func main() {
 		},
 	}
 
-	err = InstallPackage(token, "jenkins", jenkinsOptions)
+	err = installPackage(authClient, "jenkins", jenkinsOptions)
 	if err != nil {
 		log.Fatalf("Installing package failed: %s\n", err)
 	}
