@@ -86,7 +86,12 @@ func CreateSecret(token, secretName, secretValue string) error {
 
 	result, err := client.Secrets.Secrets.PutSecretStorePathToSecret(paramsSecret)
 	if err != nil {
-		return err
+		switch err.(type) {
+		case *secrets.PutSecretStorePathToSecretConflict:
+			log.Printf("Secret %q already created", secretName)
+		default:
+			return err
+		}
 	}
 
 	log.Printf("Secret created: %+v\n", result)
