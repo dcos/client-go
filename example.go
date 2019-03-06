@@ -33,15 +33,15 @@ func listUsers(client *dcos.Client) error {
 
 func createSecret(client *dcos.Client, secretName, secretValue string) error {
 	paramsSecret := secrets.
-		NewPutSecretStorePathToSecretParams().
+		NewCreateSecretParams().
 		WithStore("default").
 		WithPathToSecret(secretName).
 		WithBody(&secretsmodels.Secret{Value: secretValue})
 
-	result, err := client.Secrets.Secrets.PutSecretStorePathToSecret(paramsSecret)
+	result, err := client.Secrets.Secrets.CreateSecret(paramsSecret)
 	if err != nil {
 		switch err.(type) {
-		case *secrets.PutSecretStorePathToSecretConflict:
+		case *secrets.CreateSecretConflict:
 			log.Printf("Secret %q already created", secretName)
 		default:
 			return err
@@ -55,11 +55,11 @@ func createSecret(client *dcos.Client, secretName, secretValue string) error {
 
 func getSecret(client *dcos.Client, secretName string) error {
 	paramsSecret := secrets.
-		NewGetSecretStorePathToSecretParams().
+		NewGetSecretParams().
 		WithStore("default").
 		WithPathToSecret(secretName)
 
-	result, err := client.Secrets.Secrets.GetSecretStorePathToSecret(paramsSecret)
+	result, err := client.Secrets.Secrets.GetSecret(paramsSecret)
 	if err != nil {
 		return err
 	}

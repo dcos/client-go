@@ -25,122 +25,122 @@ type Client struct {
 }
 
 /*
-DeleteSecretStorePathToSecret deletes a secret
-
-Delete a secret.
-*/
-func (a *Client) DeleteSecretStorePathToSecret(params *DeleteSecretStorePathToSecretParams) (*DeleteSecretStorePathToSecretNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDeleteSecretStorePathToSecretParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "DeleteSecretStorePathToSecret",
-		Method:             "DELETE",
-		PathPattern:        "/secret/{store}/{path-to-secret}",
-		ProducesMediaTypes: []string{""},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DeleteSecretStorePathToSecretReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*DeleteSecretStorePathToSecretNoContent), nil
-
-}
-
-/*
-GetSecretStorePathToSecret reads or list a secret from the store by its path
-
-Read or list a secret from the store by its path.
-*/
-func (a *Client) GetSecretStorePathToSecret(params *GetSecretStorePathToSecretParams) (*GetSecretStorePathToSecretOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewGetSecretStorePathToSecretParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "GetSecretStorePathToSecret",
-		Method:             "GET",
-		PathPattern:        "/secret/{store}/{path-to-secret}",
-		ProducesMediaTypes: []string{""},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &GetSecretStorePathToSecretReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*GetSecretStorePathToSecretOK), nil
-
-}
-
-/*
-PatchSecretStorePathToSecret updates secret
-
-Update existing secret in the specified store.
-*/
-func (a *Client) PatchSecretStorePathToSecret(params *PatchSecretStorePathToSecretParams) (*PatchSecretStorePathToSecretNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPatchSecretStorePathToSecretParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "PatchSecretStorePathToSecret",
-		Method:             "PATCH",
-		PathPattern:        "/secret/{store}/{path-to-secret}",
-		ProducesMediaTypes: []string{""},
-		ConsumesMediaTypes: []string{""},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &PatchSecretStorePathToSecretReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*PatchSecretStorePathToSecretNoContent), nil
-
-}
-
-/*
-PutSecretStorePathToSecret creates a secret in the store at the path
+CreateSecret creates a secret in the store at the path
 
 Create a secret in the store at the path.
 */
-func (a *Client) PutSecretStorePathToSecret(params *PutSecretStorePathToSecretParams) (*PutSecretStorePathToSecretCreated, error) {
+func (a *Client) CreateSecret(params *CreateSecretParams) (*CreateSecretCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPutSecretStorePathToSecretParams()
+		params = NewCreateSecretParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "PutSecretStorePathToSecret",
+		ID:                 "create-secret",
 		Method:             "PUT",
 		PathPattern:        "/secret/{store}/{path-to-secret}",
 		ProducesMediaTypes: []string{""},
 		ConsumesMediaTypes: []string{""},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &PutSecretStorePathToSecretReader{formats: a.formats},
+		Reader:             &CreateSecretReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PutSecretStorePathToSecretCreated), nil
+	return result.(*CreateSecretCreated), nil
+
+}
+
+/*
+DeleteSecret deletes a secret
+
+Delete a secret.
+*/
+func (a *Client) DeleteSecret(params *DeleteSecretParams) (*DeleteSecretNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewDeleteSecretParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "delete-secret",
+		Method:             "DELETE",
+		PathPattern:        "/secret/{store}/{path-to-secret}",
+		ProducesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &DeleteSecretReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*DeleteSecretNoContent), nil
+
+}
+
+/*
+GetSecret reads or list a secret from the store by its path
+
+Read or list a secret from the store by its path.
+*/
+func (a *Client) GetSecret(params *GetSecretParams) (*GetSecretOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewGetSecretParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "get-secret",
+		Method:             "GET",
+		PathPattern:        "/secret/{store}/{path-to-secret}",
+		ProducesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &GetSecretReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*GetSecretOK), nil
+
+}
+
+/*
+UpdateSecret updates secret
+
+Update existing secret in the specified store.
+*/
+func (a *Client) UpdateSecret(params *UpdateSecretParams) (*UpdateSecretNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUpdateSecretParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "update-secret",
+		Method:             "PATCH",
+		PathPattern:        "/secret/{store}/{path-to-secret}",
+		ProducesMediaTypes: []string{""},
+		ConsumesMediaTypes: []string{""},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UpdateSecretReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*UpdateSecretNoContent), nil
 
 }
 
