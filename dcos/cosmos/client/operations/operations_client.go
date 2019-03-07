@@ -252,6 +252,36 @@ func (a *Client) PackageRepositoryDelete(params *PackageRepositoryDeleteParams) 
 }
 
 /*
+PackageSearch Lists all matching packages in the repository given a partial pattern.
+The character \'\*\' can be used to match any number of characters.
+
+*/
+func (a *Client) PackageSearch(params *PackageSearchParams) (*PackageSearchOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPackageSearchParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "package-search",
+		Method:             "POST",
+		PathPattern:        "/package/search",
+		ProducesMediaTypes: []string{"application/vnd.dcos.package.search-response+json;charset=utf-8;version=v1"},
+		ConsumesMediaTypes: []string{"application/vnd.dcos.package.search-request+json;charset=utf-8;version=v1"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PackageSearchReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*PackageSearchOK), nil
+
+}
+
+/*
 PackageUninstall package uninstall API
 */
 func (a *Client) PackageUninstall(params *PackageUninstallParams) (*PackageUninstallOK, error) {
