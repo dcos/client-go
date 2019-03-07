@@ -12,4 +12,8 @@ lint: fmt
 
 .PHONY: fmt
 fmt:
-	bash -c "diff -u <(echo -n) <(gofmt -d -s .)"
+	gofmt -w -s .
+
+.PHONY: generate
+generate:
+	openapi-generator generate -i openapi/dcos.yaml -g go -o dcos --skip-validate-spec -D packageName=dcos,withGoCodegenComment=true -t templates
