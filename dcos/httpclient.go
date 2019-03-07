@@ -47,7 +47,7 @@ func (t *DefaultTransport) RoundTrip(req *http.Request) (*http.Response, error) 
 	req2.Header.Set("User-Agent", fmt.Sprintf("%s(%s)", ClientName, Version))
 
 	if t.Logger != nil && os.Getenv("DCOS_DEBUG") != "" {
-		reqDump, err := httputil.DumpRequestOut(req2, false)
+		reqDump, err := httputil.DumpRequestOut(req2, true)
 		if err != nil {
 			t.Logger.Debugf("Couldn't dump request: %s", err)
 		} else {
@@ -58,7 +58,7 @@ func (t *DefaultTransport) RoundTrip(req *http.Request) (*http.Response, error) 
 	resp, err := t.base().RoundTrip(req2)
 
 	if t.Logger != nil && os.Getenv("DCOS_DEBUG") != "" {
-		respDump, err := httputil.DumpResponse(resp, false)
+		respDump, err := httputil.DumpResponse(resp, true)
 		if err != nil {
 			t.Logger.Debugf("Couldn't dump response: %s", err)
 		} else {

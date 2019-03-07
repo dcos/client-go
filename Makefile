@@ -1,3 +1,5 @@
+export GO111MODULE := on
+
 .PHONY: test
 test: vet
 	go test -race -cover ./...
@@ -12,4 +14,4 @@ lint: fmt
 
 .PHONY: fmt
 fmt:
-	bash -c "diff -u <(echo -n) <(gofmt -d -s .)"
+	gofmt -d -s .

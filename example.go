@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"os"
@@ -9,9 +10,7 @@ import (
 	"github.com/dcos/client-go/dcos/secrets/client/secrets"
 	secretsmodels "github.com/dcos/client-go/dcos/secrets/models"
 
-	"github.com/dcos/client-go/dcos/cosmos"
-	cosmosoperations "github.com/dcos/client-go/dcos/cosmos/client/operations"
-	cosmosmodels "github.com/dcos/client-go/dcos/cosmos/models"
+	cosmosclient "github.com/dcos/client-go/dcos/cosmos/client"
 )
 
 const serverURL = "http://tball-client-go-0-23411561.us-east-1.elb.amazonaws.com"
@@ -69,37 +68,43 @@ func getSecret(client *dcos.Client, secretName string) error {
 	return nil
 }
 
-func installPackage(client *dcos.Client, packageName string, options *cosmos.PackageOptions) error {
-	paramsPackageInstall := cosmosoperations.
-		NewPackageInstallParams().
-		WithBody(&cosmosmodels.InstallRequest{
-			PackageName: &packageName,
-			Options:     options,
-		})
+func installPackage(client *dcos.Client, packageName string, options map[string]map[string]interface{}) error {
+	paramsPackageInstall := cosmosclient.InstallRequest{
+		PackageName: packageName,
+		Options:     options,
+	}
 
-	result, err := client.Cosmos.Operations.PackageInstall(paramsPackageInstall)
+	result, _, err := client.Cosmos.DefaultApi.PackageInstall(context.TODO(), paramsPackageInstall)
 	if err != nil {
-		switch err.(type) {
-		case *cosmosoperations.PackageInstallConflict:
-			log.Printf("Package %q is already installed", packageName)
-			return nil
+		switch e := err.(type) {
+		case cosmosclient.GenericOpenAPIError:
+			if e.Model() != nil {
+				switch m := e.Model().(type) {
+				case cosmosclient.ModelError:
+					log.Printf(m.Message)
+					return nil
+				default:
+					return err
+				}
+			}
+			return err
 		default:
 			return err
 		}
 	}
 
-	log.Printf("Package installed: %+v\n", result.Payload.AppID)
+	log.Printf("Package installed: %+v\n", result.AppId)
 
 	return nil
 }
 
 func main() {
-	if len(os.Args) != 3 {
-		log.Fatalf("Usage: go run example.org USERNAME PASSWORD")
+	if len(os.Args) != 4 {
+		log.Fatalf("Usage: go run example.go SERVER_URL USERNAME PASSWORD")
 	}
 
 	config := dcos.NewConfig(nil)
-	config.SetURL(serverURL)
+	config.SetURL(os.Args[1])
 
 	httpClient, err := dcos.NewHTTPClient(config)
 	if err != nil {
@@ -116,7 +121,7 @@ func main() {
 		log.Printf("Listing users WITHOUT token failed: %s\n", err)
 	}
 
-	token, err := client.Login(os.Args[1], os.Args[2])
+	token, err := client.Login(os.Args[2], os.Args[3])
 	if err != nil {
 		log.Fatalf("Login failed: %s\n", err)
 	}
@@ -155,9 +160,9 @@ func main() {
 		log.Fatalf("Installing package failed: %s\n", err)
 	}
 
-	jenkinsOptions := &cosmos.PackageOptions{
-		Security: cosmos.PackageSecurityOptions{
-			StrictMode: true,
+	jenkinsOptions := map[string]map[string]interface{}{
+		"security": map[string]interface{}{
+			"strictMode": true,
 		},
 	}
 
