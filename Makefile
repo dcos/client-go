@@ -15,5 +15,19 @@ fmt:
 	gofmt -w -s .
 
 .PHONY: generate
-generate:
-	openapi-generator generate -i openapi/dcos.yaml -g go -o dcos --skip-validate-spec -D packageName=dcos,withGoCodegenComment=true -t templates
+generate: generate-client fmt
+
+.PHONY: generate-client
+generate-client:
+	openapi-generator generate -i openapi/dcos.yaml -g go -o dcos --skip-validate-spec \
+		-D packageName=dcos,withGoCodegenComment=true,models,apis \
+		-D supportingFiles=client.go \
+		-t templates
+	openapi-generator generate -i openapi/dcos.yaml -g go -o dcos --skip-validate-spec \
+		-D packageName=dcos,withGoCodegenComment=true,models,apis \
+		-D supportingFiles=response.go \
+		-t templates
+	openapi-generator generate -i openapi/dcos.yaml -g go -o dcos --skip-validate-spec \
+		-D packageName=dcos,withGoCodegenComment=true,models,apis \
+		-D supportingFiles=configuration.go \
+		-t templates
