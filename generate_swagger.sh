@@ -9,12 +9,11 @@ swagger generate client \
   -f swagger/iam.yaml
 
 mkdir -p dcos/secrets && \
-swagger generate client \
-  -t dcos/secrets \
-  --default-scheme=https \
-  --additional-initialism=DCOS \
-  --template-dir=swagger/templates \
-  -f swagger/secrets.yaml
+docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
+  -i /local/openapi/secrets.yaml \
+  -g go \
+  -o /local/dcos/secrets \
+  -c /local/openapi/secrets_config.json
 
 mkdir -p dcos/cosmos && \
 swagger generate client \

@@ -1,20 +1,20 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"os"
 
 	"github.com/dcos/client-go/dcos"
-	"github.com/dcos/client-go/dcos/secrets/client/secrets"
-	secretsmodels "github.com/dcos/client-go/dcos/secrets/models"
+	"github.com/dcos/client-go/dcos/secrets"
 
 	"github.com/dcos/client-go/dcos/cosmos"
 	cosmosoperations "github.com/dcos/client-go/dcos/cosmos/client/operations"
 	cosmosmodels "github.com/dcos/client-go/dcos/cosmos/models"
 )
 
-const serverURL = "http://tball-client-go-0-23411561.us-east-1.elb.amazonaws.com"
+const serverURL = "http://tball-client-go-0-1997297071.us-east-1.elb.amazonaws.com"
 
 func listUsers(client *dcos.Client) error {
 	users, err := client.IAM.Users.GetUsers(nil)
@@ -32,39 +32,33 @@ func listUsers(client *dcos.Client) error {
 }
 
 func createSecret(client *dcos.Client, secretName, secretValue string) error {
-	paramsSecret := secrets.
-		NewCreateSecretParams().
-		WithStore("default").
-		WithPathToSecret(secretName).
-		WithBody(&secretsmodels.Secret{Value: secretValue})
-
-	result, err := client.Secrets.Secrets.CreateSecret(paramsSecret)
+	secret := secrets.Secret{Value: secretValue}
+	resp, err := client.Secrets.SecretsApi.CreateSecret(context.TODO(), "default", secretName, secret)
 	if err != nil {
-		switch err.(type) {
-		case *secrets.CreateSecretConflict:
-			log.Printf("Secret %q already created", secretName)
+		fmt.Printf("err=%T\n", err)
+		switch err := err.(type) {
+		case secrets.GenericOpenAPIError:
+			if resp.StatusCode == 409 {
+				log.Printf("Secret %q already created", secretName)
+				return nil
+			}
 		default:
 			return err
 		}
 	}
 
-	log.Printf("Secret created: %+v\n", result)
+	log.Printf("Secret created: %+v\n", resp)
 
 	return nil
 }
 
 func getSecret(client *dcos.Client, secretName string) error {
-	paramsSecret := secrets.
-		NewGetSecretParams().
-		WithStore("default").
-		WithPathToSecret(secretName)
-
-	result, err := client.Secrets.Secrets.GetSecret(paramsSecret)
+	secret, _, err := client.Secrets.SecretsApi.GetSecret(context.TODO(), "default", secretName, nil)
 	if err != nil {
 		return err
 	}
 
-	log.Printf("Secret fetched: %+v\n", result)
+	log.Printf("Secret fetched: %+v\n", secret)
 
 	return nil
 }

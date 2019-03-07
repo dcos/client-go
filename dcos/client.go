@@ -5,9 +5,8 @@ import (
 	"net/http"
 	"net/url"
 
-	secretsclient "github.com/dcos/client-go/dcos/secrets/client"
-
 	cosmosclient "github.com/dcos/client-go/dcos/cosmos/client"
+	"github.com/dcos/client-go/dcos/secrets"
 
 	iamclient "github.com/dcos/client-go/dcos/iam/client"
 	iamlogin "github.com/dcos/client-go/dcos/iam/client/login"
@@ -23,7 +22,7 @@ type Client struct {
 	Config     *Config
 
 	IAM     *iamclient.IdentityAndAccessManagement
-	Secrets *secretsclient.DCOSSecrets
+	Secrets *secrets.APIClient
 	Cosmos  *cosmosclient.Cosmos
 }
 
@@ -107,20 +106,13 @@ func newIamClient(clusterURL string, client *http.Client) (*iamclient.IdentityAn
 	return iamclient.New(iamRuntime, nil), nil
 }
 
-func newSecretsClient(clusterURL string, client *http.Client) (*secretsclient.DCOSSecrets, error) {
-	dcosURL, err := url.Parse(clusterURL)
-	if err != nil {
-		return nil, fmt.Errorf("Invalid DC/OS cluster URL '%s': %v", clusterURL, err)
-	}
+func newSecretsClient(clusterURL string, client *http.Client) (*secrets.APIClient, error) {
+	config := secrets.NewConfiguration()
+	// TODO: openapi-generator doesn't create the right basepath?
+	config.BasePath = clusterURL + "/secrets/v1"
+	config.HTTPClient = client
 
-	secretsRuntime := runtimeClient.NewWithClient(
-		dcosURL.Host,
-		secretsclient.DefaultBasePath,
-		[]string{dcosURL.Scheme},
-		client,
-	)
-
-	return secretsclient.New(secretsRuntime, nil), nil
+	return secrets.NewAPIClient(config), nil
 }
 
 func newCosmosClient(clusterURL string, client *http.Client) (*cosmosclient.Cosmos, error) {
