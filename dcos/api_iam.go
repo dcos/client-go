@@ -25,16 +25,16 @@ var (
 	_ context.Context
 )
 
-type IamApiService service
+type IAMApiService service
 
 /*
-IamApiService Configure a new OIDC provider.
+IAMApiService Configure a new OIDC provider.
 Set up OIDC provider with the ID as specified in the URL, and with the config as specified via JSON in the request body.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the provider to create.
  * @param oidcProviderConfig Provider config JSON object
 */
-func (a *IamApiService) ConfigureOIDCProvider(ctx context.Context, providerId string, oidcProviderConfig OidcProviderConfig) (*http.Response, error) {
+func (a *IAMApiService) ConfigureOIDCProvider(ctx context.Context, providerId string, oidcProviderConfig OidcProviderConfig) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -98,13 +98,13 @@ func (a *IamApiService) ConfigureOIDCProvider(ctx context.Context, providerId st
 }
 
 /*
-IamApiService Configure a new SAML provider.
+IAMApiService Configure a new SAML provider.
 Set up a SAML provider with the ID as specified in the URL, and with the config as given by the JSON document in the request body.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the provider to create.
  * @param samlProviderConfig Provider config JSON object
 */
-func (a *IamApiService) ConfigureSAMLProvider(ctx context.Context, providerId string, samlProviderConfig SamlProviderConfig) (*http.Response, error) {
+func (a *IAMApiService) ConfigureSAMLProvider(ctx context.Context, providerId string, samlProviderConfig SamlProviderConfig) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -168,13 +168,13 @@ func (a *IamApiService) ConfigureSAMLProvider(ctx context.Context, providerId st
 }
 
 /*
-IamApiService Create a group.
+IAMApiService Create a group.
 Create a group.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param gid The ID of the group.
  * @param groupCreate
 */
-func (a *IamApiService) CreateGroup(ctx context.Context, gid string, groupCreate GroupCreate) (*http.Response, error) {
+func (a *IAMApiService) CreateGroup(ctx context.Context, gid string, groupCreate GroupCreate) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -238,13 +238,13 @@ func (a *IamApiService) CreateGroup(ctx context.Context, gid string, groupCreate
 }
 
 /*
-IamApiService Add account to group.
+IAMApiService Add account to group.
 Add account to group.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param gid The ID of the group to add the user account to.
  * @param uid The ID of the account to add.
 */
-func (a *IamApiService) CreateGroupUser(ctx context.Context, gid string, uid string) (*http.Response, error) {
+func (a *IAMApiService) CreateGroupUser(ctx context.Context, gid string, uid string) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -307,12 +307,12 @@ func (a *IamApiService) CreateGroupUser(ctx context.Context, gid string, uid str
 }
 
 /*
-IamApiService Set new LDAP configuration.
+IAMApiService Set new LDAP configuration.
 Set new directory (LDAP) back-end configuration. Replace current configuration, if existing.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param ldapConfiguration JSON object containing the LDAP configuration details.
 */
-func (a *IamApiService) CreateLDAPConfiguration(ctx context.Context, ldapConfiguration LdapConfiguration) (*http.Response, error) {
+func (a *IAMApiService) CreateLDAPConfiguration(ctx context.Context, ldapConfiguration LdapConfiguration) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -375,13 +375,13 @@ func (a *IamApiService) CreateLDAPConfiguration(ctx context.Context, ldapConfigu
 }
 
 /*
-IamApiService Create ACL for a certain resource.
+IAMApiService Create ACL for a certain resource.
 Create new ACL for resource with ID &#x60;rid&#x60; (description in body, no permissions by default).
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid The ID of the resource for which the ACL should be created.
  * @param aclCreate
 */
-func (a *IamApiService) CreateResourceACL(ctx context.Context, rid string, aclCreate AclCreate) (*http.Response, error) {
+func (a *IAMApiService) CreateResourceACL(ctx context.Context, rid string, aclCreate AclCreate) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -445,13 +445,13 @@ func (a *IamApiService) CreateResourceACL(ctx context.Context, rid string, aclCr
 }
 
 /*
-IamApiService Create user account.
+IAMApiService Create user account.
 Create user (uid in url, details incl. credentials in body).
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param uid The ID of the user account to create.
  * @param userCreate Password/description.
 */
-func (a *IamApiService) CreateUser(ctx context.Context, uid string, userCreate UserCreate) (*http.Response, error) {
+func (a *IAMApiService) CreateUser(ctx context.Context, uid string, userCreate UserCreate) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -515,12 +515,12 @@ func (a *IamApiService) CreateUser(ctx context.Context, uid string, userCreate U
 }
 
 /*
-IamApiService Delete group.
+IAMApiService Delete group.
 Delete group.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param gid The ID of the group to delete.
 */
-func (a *IamApiService) DeleteGroup(ctx context.Context, gid string) (*http.Response, error) {
+func (a *IAMApiService) DeleteGroup(ctx context.Context, gid string) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -582,13 +582,13 @@ func (a *IamApiService) DeleteGroup(ctx context.Context, gid string) (*http.Resp
 }
 
 /*
-IamApiService Delete user account from group.
+IAMApiService Delete user account from group.
 Delete user account from group.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param gid The ID of the group to delete from.
  * @param uid The ID of the user account.
 */
-func (a *IamApiService) DeleteGroupUser(ctx context.Context, gid string, uid string) (*http.Response, error) {
+func (a *IAMApiService) DeleteGroupUser(ctx context.Context, gid string, uid string) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -651,11 +651,11 @@ func (a *IamApiService) DeleteGroupUser(ctx context.Context, gid string, uid str
 }
 
 /*
-IamApiService Delete current LDAP configuration.
+IAMApiService Delete current LDAP configuration.
 Delete current directory (LDAP) back-end configuration. This deactivates the LDAP authentication.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 */
-func (a *IamApiService) DeleteLDAPConfiguration(ctx context.Context) (*http.Response, error) {
+func (a *IAMApiService) DeleteLDAPConfiguration(ctx context.Context) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -716,12 +716,12 @@ func (a *IamApiService) DeleteLDAPConfiguration(ctx context.Context) (*http.Resp
 }
 
 /*
-IamApiService Delete provider.
+IAMApiService Delete provider.
 Delete provider (disables authentication with that provider).
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the OIDC provider to delete.
 */
-func (a *IamApiService) DeleteOIDCProvider(ctx context.Context, providerId string) (*http.Response, error) {
+func (a *IAMApiService) DeleteOIDCProvider(ctx context.Context, providerId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -783,12 +783,12 @@ func (a *IamApiService) DeleteOIDCProvider(ctx context.Context, providerId strin
 }
 
 /*
-IamApiService Delete ACL for a certain resource.
+IAMApiService Delete ACL for a certain resource.
 Delete ACL of resource with ID &#x60;rid&#x60;.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid The ID of resource for which the ACL should be deleted.
 */
-func (a *IamApiService) DeleteResourceACL(ctx context.Context, rid string) (*http.Response, error) {
+func (a *IAMApiService) DeleteResourceACL(ctx context.Context, rid string) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -850,12 +850,12 @@ func (a *IamApiService) DeleteResourceACL(ctx context.Context, rid string) (*htt
 }
 
 /*
-IamApiService Delete provider.
+IAMApiService Delete provider.
 Delete provider (disables authentication with that provider).
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the SAML provider to delete.
 */
-func (a *IamApiService) DeleteSAMLProvider(ctx context.Context, providerId string) (*http.Response, error) {
+func (a *IAMApiService) DeleteSAMLProvider(ctx context.Context, providerId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -917,12 +917,12 @@ func (a *IamApiService) DeleteSAMLProvider(ctx context.Context, providerId strin
 }
 
 /*
-IamApiService Delete account.
+IAMApiService Delete account.
 Delete account.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param uid The ID of the user account to delete.
 */
-func (a *IamApiService) DeleteUser(ctx context.Context, uid string) (*http.Response, error) {
+func (a *IAMApiService) DeleteUser(ctx context.Context, uid string) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -984,14 +984,14 @@ func (a *IamApiService) DeleteUser(ctx context.Context, uid string) (*http.Respo
 }
 
 /*
-IamApiService Forbid single action for given account and resource.
+IAMApiService Forbid single action for given account and resource.
 Forbid single action for given account and resource.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid resource ID.
  * @param uid account ID.
  * @param action action name
 */
-func (a *IamApiService) ForbidResourceUserAction(ctx context.Context, rid string, uid string, action string) (*http.Response, error) {
+func (a *IAMApiService) ForbidResourceUserAction(ctx context.Context, rid string, uid string, action string) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -1055,13 +1055,13 @@ func (a *IamApiService) ForbidResourceUserAction(ctx context.Context, rid string
 }
 
 /*
-IamApiService Forbid all actions of given account to given resource.
+IAMApiService Forbid all actions of given account to given resource.
 Forbid all actions of given account to given resource.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid resource ID.
  * @param uid account ID.
 */
-func (a *IamApiService) ForbidResourceUserActions(ctx context.Context, rid string, uid string) (*http.Response, error) {
+func (a *IAMApiService) ForbidResourceUserActions(ctx context.Context, rid string, uid string) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -1124,14 +1124,14 @@ func (a *IamApiService) ForbidResourceUserActions(ctx context.Context, rid strin
 }
 
 /*
-IamApiService Forbid single action for given resource and group.
+IAMApiService Forbid single action for given resource and group.
 Forbid single action for given resource and group.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid resource ID.
  * @param gid group ID.
  * @param action action name
 */
-func (a *IamApiService) ForbitResourceGroupAction(ctx context.Context, rid string, gid string, action string) (*http.Response, error) {
+func (a *IAMApiService) ForbitResourceGroupAction(ctx context.Context, rid string, gid string, action string) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -1195,13 +1195,13 @@ func (a *IamApiService) ForbitResourceGroupAction(ctx context.Context, rid strin
 }
 
 /*
-IamApiService Forbid all actions of given group to given resource.
+IAMApiService Forbid all actions of given group to given resource.
 Forbid all actions of given group to given resource.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid resource ID.
  * @param gid group ID.
 */
-func (a *IamApiService) ForbitResourceGroupActions(ctx context.Context, rid string, gid string) (*http.Response, error) {
+func (a *IAMApiService) ForbitResourceGroupActions(ctx context.Context, rid string, gid string) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -1264,12 +1264,12 @@ func (a *IamApiService) ForbitResourceGroupActions(ctx context.Context, rid stri
 }
 
 /*
-IamApiService Retrieve all ACL objects.
+IAMApiService Retrieve all ACL objects.
 Get array of &#x60;ACL&#x60; objects.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return InlineResponse200
 */
-func (a *IamApiService) GetACLs(ctx context.Context) (InlineResponse200, *http.Response, error) {
+func (a *IAMApiService) GetACLs(ctx context.Context) (InlineResponse200, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -1350,13 +1350,13 @@ func (a *IamApiService) GetACLs(ctx context.Context) (InlineResponse200, *http.R
 }
 
 /*
-IamApiService Get single group object.
+IAMApiService Get single group object.
 Get specific &#x60;Group&#x60; object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param gid The ID of the group to retrieve.
 @return Group
 */
-func (a *IamApiService) GetGroup(ctx context.Context, gid string) (Group, *http.Response, error) {
+func (a *IAMApiService) GetGroup(ctx context.Context, gid string) (Group, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -1438,13 +1438,13 @@ func (a *IamApiService) GetGroup(ctx context.Context, gid string) (Group, *http.
 }
 
 /*
-IamApiService Retrieve group permissions.
+IAMApiService Retrieve group permissions.
 Retrieve permissions of this group.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param gid The group ID.
 @return GroupPermissions
 */
-func (a *IamApiService) GetGroupPermissions(ctx context.Context, gid string) (GroupPermissions, *http.Response, error) {
+func (a *IAMApiService) GetGroupPermissions(ctx context.Context, gid string) (GroupPermissions, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -1526,7 +1526,7 @@ func (a *IamApiService) GetGroupPermissions(ctx context.Context, gid string) (Gr
 }
 
 /*
-IamApiService Retrieve members of a group.
+IAMApiService Retrieve members of a group.
 Retrieve users that are member of this group. Allows to query service accounts, defaults to list only user accounts.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param gid The group ID.
@@ -1539,7 +1539,7 @@ type GetGroupUsersOpts struct {
 	Type_ optional.String
 }
 
-func (a *IamApiService) GetGroupUsers(ctx context.Context, gid string, localVarOptionals *GetGroupUsersOpts) (GroupUsers, *http.Response, error) {
+func (a *IAMApiService) GetGroupUsers(ctx context.Context, gid string, localVarOptionals *GetGroupUsersOpts) (GroupUsers, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -1624,12 +1624,12 @@ func (a *IamApiService) GetGroupUsers(ctx context.Context, gid string, localVarO
 }
 
 /*
-IamApiService Retrieve all group objects.
+IAMApiService Retrieve all group objects.
 Retrieve array of &#x60;Group&#x60; objects.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return InlineResponse2002
 */
-func (a *IamApiService) GetGroups(ctx context.Context) (InlineResponse2002, *http.Response, error) {
+func (a *IAMApiService) GetGroups(ctx context.Context) (InlineResponse2002, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -1710,11 +1710,11 @@ func (a *IamApiService) GetGroups(ctx context.Context) (InlineResponse2002, *htt
 }
 
 /*
-IamApiService Get the IAM's JSON Web Key Set (JWKS, according to RFCs 7517/7518).
+IAMApiService Get the IAM's JSON Web Key Set (JWKS, according to RFCs 7517/7518).
 This endpoint provides the IAM&#39;s JSON Web Key Set (JWKS), exposing public key details required for the process of DC/OS authentication token verification: the public key material can be used for verifying authentication tokens signed by the IAM&#39;s private key. The DC/OS authentication token is a JSON Web Token (JWT) of type RS256, and is required to have the two claims &#x60;exp&#x60; and &#x60;uid&#x60;. For interpretation of the data provided by the JWKS endpoint see https://tools.ietf.org/html/rfc7517 and https://tools.ietf.org/html/rfc7518.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 */
-func (a *IamApiService) GetJWKS(ctx context.Context) (*http.Response, error) {
+func (a *IAMApiService) GetJWKS(ctx context.Context) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -1775,12 +1775,12 @@ func (a *IamApiService) GetJWKS(ctx context.Context) (*http.Response, error) {
 }
 
 /*
-IamApiService Retrieve current LDAP configuration.
+IAMApiService Retrieve current LDAP configuration.
 Retrieve current directory (LDAP) back-end configuration.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return LdapConfiguration
 */
-func (a *IamApiService) GetLDAPConfiguration(ctx context.Context) (LdapConfiguration, *http.Response, error) {
+func (a *IAMApiService) GetLDAPConfiguration(ctx context.Context) (LdapConfiguration, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -1861,13 +1861,13 @@ func (a *IamApiService) GetLDAPConfiguration(ctx context.Context) (LdapConfigura
 }
 
 /*
-IamApiService Get configuration for a specific provider.
+IAMApiService Get configuration for a specific provider.
 Get configuration for a specific provider.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the OIDC provider to retrieve the config for.
 @return OidcProviderConfig
 */
-func (a *IamApiService) GetOIDCProvider(ctx context.Context, providerId string) (OidcProviderConfig, *http.Response, error) {
+func (a *IAMApiService) GetOIDCProvider(ctx context.Context, providerId string) (OidcProviderConfig, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -1949,11 +1949,11 @@ func (a *IamApiService) GetOIDCProvider(ctx context.Context, providerId string) 
 }
 
 /*
-IamApiService Get an overview for the configured OIDC providers.
+IAMApiService Get an overview for the configured OIDC providers.
 Get an overview for the configured OIDC providers. The response contains a JSON object, with each key being an OIDC provider ID, and each value being the corresponding provider description string. This endpoint does not expose sensitive provider configuration details.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 */
-func (a *IamApiService) GetOIDCProviders(ctx context.Context) (*http.Response, error) {
+func (a *IAMApiService) GetOIDCProviders(ctx context.Context) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -2014,13 +2014,13 @@ func (a *IamApiService) GetOIDCProviders(ctx context.Context) (*http.Response, e
 }
 
 /*
-IamApiService Retrieve ACL for a certain resource.
+IAMApiService Retrieve ACL for a certain resource.
 Retrieve single &#x60;ACL&#x60; object, for a specific resource.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid The ID of the resource to retrieve the ACL for.
 @return Acl
 */
-func (a *IamApiService) GetResourceACLs(ctx context.Context, rid string) (Acl, *http.Response, error) {
+func (a *IAMApiService) GetResourceACLs(ctx context.Context, rid string) (Acl, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -2102,7 +2102,7 @@ func (a *IamApiService) GetResourceACLs(ctx context.Context, rid string) (Acl, *
 }
 
 /*
-IamApiService Query whether action is allowed or not.
+IAMApiService Query whether action is allowed or not.
 Query whether action is allowed or not.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid resource ID
@@ -2110,7 +2110,7 @@ Query whether action is allowed or not.
  * @param action action name
 @return ActionAllowed
 */
-func (a *IamApiService) GetResourceGroupAction(ctx context.Context, rid string, gid string, action string) (ActionAllowed, *http.Response, error) {
+func (a *IAMApiService) GetResourceGroupAction(ctx context.Context, rid string, gid string, action string) (ActionAllowed, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -2194,14 +2194,14 @@ func (a *IamApiService) GetResourceGroupAction(ctx context.Context, rid string, 
 }
 
 /*
-IamApiService Get allowed actions for given resource and group.
+IAMApiService Get allowed actions for given resource and group.
 Get allowed actions for given resource and group.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid resource ID
  * @param gid group ID
 @return InlineResponse2001
 */
-func (a *IamApiService) GetResourceGroupActions(ctx context.Context, rid string, gid string) (InlineResponse2001, *http.Response, error) {
+func (a *IAMApiService) GetResourceGroupActions(ctx context.Context, rid string, gid string) (InlineResponse2001, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -2284,13 +2284,13 @@ func (a *IamApiService) GetResourceGroupActions(ctx context.Context, rid string,
 }
 
 /*
-IamApiService Retrieve all permissions for resource.
+IAMApiService Retrieve all permissions for resource.
 Retrieve all permissions that are set for a specific resource.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid resource ID
 @return AclPermissions
 */
-func (a *IamApiService) GetResourcePermissions(ctx context.Context, rid string) (AclPermissions, *http.Response, error) {
+func (a *IAMApiService) GetResourcePermissions(ctx context.Context, rid string) (AclPermissions, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -2372,7 +2372,7 @@ func (a *IamApiService) GetResourcePermissions(ctx context.Context, rid string) 
 }
 
 /*
-IamApiService Query whether action is allowed or not.
+IAMApiService Query whether action is allowed or not.
 Query whether action is allowed or not.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid resource ID
@@ -2380,7 +2380,7 @@ Query whether action is allowed or not.
  * @param action action name
 @return ActionAllowed
 */
-func (a *IamApiService) GetResourceUserAction(ctx context.Context, rid string, uid string, action string) (ActionAllowed, *http.Response, error) {
+func (a *IAMApiService) GetResourceUserAction(ctx context.Context, rid string, uid string, action string) (ActionAllowed, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -2464,14 +2464,14 @@ func (a *IamApiService) GetResourceUserAction(ctx context.Context, rid string, u
 }
 
 /*
-IamApiService Get allowed actions for given resource and user.
+IAMApiService Get allowed actions for given resource and user.
 Get allowed actions for given resource and user.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid resource ID
  * @param uid account ID
 @return InlineResponse2001
 */
-func (a *IamApiService) GetResourceUserActions(ctx context.Context, rid string, uid string) (InlineResponse2001, *http.Response, error) {
+func (a *IAMApiService) GetResourceUserActions(ctx context.Context, rid string, uid string) (InlineResponse2001, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -2554,13 +2554,13 @@ func (a *IamApiService) GetResourceUserActions(ctx context.Context, rid string, 
 }
 
 /*
-IamApiService Get configuration for a specific SAML provider.
+IAMApiService Get configuration for a specific SAML provider.
 Get configuration for a specific SAML provider.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the SAML provider to retrieve the config for.
 @return SamlProviderConfig
 */
-func (a *IamApiService) GetSAMLProvider(ctx context.Context, providerId string) (SamlProviderConfig, *http.Response, error) {
+func (a *IAMApiService) GetSAMLProvider(ctx context.Context, providerId string) (SamlProviderConfig, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -2642,13 +2642,13 @@ func (a *IamApiService) GetSAMLProvider(ctx context.Context, providerId string) 
 }
 
 /*
-IamApiService Get the authentication callback URL for this SP.
+IAMApiService Get the authentication callback URL for this SP.
 The IAM acts as SAML service provider (SP). A SAML identity provider (IdP) usually requires to be configured with the Assertion Consumer Service (ACS) callback URL of the SP (which is where the IdP makes the end-user submit the authentication response).
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the SAML provider to retrieve the ACS callback URL for.
 @return SamlacsCallbackUrlObject
 */
-func (a *IamApiService) GetSAMLProviderACSCallbackURL(ctx context.Context, providerId string) (SamlacsCallbackUrlObject, *http.Response, error) {
+func (a *IAMApiService) GetSAMLProviderACSCallbackURL(ctx context.Context, providerId string) (SamlacsCallbackUrlObject, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -2730,12 +2730,12 @@ func (a *IamApiService) GetSAMLProviderACSCallbackURL(ctx context.Context, provi
 }
 
 /*
-IamApiService Get SP metadata (XML).
+IAMApiService Get SP metadata (XML).
 The IAM acts as SAML service provider (SP). This endpoint provides the SP metadata as an XML document. Certain identity providers (IdPs) may want to directly consume this document.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the SAML provider to retrieve the metadata for.
 */
-func (a *IamApiService) GetSAMLProviderSPMetadata(ctx context.Context, providerId string) (*http.Response, error) {
+func (a *IAMApiService) GetSAMLProviderSPMetadata(ctx context.Context, providerId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -2797,11 +2797,11 @@ func (a *IamApiService) GetSAMLProviderSPMetadata(ctx context.Context, providerI
 }
 
 /*
-IamApiService Get an overview for the configured SAML 2.0 providers.
+IAMApiService Get an overview for the configured SAML 2.0 providers.
 Get an overview for the configured SAML 2.0 providers. The response contains a JSON object, with each key being a SAML provider ID, and each value being the corresponding provider description string. This endpoint does not expose sensitive provider configuration details.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 */
-func (a *IamApiService) GetSAMLProviders(ctx context.Context) (*http.Response, error) {
+func (a *IAMApiService) GetSAMLProviders(ctx context.Context) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -2862,13 +2862,13 @@ func (a *IamApiService) GetSAMLProviders(ctx context.Context) (*http.Response, e
 }
 
 /*
-IamApiService Get single user object.
+IAMApiService Get single user object.
 Get specific &#x60;User&#x60; object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param uid The ID of the user object to retrieve.
 @return User
 */
-func (a *IamApiService) GetUser(ctx context.Context, uid string) (User, *http.Response, error) {
+func (a *IAMApiService) GetUser(ctx context.Context, uid string) (User, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -2950,13 +2950,13 @@ func (a *IamApiService) GetUser(ctx context.Context, uid string) (User, *http.Re
 }
 
 /*
-IamApiService Retrieve groups the user is member of.
+IAMApiService Retrieve groups the user is member of.
 Retrieve groups the user is member of.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param uid The ID of the user.
 @return UserGroups
 */
-func (a *IamApiService) GetUserGroups(ctx context.Context, uid string) (UserGroups, *http.Response, error) {
+func (a *IAMApiService) GetUserGroups(ctx context.Context, uid string) (UserGroups, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -3038,13 +3038,13 @@ func (a *IamApiService) GetUserGroups(ctx context.Context, uid string) (UserGrou
 }
 
 /*
-IamApiService Retrieve permissions an account has.
+IAMApiService Retrieve permissions an account has.
 Retrieve the permissions for this account with direct permissions distinguished from those that are obtained through group membership.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param uid The id of the user.
 @return UserPermissions
 */
-func (a *IamApiService) GetUserPermissions(ctx context.Context, uid string) (UserPermissions, *http.Response, error) {
+func (a *IAMApiService) GetUserPermissions(ctx context.Context, uid string) (UserPermissions, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -3126,7 +3126,7 @@ func (a *IamApiService) GetUserPermissions(ctx context.Context, uid string) (Use
 }
 
 /*
-IamApiService Retrieve all regular user accounts or service user accounts.
+IAMApiService Retrieve all regular user accounts or service user accounts.
 Retrieve &#x60;User&#x60; objects. By default the list consists of regular user accounts, only. Alternatively, service user accounts may be requested instead.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetUsersOpts - Optional Parameters:
@@ -3138,7 +3138,7 @@ type GetUsersOpts struct {
 	Type_ optional.String
 }
 
-func (a *IamApiService) GetUsers(ctx context.Context, localVarOptionals *GetUsersOpts) (InlineResponse2003, *http.Response, error) {
+func (a *IAMApiService) GetUsers(ctx context.Context, localVarOptionals *GetUsersOpts) (InlineResponse2003, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -3222,12 +3222,12 @@ func (a *IamApiService) GetUsers(ctx context.Context, localVarOptionals *GetUser
 }
 
 /*
-IamApiService Import an LDAP group.
+IAMApiService Import an LDAP group.
 Attempt to import a group of users from the configured directory (LDAP) back-end. See docs/ldap.md for details on group import.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param ldapImportGroupObject A JSON object specifying the name of the group to be imported. The meaning of the name depends on the group search settings.
 */
-func (a *IamApiService) ImportLDAPGroup(ctx context.Context, ldapImportGroupObject LdapImportGroupObject) (*http.Response, error) {
+func (a *IAMApiService) ImportLDAPGroup(ctx context.Context, ldapImportGroupObject LdapImportGroupObject) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -3290,12 +3290,12 @@ func (a *IamApiService) ImportLDAPGroup(ctx context.Context, ldapImportGroupObje
 }
 
 /*
-IamApiService Import an LDAP user.
+IAMApiService Import an LDAP user.
 Attempt to import a user from the configured directory (LDAP) back-end.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param ldapImportUserObject A JSON object specifying the username (read: \"login\" or \"user ID\") of the user that should be imported. That string is equivalent to the `uid` the user is supposed to log in with after successful import. The exact meaning of this string depends on the configured LDAP authentication method.
 */
-func (a *IamApiService) ImportLDAPUser(ctx context.Context, ldapImportUserObject LdapImportUserObject) (*http.Response, error) {
+func (a *IAMApiService) ImportLDAPUser(ctx context.Context, ldapImportUserObject LdapImportUserObject) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -3358,13 +3358,13 @@ func (a *IamApiService) ImportLDAPUser(ctx context.Context, ldapImportUserObject
 }
 
 /*
-IamApiService Log in (obtain a DC/OS authentication token).
+IAMApiService Log in (obtain a DC/OS authentication token).
 Exchange user credentials (regular user account: uid and password; service user account: uid and service login token) for a DC/OS authentication token. The resulting DC/OS authentication token is an RFC 7519 JSON Web Token (JWT) of type RS256. It has a limited lifetime which depends on the IAM configuration (only, i.e. the lifetime cannot be chosen as part of the login HTTP request). The DC/OS authentication token can be verified out-of-band using a standards-compliant RS256 JWT verification procedure based on the long-lived public key material presented by the IAM&#39;s /auth/jwks endpoint, and by requiring the two claims &#x60;exp&#x60; and &#x60;uid&#x60; to be present.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param loginObject uid & password or uid & service login token.
 @return AuthToken
 */
-func (a *IamApiService) Login(ctx context.Context, loginObject LoginObject) (AuthToken, *http.Response, error) {
+func (a *IAMApiService) Login(ctx context.Context, loginObject LoginObject) (AuthToken, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -3447,7 +3447,7 @@ func (a *IamApiService) Login(ctx context.Context, loginObject LoginObject) (Aut
 }
 
 /*
-IamApiService Log in using an external identity provider.
+IAMApiService Log in using an external identity provider.
 Log in using an external identity provider (via e.g. OpenID Connect), as specified via query parameter. This request initiates a single sign-on flow.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *LoginWithProviderOpts - Optional Parameters:
@@ -3458,7 +3458,7 @@ type LoginWithProviderOpts struct {
 	OidcProvider optional.String
 }
 
-func (a *IamApiService) LoginWithProvider(ctx context.Context, localVarOptionals *LoginWithProviderOpts) (*http.Response, error) {
+func (a *IAMApiService) LoginWithProvider(ctx context.Context, localVarOptionals *LoginWithProviderOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -3522,11 +3522,11 @@ func (a *IamApiService) LoginWithProvider(ctx context.Context, localVarOptionals
 }
 
 /*
-IamApiService OpenID Connect callback URL.
+IAMApiService OpenID Connect callback URL.
 After successfully logging in to an OpenID Connect identity provider, the end-user is being redirected back to the IAM via this callback URL. API consumers are not required to explicitly interact with this endpoint. This URL usually needs to be handed over to an OpenID Connect provider (often called \&quot;redirect\&quot; or \&quot;callback\&quot; URL).
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 */
-func (a *IamApiService) OpenIDConnectCallbackURL(ctx context.Context) (*http.Response, error) {
+func (a *IAMApiService) OpenIDConnectCallbackURL(ctx context.Context) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
@@ -3587,14 +3587,14 @@ func (a *IamApiService) OpenIDConnectCallbackURL(ctx context.Context) (*http.Res
 }
 
 /*
-IamApiService Permit single action for given resource and group.
+IAMApiService Permit single action for given resource and group.
 Permit single action for given resource and group.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid resource ID.
  * @param gid group ID.
  * @param action action name
 */
-func (a *IamApiService) PermitResourceGroupAction(ctx context.Context, rid string, gid string, action string) (*http.Response, error) {
+func (a *IAMApiService) PermitResourceGroupAction(ctx context.Context, rid string, gid string, action string) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -3658,14 +3658,14 @@ func (a *IamApiService) PermitResourceGroupAction(ctx context.Context, rid strin
 }
 
 /*
-IamApiService Permit single action for given account and resource.
+IAMApiService Permit single action for given account and resource.
 Permit single action for given account and resource.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid resource ID.
  * @param uid account ID.
  * @param action action name
 */
-func (a *IamApiService) PermitResourceUserAction(ctx context.Context, rid string, uid string, action string) (*http.Response, error) {
+func (a *IAMApiService) PermitResourceUserAction(ctx context.Context, rid string, uid string, action string) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -3729,12 +3729,12 @@ func (a *IamApiService) PermitResourceUserAction(ctx context.Context, rid string
 }
 
 /*
-IamApiService The SP ACS callback endpoint.
+IAMApiService The SP ACS callback endpoint.
 The IAM acts as SAML service provider (SP). As part of the authentication flow, a SAML identity provider (IdP) makes the end-user submit an authentication response to this endpoint.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the provider the authentication response is meant for.
 */
-func (a *IamApiService) SAMLProviderACSCallbackEndpoint(ctx context.Context, providerId string) (*http.Response, error) {
+func (a *IAMApiService) SAMLProviderACSCallbackEndpoint(ctx context.Context, providerId string) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -3796,13 +3796,13 @@ func (a *IamApiService) SAMLProviderACSCallbackEndpoint(ctx context.Context, pro
 }
 
 /*
-IamApiService Test connection to the LDAP back-end.
+IAMApiService Test connection to the LDAP back-end.
 Perform basic feature tests. Verify that the current directory (LDAP) configuration parameters allow for a successful connection to the directory back-end. For instance, this endpoint simulates the procedure for authentication via LDAP, but provides more useful feedback upon failure than the actual login endpoint.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param ldapTestCredentials JSON object containing `uid` and password of an LDAP user. For the most expressive test result, choose credentials different from the lookup credentials. The `uid` is the string the user is supposed to log in with after successful LDAP back-end configuration.
 @return LdapTestResultObject
 */
-func (a *IamApiService) TestLDAPBackendConnection(ctx context.Context, ldapTestCredentials LdapTestCredentials) (LdapTestResultObject, *http.Response, error) {
+func (a *IAMApiService) TestLDAPBackendConnection(ctx context.Context, ldapTestCredentials LdapTestCredentials) (LdapTestResultObject, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -3895,13 +3895,13 @@ func (a *IamApiService) TestLDAPBackendConnection(ctx context.Context, ldapTestC
 }
 
 /*
-IamApiService Update group.
+IAMApiService Update group.
 Update existing group (description).
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param gid The ID of the group to modify.
  * @param groupUpdate
 */
-func (a *IamApiService) UpdateGroup(ctx context.Context, gid string, groupUpdate GroupUpdate) (*http.Response, error) {
+func (a *IAMApiService) UpdateGroup(ctx context.Context, gid string, groupUpdate GroupUpdate) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Patch")
 		localVarPostBody     interface{}
@@ -3965,13 +3965,13 @@ func (a *IamApiService) UpdateGroup(ctx context.Context, gid string, groupUpdate
 }
 
 /*
-IamApiService Update OIDC provider config.
+IAMApiService Update OIDC provider config.
 Update config for existing OIDC provider.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the provider to modify.
  * @param oidcProviderConfig Provider config JSON object
 */
-func (a *IamApiService) UpdateOIDCProvider(ctx context.Context, providerId string, oidcProviderConfig OidcProviderConfig) (*http.Response, error) {
+func (a *IAMApiService) UpdateOIDCProvider(ctx context.Context, providerId string, oidcProviderConfig OidcProviderConfig) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Patch")
 		localVarPostBody     interface{}
@@ -4035,13 +4035,13 @@ func (a *IamApiService) UpdateOIDCProvider(ctx context.Context, providerId strin
 }
 
 /*
-IamApiService Update ACL for a certain resource.
+IAMApiService Update ACL for a certain resource.
 Update ACL for resource with ID &#x60;rid&#x60;.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid The ID of the resource for which the ACL should be created.
  * @param aclUpdate New ACL.
 */
-func (a *IamApiService) UpdateResourceACL(ctx context.Context, rid string, aclUpdate AclUpdate) (*http.Response, error) {
+func (a *IAMApiService) UpdateResourceACL(ctx context.Context, rid string, aclUpdate AclUpdate) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Patch")
 		localVarPostBody     interface{}
@@ -4105,13 +4105,13 @@ func (a *IamApiService) UpdateResourceACL(ctx context.Context, rid string, aclUp
 }
 
 /*
-IamApiService Update SAML provider config.
+IAMApiService Update SAML provider config.
 Update config for existing SAML provider.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the provider to modify.
  * @param samlProviderConfig Provider config JSON object
 */
-func (a *IamApiService) UpdateSAMLProvider(ctx context.Context, providerId string, samlProviderConfig SamlProviderConfig) (*http.Response, error) {
+func (a *IAMApiService) UpdateSAMLProvider(ctx context.Context, providerId string, samlProviderConfig SamlProviderConfig) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Patch")
 		localVarPostBody     interface{}
@@ -4175,13 +4175,13 @@ func (a *IamApiService) UpdateSAMLProvider(ctx context.Context, providerId strin
 }
 
 /*
-IamApiService Update user account.
+IAMApiService Update user account.
 Update existing user account (meta data and/or password).
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param uid The ID of the user account to modify.
  * @param userUpdate Password/description.
 */
-func (a *IamApiService) UpdateUser(ctx context.Context, uid string, userUpdate UserUpdate) (*http.Response, error) {
+func (a *IAMApiService) UpdateUser(ctx context.Context, uid string, userUpdate UserUpdate) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Patch")
 		localVarPostBody     interface{}

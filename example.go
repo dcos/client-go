@@ -9,7 +9,7 @@ import (
 )
 
 func listUsers(client *dcos.APIClient) error {
-	users, _, err := client.IamApi.GetUsers(context.TODO(), nil)
+	users, _, err := client.IAMApi.GetUsers(context.TODO(), nil)
 	if err != nil {
 		return err
 	}

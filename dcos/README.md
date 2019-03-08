@@ -37,61 +37,61 @@ Class | Method | HTTP request | Description
 *CosmosApi* | [**PackageUninstall**](docs/CosmosApi.md#packageuninstall) | **Post** /package/uninstall | 
 *CosmosApi* | [**ServiceDescribe**](docs/CosmosApi.md#servicedescribe) | **Post** /cosmos/service/describe | 
 *CosmosApi* | [**ServiceUpdate**](docs/CosmosApi.md#serviceupdate) | **Post** /cosmos/service/update | 
-*IamApi* | [**ConfigureOIDCProvider**](docs/IamApi.md#configureoidcprovider) | **Put** /acs/api/v1/auth/oidc/providers/{provider-id} | Configure a new OIDC provider.
-*IamApi* | [**ConfigureSAMLProvider**](docs/IamApi.md#configuresamlprovider) | **Put** /acs/api/v1/auth/saml/providers/{provider-id} | Configure a new SAML provider.
-*IamApi* | [**CreateGroup**](docs/IamApi.md#creategroup) | **Put** /acs/api/v1/groups/{gid} | Create a group.
-*IamApi* | [**CreateGroupUser**](docs/IamApi.md#creategroupuser) | **Put** /acs/api/v1/groups/{gid}/users/{uid} | Add account to group.
-*IamApi* | [**CreateLDAPConfiguration**](docs/IamApi.md#createldapconfiguration) | **Put** /acs/api/v1/ldap/config | Set new LDAP configuration.
-*IamApi* | [**CreateResourceACL**](docs/IamApi.md#createresourceacl) | **Put** /acs/api/v1/acls/{rid} | Create ACL for a certain resource.
-*IamApi* | [**CreateUser**](docs/IamApi.md#createuser) | **Put** /acs/api/v1/users/{uid} | Create user account.
-*IamApi* | [**DeleteGroup**](docs/IamApi.md#deletegroup) | **Delete** /acs/api/v1/groups/{gid} | Delete group.
-*IamApi* | [**DeleteGroupUser**](docs/IamApi.md#deletegroupuser) | **Delete** /acs/api/v1/groups/{gid}/users/{uid} | Delete user account from group.
-*IamApi* | [**DeleteLDAPConfiguration**](docs/IamApi.md#deleteldapconfiguration) | **Delete** /acs/api/v1/ldap/config | Delete current LDAP configuration.
-*IamApi* | [**DeleteOIDCProvider**](docs/IamApi.md#deleteoidcprovider) | **Delete** /acs/api/v1/auth/oidc/providers/{provider-id} | Delete provider.
-*IamApi* | [**DeleteResourceACL**](docs/IamApi.md#deleteresourceacl) | **Delete** /acs/api/v1/acls/{rid} | Delete ACL for a certain resource.
-*IamApi* | [**DeleteSAMLProvider**](docs/IamApi.md#deletesamlprovider) | **Delete** /acs/api/v1/auth/saml/providers/{provider-id} | Delete provider.
-*IamApi* | [**DeleteUser**](docs/IamApi.md#deleteuser) | **Delete** /acs/api/v1/users/{uid} | Delete account.
-*IamApi* | [**ForbidResourceUserAction**](docs/IamApi.md#forbidresourceuseraction) | **Delete** /acs/api/v1/acls/{rid}/users/{uid}/{action} | Forbid single action for given account and resource.
-*IamApi* | [**ForbidResourceUserActions**](docs/IamApi.md#forbidresourceuseractions) | **Delete** /acs/api/v1/acls/{rid}/users/{uid} | Forbid all actions of given account to given resource.
-*IamApi* | [**ForbitResourceGroupAction**](docs/IamApi.md#forbitresourcegroupaction) | **Delete** /acs/api/v1/acls/{rid}/groups/{gid}/{action} | Forbid single action for given resource and group.
-*IamApi* | [**ForbitResourceGroupActions**](docs/IamApi.md#forbitresourcegroupactions) | **Delete** /acs/api/v1/acls/{rid}/groups/{gid} | Forbid all actions of given group to given resource.
-*IamApi* | [**GetACLs**](docs/IamApi.md#getacls) | **Get** /acs/api/v1/acls | Retrieve all ACL objects.
-*IamApi* | [**GetGroup**](docs/IamApi.md#getgroup) | **Get** /acs/api/v1/groups/{gid} | Get single group object.
-*IamApi* | [**GetGroupPermissions**](docs/IamApi.md#getgrouppermissions) | **Get** /acs/api/v1/groups/{gid}/permissions | Retrieve group permissions.
-*IamApi* | [**GetGroupUsers**](docs/IamApi.md#getgroupusers) | **Get** /acs/api/v1/groups/{gid}/users | Retrieve members of a group.
-*IamApi* | [**GetGroups**](docs/IamApi.md#getgroups) | **Get** /acs/api/v1/groups | Retrieve all group objects.
-*IamApi* | [**GetJWKS**](docs/IamApi.md#getjwks) | **Get** /acs/api/v1/auth/jwks | Get the IAM&#39;s JSON Web Key Set (JWKS, according to RFCs 7517/7518).
-*IamApi* | [**GetLDAPConfiguration**](docs/IamApi.md#getldapconfiguration) | **Get** /acs/api/v1/ldap/config | Retrieve current LDAP configuration.
-*IamApi* | [**GetOIDCProvider**](docs/IamApi.md#getoidcprovider) | **Get** /acs/api/v1/auth/oidc/providers/{provider-id} | Get configuration for a specific provider.
-*IamApi* | [**GetOIDCProviders**](docs/IamApi.md#getoidcproviders) | **Get** /acs/api/v1/auth/oidc/providers | Get an overview for the configured OIDC providers.
-*IamApi* | [**GetResourceACLs**](docs/IamApi.md#getresourceacls) | **Get** /acs/api/v1/acls/{rid} | Retrieve ACL for a certain resource.
-*IamApi* | [**GetResourceGroupAction**](docs/IamApi.md#getresourcegroupaction) | **Get** /acs/api/v1/acls/{rid}/groups/{gid}/{action} | Query whether action is allowed or not.
-*IamApi* | [**GetResourceGroupActions**](docs/IamApi.md#getresourcegroupactions) | **Get** /acs/api/v1/acls/{rid}/groups/{gid} | Get allowed actions for given resource and group.
-*IamApi* | [**GetResourcePermissions**](docs/IamApi.md#getresourcepermissions) | **Get** /acs/api/v1/acls/{rid}/permissions | Retrieve all permissions for resource.
-*IamApi* | [**GetResourceUserAction**](docs/IamApi.md#getresourceuseraction) | **Get** /acs/api/v1/acls/{rid}/users/{uid}/{action} | Query whether action is allowed or not.
-*IamApi* | [**GetResourceUserActions**](docs/IamApi.md#getresourceuseractions) | **Get** /acs/api/v1/acls/{rid}/users/{uid} | Get allowed actions for given resource and user.
-*IamApi* | [**GetSAMLProvider**](docs/IamApi.md#getsamlprovider) | **Get** /acs/api/v1/auth/saml/providers/{provider-id} | Get configuration for a specific SAML provider.
-*IamApi* | [**GetSAMLProviderACSCallbackURL**](docs/IamApi.md#getsamlprovideracscallbackurl) | **Get** /acs/api/v1/auth/saml/providers/{provider-id}/acs-callback-url | Get the authentication callback URL for this SP.
-*IamApi* | [**GetSAMLProviderSPMetadata**](docs/IamApi.md#getsamlproviderspmetadata) | **Get** /acs/api/v1/auth/saml/providers/{provider-id}/sp-metadata | Get SP metadata (XML).
-*IamApi* | [**GetSAMLProviders**](docs/IamApi.md#getsamlproviders) | **Get** /acs/api/v1/auth/saml/providers | Get an overview for the configured SAML 2.0 providers.
-*IamApi* | [**GetUser**](docs/IamApi.md#getuser) | **Get** /acs/api/v1/users/{uid} | Get single user object.
-*IamApi* | [**GetUserGroups**](docs/IamApi.md#getusergroups) | **Get** /acs/api/v1/users/{uid}/groups | Retrieve groups the user is member of.
-*IamApi* | [**GetUserPermissions**](docs/IamApi.md#getuserpermissions) | **Get** /acs/api/v1/users/{uid}/permissions | Retrieve permissions an account has.
-*IamApi* | [**GetUsers**](docs/IamApi.md#getusers) | **Get** /acs/api/v1/users | Retrieve all regular user accounts or service user accounts.
-*IamApi* | [**ImportLDAPGroup**](docs/IamApi.md#importldapgroup) | **Post** /acs/api/v1/ldap/importgroup | Import an LDAP group.
-*IamApi* | [**ImportLDAPUser**](docs/IamApi.md#importldapuser) | **Post** /acs/api/v1/ldap/importuser | Import an LDAP user.
-*IamApi* | [**Login**](docs/IamApi.md#login) | **Post** /acs/api/v1/auth/login | Log in (obtain a DC/OS authentication token).
-*IamApi* | [**LoginWithProvider**](docs/IamApi.md#loginwithprovider) | **Get** /acs/api/v1/auth/login | Log in using an external identity provider.
-*IamApi* | [**OpenIDConnectCallbackURL**](docs/IamApi.md#openidconnectcallbackurl) | **Get** /acs/api/v1/auth/oidc/callback | OpenID Connect callback URL.
-*IamApi* | [**PermitResourceGroupAction**](docs/IamApi.md#permitresourcegroupaction) | **Put** /acs/api/v1/acls/{rid}/groups/{gid}/{action} | Permit single action for given resource and group.
-*IamApi* | [**PermitResourceUserAction**](docs/IamApi.md#permitresourceuseraction) | **Put** /acs/api/v1/acls/{rid}/users/{uid}/{action} | Permit single action for given account and resource.
-*IamApi* | [**SAMLProviderACSCallbackEndpoint**](docs/IamApi.md#samlprovideracscallbackendpoint) | **Post** /acs/api/v1/auth/saml/providers/{provider-id}/acs-callback | The SP ACS callback endpoint.
-*IamApi* | [**TestLDAPBackendConnection**](docs/IamApi.md#testldapbackendconnection) | **Post** /acs/api/v1/ldap/config/test | Test connection to the LDAP back-end.
-*IamApi* | [**UpdateGroup**](docs/IamApi.md#updategroup) | **Patch** /acs/api/v1/groups/{gid} | Update group.
-*IamApi* | [**UpdateOIDCProvider**](docs/IamApi.md#updateoidcprovider) | **Patch** /acs/api/v1/auth/oidc/providers/{provider-id} | Update OIDC provider config.
-*IamApi* | [**UpdateResourceACL**](docs/IamApi.md#updateresourceacl) | **Patch** /acs/api/v1/acls/{rid} | Update ACL for a certain resource.
-*IamApi* | [**UpdateSAMLProvider**](docs/IamApi.md#updatesamlprovider) | **Patch** /acs/api/v1/auth/saml/providers/{provider-id} | Update SAML provider config.
-*IamApi* | [**UpdateUser**](docs/IamApi.md#updateuser) | **Patch** /acs/api/v1/users/{uid} | Update user account.
+*IAMApi* | [**ConfigureOIDCProvider**](docs/IAMApi.md#configureoidcprovider) | **Put** /acs/api/v1/auth/oidc/providers/{provider-id} | Configure a new OIDC provider.
+*IAMApi* | [**ConfigureSAMLProvider**](docs/IAMApi.md#configuresamlprovider) | **Put** /acs/api/v1/auth/saml/providers/{provider-id} | Configure a new SAML provider.
+*IAMApi* | [**CreateGroup**](docs/IAMApi.md#creategroup) | **Put** /acs/api/v1/groups/{gid} | Create a group.
+*IAMApi* | [**CreateGroupUser**](docs/IAMApi.md#creategroupuser) | **Put** /acs/api/v1/groups/{gid}/users/{uid} | Add account to group.
+*IAMApi* | [**CreateLDAPConfiguration**](docs/IAMApi.md#createldapconfiguration) | **Put** /acs/api/v1/ldap/config | Set new LDAP configuration.
+*IAMApi* | [**CreateResourceACL**](docs/IAMApi.md#createresourceacl) | **Put** /acs/api/v1/acls/{rid} | Create ACL for a certain resource.
+*IAMApi* | [**CreateUser**](docs/IAMApi.md#createuser) | **Put** /acs/api/v1/users/{uid} | Create user account.
+*IAMApi* | [**DeleteGroup**](docs/IAMApi.md#deletegroup) | **Delete** /acs/api/v1/groups/{gid} | Delete group.
+*IAMApi* | [**DeleteGroupUser**](docs/IAMApi.md#deletegroupuser) | **Delete** /acs/api/v1/groups/{gid}/users/{uid} | Delete user account from group.
+*IAMApi* | [**DeleteLDAPConfiguration**](docs/IAMApi.md#deleteldapconfiguration) | **Delete** /acs/api/v1/ldap/config | Delete current LDAP configuration.
+*IAMApi* | [**DeleteOIDCProvider**](docs/IAMApi.md#deleteoidcprovider) | **Delete** /acs/api/v1/auth/oidc/providers/{provider-id} | Delete provider.
+*IAMApi* | [**DeleteResourceACL**](docs/IAMApi.md#deleteresourceacl) | **Delete** /acs/api/v1/acls/{rid} | Delete ACL for a certain resource.
+*IAMApi* | [**DeleteSAMLProvider**](docs/IAMApi.md#deletesamlprovider) | **Delete** /acs/api/v1/auth/saml/providers/{provider-id} | Delete provider.
+*IAMApi* | [**DeleteUser**](docs/IAMApi.md#deleteuser) | **Delete** /acs/api/v1/users/{uid} | Delete account.
+*IAMApi* | [**ForbidResourceUserAction**](docs/IAMApi.md#forbidresourceuseraction) | **Delete** /acs/api/v1/acls/{rid}/users/{uid}/{action} | Forbid single action for given account and resource.
+*IAMApi* | [**ForbidResourceUserActions**](docs/IAMApi.md#forbidresourceuseractions) | **Delete** /acs/api/v1/acls/{rid}/users/{uid} | Forbid all actions of given account to given resource.
+*IAMApi* | [**ForbitResourceGroupAction**](docs/IAMApi.md#forbitresourcegroupaction) | **Delete** /acs/api/v1/acls/{rid}/groups/{gid}/{action} | Forbid single action for given resource and group.
+*IAMApi* | [**ForbitResourceGroupActions**](docs/IAMApi.md#forbitresourcegroupactions) | **Delete** /acs/api/v1/acls/{rid}/groups/{gid} | Forbid all actions of given group to given resource.
+*IAMApi* | [**GetACLs**](docs/IAMApi.md#getacls) | **Get** /acs/api/v1/acls | Retrieve all ACL objects.
+*IAMApi* | [**GetGroup**](docs/IAMApi.md#getgroup) | **Get** /acs/api/v1/groups/{gid} | Get single group object.
+*IAMApi* | [**GetGroupPermissions**](docs/IAMApi.md#getgrouppermissions) | **Get** /acs/api/v1/groups/{gid}/permissions | Retrieve group permissions.
+*IAMApi* | [**GetGroupUsers**](docs/IAMApi.md#getgroupusers) | **Get** /acs/api/v1/groups/{gid}/users | Retrieve members of a group.
+*IAMApi* | [**GetGroups**](docs/IAMApi.md#getgroups) | **Get** /acs/api/v1/groups | Retrieve all group objects.
+*IAMApi* | [**GetJWKS**](docs/IAMApi.md#getjwks) | **Get** /acs/api/v1/auth/jwks | Get the IAM&#39;s JSON Web Key Set (JWKS, according to RFCs 7517/7518).
+*IAMApi* | [**GetLDAPConfiguration**](docs/IAMApi.md#getldapconfiguration) | **Get** /acs/api/v1/ldap/config | Retrieve current LDAP configuration.
+*IAMApi* | [**GetOIDCProvider**](docs/IAMApi.md#getoidcprovider) | **Get** /acs/api/v1/auth/oidc/providers/{provider-id} | Get configuration for a specific provider.
+*IAMApi* | [**GetOIDCProviders**](docs/IAMApi.md#getoidcproviders) | **Get** /acs/api/v1/auth/oidc/providers | Get an overview for the configured OIDC providers.
+*IAMApi* | [**GetResourceACLs**](docs/IAMApi.md#getresourceacls) | **Get** /acs/api/v1/acls/{rid} | Retrieve ACL for a certain resource.
+*IAMApi* | [**GetResourceGroupAction**](docs/IAMApi.md#getresourcegroupaction) | **Get** /acs/api/v1/acls/{rid}/groups/{gid}/{action} | Query whether action is allowed or not.
+*IAMApi* | [**GetResourceGroupActions**](docs/IAMApi.md#getresourcegroupactions) | **Get** /acs/api/v1/acls/{rid}/groups/{gid} | Get allowed actions for given resource and group.
+*IAMApi* | [**GetResourcePermissions**](docs/IAMApi.md#getresourcepermissions) | **Get** /acs/api/v1/acls/{rid}/permissions | Retrieve all permissions for resource.
+*IAMApi* | [**GetResourceUserAction**](docs/IAMApi.md#getresourceuseraction) | **Get** /acs/api/v1/acls/{rid}/users/{uid}/{action} | Query whether action is allowed or not.
+*IAMApi* | [**GetResourceUserActions**](docs/IAMApi.md#getresourceuseractions) | **Get** /acs/api/v1/acls/{rid}/users/{uid} | Get allowed actions for given resource and user.
+*IAMApi* | [**GetSAMLProvider**](docs/IAMApi.md#getsamlprovider) | **Get** /acs/api/v1/auth/saml/providers/{provider-id} | Get configuration for a specific SAML provider.
+*IAMApi* | [**GetSAMLProviderACSCallbackURL**](docs/IAMApi.md#getsamlprovideracscallbackurl) | **Get** /acs/api/v1/auth/saml/providers/{provider-id}/acs-callback-url | Get the authentication callback URL for this SP.
+*IAMApi* | [**GetSAMLProviderSPMetadata**](docs/IAMApi.md#getsamlproviderspmetadata) | **Get** /acs/api/v1/auth/saml/providers/{provider-id}/sp-metadata | Get SP metadata (XML).
+*IAMApi* | [**GetSAMLProviders**](docs/IAMApi.md#getsamlproviders) | **Get** /acs/api/v1/auth/saml/providers | Get an overview for the configured SAML 2.0 providers.
+*IAMApi* | [**GetUser**](docs/IAMApi.md#getuser) | **Get** /acs/api/v1/users/{uid} | Get single user object.
+*IAMApi* | [**GetUserGroups**](docs/IAMApi.md#getusergroups) | **Get** /acs/api/v1/users/{uid}/groups | Retrieve groups the user is member of.
+*IAMApi* | [**GetUserPermissions**](docs/IAMApi.md#getuserpermissions) | **Get** /acs/api/v1/users/{uid}/permissions | Retrieve permissions an account has.
+*IAMApi* | [**GetUsers**](docs/IAMApi.md#getusers) | **Get** /acs/api/v1/users | Retrieve all regular user accounts or service user accounts.
+*IAMApi* | [**ImportLDAPGroup**](docs/IAMApi.md#importldapgroup) | **Post** /acs/api/v1/ldap/importgroup | Import an LDAP group.
+*IAMApi* | [**ImportLDAPUser**](docs/IAMApi.md#importldapuser) | **Post** /acs/api/v1/ldap/importuser | Import an LDAP user.
+*IAMApi* | [**Login**](docs/IAMApi.md#login) | **Post** /acs/api/v1/auth/login | Log in (obtain a DC/OS authentication token).
+*IAMApi* | [**LoginWithProvider**](docs/IAMApi.md#loginwithprovider) | **Get** /acs/api/v1/auth/login | Log in using an external identity provider.
+*IAMApi* | [**OpenIDConnectCallbackURL**](docs/IAMApi.md#openidconnectcallbackurl) | **Get** /acs/api/v1/auth/oidc/callback | OpenID Connect callback URL.
+*IAMApi* | [**PermitResourceGroupAction**](docs/IAMApi.md#permitresourcegroupaction) | **Put** /acs/api/v1/acls/{rid}/groups/{gid}/{action} | Permit single action for given resource and group.
+*IAMApi* | [**PermitResourceUserAction**](docs/IAMApi.md#permitresourceuseraction) | **Put** /acs/api/v1/acls/{rid}/users/{uid}/{action} | Permit single action for given account and resource.
+*IAMApi* | [**SAMLProviderACSCallbackEndpoint**](docs/IAMApi.md#samlprovideracscallbackendpoint) | **Post** /acs/api/v1/auth/saml/providers/{provider-id}/acs-callback | The SP ACS callback endpoint.
+*IAMApi* | [**TestLDAPBackendConnection**](docs/IAMApi.md#testldapbackendconnection) | **Post** /acs/api/v1/ldap/config/test | Test connection to the LDAP back-end.
+*IAMApi* | [**UpdateGroup**](docs/IAMApi.md#updategroup) | **Patch** /acs/api/v1/groups/{gid} | Update group.
+*IAMApi* | [**UpdateOIDCProvider**](docs/IAMApi.md#updateoidcprovider) | **Patch** /acs/api/v1/auth/oidc/providers/{provider-id} | Update OIDC provider config.
+*IAMApi* | [**UpdateResourceACL**](docs/IAMApi.md#updateresourceacl) | **Patch** /acs/api/v1/acls/{rid} | Update ACL for a certain resource.
+*IAMApi* | [**UpdateSAMLProvider**](docs/IAMApi.md#updatesamlprovider) | **Patch** /acs/api/v1/auth/saml/providers/{provider-id} | Update SAML provider config.
+*IAMApi* | [**UpdateUser**](docs/IAMApi.md#updateuser) | **Patch** /acs/api/v1/users/{uid} | Update user account.
 *SecretsApi* | [**CreateSecret**](docs/SecretsApi.md#createsecret) | **Put** /secrets/v1/secret/{store}/{path-to-secret} | Create a secret in the store at the path.
 *SecretsApi* | [**DeleteSecret**](docs/SecretsApi.md#deletesecret) | **Delete** /secrets/v1/secret/{store}/{path-to-secret} | Delete a secret.
 *SecretsApi* | [**GetSecret**](docs/SecretsApi.md#getsecret) | **Get** /secrets/v1/secret/{store}/{path-to-secret} | Read or list a secret from the store by its path.

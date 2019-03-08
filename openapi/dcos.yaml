@@ -10,7 +10,7 @@ tags:
   name: secrets
 - description: DC/OS Cosmos Package Management
   name: cosmos
-- name: iam
+- name: IAM
   description: DC/OS Identity and Access Management API
 - name: login
   description: Login- and authentication-related endpoints
@@ -379,7 +379,7 @@ paths:
       summary: Retrieve all ACL objects.
       description: Get array of `ACL` objects.
       tags:
-        - iam
+        - IAM
           # - permissions
       responses:
         "200":
@@ -399,7 +399,7 @@ paths:
       summary: Retrieve ACL for a certain resource.
       description: Retrieve single `ACL` object, for a specific resource.
       tags:
-        - iam
+        - IAM
           # - permissions
       parameters:
         - name: rid
@@ -421,7 +421,7 @@ paths:
       description: Create new ACL for resource with ID `rid` (description in body, no
         permissions by default).
       tags:
-        - iam
+        - IAM
           # - permissions
       parameters:
         - name: rid
@@ -446,7 +446,7 @@ paths:
       summary: Update ACL for a certain resource.
       description: Update ACL for resource with ID `rid`.
       tags:
-        - iam
+        - IAM
           # - permissions
       parameters:
         - name: rid
@@ -470,7 +470,7 @@ paths:
       summary: Delete ACL for a certain resource.
       description: Delete ACL of resource with ID `rid`.
       tags:
-        - iam
+        - IAM
           # - permissions
       parameters:
         - name: rid
@@ -490,7 +490,7 @@ paths:
       summary: Get allowed actions for given resource and group.
       description: Get allowed actions for given resource and group.
       tags:
-        - iam
+        - IAM
           # - permissions
       parameters:
         - name: rid
@@ -522,7 +522,7 @@ paths:
       summary: Forbid all actions of given group to given resource.
       description: Forbid all actions of given group to given resource.
       tags:
-        - iam
+        - IAM
           # - permissions
       parameters:
         - name: rid
@@ -546,7 +546,7 @@ paths:
       summary: Query whether action is allowed or not.
       description: Query whether action is allowed or not.
       tags:
-        - iam
+        - IAM
           # - permissions
       parameters:
         - name: rid
@@ -579,7 +579,7 @@ paths:
       summary: Permit single action for given resource and group.
       description: Permit single action for given resource and group.
       tags:
-        - iam
+        - IAM
           # - permissions
       parameters:
         - name: rid
@@ -608,7 +608,7 @@ paths:
       summary: Forbid single action for given resource and group.
       description: Forbid single action for given resource and group.
       tags:
-        - iam
+        - IAM
           # - permissions
       parameters:
         - name: rid
@@ -638,7 +638,7 @@ paths:
       summary: Retrieve all permissions for resource.
       description: Retrieve all permissions that are set for a specific resource.
       tags:
-        - iam
+        - IAM
           # - permissions
       parameters:
         - name: rid
@@ -660,7 +660,7 @@ paths:
       summary: Get allowed actions for given resource and user.
       description: Get allowed actions for given resource and user.
       tags:
-        - iam
+        - IAM
           # - permissions
       parameters:
         - name: rid
@@ -692,7 +692,7 @@ paths:
       summary: Forbid all actions of given account to given resource.
       description: Forbid all actions of given account to given resource.
       tags:
-        - iam
+        - IAM
           # - permissions
       parameters:
         - name: rid
@@ -716,7 +716,7 @@ paths:
       summary: Query whether action is allowed or not.
       description: Query whether action is allowed or not.
       tags:
-        - iam
+        - IAM
           # - permissions
       parameters:
         - name: rid
@@ -749,7 +749,7 @@ paths:
       summary: Permit single action for given account and resource.
       description: Permit single action for given account and resource.
       tags:
-        - iam
+        - IAM
           # - permissions
       parameters:
         - name: rid
@@ -780,7 +780,7 @@ paths:
       summary: Forbid single action for given account and resource.
       description: Forbid single action for given account and resource.
       tags:
-        - iam
+        - IAM
           # - permissions
       parameters:
         - name: rid
@@ -818,7 +818,7 @@ paths:
         https://tools.ietf.org/html/rfc7517 and
         https://tools.ietf.org/html/rfc7518."
       tags:
-        - iam
+        - IAM
       responses:
         "200":
           description: The response body contains a JSON Web Key Set document.
@@ -837,7 +837,7 @@ paths:
         presented by the IAM's /auth/jwks endpoint, and by requiring the two
         claims `exp` and `uid` to be present."
       tags:
-        - iam
+        - IAM
         # - login
       requestBody:
         content:
@@ -870,7 +870,7 @@ paths:
         specified via query parameter. This request initiates a single sign-on
         flow.
       tags:
-        - iam
+        - IAM
           # - login
       parameters:
         - name: oidc-provider
@@ -892,7 +892,7 @@ paths:
         endpoint. This URL usually needs to be handed over to an OpenID Connect
         provider (often called "redirect" or "callback" URL).
       tags:
-        - iam
+        - IAM
           # - oidc
       responses:
         "302":
@@ -908,7 +908,7 @@ paths:
         being the corresponding provider description string. This endpoint does
         not expose sensitive provider configuration details.
       tags:
-        - iam
+        - IAM
           # - oidc
       responses:
         "200":
@@ -919,7 +919,7 @@ paths:
       summary: Get configuration for a specific provider.
       description: Get configuration for a specific provider.
       tags:
-        - iam
+        - IAM
           # - oidc
       parameters:
         - name: provider-id
@@ -941,7 +941,7 @@ paths:
       description: Set up OIDC provider with the ID as specified in the URL, and with the
         config as specified via JSON in the request body.
       tags:
-        - iam
+        - IAM
           # - oidc
       parameters:
         - name: provider-id
@@ -962,7 +962,7 @@ paths:
       summary: Update OIDC provider config.
       description: Update config for existing OIDC provider.
       tags:
-        - iam
+        - IAM
           # - oidc
       parameters:
         - name: provider-id
@@ -983,7 +983,7 @@ paths:
       summary: Delete provider.
       description: Delete provider (disables authentication with that provider).
       tags:
-        - iam
+        - IAM
           # - oidc
       parameters:
         - name: provider-id
@@ -1004,7 +1004,7 @@ paths:
         value being the corresponding provider description string. This endpoint
         does not expose sensitive provider configuration details.
       tags:
-        - iam
+        - IAM
           # - saml
       responses:
         "200":
@@ -1015,7 +1015,7 @@ paths:
       summary: Get configuration for a specific SAML provider.
       description: Get configuration for a specific SAML provider.
       tags:
-        - iam
+        - IAM
           # - saml
       parameters:
         - name: provider-id
@@ -1037,7 +1037,7 @@ paths:
       description: Set up a SAML provider with the ID as specified in the URL, and with the
         config as given by the JSON document in the request body.
       tags:
-        - iam
+        - IAM
           # - saml
       parameters:
         - name: provider-id
@@ -1058,7 +1058,7 @@ paths:
       summary: Update SAML provider config.
       description: Update config for existing SAML provider.
       tags:
-        - iam
+        - IAM
           # - saml
       parameters:
         - name: provider-id
@@ -1079,7 +1079,7 @@ paths:
       summary: Delete provider.
       description: Delete provider (disables authentication with that provider).
       tags:
-        - iam
+        - IAM
           # - saml
       parameters:
         - name: provider-id
@@ -1099,7 +1099,7 @@ paths:
         authentication flow, a SAML identity provider (IdP) makes the end-user
         submit an authentication response to this endpoint.
       tags:
-        - iam
+        - IAM
           # - saml
       parameters:
         - name: provider-id
@@ -1122,7 +1122,7 @@ paths:
         Service (ACS) callback URL of the SP (which is where the IdP makes the
         end-user submit the authentication response).
       tags:
-        - iam
+        - IAM
           # - saml
       parameters:
         - name: provider-id
@@ -1146,7 +1146,7 @@ paths:
         SP metadata as an XML document. Certain identity providers (IdPs) may
         want to directly consume this document.
       tags:
-        - iam
+        - IAM
           # - saml
       parameters:
         - name: provider-id
@@ -1165,7 +1165,7 @@ paths:
       summary: Retrieve all group objects.
       description: Retrieve array of `Group` objects.
       tags:
-        - iam
+        - IAM
           # - groups
       responses:
         "200":
@@ -1185,7 +1185,7 @@ paths:
       summary: Get single group object.
       description: Get specific `Group` object.
       tags:
-        - iam
+        - IAM
           # - groups
       parameters:
         - name: gid
@@ -1206,7 +1206,7 @@ paths:
       summary: Create a group.
       description: Create a group.
       tags:
-        - iam
+        - IAM
           # - groups
       parameters:
         - name: gid
@@ -1231,7 +1231,7 @@ paths:
       summary: Update group.
       description: Update existing group (description).
       tags:
-        - iam
+        - IAM
           # - groups
       parameters:
         - name: gid
@@ -1254,7 +1254,7 @@ paths:
       summary: Delete group.
       description: Delete group.
       tags:
-        - iam
+        - IAM
           # - groups
       parameters:
         - name: gid
@@ -1272,7 +1272,7 @@ paths:
       summary: Retrieve group permissions.
       description: Retrieve permissions of this group.
       tags:
-        - iam
+        - IAM
           # - groups
       parameters:
         - name: gid
@@ -1295,7 +1295,7 @@ paths:
       description: Retrieve users that are member of this group. Allows to query service
         accounts, defaults to list only user accounts.
       tags:
-        - iam
+        - IAM
           # - groups
       parameters:
         - name: gid
@@ -1323,7 +1323,7 @@ paths:
       summary: Delete user account from group.
       description: Delete user account from group.
       tags:
-        - iam
+        - IAM
           # - groups
       parameters:
         - name: gid
@@ -1346,7 +1346,7 @@ paths:
       summary: Add account to group.
       description: Add account to group.
       tags:
-        - iam
+        - IAM
           # - groups
       parameters:
         - name: gid
@@ -1372,7 +1372,7 @@ paths:
       summary: Retrieve current LDAP configuration.
       description: Retrieve current directory (LDAP) back-end configuration.
       tags:
-        - iam
+        - IAM
           # - ldap
       responses:
         "200":
@@ -1391,7 +1391,7 @@ paths:
       description: Set new directory (LDAP) back-end configuration. Replace current
         configuration, if existing.
       tags:
-        - iam
+        - IAM
           # - ldap
       requestBody:
         content:
@@ -1416,7 +1416,7 @@ paths:
       description: Delete current directory (LDAP) back-end configuration. This deactivates
         the LDAP authentication.
       tags:
-        - iam
+        - IAM
           # - ldap
       responses:
         "204":
@@ -1434,7 +1434,7 @@ paths:
         for authentication via LDAP, but provides more useful feedback upon
         failure than the actual login endpoint.
       tags:
-        - iam
+        - IAM
           # - ldap
       requestBody:
         content:
@@ -1469,7 +1469,7 @@ paths:
       description: Attempt to import a group of users from the configured directory (LDAP)
         back-end. See docs/ldap.md for details on group import.
       tags:
-        - iam
+        - IAM
           # - ldap
       requestBody:
         content:
@@ -1496,7 +1496,7 @@ paths:
       summary: Import an LDAP user.
       description: Attempt to import a user from the configured directory (LDAP) back-end.
       tags:
-        - iam
+        - IAM
           # - ldap
       requestBody:
         content:
@@ -1528,7 +1528,7 @@ paths:
         accounts, only. Alternatively, service user accounts may be requested
         instead.
       tags:
-        - iam
+        - IAM
           # - users
       parameters:
         - name: type
@@ -1555,7 +1555,7 @@ paths:
       summary: Get single user object.
       description: Get specific `User` object.
       tags:
-        - iam
+        - IAM
           # - users
       parameters:
         - name: uid
@@ -1576,7 +1576,7 @@ paths:
       summary: Create user account.
       description: Create user (uid in url, details incl. credentials in body).
       tags:
-        - iam
+        - IAM
           # - users
       parameters:
         - name: uid
@@ -1602,7 +1602,7 @@ paths:
       summary: Update user account.
       description: Update existing user account (meta data and/or password).
       tags:
-        - iam
+        - IAM
           # - users
       parameters:
         - name: uid
@@ -1628,7 +1628,7 @@ paths:
       summary: Delete account.
       description: Delete account.
       tags:
-        - iam
+        - IAM
           # - users
       parameters:
         - name: uid
@@ -1650,7 +1650,7 @@ paths:
       summary: Retrieve groups the user is member of.
       description: Retrieve groups the user is member of.
       tags:
-        - iam
+        - IAM
           # - users
       parameters:
         - name: uid
@@ -1673,7 +1673,7 @@ paths:
       description: Retrieve the permissions for this account with direct permissions
         distinguished from those that are obtained through group membership.
       tags:
-        - iam
+        - IAM
           # - users
       parameters:
         - name: uid
