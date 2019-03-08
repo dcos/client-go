@@ -82,9 +82,11 @@ func installPackage(client *dcos.APIClient, request dcos.InstallRequest) error {
 	if err != nil {
 		switch err := err.(type) {
 		case dcos.GenericOpenAPIError:
-			if err.Error() == "409 Conflict" {
-				log.Printf("Package %s already installed", request.PackageName)
-				return nil
+			if err.Model() != nil {
+				if e, ok := err.Model().(dcos.ModelError); ok && e.Type == "PackageAlreadyInstalled" {
+					log.Printf("Package %s already installed", request.PackageName)
+					return nil
+				}
 			}
 			return err
 		default:
@@ -135,7 +137,7 @@ func main() {
 	dcosMonitoringRequest := dcos.InstallRequest{
 		PackageName: "beta-dcos-monitoring",
 		Options: map[string]map[string]interface{}{
-			"grafana": map[string]interface{}{
+			"grafana": {
 				"default_dashboards": false,
 				"dashboard_config_repository": map[string]string{
 					"url":  "https://github.com/masonse/grafana-dashboards",
