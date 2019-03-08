@@ -1,3 +1,5 @@
+export GO111MODULE := on
+
 .PHONY: test
 test: vet
 	go test -race -cover ./...
