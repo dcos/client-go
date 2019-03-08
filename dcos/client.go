@@ -55,13 +55,18 @@ type service struct {
 	client *APIClient
 }
 
-// NewClient creates a new DC/OS client.
+// NewClient creates a new DC/OS client with default configuration
 func NewClient() (*APIClient, error) {
 	config, err := NewConfigManager(nil).Current()
 	if err != nil {
 		return nil, err
 	}
 
+	return NewClientWithConfig(config)
+}
+
+// NewClientWithConfig creates a new DC/OS client with the given *Config
+func NewClientWithConfig(config *Config) (*APIClient, error) {
 	dcosURL, err := url.Parse(config.URL())
 	if err != nil {
 		return nil, fmt.Errorf("Invalid DC/OS cluster URL '%s': %v", config.URL(), err)
