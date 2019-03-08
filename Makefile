@@ -1,3 +1,5 @@
+export GO111MODULE := on
+
 .PHONY: test
 test: vet
 	go test -race -cover ./...
@@ -12,4 +14,26 @@ lint: fmt
 
 .PHONY: fmt
 fmt:
-	bash -c "diff -u <(echo -n) <(gofmt -d -s .)"
+	gofmt -w -s .
+
+.PHONY: generate
+generate: generate-client fmt
+
+define run_generator
+docker run -u $(shell id -u):$(shell id -g) \
+	-v $(CURDIR):/local -w /local \
+	openapitools/openapi-generator-cli:v4.0.0-beta2 \
+	generate -i openapi/dcos.yaml -g go -o dcos \
+	-t templates \
+	--skip-validate-spec \
+	-DpackageName=dcos -DwithGoCodegenComment=true -Dmodels -Dapis \
+	$(1)
+endef
+
+.PHONY: generate-client
+generate-client:
+	$(call run_generator,-DsupportingFiles=client.go)
+	$(call run_generator,-DsupportingFiles=response.go)
+	$(call run_generator,-DsupportingFiles=configuration.go)
+	$(call run_generator,-DsupportingFiles=README.md)
+

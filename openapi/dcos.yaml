@@ -1,0 +1,2707 @@
+openapi: 3.0.2
+info:
+  description: DC/OS API
+  title: DC/OS
+  version: 1.0.0
+servers:
+  - url: http://your-dcos-cluster.com
+tags:
+- description: DC/OS Secrets
+  name: secrets
+- description: DC/OS Cosmos Package Management
+  name: cosmos
+- name: IAM
+  description: DC/OS Identity and Access Management API
+- name: login
+  description: Login- and authentication-related endpoints
+- name: oidc
+  description: OpenID Connect endpoints, including provider management
+- name: users
+  description: User management endpoints
+- name: groups
+  description: Group management endpoints
+- name: permissions
+  description: Permission management endpoints
+- name: saml
+  description: SAML 2.0 endpoints, including provider management
+- name: ldap
+  description: Directory (LDAP) back-end configuration and interaction endpoints
+paths:
+  /package/repository/delete:
+    post:
+      description: Deletes a package repository (for example Universe) from DC/OS.
+      operationId: package-repository-delete
+      requestBody:
+        content:
+          application/vnd.dcos.package.repository.delete-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/packageDeleteRepoRequest'
+      responses:
+        200:
+          content:
+            application/vnd.dcos.package.repository.delete-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/packageDeleteRepoResponse'
+        400:
+          content:
+            application/vnd.dcos.package.repository.delete-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/error'
+        404:
+          content:
+            application/vnd.dcos.package.repository.delete-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/error'
+      tags:
+      - cosmos
+  /package/repository/add:
+    post:
+      description: |
+        Adds a package repository (for example Universe) for use by DC/OS. To add a package
+        repository to the beginning of the list set the index to zero (0). To add a package
+        repository to the end of the list do not specify an index.
+      operationId: package-repository-add
+      requestBody:
+        content:
+          application/vnd.dcos.package.repository.add-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/packageAddRepoRequest'
+      responses:
+        200:
+          content:
+            application/vnd.dcos.package.repository.add-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/packageAddRepoResponse'
+        400:
+          content:
+            application/vnd.dcos.package.repository.add-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/error'
+        409:
+          content:
+            application/vnd.dcos.package.repository.add-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/error'
+      tags:
+      - cosmos
+  /cosmos/service/describe:
+    post:
+      description: Describes a DC/OS Service
+      operationId: service-describe
+      requestBody:
+        content:
+          application/vnd.dcos.service.describe-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/serviceDescribeRequest'
+      responses:
+        200:
+          content:
+            application/vnd.dcos.service.describe-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/serviceDescribeResponse'
+        400:
+          content:
+            application/vnd.dcos.service.describe-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/error'
+      tags:
+      - cosmos
+  /package/describe:
+    post:
+      description: Show information about the package, including the required resources and configuration to start the service, and command line extensions that are included with the package.
+      operationId: package-describe
+      requestBody:
+        content:
+          application/vnd.dcos.package.describe-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/packageDescribeRequest'
+      responses:
+        200:
+          content:
+            application/vnd.dcos.package.describe-response+json;charset=utf-8;version=v3:
+              schema:
+                $ref: '#/components/schemas/v3PackageDescribeResponse'
+        400:
+          content:
+            application/vnd.dcos.package.describe-response+json;charset=utf-8;version=v3:
+              schema:
+                $ref: '#/components/schemas/error'
+      tags:
+      - cosmos
+  /package/uninstall:
+    post:
+      operationId: package-uninstall
+      parameters:
+      - explode: false
+        in: header
+        name: Accept
+        required: false
+        schema:
+          enum:
+          - application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/vnd.dcos.package.uninstall-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/uninstallRequest'
+        required: true
+      responses:
+        200:
+          content:
+            application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/uninstallResponse'
+        400:
+          content:
+            application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/error'
+        404:
+          content:
+            application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/error'
+        409:
+          content:
+            application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/error'
+      tags:
+      - cosmos
+  /package/install:
+    post:
+      description: Runs a service from a Universe package.
+      operationId: package-install
+      requestBody:
+        content:
+          application/vnd.dcos.package.install-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/installRequest'
+        required: true
+      responses:
+        200:
+          content:
+            application/vnd.dcos.package.install-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/installResponse'
+        400:
+          content:
+            application/vnd.dcos.package.install-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/error'
+        409:
+          content:
+            application/vnd.dcos.package.install-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/error'
+      tags:
+      - cosmos
+  /cosmos/service/update:
+    post:
+      description: Runs a service update.
+      operationId: service-update
+      requestBody:
+        content:
+          application/vnd.dcos.service.update-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/serviceUpdateRequest'
+        required: true
+      responses:
+        200:
+          content:
+            application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/serviceUpdateResponse'
+        400:
+          content:
+            application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/error'
+        404:
+          content:
+            application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/error'
+        409:
+          content:
+            application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/error'
+      tags:
+      - cosmos
+  /secrets/v1/secret/{store}/{path-to-secret}:
+    delete:
+      description: Delete a secret.
+      operationId: delete-secret
+      parameters:
+      - description: The backend to delete the secret from.
+        explode: false
+        in: path
+        name: store
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The path to the secret to delete.
+        explode: false
+        in: path
+        name: path-to-secret
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        204:
+          description: Success.
+        403:
+          description: Forbidden.
+        404:
+          description: Secret not found.
+      summary: Delete a secret.
+      tags:
+      - secrets
+    get:
+      description: Read or list a secret from the store by its path.
+      operationId: get-secret
+      parameters:
+      - description: The backend store from which to get the secret.
+        explode: false
+        in: path
+        name: store
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: |
+          If set to true, list only secret keys.
+        explode: true
+        in: query
+        name: list
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The path to store the secret in.
+        explode: false
+        in: path
+        name: path-to-secret
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        200:
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Secret'
+          description: Response body contains secret authorized content.
+        400:
+          description: Unsupported Accept header.
+        403:
+          description: Forbidden.
+        404:
+          description: Secret not found.
+      summary: Read or list a secret from the store by its path.
+      tags:
+      - secrets
+    patch:
+      description: Update existing secret in the specified store.
+      operationId: update-secret
+      parameters:
+      - description: The backend to store the secret in.
+        explode: false
+        in: path
+        name: store
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The path for the secret to update.
+        explode: false
+        in: path
+        name: path-to-secret
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/Secret'
+      responses:
+        204:
+          description: Secret updated.
+        403:
+          description: Forbidden.
+        404:
+          description: Secret not found.
+      summary: Update secret.
+      tags:
+      - secrets
+    put:
+      description: Create a secret in the store at the path.
+      operationId: create-secret
+      parameters:
+      - description: The backend to store the secret in.
+        explode: false
+        in: path
+        name: store
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The path to store the secret in.
+        explode: false
+        in: path
+        name: path-to-secret
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/Secret'
+      responses:
+        201:
+          description: Secret created.
+        400:
+          description: Unsupported Content-Type header.
+        403:
+          description: Forbidden.
+        409:
+          description: Secret already exists.
+      summary: Create a secret in the store at the path.
+      tags:
+      - secrets
+  /acs/api/v1/acls:
+    get:
+      operationId: getACLs
+      summary: Retrieve all ACL objects.
+      description: Get array of `ACL` objects.
+      tags:
+        - IAM
+          # - permissions
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  array:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/ACL"
+  /acs/api/v1/acls/{rid}:
+    get:
+      operationId: getResourceACLs
+      summary: Retrieve ACL for a certain resource.
+      description: Retrieve single `ACL` object, for a specific resource.
+      tags:
+        - IAM
+          # - permissions
+      parameters:
+        - name: rid
+          in: path
+          required: true
+          description: The ID of the resource to retrieve the ACL for.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ACL"
+    put:
+      operationId: createResourceACL
+      summary: Create ACL for a certain resource.
+      description: Create new ACL for resource with ID `rid` (description in body, no
+        permissions by default).
+      tags:
+        - IAM
+          # - permissions
+      parameters:
+        - name: rid
+          in: path
+          required: true
+          description: The ID of the resource for which the ACL should be created.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ACLCreate"
+        required: true
+      responses:
+        "201":
+          description: ACL created.
+        "409":
+          description: Already exists (this resource already has an ACL set).
+    patch:
+      operationId: updateResourceACL
+      summary: Update ACL for a certain resource.
+      description: Update ACL for resource with ID `rid`.
+      tags:
+        - IAM
+          # - permissions
+      parameters:
+        - name: rid
+          in: path
+          required: true
+          description: The ID of the resource for which the ACL should be created.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ACLUpdate"
+        description: New ACL.
+        required: true
+      responses:
+        "204":
+          description: Success.
+    delete:
+      operationId: deleteResourceACL
+      summary: Delete ACL for a certain resource.
+      description: Delete ACL of resource with ID `rid`.
+      tags:
+        - IAM
+          # - permissions
+      parameters:
+        - name: rid
+          in: path
+          required: true
+          description: The ID of resource for which the ACL should be deleted.
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Success.
+        "404":
+          description: ACL not found.
+  /acs/api/v1/acls/{rid}/groups/{gid}:
+    get:
+      operationId: getResourceGroupActions
+      summary: Get allowed actions for given resource and group.
+      description: Get allowed actions for given resource and group.
+      tags:
+        - IAM
+          # - permissions
+      parameters:
+        - name: rid
+          in: path
+          required: true
+          description: resource ID
+          schema:
+            type: string
+        - name: gid
+          in: path
+          required: true
+          description: group ID
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  array:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Action"
+    delete:
+      operationId: forbitResourceGroupActions
+      summary: Forbid all actions of given group to given resource.
+      description: Forbid all actions of given group to given resource.
+      tags:
+        - IAM
+          # - permissions
+      parameters:
+        - name: rid
+          in: path
+          required: true
+          description: resource ID.
+          schema:
+            type: string
+        - name: gid
+          in: path
+          required: true
+          description: group ID.
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Success.
+  /acs/api/v1/acls/{rid}/groups/{gid}/{action}:
+    get:
+      operationId: getResourceGroupAction
+      summary: Query whether action is allowed or not.
+      description: Query whether action is allowed or not.
+      tags:
+        - IAM
+          # - permissions
+      parameters:
+        - name: rid
+          in: path
+          required: true
+          description: resource ID
+          schema:
+            type: string
+        - name: gid
+          in: path
+          required: true
+          description: group ID
+          schema:
+            type: string
+        - name: action
+          in: path
+          required: true
+          description: action name
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Boolean answer in JSON response body.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActionAllowed"
+    put:
+      operationId: permitResourceGroupAction
+      summary: Permit single action for given resource and group.
+      description: Permit single action for given resource and group.
+      tags:
+        - IAM
+          # - permissions
+      parameters:
+        - name: rid
+          in: path
+          required: true
+          description: resource ID.
+          schema:
+            type: string
+        - name: gid
+          in: path
+          required: true
+          description: group ID.
+          schema:
+            type: string
+        - name: action
+          in: path
+          required: true
+          description: action name
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Success.
+    delete:
+      operationId: forbitResourceGroupAction
+      summary: Forbid single action for given resource and group.
+      description: Forbid single action for given resource and group.
+      tags:
+        - IAM
+          # - permissions
+      parameters:
+        - name: rid
+          in: path
+          required: true
+          description: resource ID.
+          schema:
+            type: string
+        - name: gid
+          in: path
+          required: true
+          description: group ID.
+          schema:
+            type: string
+        - name: action
+          in: path
+          required: true
+          description: action name
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Success.
+  /acs/api/v1/acls/{rid}/permissions:
+    get:
+      operationId: getResourcePermissions
+      summary: Retrieve all permissions for resource.
+      description: Retrieve all permissions that are set for a specific resource.
+      tags:
+        - IAM
+          # - permissions
+      parameters:
+        - name: rid
+          in: path
+          required: true
+          description: resource ID
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ACLPermissions"
+  /acs/api/v1/acls/{rid}/users/{uid}:
+    get:
+      operationId: getResourceUserActions
+      summary: Get allowed actions for given resource and user.
+      description: Get allowed actions for given resource and user.
+      tags:
+        - IAM
+          # - permissions
+      parameters:
+        - name: rid
+          in: path
+          required: true
+          description: resource ID
+          schema:
+            type: string
+        - name: uid
+          in: path
+          required: true
+          description: account ID
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  array:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Action"
+    delete:
+      operationId: forbidResourceUserActions
+      summary: Forbid all actions of given account to given resource.
+      description: Forbid all actions of given account to given resource.
+      tags:
+        - IAM
+          # - permissions
+      parameters:
+        - name: rid
+          in: path
+          required: true
+          description: resource ID.
+          schema:
+            type: string
+        - name: uid
+          in: path
+          required: true
+          description: account ID.
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Success.
+  /acs/api/v1/acls/{rid}/users/{uid}/{action}:
+    get:
+      operationId: getResourceUserAction
+      summary: Query whether action is allowed or not.
+      description: Query whether action is allowed or not.
+      tags:
+        - IAM
+          # - permissions
+      parameters:
+        - name: rid
+          in: path
+          required: true
+          description: resource ID
+          schema:
+            type: string
+        - name: uid
+          in: path
+          required: true
+          description: account ID
+          schema:
+            type: string
+        - name: action
+          in: path
+          required: true
+          description: action name
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Boolean answer in JSON response body.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActionAllowed"
+    put:
+      operationId: permitResourceUserAction
+      summary: Permit single action for given account and resource.
+      description: Permit single action for given account and resource.
+      tags:
+        - IAM
+          # - permissions
+      parameters:
+        - name: rid
+          in: path
+          required: true
+          description: resource ID.
+          schema:
+            type: string
+        - name: uid
+          in: path
+          required: true
+          description: account ID.
+          schema:
+            type: string
+        - name: action
+          in: path
+          required: true
+          description: action name
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Success.
+        "409":
+          description: Already exists (this account already has this action).
+    delete:
+      operationId: forbidResourceUserAction
+      summary: Forbid single action for given account and resource.
+      description: Forbid single action for given account and resource.
+      tags:
+        - IAM
+          # - permissions
+      parameters:
+        - name: rid
+          in: path
+          required: true
+          description: resource ID.
+          schema:
+            type: string
+        - name: uid
+          in: path
+          required: true
+          description: account ID.
+          schema:
+            type: string
+        - name: action
+          in: path
+          required: true
+          description: action name
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Success.
+  /acs/api/v1/auth/jwks:
+    get:
+      operationId: getJWKS
+      summary: Get the IAM's JSON Web Key Set (JWKS, according to RFCs 7517/7518).
+      description: "This endpoint provides the IAM's JSON Web Key Set (JWKS), exposing
+        public key details required for the process of DC/OS authentication
+        token verification: the public key material can be used for verifying
+        authentication tokens signed by the IAM's private key. The DC/OS
+        authentication token is a JSON Web Token (JWT) of type RS256, and is
+        required to have the two claims `exp` and `uid`. For interpretation of
+        the data provided by the JWKS endpoint see
+        https://tools.ietf.org/html/rfc7517 and
+        https://tools.ietf.org/html/rfc7518."
+      tags:
+        - IAM
+      responses:
+        "200":
+          description: The response body contains a JSON Web Key Set document.
+  /acs/api/v1/auth/login:
+    post:
+      operationId: login
+      summary: Log in (obtain a DC/OS authentication token).
+      description: "Exchange user credentials (regular user account: uid and password;
+        service user account: uid and service login token) for a DC/OS
+        authentication token. The resulting DC/OS authentication token is an RFC
+        7519 JSON Web Token (JWT) of type RS256. It has a limited lifetime which
+        depends on the IAM configuration (only, i.e. the lifetime cannot be
+        chosen as part of the login HTTP request). The DC/OS authentication
+        token can be verified out-of-band using a standards-compliant RS256 JWT
+        verification procedure based on the long-lived public key material
+        presented by the IAM's /auth/jwks endpoint, and by requiring the two
+        claims `exp` and `uid` to be present."
+      tags:
+        - IAM
+        # - login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginObject"
+        description: uid & password or uid & service login token.
+        required: true
+      responses:
+        "200":
+          description: Login successful. The response body contains a JSON object providing
+            the authentication token.
+          headers:
+            Set-Cookie:
+              description: A cookie containing the auth token (implementation detail for
+                browser support, should not be of interest to general API
+                consumers).
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthToken"
+        "401":
+          description: Login failed.
+    get:
+      operationId: loginWithProvider
+      summary: Log in using an external identity provider.
+      description: Log in using an external identity provider (via e.g. OpenID Connect), as
+        specified via query parameter. This request initiates a single sign-on
+        flow.
+      tags:
+        - IAM
+          # - login
+      parameters:
+        - name: oidc-provider
+          description: OIDC provider ID
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Redirect to the identity provider.
+  /acs/api/v1/auth/oidc/callback:
+    get:
+      operationId: openIDConnectCallbackURL
+      summary: OpenID Connect callback URL.
+      description: After successfully logging in to an OpenID Connect identity provider,
+        the end-user is being redirected back to the IAM via this callback URL.
+        API consumers are not required to explicitly interact with this
+        endpoint. This URL usually needs to be handed over to an OpenID Connect
+        provider (often called "redirect" or "callback" URL).
+      tags:
+        - IAM
+          # - oidc
+      responses:
+        "302":
+          description: OIDC authentication flow successful.
+        "401":
+          description: Problem in authentication flow.
+  /acs/api/v1/auth/oidc/providers:
+    get:
+      operationId: getOIDCProviders
+      summary: Get an overview for the configured OIDC providers.
+      description: Get an overview for the configured OIDC providers. The response contains
+        a JSON object, with each key being an OIDC provider ID, and each value
+        being the corresponding provider description string. This endpoint does
+        not expose sensitive provider configuration details.
+      tags:
+        - IAM
+          # - oidc
+      responses:
+        "200":
+          description: Success.
+  /acs/api/v1/auth/oidc/providers/{provider-id}:
+    get:
+      operationId: getOIDCProvider
+      summary: Get configuration for a specific provider.
+      description: Get configuration for a specific provider.
+      tags:
+        - IAM
+          # - oidc
+      parameters:
+        - name: provider-id
+          in: path
+          required: true
+          description: The ID of the OIDC provider to retrieve the config for.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OIDCProviderConfig"
+    put:
+      operationId: configureOIDCProvider
+      summary: Configure a new OIDC provider.
+      description: Set up OIDC provider with the ID as specified in the URL, and with the
+        config as specified via JSON in the request body.
+      tags:
+        - IAM
+          # - oidc
+      parameters:
+        - name: provider-id
+          in: path
+          required: true
+          description: The ID of the provider to create.
+          schema:
+            type: string
+      requestBody:
+        $ref: "#/components/requestBodies/OIDCProviderConfig"
+      responses:
+        "201":
+          description: Provider created.
+        "409":
+          description: Provider already exists.
+    patch:
+      operationId: updateOIDCProvider
+      summary: Update OIDC provider config.
+      description: Update config for existing OIDC provider.
+      tags:
+        - IAM
+          # - oidc
+      parameters:
+        - name: provider-id
+          in: path
+          required: true
+          description: The ID of the provider to modify.
+          schema:
+            type: string
+      requestBody:
+        $ref: "#/components/requestBodies/OIDCProviderConfig"
+      responses:
+        "204":
+          description: Update applied.
+        "400":
+          description: Various errors (e.g. provider not yet configured).
+    delete:
+      operationId: deleteOIDCProvider
+      summary: Delete provider.
+      description: Delete provider (disables authentication with that provider).
+      tags:
+        - IAM
+          # - oidc
+      parameters:
+        - name: provider-id
+          in: path
+          required: true
+          description: The ID of the OIDC provider to delete.
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Success.
+  /acs/api/v1/auth/saml/providers:
+    get:
+      operationId: getSAMLProviders
+      summary: Get an overview for the configured SAML 2.0 providers.
+      description: Get an overview for the configured SAML 2.0 providers. The response
+        contains a JSON object, with each key being a SAML provider ID, and each
+        value being the corresponding provider description string. This endpoint
+        does not expose sensitive provider configuration details.
+      tags:
+        - IAM
+          # - saml
+      responses:
+        "200":
+          description: Success.
+  /acs/api/v1/auth/saml/providers/{provider-id}:
+    get:
+      operationId: getSAMLProvider
+      summary: Get configuration for a specific SAML provider.
+      description: Get configuration for a specific SAML provider.
+      tags:
+        - IAM
+          # - saml
+      parameters:
+        - name: provider-id
+          in: path
+          required: true
+          description: The ID of the SAML provider to retrieve the config for.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SAMLProviderConfig"
+    put:
+      operationId: configureSAMLProvider
+      summary: Configure a new SAML provider.
+      description: Set up a SAML provider with the ID as specified in the URL, and with the
+        config as given by the JSON document in the request body.
+      tags:
+        - IAM
+          # - saml
+      parameters:
+        - name: provider-id
+          in: path
+          required: true
+          description: The ID of the provider to create.
+          schema:
+            type: string
+      requestBody:
+        $ref: "#/components/requestBodies/SAMLProviderConfig"
+      responses:
+        "201":
+          description: Provider created.
+        "409":
+          description: Provider already exists.
+    patch:
+      operationId: updateSAMLProvider
+      summary: Update SAML provider config.
+      description: Update config for existing SAML provider.
+      tags:
+        - IAM
+          # - saml
+      parameters:
+        - name: provider-id
+          in: path
+          required: true
+          description: The ID of the provider to modify.
+          schema:
+            type: string
+      requestBody:
+        $ref: "#/components/requestBodies/SAMLProviderConfig"
+      responses:
+        "204":
+          description: Update applied.
+        "400":
+          description: Various errors (e.g. provider not yet configured).
+    delete:
+      operationId: deleteSAMLProvider
+      summary: Delete provider.
+      description: Delete provider (disables authentication with that provider).
+      tags:
+        - IAM
+          # - saml
+      parameters:
+        - name: provider-id
+          in: path
+          required: true
+          description: The ID of the SAML provider to delete.
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Success.
+  /acs/api/v1/auth/saml/providers/{provider-id}/acs-callback:
+    post:
+      operationId: SAMLProviderACSCallbackEndpoint
+      summary: The SP ACS callback endpoint.
+      description: The IAM acts as SAML service provider (SP). As part of the
+        authentication flow, a SAML identity provider (IdP) makes the end-user
+        submit an authentication response to this endpoint.
+      tags:
+        - IAM
+          # - saml
+      parameters:
+        - name: provider-id
+          in: path
+          required: true
+          description: The ID of the provider the authentication response is meant for.
+          schema:
+            type: string
+      responses:
+        "302":
+          description: SAML authentication flow successful.
+        "401":
+          description: Problem in authentication flow.
+  /acs/api/v1/auth/saml/providers/{provider-id}/acs-callback-url:
+    get:
+      operationId: getSAMLProviderACSCallbackURL
+      summary: Get the authentication callback URL for this SP.
+      description: The IAM acts as SAML service provider (SP). A SAML identity provider
+        (IdP) usually requires to be configured with the Assertion Consumer
+        Service (ACS) callback URL of the SP (which is where the IdP makes the
+        end-user submit the authentication response).
+      tags:
+        - IAM
+          # - saml
+      parameters:
+        - name: provider-id
+          in: path
+          required: true
+          description: The ID of the SAML provider to retrieve the ACS callback URL for.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: The response body contains a JSON object declaring the callback URL
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SAMLACSCallbackUrlObject"
+  /acs/api/v1/auth/saml/providers/{provider-id}/sp-metadata:
+    get:
+      operationId: getSAMLProviderSPMetadata
+      summary: Get SP metadata (XML).
+      description: The IAM acts as SAML service provider (SP). This endpoint provides the
+        SP metadata as an XML document. Certain identity providers (IdPs) may
+        want to directly consume this document.
+      tags:
+        - IAM
+          # - saml
+      parameters:
+        - name: provider-id
+          in: path
+          required: true
+          description: The ID of the SAML provider to retrieve the metadata for.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: The response body contains the metadata in UTF-8 encoding, setting
+            the Content-Type to `application/samlmetadata+xml`.
+  /acs/api/v1/groups:
+    get:
+      operationId: getGroups
+      summary: Retrieve all group objects.
+      description: Retrieve array of `Group` objects.
+      tags:
+        - IAM
+          # - groups
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  array:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Group"
+  /acs/api/v1/groups/{gid}:
+    get:
+      operationId: getGroup
+      summary: Get single group object.
+      description: Get specific `Group` object.
+      tags:
+        - IAM
+          # - groups
+      parameters:
+        - name: gid
+          in: path
+          required: true
+          description: The ID of the group to retrieve.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Group"
+    put:
+      operationId: createGroup
+      summary: Create a group.
+      description: Create a group.
+      tags:
+        - IAM
+          # - groups
+      parameters:
+        - name: gid
+          in: path
+          required: true
+          description: The ID of the group.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GroupCreate"
+        required: true
+      responses:
+        "201":
+          description: Group created.
+        "409":
+          description: Group exists.
+    patch:
+      operationId: updateGroup
+      summary: Update group.
+      description: Update existing group (description).
+      tags:
+        - IAM
+          # - groups
+      parameters:
+        - name: gid
+          in: path
+          required: true
+          description: The ID of the group to modify.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GroupUpdate"
+        required: true
+      responses:
+        "204":
+          description: Update applied.
+    delete:
+      operationId: deleteGroup
+      summary: Delete group.
+      description: Delete group.
+      tags:
+        - IAM
+          # - groups
+      parameters:
+        - name: gid
+          in: path
+          required: true
+          description: The ID of the group to delete.
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Success
+  /acs/api/v1/groups/{gid}/permissions:
+    get:
+      operationId: getGroupPermissions
+      summary: Retrieve group permissions.
+      description: Retrieve permissions of this group.
+      tags:
+        - IAM
+          # - groups
+      parameters:
+        - name: gid
+          in: path
+          required: true
+          description: The group ID.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupPermissions"
+  /acs/api/v1/groups/{gid}/users:
+    get:
+      operationId: getGroupUsers
+      summary: Retrieve members of a group.
+      description: Retrieve users that are member of this group. Allows to query service
+        accounts, defaults to list only user accounts.
+      tags:
+        - IAM
+          # - groups
+      parameters:
+        - name: gid
+          in: path
+          required: true
+          description: The group ID.
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: If set to `service`, list only service accounts. If unset, default
+            to only listing user accounts members of a group.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GroupUsers"
+  /acs/api/v1/groups/{gid}/users/{uid}:
+    delete:
+      operationId: deleteGroupUser
+      summary: Delete user account from group.
+      description: Delete user account from group.
+      tags:
+        - IAM
+          # - groups
+      parameters:
+        - name: gid
+          in: path
+          required: true
+          description: The ID of the group to delete from.
+          schema:
+            type: string
+        - name: uid
+          in: path
+          required: true
+          description: The ID of the user account.
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Success.
+    put:
+      operationId: createGroupUser
+      summary: Add account to group.
+      description: Add account to group.
+      tags:
+        - IAM
+          # - groups
+      parameters:
+        - name: gid
+          in: path
+          required: true
+          description: The ID of the group to add the user account to.
+          schema:
+            type: string
+        - name: uid
+          description: The ID of the account to add.
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Success
+        "409":
+          description: account is already part of the group.
+  /acs/api/v1/ldap/config:
+    get:
+      operationId: getLDAPConfiguration
+      summary: Retrieve current LDAP configuration.
+      description: Retrieve current directory (LDAP) back-end configuration.
+      tags:
+        - IAM
+          # - ldap
+      responses:
+        "200":
+          description: The response body contains a JSON object providing the current
+            configuration.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LDAPConfiguration"
+        "400":
+          description: Various errors. If no config has yet been stored, the custom error
+            code `ERR_LDAP_CONFIG_NOT_AVAILABLE` is set in the response.
+    put:
+      operationId: createLDAPConfiguration
+      summary: Set new LDAP configuration.
+      description: Set new directory (LDAP) back-end configuration. Replace current
+        configuration, if existing.
+      tags:
+        - IAM
+          # - ldap
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LDAPConfiguration"
+        description: JSON object containing the LDAP configuration details.
+        required: true
+      responses:
+        "200":
+          description: Configuration has been persisted. Basic validation tests passed, but
+            the directory service was not contacted. You're encouraged to now
+            perform a basic feature check against the directory back-end with
+            the newly set configuration by using the the config test endpoint.
+        "400":
+          description: Various errors. If the configuration object itself is invalid, the
+            custom error code `ERR_LDAP_CONFIG_INVALID` is set in the response
+            and a description sheds light onto the problem specifics.
+    delete:
+      operationId: deleteLDAPConfiguration
+      summary: Delete current LDAP configuration.
+      description: Delete current directory (LDAP) back-end configuration. This deactivates
+        the LDAP authentication.
+      tags:
+        - IAM
+          # - ldap
+      responses:
+        "204":
+          description: Configuration deleted.
+        "400":
+          description: Various errors. If no config has yet been stored, the custom error
+            code `ERR_LDAP_CONFIG_NOT_AVAILABLE` is set in the response.
+  /acs/api/v1/ldap/config/test:
+    post:
+      operationId: testLDAPBackendConnection
+      summary: Test connection to the LDAP back-end.
+      description: Perform basic feature tests. Verify that the current directory (LDAP)
+        configuration parameters allow for a successful connection to the
+        directory back-end. For instance, this endpoint simulates the procedure
+        for authentication via LDAP, but provides more useful feedback upon
+        failure than the actual login endpoint.
+      tags:
+        - IAM
+          # - ldap
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LDAPTestCredentials"
+        description: JSON object containing `uid` and password of an LDAP user. For the
+          most expressive test result, choose credentials different from the
+          lookup credentials. The `uid` is the string the user is supposed to
+          log in with after successful LDAP back-end configuration.
+        required: true
+      responses:
+        "200":
+          description: Directory back-end was reached and all feature tests passed.
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/LDAPTestResultObject"
+        "502":
+          description: Either there was a connection error or one of the feature tests
+            failed. To distinguish this response from a proxy-generated 502, a
+            JSON object is included in the response. It contains a message in
+            its `description` property, describing the problem in more detail.
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/LDAPTestResultObject"
+  /acs/api/v1/ldap/importgroup:
+    post:
+      operationId: importLDAPGroup
+      summary: Import an LDAP group.
+      description: Attempt to import a group of users from the configured directory (LDAP)
+        back-end. See docs/ldap.md for details on group import.
+      tags:
+        - IAM
+          # - ldap
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LDAPImportGroupObject"
+        description: A JSON object specifying the name of the group to be imported. The
+          meaning of the name depends on the group search settings.
+        required: true
+      responses:
+        "201":
+          description: Success.
+        "400":
+          description: Various errors. If no directory back-end has been configured yet,
+            the custom error code `ERR_LDAP_CONFIG_NOT_AVAILABLE` is set in the
+            response. If there was no LDAP search result or an error occured
+            during the search process, one of the custom error codes
+            `ERR_LDAP_IMPORT_GROUP_NOT_FOUND` and
+            `ERR_LDAP_IMPORT_SEARCH_FAILED` is set in the response, and a
+            description is provided to report the problem specifics.
+  /acs/api/v1/ldap/importuser:
+    post:
+      operationId: importLDAPUser
+      summary: Import an LDAP user.
+      description: Attempt to import a user from the configured directory (LDAP) back-end.
+      tags:
+        - IAM
+          # - ldap
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LDAPImportUserObject"
+        description: 'A JSON object specifying the username (read: "login" or "user ID") of
+          the user that should be imported. That string is equivalent to the
+          `uid` the user is supposed to log in with after successful import. The
+          exact meaning of this string depends on the configured LDAP
+          authentication method.'
+        required: true
+      responses:
+        "201":
+          description: Success.
+        "400":
+          description: Various errors. If no directory back-end has been configured yet,
+            the custom error code `ERR_LDAP_CONFIG_NOT_AVAILABLE` is set in the
+            response. If there was no LDAP search result or an error occured
+            during the search process, one of the custom error codes
+            `ERR_LDAP_IMPORT_USER_NOT_FOUND` and `ERR_LDAP_IMPORT_SEARCH_FAILED`
+            is set in the response, and a description is provided to report the
+            problem specifics.
+  /acs/api/v1/users:
+    get:
+      operationId: getUsers
+      summary: Retrieve all regular user accounts or service user accounts.
+      description: Retrieve `User` objects. By default the list consists of regular user
+        accounts, only. Alternatively, service user accounts may be requested
+        instead.
+      tags:
+        - IAM
+          # - users
+      parameters:
+        - name: type
+          in: query
+          description: If set to `service`, list only service user accounts. If unset,
+            default to only listing regular user accounts.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  array:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/User"
+  /acs/api/v1/users/{uid}:
+    get:
+      operationId: getUser
+      summary: Get single user object.
+      description: Get specific `User` object.
+      tags:
+        - IAM
+          # - users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: The ID of the user object to retrieve.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+    put:
+      operationId: createUser
+      summary: Create user account.
+      description: Create user (uid in url, details incl. credentials in body).
+      tags:
+        - IAM
+          # - users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: The ID of the user account to create.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserCreate"
+        description: Password/description.
+        required: true
+      responses:
+        "201":
+          description: User created.
+        "409":
+          description: User already exists.
+    patch:
+      operationId: updateUser
+      summary: Update user account.
+      description: Update existing user account (meta data and/or password).
+      tags:
+        - IAM
+          # - users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: The ID of the user account to modify.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserUpdate"
+        description: Password/description.
+        required: true
+      responses:
+        "204":
+          description: Update applied.
+        "501":
+          description: Not implemented for service user accounts.
+    delete:
+      operationId: deleteUser
+      summary: Delete account.
+      description: Delete account.
+      tags:
+        - IAM
+          # - users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: The ID of the user account to delete.
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Success.
+        "400":
+          description: Bad request.
+        "404":
+          description: User account not found.
+  /acs/api/v1/users/{uid}/groups:
+    get:
+      operationId: getUserGroups
+      summary: Retrieve groups the user is member of.
+      description: Retrieve groups the user is member of.
+      tags:
+        - IAM
+          # - users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: The ID of the user.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserGroups"
+  /acs/api/v1/users/{uid}/permissions:
+    get:
+      operationId: getUserPermissions
+      summary: Retrieve permissions an account has.
+      description: Retrieve the permissions for this account with direct permissions
+        distinguished from those that are obtained through group membership.
+      tags:
+        - IAM
+          # - users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: The id of the user.
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserPermissions"
+components:
+  requestBodies:
+    Secret:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Secret'
+      description: Secret value.
+      required: true
+    OIDCProviderConfig:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/OIDCProviderConfig"
+      description: Provider config JSON object
+      required: true
+    SAMLProviderConfig:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/SAMLProviderConfig"
+      description: Provider config JSON object
+      required: true
+  schemas:
+    Secret:
+      additionalProperties: false
+      example:
+        value: value
+      properties:
+        value:
+          type: string
+      type: object
+    algo:
+      enum:
+      - sha256
+      type: string
+    assets:
+      additionalProperties: false
+      properties:
+        container:
+          $ref: '#/components/schemas/assets_container'
+        uris:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    base64String:
+      pattern: ^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$
+      type: string
+    binaries:
+      additionalProperties: false
+      minProperties: 1
+      properties:
+        darwin:
+          $ref: '#/components/schemas/os'
+        linux:
+          $ref: '#/components/schemas/os'
+        windows:
+          $ref: '#/components/schemas/os'
+      type: object
+    cli:
+      additionalProperties: false
+      properties:
+        binaries:
+          $ref: '#/components/schemas/binaries'
+      required:
+      - binaries
+      type: object
+    cliInfo:
+      additionalProperties: false
+      properties:
+        contentHash:
+          items:
+            $ref: '#/components/schemas/hash'
+          minItems: 1
+          type: array
+        kind:
+          enum:
+          - executable
+          - zip
+          type: string
+        url:
+          format: uri
+          pattern: ^https?://
+          type: string
+      required:
+      - contentHash
+      - kind
+      - url
+      type: object
+    command:
+      additionalProperties: false
+      properties:
+        pip:
+          description: '[Deprecated v3.x] An array of strings representing of the
+            requirements file to use for installing the subcommand for Pip. Each item
+            is interpreted as a line in the requirements file.'
+          items:
+            type: string
+          type: array
+      required:
+      - pip
+      type: object
+    config:
+      additionalProperties: true
+      type: object
+    packageDescribeRequest:
+      additionalProperties: false
+      properties:
+        packageName:
+          type: string
+        packageVersion:
+          type: string
+      required:
+      - packageName
+      type: object
+    docker:
+      additionalProperties:
+        type: string
+      type: object
+    error:
+      additionalProperties: false
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+        data:
+          type: object
+      required:
+      - message
+      - type
+    hash:
+      additionalProperties: false
+      properties:
+        algo:
+          $ref: '#/components/schemas/algo'
+        value:
+          type: string
+      required:
+      - algo
+      - value
+      type: object
+    images:
+      additionalProperties: false
+      properties:
+        icon-large:
+          description: PNG icon URL, preferably 256 by 256 pixels.
+          type: string
+        icon-medium:
+          description: PNG icon URL, preferably 128 by 128 pixels.
+          type: string
+        icon-small:
+          description: PNG icon URL, preferably 48 by 48 pixels.
+          type: string
+        screenshots:
+          items:
+            description: PNG screen URL, preferably 1024 by 1024 pixels.
+            type: string
+          type: array
+      type: object
+    installRequest:
+      additionalProperties: false
+      properties:
+        appId:
+          type: string
+        options:
+          additionalProperties: true
+          type: object
+        packageName:
+          type: string
+        packageVersion:
+          type: string
+      required:
+      - packageName
+      type: object
+    installResponse:
+      additionalProperties: false
+      properties:
+        appId:
+          type: string
+        cli:
+          $ref: '#/components/schemas/cli'
+        packageName:
+          type: string
+        packageVersion:
+          type: string
+        postInstallNotes:
+          type: string
+      required:
+      - packageName
+      - packageVersion
+      type: object
+    serviceUpdateRequest:
+      additionalProperties: false
+      properties:
+        appId:
+          type: string
+        options:
+          additionalProperties: true
+          type: object
+        packageName:
+          type: string
+        packageVersion:
+          type: string
+        replace:
+          description: If true any stored configuration will be ignored when producing the updated service configuration.
+          type: boolean
+      required:
+      - appId
+      - replace
+      type: object
+    serviceUpdateResponse:
+      additionalProperties: false
+      properties:
+        marathonDeploymentId:
+          type: string
+        package:
+          $ref: '#/components/schemas/v50PackageDefinition'
+        resolvedOptions:
+          additionalProperties: true
+          description: The result of merging the default package options with the user supplied options
+          type: object
+      required:
+      - marathonDeploymentId
+      - package
+      - resolvedOptions
+      type: object
+    uninstallRequest:
+      additionalProperties: false
+      properties:
+        appId:
+          type: string
+        packageName:
+          type: string
+        all:
+          type: boolean
+      required:
+      - packageName
+      type: object
+    uninstallResponse:
+      additionalProperties: false
+      properties:
+        appId:
+          type: string
+        packageName:
+          type: string
+        packageVersion:
+          type: string
+        postUninstallNotes:
+          type: string
+      required:
+      - appId
+      - packageName
+      type: object
+    licence:
+      additionalProperties: false
+      properties:
+        name:
+          description: The name of the license. For example one of [Apache License Version 2.0 | MIT License | BSD License | Proprietary]
+          type: string
+        url:
+          format: uri
+          pattern: ^https?://
+          type: string
+      required:
+      - name
+      - url
+      type: object
+    licences:
+      items:
+        $ref: '#/components/schemas/licence'
+      type: array
+    marathon:
+      additionalProperties: false
+      properties:
+        v2AppMustacheTemplate:
+          pattern: ^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$
+          type: string
+      required:
+      - v2AppMustacheTemplate
+      type: object
+    os:
+      additionalProperties: false
+      properties:
+        x86-64:
+          $ref: '#/components/schemas/cliInfo'
+      required:
+      - x86-64
+      type: object
+    packageDetails:
+      additionalProperties: false
+      properties:
+        description:
+          type: string
+        framework:
+          default: false
+          description: True if this package installs a new Mesos framework.
+          type: boolean
+        licenses:
+          items:
+            $ref: '#/components/schemas/licence'
+          type: array
+        maintainer:
+          type: string
+        name:
+          type: string
+        packagingVersion:
+          type: string
+        postInstallNotes:
+          description: Post installation notes that would be useful to the user of this package.
+          type: string
+        postUninstallNotes:
+          description: Post uninstallation notes that would be useful to the user of this package.
+          type: string
+        preInstallNotes:
+          description: Pre installation notes that would be useful to the user of this package.
+          type: string
+        releaseVersion:
+          description: Corresponds to the revision index from the universe directory structure
+          format: int32
+          minimum: 0
+          type: integer
+        scm:
+          type: string
+        selected:
+          default: false
+          description: Flag indicating if the package is selected in search results
+          type: boolean
+        tags:
+          items:
+            pattern: ^[^\s]+$
+            type: string
+          type: array
+        version:
+          type: string
+        website:
+          type: string
+      required:
+      - description
+      - maintainer
+      - name
+      - packagingVersion
+      - tags
+      - version
+      type: object
+    serviceDescribeRequest:
+      additionalProperties: false
+      properties:
+        appId:
+          type: string
+        managerId:
+          type: string
+      required:
+      - appId
+      - managerId
+      type: object
+    packageDeleteRepoRequest:
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        uri:
+          format: uri
+          pattern: ^https?://
+          type: string
+      type: object
+    packageDeleteRepoResponse:
+      additionalProperties: false
+      properties:
+        repositories:
+          items:
+            $ref: '#/components/schemas/pkgRepo'
+          type: array
+      required:
+      - repositories
+      type: object
+    packageAddRepoRequest:
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        uri:
+          format: uri
+          pattern: ^https?://
+          type: string
+        index:
+          format: int32
+          minimum: 0
+          type: integer
+      required:
+      - name
+      - uri
+      type: object
+    packageAddRepoResponse:
+      additionalProperties: false
+      properties:
+        repositories:
+          items:
+            $ref: '#/components/schemas/pkgRepo'
+          type: array
+      required:
+      - repositories
+      type: object
+    serviceDescribeResponse:
+      additionalProperties: false
+      properties:
+        downgradesTo:
+          items:
+            type: string
+          type: array
+        package:
+          $ref: '#/components/schemas/v50PackageDefinition'
+        resolvedOptions:
+          additionalProperties: true
+          description: The result of merging the default package options with the user supplied options
+          type: object
+        upgradesTo:
+          items:
+            type: string
+          type: array
+        userProvidedOptions:
+          additionalProperties: true
+          description: The options the user provided to run the service
+          type: object
+      required:
+      - downgradesTo
+      - package
+      - upgradesTo
+      type: object
+    uris:
+      additionalProperties:
+        type: string
+      type: object
+    url:
+      format: uri
+      pattern: ^https?://
+      type: string
+    pkgRepo:
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        uri:
+          format: uri
+          pattern: ^https?://
+          type: string
+      required:
+      - name
+      - uri
+      type: object
+    v30Resource:
+      additionalProperties: false
+      properties:
+        assets:
+          $ref: '#/components/schemas/assets'
+        cli:
+          $ref: '#/components/schemas/cli'
+        images:
+          $ref: '#/components/schemas/images'
+      type: object
+    v3PackageDescribeResponse:
+      additionalProperties: false
+      properties:
+        package:
+          $ref: '#/components/schemas/v50PackageDefinition'
+      required:
+      - package
+      type: object
+    v50PackageDefinition:
+      additionalProperties: false
+      properties:
+        command:
+          $ref: '#/components/schemas/command'
+        config:
+          additionalProperties: true
+          type: object
+        description:
+          type: string
+        downgradesTo:
+          description: List of versions that this package can downgrade to. If the property is a list containing the string '*', this package can downgrade to any version. If the property is not set or the empty list, this package cannot downgrade.
+          items:
+            type: string
+          type: array
+        framework:
+          default: false
+          description: True if this package installs a new Mesos framework.
+          type: boolean
+        licenses:
+          items:
+            $ref: '#/components/schemas/licence'
+          type: array
+        maintainer:
+          type: string
+        marathon:
+          $ref: '#/components/schemas/marathon'
+        minDcosReleaseVersion:
+          description: The minimum DC/OS Release Version the package can run on.
+          pattern: ^(?:0|[1-9][0-9]*)(?:\.(?:0|[1-9][0-9]*))*$
+          type: string
+        name:
+          type: string
+        packagingVersion:
+          enum:
+          - "5.0"
+          type: string
+        postInstallNotes:
+          description: Post installation notes that would be useful to the user of this package.
+          type: string
+        postUninstallNotes:
+          description: Post uninstallation notes that would be useful to the user of this package.
+          type: string
+        preInstallNotes:
+          description: Pre installation notes that would be useful to the user of this package.
+          type: string
+        releaseVersion:
+          description: Corresponds to the revision index from the universe directory structure
+          format: int32
+          minimum: 0
+          type: integer
+        resource:
+          $ref: '#/components/schemas/v30Resource'
+        scm:
+          type: string
+        selected:
+          default: false
+          description: Flag indicating if the package is selected in search results
+          type: boolean
+        tags:
+          items:
+            pattern: ^[^\s]+$
+            type: string
+          type: array
+        upgradesFrom:
+          description: List of versions that can upgrade to this package. If the property is a list containing the string '*', any version can upgrade to this package. If the property is not set or the empty list, no version can upgrade to this package.
+          items:
+            type: string
+          type: array
+        version:
+          pattern: ^[-a-zA-Z0-9.]+$
+          type: string
+        website:
+          type: string
+        manager:
+          $ref: '#/components/schemas/manager'
+      required:
+      - description
+      - maintainer
+      - name
+      - packagingVersion
+      - releaseVersion
+      - tags
+      - version
+      type: object
+    manager:
+      additionalProperties: false
+      properties:
+        packageName:
+          type: string
+        minPackageVersion:
+          type: string
+      required:
+      - packageName
+      type: object
+    assets_container:
+      properties:
+        docker:
+          additionalProperties:
+            type: string
+          type: object
+    LoginObject:
+      type: object
+      properties:
+        uid:
+          type: string
+        password:
+          type: string
+        token:
+          type: string
+    AuthToken:
+      type: object
+      required:
+        - token
+      properties:
+        token:
+          type: string
+      additionalProperties: false
+    User:
+      type: object
+      required:
+        - uid
+        - url
+        - description
+        - is_remote
+        - provider_type
+        - provider_id
+      properties:
+        uid:
+          type: string
+        url:
+          type: string
+        description:
+          type: string
+        is_remote:
+          type: boolean
+        is_service:
+          type: boolean
+        public_key:
+          type: string
+        provider_type:
+          type: string
+        provider_id:
+          type: string
+      additionalProperties: false
+    UserCreate:
+      type: object
+      properties:
+        description:
+          type: string
+        password:
+          type: string
+        public_key:
+          type: string
+        provider_type:
+          type: string
+        provider_id:
+          type: string
+        cluster_url:
+          type: string
+        creator_uid:
+          type: string
+      additionalProperties: false
+    UserUpdate:
+      type: object
+      properties:
+        description:
+          type: string
+        password:
+          type: string
+      additionalProperties: false
+    OIDCProviderConfig:
+      type: object
+      required:
+        - description
+        - issuer
+        - base_url
+        - client_secret
+        - client_id
+      properties:
+        description:
+          type: string
+        issuer:
+          type: string
+        base_url:
+          type: string
+        client_secret:
+          type: string
+        client_id:
+          type: string
+        verify_server_certificate:
+          type: boolean
+        ca_certs:
+          type: string
+      additionalProperties: false
+    Action:
+      type: object
+      required:
+        - name
+        - url
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+      additionalProperties: false
+    UserGroups:
+      type: object
+      properties:
+        array:
+          type: array
+          items:
+            type: object
+            required:
+              - group
+              - membershipurl
+            properties:
+              membershipurl:
+                type: string
+              group:
+                $ref: "#/components/schemas/Group"
+            additionalProperties: false
+    UserPermissions:
+      type: object
+      properties:
+        direct:
+          type: array
+          items:
+            type: object
+            required:
+              - rid
+              - description
+              - aclurl
+              - actions
+            properties:
+              rid:
+                type: string
+              description:
+                type: string
+              aclurl:
+                type: string
+              actions:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Action"
+            additionalProperties: false
+        groups:
+          type: array
+          items:
+            type: object
+            required:
+              - rid
+              - gid
+              - description
+              - aclurl
+              - membershipurl
+              - actions
+            properties:
+              rid:
+                type: string
+              gid:
+                type: string
+              description:
+                type: string
+              aclurl:
+                type: string
+              membershipurl:
+                type: string
+              actions:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Action"
+            additionalProperties: false
+      additionalProperties: false
+    Group:
+      type: object
+      required:
+        - gid
+        - url
+        - description
+        - provider_type
+      properties:
+        gid:
+          type: string
+        url:
+          type: string
+        description:
+          type: string
+        provider_type:
+          type: string
+      additionalProperties: false
+    GroupCreate:
+      type: object
+      required:
+        - description
+      properties:
+        description:
+          type: string
+        provider_type:
+          type: string
+      additionalProperties: false
+    GroupUpdate:
+      type: object
+      required:
+        - description
+      properties:
+        description:
+          type: string
+      additionalProperties: false
+    GroupUsers:
+      type: object
+      properties:
+        array:
+          type: array
+          items:
+            type: object
+            required:
+              - membershipurl
+              - user
+            properties:
+              membershipurl:
+                type: string
+              user:
+                $ref: "#/components/schemas/User"
+      additionalProperties: false
+    GroupPermissions:
+      type: object
+      properties:
+        array:
+          type: array
+          items:
+            type: object
+            required:
+              - rid
+              - description
+              - aclurl
+              - actions
+            properties:
+              rid:
+                type: string
+              description:
+                type: string
+              aclurl:
+                type: string
+              actions:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Action"
+      additionalProperties: false
+    ACL:
+      type: object
+      required:
+        - rid
+        - url
+        - description
+      properties:
+        rid:
+          type: string
+        url:
+          type: string
+        description:
+          type: string
+      additionalProperties: false
+    ACLCreate:
+      type: object
+      required:
+        - description
+      properties:
+        description:
+          type: string
+      additionalProperties: false
+    ACLUpdate:
+      type: object
+      required:
+        - description
+      properties:
+        description:
+          type: string
+      additionalProperties: false
+    ACLPermissions:
+      type: object
+      properties:
+        groups:
+          type: array
+          items:
+            type: object
+            required:
+              - gid
+              - groupurl
+              - actions
+            properties:
+              gid:
+                type: string
+              groupurl:
+                type: string
+              actions:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Action"
+        users:
+          type: array
+          items:
+            type: object
+            required:
+              - uid
+              - userurl
+              - actions
+            properties:
+              uid:
+                type: string
+              userurl:
+                type: string
+              actions:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Action"
+      additionalProperties: false
+    ActionAllowed:
+      type: object
+      required:
+        - allowed
+      properties:
+        allowed:
+          type: boolean
+      additionalProperties: false
+    SAMLProviderConfig:
+      type: object
+      required:
+        - description
+        - idp_metadata
+        - sp_base_url
+      properties:
+        description:
+          type: string
+        idp_metadata:
+          type: string
+        sp_base_url:
+          type: string
+      additionalProperties: false
+    SAMLACSCallbackUrlObject:
+      type: object
+      required:
+        - acs-callback-url
+      properties:
+        acs-callback-url:
+          type: string
+      additionalProperties: false
+    LDAPUserSearchConfig:
+      type: object
+      required:
+        - search-base
+        - search-filter-template
+      properties:
+        search-base:
+          type: string
+        search-filter-template:
+          type: string
+      additionalProperties: false
+    LDAPGroupSearchConfig:
+      type: object
+      required:
+        - search-base
+        - search-filter-template
+      properties:
+        search-base:
+          type: string
+        search-filter-template:
+          type: string
+        member-attributes:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+    LDAPConfiguration:
+      type: object
+      required:
+        - host
+        - port
+        - enforce-starttls
+        - use-ldaps
+      properties:
+        host:
+          type: string
+        dntemplate:
+          type: string
+        port:
+          type: integer
+        enforce-starttls:
+          type: boolean
+        use-ldaps:
+          type: boolean
+        lookup-dn:
+          type: string
+        lookup-password:
+          type: string
+        user-search:
+          $ref: "#/components/schemas/LDAPUserSearchConfig"
+        group-search:
+          $ref: "#/components/schemas/LDAPGroupSearchConfig"
+        ca-certs:
+          type: string
+        client-cert:
+          type: string
+      additionalProperties: false
+    LDAPImportUserObject:
+      type: object
+      required:
+        - username
+      properties:
+        username:
+          type: string
+      additionalProperties: false
+    LDAPImportGroupObject:
+      type: object
+      required:
+        - groupname
+      properties:
+        groupname:
+          type: string
+      additionalProperties: false
+    LDAPTestCredentials:
+      type: object
+      required:
+        - uid
+        - password
+      properties:
+        uid:
+          type: string
+        password:
+          type: string
+      additionalProperties: false
+    LDAPTestResultObject:
+      type: object
+      required:
+        - code
+        - description
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+      additionalProperties: false
+  securitySchemes:
+    token:
+      in: header
+      name: Authorization
+      type: apiKey
