@@ -68,7 +68,16 @@ func installPackage(client *dcos.APIClient, packageName string) error {
 		PackageName: packageName,
 	})
 	if err != nil {
-		log.Fatal(err)
+		switch err := err.(type) {
+		case dcos.GenericOpenAPIError:
+			if err.Error() == "409 Conflict" {
+				log.Printf("Package %s already installed", packageName)
+				return nil
+			}
+			return err
+		default:
+			return err
+		}
 	}
 
 	log.Printf("Package installed: %+v\n", result)
