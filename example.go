@@ -24,10 +24,10 @@ func listUsers(client *dcos.APIClient) error {
 	return nil
 }
 
-func login(clusterUrl, username, password string) (string, error) {
+func login(clusterURL, username, password string) (string, error) {
 	// Empty config, without auth token
 	config := dcos.NewConfig(nil)
-	config.SetURL(clusterUrl)
+	config.SetURL(clusterURL)
 
 	client, err := dcos.NewClientWithConfig(config)
 	if err != nil {
