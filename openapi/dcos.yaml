@@ -380,7 +380,7 @@ paths:
       description: Get array of `ACL` objects.
       tags:
         - iam
-        - permissions
+          # - permissions
       responses:
         "200":
           description: Success
@@ -400,7 +400,7 @@ paths:
       description: Retrieve single `ACL` object, for a specific resource.
       tags:
         - iam
-        - permissions
+          # - permissions
       parameters:
         - name: rid
           in: path
@@ -422,7 +422,7 @@ paths:
         permissions by default).
       tags:
         - iam
-        - permissions
+          # - permissions
       parameters:
         - name: rid
           in: path
@@ -447,7 +447,7 @@ paths:
       description: Update ACL for resource with ID `rid`.
       tags:
         - iam
-        - permissions
+          # - permissions
       parameters:
         - name: rid
           in: path
@@ -471,7 +471,7 @@ paths:
       description: Delete ACL of resource with ID `rid`.
       tags:
         - iam
-        - permissions
+          # - permissions
       parameters:
         - name: rid
           in: path
@@ -491,7 +491,7 @@ paths:
       description: Get allowed actions for given resource and group.
       tags:
         - iam
-        - permissions
+          # - permissions
       parameters:
         - name: rid
           in: path
@@ -523,7 +523,7 @@ paths:
       description: Forbid all actions of given group to given resource.
       tags:
         - iam
-        - permissions
+          # - permissions
       parameters:
         - name: rid
           in: path
@@ -547,7 +547,7 @@ paths:
       description: Query whether action is allowed or not.
       tags:
         - iam
-        - permissions
+          # - permissions
       parameters:
         - name: rid
           in: path
@@ -580,7 +580,7 @@ paths:
       description: Permit single action for given resource and group.
       tags:
         - iam
-        - permissions
+          # - permissions
       parameters:
         - name: rid
           in: path
@@ -609,7 +609,7 @@ paths:
       description: Forbid single action for given resource and group.
       tags:
         - iam
-        - permissions
+          # - permissions
       parameters:
         - name: rid
           in: path
@@ -639,7 +639,7 @@ paths:
       description: Retrieve all permissions that are set for a specific resource.
       tags:
         - iam
-        - permissions
+          # - permissions
       parameters:
         - name: rid
           in: path
@@ -661,7 +661,7 @@ paths:
       description: Get allowed actions for given resource and user.
       tags:
         - iam
-        - permissions
+          # - permissions
       parameters:
         - name: rid
           in: path
@@ -693,7 +693,7 @@ paths:
       description: Forbid all actions of given account to given resource.
       tags:
         - iam
-        - permissions
+          # - permissions
       parameters:
         - name: rid
           in: path
@@ -717,7 +717,7 @@ paths:
       description: Query whether action is allowed or not.
       tags:
         - iam
-        - permissions
+          # - permissions
       parameters:
         - name: rid
           in: path
@@ -750,7 +750,7 @@ paths:
       description: Permit single action for given account and resource.
       tags:
         - iam
-        - permissions
+          # - permissions
       parameters:
         - name: rid
           in: path
@@ -781,7 +781,7 @@ paths:
       description: Forbid single action for given account and resource.
       tags:
         - iam
-        - permissions
+          # - permissions
       parameters:
         - name: rid
           in: path
@@ -817,6 +817,8 @@ paths:
         the data provided by the JWKS endpoint see
         https://tools.ietf.org/html/rfc7517 and
         https://tools.ietf.org/html/rfc7518."
+      tags:
+        - iam
       responses:
         "200":
           description: The response body contains a JSON Web Key Set document.
@@ -836,7 +838,7 @@ paths:
         claims `exp` and `uid` to be present."
       tags:
         - iam
-        - login
+        # - login
       requestBody:
         content:
           application/json:
@@ -869,7 +871,7 @@ paths:
         flow.
       tags:
         - iam
-        - login
+          # - login
       parameters:
         - name: oidc-provider
           description: OIDC provider ID
@@ -890,7 +892,7 @@ paths:
         provider (often called "redirect" or "callback" URL).
       tags:
         - iam
-        - oidc
+          # - oidc
       responses:
         "302":
           description: OIDC authentication flow successful.
@@ -906,7 +908,7 @@ paths:
         not expose sensitive provider configuration details.
       tags:
         - iam
-        - oidc
+          # - oidc
       responses:
         "200":
           description: Success.
@@ -917,7 +919,7 @@ paths:
       description: Get configuration for a specific provider.
       tags:
         - iam
-        - oidc
+          # - oidc
       parameters:
         - name: provider-id
           in: path
@@ -939,7 +941,7 @@ paths:
         config as specified via JSON in the request body.
       tags:
         - iam
-        - oidc
+          # - oidc
       parameters:
         - name: provider-id
           in: path
@@ -960,7 +962,7 @@ paths:
       description: Update config for existing OIDC provider.
       tags:
         - iam
-        - oidc
+          # - oidc
       parameters:
         - name: provider-id
           in: path
@@ -981,7 +983,7 @@ paths:
       description: Delete provider (disables authentication with that provider).
       tags:
         - iam
-        - oidc
+          # - oidc
       parameters:
         - name: provider-id
           in: path
@@ -1002,7 +1004,7 @@ paths:
         does not expose sensitive provider configuration details.
       tags:
         - iam
-        - saml
+          # - saml
       responses:
         "200":
           description: Success.
@@ -1013,7 +1015,7 @@ paths:
       description: Get configuration for a specific SAML provider.
       tags:
         - iam
-        - saml
+          # - saml
       parameters:
         - name: provider-id
           in: path
@@ -1035,7 +1037,7 @@ paths:
         config as given by the JSON document in the request body.
       tags:
         - iam
-        - saml
+          # - saml
       parameters:
         - name: provider-id
           in: path
@@ -1056,7 +1058,7 @@ paths:
       description: Update config for existing SAML provider.
       tags:
         - iam
-        - saml
+          # - saml
       parameters:
         - name: provider-id
           in: path
@@ -1077,7 +1079,7 @@ paths:
       description: Delete provider (disables authentication with that provider).
       tags:
         - iam
-        - saml
+          # - saml
       parameters:
         - name: provider-id
           in: path
@@ -1096,7 +1098,7 @@ paths:
         submit an authentication response to this endpoint.
       tags:
         - iam
-        - saml
+          # - saml
       parameters:
         - name: provider-id
           in: path
@@ -1119,7 +1121,7 @@ paths:
         end-user submit the authentication response).
       tags:
         - iam
-        - saml
+          # - saml
       parameters:
         - name: provider-id
           in: path
@@ -1143,7 +1145,7 @@ paths:
         want to directly consume this document.
       tags:
         - iam
-        - saml
+          # - saml
       parameters:
         - name: provider-id
           in: path
@@ -1162,7 +1164,7 @@ paths:
       description: Retrieve array of `Group` objects.
       tags:
         - iam
-        - groups
+          # - groups
       responses:
         "200":
           description: Success.
@@ -1182,7 +1184,7 @@ paths:
       description: Get specific `Group` object.
       tags:
         - iam
-        - groups
+          # - groups
       parameters:
         - name: gid
           in: path
@@ -1203,7 +1205,7 @@ paths:
       description: Create a group.
       tags:
         - iam
-        - groups
+          # - groups
       parameters:
         - name: gid
           in: path
@@ -1228,7 +1230,7 @@ paths:
       description: Update existing group (description).
       tags:
         - iam
-        - groups
+          # - groups
       parameters:
         - name: gid
           in: path
@@ -1251,7 +1253,7 @@ paths:
       description: Delete group.
       tags:
         - iam
-        - groups
+          # - groups
       parameters:
         - name: gid
           in: path
@@ -1269,7 +1271,7 @@ paths:
       description: Retrieve permissions of this group.
       tags:
         - iam
-        - groups
+          # - groups
       parameters:
         - name: gid
           in: path
@@ -1292,7 +1294,7 @@ paths:
         accounts, defaults to list only user accounts.
       tags:
         - iam
-        - groups
+          # - groups
       parameters:
         - name: gid
           in: path
@@ -1320,7 +1322,7 @@ paths:
       description: Delete user account from group.
       tags:
         - iam
-        - groups
+          # - groups
       parameters:
         - name: gid
           in: path
@@ -1343,7 +1345,7 @@ paths:
       description: Add account to group.
       tags:
         - iam
-        - groups
+          # - groups
       parameters:
         - name: gid
           in: path
@@ -1369,7 +1371,7 @@ paths:
       description: Retrieve current directory (LDAP) back-end configuration.
       tags:
         - iam
-        - ldap
+          # - ldap
       responses:
         "200":
           description: The response body contains a JSON object providing the current
@@ -1388,7 +1390,7 @@ paths:
         configuration, if existing.
       tags:
         - iam
-        - ldap
+          # - ldap
       requestBody:
         content:
           application/json:
@@ -1413,7 +1415,7 @@ paths:
         the LDAP authentication.
       tags:
         - iam
-        - ldap
+          # - ldap
       responses:
         "204":
           description: Configuration deleted.
@@ -1431,7 +1433,7 @@ paths:
         failure than the actual login endpoint.
       tags:
         - iam
-        - ldap
+          # - ldap
       requestBody:
         content:
           application/json:
@@ -1466,7 +1468,7 @@ paths:
         back-end. See docs/ldap.md for details on group import.
       tags:
         - iam
-        - ldap
+          # - ldap
       requestBody:
         content:
           application/json:
@@ -1493,7 +1495,7 @@ paths:
       description: Attempt to import a user from the configured directory (LDAP) back-end.
       tags:
         - iam
-        - ldap
+          # - ldap
       requestBody:
         content:
           application/json:
@@ -1525,7 +1527,7 @@ paths:
         instead.
       tags:
         - iam
-        - users
+          # - users
       parameters:
         - name: type
           in: query
@@ -1552,7 +1554,7 @@ paths:
       description: Get specific `User` object.
       tags:
         - iam
-        - users
+          # - users
       parameters:
         - name: uid
           in: path
@@ -1573,7 +1575,7 @@ paths:
       description: Create user (uid in url, details incl. credentials in body).
       tags:
         - iam
-        - users
+          # - users
       parameters:
         - name: uid
           in: path
@@ -1599,7 +1601,7 @@ paths:
       description: Update existing user account (meta data and/or password).
       tags:
         - iam
-        - users
+          # - users
       parameters:
         - name: uid
           in: path
@@ -1625,7 +1627,7 @@ paths:
       description: Delete account.
       tags:
         - iam
-        - users
+          # - users
       parameters:
         - name: uid
           in: path
@@ -1647,7 +1649,7 @@ paths:
       description: Retrieve groups the user is member of.
       tags:
         - iam
-        - users
+          # - users
       parameters:
         - name: uid
           in: path
@@ -1670,7 +1672,7 @@ paths:
         distinguished from those that are obtained through group membership.
       tags:
         - iam
-        - users
+          # - users
       parameters:
         - name: uid
           in: path
