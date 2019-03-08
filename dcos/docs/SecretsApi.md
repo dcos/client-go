@@ -1,13 +1,13 @@
 # \SecretsApi
 
-All URIs are relative to *http://localhost/secrets/v1*
+All URIs are relative to *http://your-dcos-cluster.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSecret**](SecretsApi.md#CreateSecret) | **Put** /secret/{store}/{path-to-secret} | Create a secret in the store at the path.
-[**DeleteSecret**](SecretsApi.md#DeleteSecret) | **Delete** /secret/{store}/{path-to-secret} | Delete a secret.
-[**GetSecret**](SecretsApi.md#GetSecret) | **Get** /secret/{store}/{path-to-secret} | Read or list a secret from the store by its path.
-[**UpdateSecret**](SecretsApi.md#UpdateSecret) | **Patch** /secret/{store}/{path-to-secret} | Update secret.
+[**CreateSecret**](SecretsApi.md#CreateSecret) | **Put** /secrets/v1/secret/{store}/{path-to-secret} | Create a secret in the store at the path.
+[**DeleteSecret**](SecretsApi.md#DeleteSecret) | **Delete** /secrets/v1/secret/{store}/{path-to-secret} | Delete a secret.
+[**GetSecret**](SecretsApi.md#GetSecret) | **Get** /secrets/v1/secret/{store}/{path-to-secret} | Read or list a secret from the store by its path.
+[**UpdateSecret**](SecretsApi.md#UpdateSecret) | **Patch** /secrets/v1/secret/{store}/{path-to-secret} | Update secret.
 
 
 # **CreateSecret**

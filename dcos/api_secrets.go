@@ -45,7 +45,7 @@ func (a *SecretsApiService) CreateSecret(ctx context.Context, store string, path
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/secret/{store}/{path-to-secret}"
+	localVarPath := a.client.cfg.BasePath + "/secrets/v1/secret/{store}/{path-to-secret}"
 	localVarPath = strings.Replace(localVarPath, "{"+"store"+"}", fmt.Sprintf("%v", store), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"path-to-secret"+"}", fmt.Sprintf("%v", pathToSecret), -1)
 
@@ -116,7 +116,7 @@ func (a *SecretsApiService) DeleteSecret(ctx context.Context, store string, path
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/secret/{store}/{path-to-secret}"
+	localVarPath := a.client.cfg.BasePath + "/secrets/v1/secret/{store}/{path-to-secret}"
 	localVarPath = strings.Replace(localVarPath, "{"+"store"+"}", fmt.Sprintf("%v", store), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"path-to-secret"+"}", fmt.Sprintf("%v", pathToSecret), -1)
 
@@ -194,7 +194,7 @@ func (a *SecretsApiService) GetSecret(ctx context.Context, store string, pathToS
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/secret/{store}/{path-to-secret}"
+	localVarPath := a.client.cfg.BasePath + "/secrets/v1/secret/{store}/{path-to-secret}"
 	localVarPath = strings.Replace(localVarPath, "{"+"store"+"}", fmt.Sprintf("%v", store), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"path-to-secret"+"}", fmt.Sprintf("%v", pathToSecret), -1)
 
@@ -286,7 +286,7 @@ func (a *SecretsApiService) UpdateSecret(ctx context.Context, store string, path
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/secret/{store}/{path-to-secret}"
+	localVarPath := a.client.cfg.BasePath + "/secrets/v1/secret/{store}/{path-to-secret}"
 	localVarPath = strings.Replace(localVarPath, "{"+"store"+"}", fmt.Sprintf("%v", store), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"path-to-secret"+"}", fmt.Sprintf("%v", pathToSecret), -1)
 
