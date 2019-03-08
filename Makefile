@@ -17,17 +17,22 @@ fmt:
 .PHONY: generate
 generate: generate-client fmt
 
+GENERATOR_CMD=docker run --rm -v ${PWD}:/client-go openapitools/openapi-generator-cli:v4.0.0-beta2 generate
+
 .PHONY: generate-client
 generate-client:
-	openapi-generator generate -i openapi/dcos.yaml -g go -o dcos --skip-validate-spec \
+	${GENERATOR_CMD} -i /client-go/openapi/dcos.yaml -g go -o /client-go/dcos \
+		--skip-validate-spec \
 		-D packageName=dcos,withGoCodegenComment=true,models,apis \
 		-D supportingFiles=client.go \
-		-t templates
-	openapi-generator generate -i openapi/dcos.yaml -g go -o dcos --skip-validate-spec \
+		-t /client-go/templates
+	${GENERATOR_CMD} -i /client-go/openapi/dcos.yaml -g go -o /client-go/dcos \
+		--skip-validate-spec \
 		-D packageName=dcos,withGoCodegenComment=true,models,apis \
 		-D supportingFiles=response.go \
-		-t templates
-	openapi-generator generate -i openapi/dcos.yaml -g go -o dcos --skip-validate-spec \
+		-t /client-go/templates
+	${GENERATOR_CMD} -i /client-go/openapi/dcos.yaml -g go -o /client-go/dcos \
+		--skip-validate-spec \
 		-D packageName=dcos,withGoCodegenComment=true,models,apis \
 		-D supportingFiles=configuration.go \
-		-t templates
+		-t /client-go/templates
