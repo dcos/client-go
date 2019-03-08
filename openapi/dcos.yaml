@@ -884,6 +884,7 @@ paths:
           description: Redirect to the identity provider.
   /acs/api/v1/auth/oidc/callback:
     get:
+      operationId: openIDConnectCallbackURL
       summary: OpenID Connect callback URL.
       description: After successfully logging in to an OpenID Connect identity provider,
         the end-user is being redirected back to the IAM via this callback URL.
@@ -1092,6 +1093,7 @@ paths:
           description: Success.
   /acs/api/v1/auth/saml/providers/{provider-id}/acs-callback:
     post:
+      operationId: SAMLProviderACSCallbackEndpoint
       summary: The SP ACS callback endpoint.
       description: The IAM acts as SAML service provider (SP). As part of the
         authentication flow, a SAML identity provider (IdP) makes the end-user
