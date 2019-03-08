@@ -43,7 +43,7 @@ paths:
                     type: array
                     items:
                       $ref: "#/components/schemas/ACL"
-  "/acls/{rid}":
+  /acs/api/v1/acls/{rid}:
     get:
       operationId: getResourceACLs
       summary: Retrieve ACL for a certain resource.
@@ -134,7 +134,7 @@ paths:
           description: Success.
         "404":
           description: ACL not found.
-  "/acls/{rid}/groups/{gid}":
+  /acs/api/v1/acls/{rid}/groups/{gid}:
     get:
       operationId: getResourceGroupActions
       summary: Get allowed actions for given resource and group.
@@ -190,7 +190,7 @@ paths:
       responses:
         "204":
           description: Success.
-  "/acls/{rid}/groups/{gid}/{action}":
+  /acs/api/v1/acls/{rid}/groups/{gid}/{action}:
     get:
       operationId: getResourceGroupAction
       summary: Query whether action is allowed or not.
@@ -282,7 +282,7 @@ paths:
       responses:
         "204":
           description: Success.
-  "/acls/{rid}/permissions":
+  /acs/api/v1/acls/{rid}/permissions:
     get:
       operationId: getResourcePermissions
       summary: Retrieve all permissions for resource.
@@ -304,7 +304,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ACLPermissions"
-  "/acls/{rid}/users/{uid}":
+  /acs/api/v1/acls/{rid}/users/{uid}:
     get:
       operationId: getResourceUserActions
       summary: Get allowed actions for given resource and user.
@@ -360,7 +360,7 @@ paths:
       responses:
         "204":
           description: Success.
-  "/acls/{rid}/users/{uid}/{action}":
+  /acs/api/v1/acls/{rid}/users/{uid}/{action}:
     get:
       operationId: getResourceUserAction
       summary: Query whether action is allowed or not.
@@ -560,7 +560,7 @@ paths:
       responses:
         "200":
           description: Success.
-  "/auth/oidc/providers/{provider-id}":
+  /acs/api/v1/auth/oidc/providers/{provider-id}:
     get:
       operationId: getOIDCProvider
       summary: Get configuration for a specific provider.
@@ -656,7 +656,7 @@ paths:
       responses:
         "200":
           description: Success.
-  "/auth/saml/providers/{provider-id}":
+  /acs/api/v1/auth/saml/providers/{provider-id}:
     get:
       operationId: getSAMLProvider
       summary: Get configuration for a specific SAML provider.
@@ -738,7 +738,7 @@ paths:
       responses:
         "204":
           description: Success.
-  "/auth/saml/providers/{provider-id}/acs-callback":
+  /acs/api/v1/auth/saml/providers/{provider-id}/acs-callback:
     post:
       summary: The SP ACS callback endpoint.
       description: The IAM acts as SAML service provider (SP). As part of the
@@ -759,7 +759,7 @@ paths:
           description: SAML authentication flow successful.
         "401":
           description: Problem in authentication flow.
-  "/auth/saml/providers/{provider-id}/acs-callback-url":
+  /acs/api/v1/auth/saml/providers/{provider-id}/acs-callback-url:
     get:
       operationId: getSAMLProviderACSCallbackURL
       summary: Get the authentication callback URL for this SP.
@@ -784,7 +784,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SAMLACSCallbackUrlObject"
-  "/auth/saml/providers/{provider-id}/sp-metadata":
+  /acs/api/v1/auth/saml/providers/{provider-id}/sp-metadata:
     get:
       operationId: getSAMLProviderSPMetadata
       summary: Get SP metadata (XML).
@@ -825,7 +825,7 @@ paths:
                     type: array
                     items:
                       $ref: "#/components/schemas/Group"
-  "/groups/{gid}":
+  /acs/api/v1/groups/{gid}:
     get:
       operationId: getGroup
       summary: Get single group object.
@@ -912,7 +912,7 @@ paths:
       responses:
         "204":
           description: Success
-  "/groups/{gid}/permissions":
+  /acs/api/v1/groups/{gid}/permissions:
     get:
       operationId: getGroupPermissions
       summary: Retrieve group permissions.
@@ -934,7 +934,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GroupPermissions"
-  "/groups/{gid}/users":
+  /acs/api/v1/groups/{gid}/users:
     get:
       operationId: getGroupUsers
       summary: Retrieve members of a group.
@@ -963,7 +963,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GroupUsers"
-  "/groups/{gid}/users/{uid}":
+  /acs/api/v1/groups/{gid}/users/{uid}:
     delete:
       operationId: deleteGroupUser
       summary: Delete user account from group.
@@ -1195,7 +1195,7 @@ paths:
                     type: array
                     items:
                       $ref: "#/components/schemas/User"
-  "/users/{uid}":
+  /acs/api/v1/users/{uid}:
     get:
       operationId: getUser
       summary: Get single user object.
@@ -1290,7 +1290,7 @@ paths:
           description: Bad request.
         "404":
           description: User account not found.
-  "/users/{uid}/groups":
+  /acs/api/v1/users/{uid}/groups:
     get:
       operationId: getUserGroups
       summary: Retrieve groups the user is member of.
@@ -1312,7 +1312,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UserGroups"
-  "/users/{uid}/permissions":
+  /acs/api/v1/users/{uid}/permissions:
     get:
       operationId: getUserPermissions
       summary: Retrieve permissions an account has.
