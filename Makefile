@@ -36,3 +36,8 @@ generate-client:
 		-D packageName=dcos,withGoCodegenComment=true,models,apis \
 		-D supportingFiles=configuration.go \
 		-t /client-go/templates
+	${GENERATOR_CMD} -i /client-go/openapi/dcos.yaml -g go -o /client-go/dcos \
+		--skip-validate-spec \
+		-D packageName=dcos,withGoCodegenComment=true,models,apis \
+		-D supportingFiles=README.md \
+		-t /client-go/templates
