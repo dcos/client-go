@@ -2,27 +2,28 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 
 	"github.com/dcos/client-go/dcos"
 )
 
-/*
-func listUsers(client *dcos.Client) error {
-	users, err := client.IAM.Users.GetUsers(nil)
+func listUsers(client *dcos.APIClient) error {
+	users, _, err := client.IamApi.GetUsers(context.TODO(), nil)
 	if err != nil {
 		return err
 	}
 
 	log.Println("Listing users...")
 
-	for _, u := range users.Payload.Array {
-		fmt.Printf("\tUser %q, description=%q\n", *u.UID, *u.Description)
+	for _, u := range users.Array {
+		fmt.Printf("\tUser %q, description=%q\n", u.Uid, u.Description)
 	}
 
 	return nil
 }
 
+/*
 func createSecret(client *dcos.Client, secretName, secretValue string) error {
 	paramsSecret := secrets.
 		NewPutSecretStorePathToSecretParams().
@@ -80,12 +81,13 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	/*
-		err = listUsers(client)
-		if err != nil {
-			log.Printf("Listing users WITHOUT token failed: %s\n", err)
-		}
 
+	err = listUsers(client)
+	if err != nil {
+		log.Printf("Listing users WITHOUT token failed: %s\n", err)
+	}
+
+	/*
 		token, err := client.Login(os.Args[1], os.Args[2])
 		if err != nil {
 			log.Fatalf("Login failed: %s\n", err)
