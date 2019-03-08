@@ -77,15 +77,13 @@ func getSecret(client *dcos.APIClient, secretName string) error {
 	return nil
 }
 
-func installPackage(client *dcos.APIClient, packageName string) error {
-	result, _, err := client.CosmosApi.PackageInstall(context.TODO(), dcos.InstallRequest{
-		PackageName: packageName,
-	})
+func installPackage(client *dcos.APIClient, request dcos.InstallRequest) error {
+	result, _, err := client.CosmosApi.PackageInstall(context.TODO(), request)
 	if err != nil {
 		switch err := err.(type) {
 		case dcos.GenericOpenAPIError:
 			if err.Error() == "409 Conflict" {
-				log.Printf("Package %s already installed", packageName)
+				log.Printf("Package %s already installed", request.PackageName)
 				return nil
 			}
 			return err
@@ -129,18 +127,24 @@ func main() {
 		log.Fatalf("Creating secrets failed: %s\n", err)
 	}
 
-	// err = installPackage(authClient, "marathon-lb", nil)
-	// if err != nil {
-	// 	log.Fatalf("Installing package failed: %s\n", err)
-	// }
-	//
-	// jenkinsOptions := &cosmos.PackageOptions{
-	// 	Security: cosmos.PackageSecurityOptions{
-	// 		StrictMode: true,
-	// 	},
-	// }
+	err = installPackage(client, dcos.InstallRequest{PackageName: "jenkins"})
+	if err != nil {
+		log.Fatalf("Installing package failed: %s\n", err)
+	}
 
-	err = installPackage(client, "jenkins")
+	dcosMonitoringRequest := dcos.InstallRequest{
+		PackageName: "beta-dcos-monitoring",
+		Options: map[string]map[string]interface{}{
+			"grafana": map[string]interface{}{
+				"default_dashboards": false,
+				"dashboard_config_repository": map[string]string{
+					"url":  "https://github.com/masonse/grafana-dashboards",
+					"path": "/dashboards",
+				},
+			},
+		},
+	}
+	err = installPackage(client, dcosMonitoringRequest)
 	if err != nil {
 		log.Fatalf("Installing package failed: %s\n", err)
 	}
