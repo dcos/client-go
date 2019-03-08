@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/dcos/client-go/dcos"
 )
@@ -21,6 +22,26 @@ func listUsers(client *dcos.APIClient) error {
 	}
 
 	return nil
+}
+
+func login(clusterUrl, username, password string) (string, error) {
+	// Empty config, without auth token
+	config := dcos.NewConfig(nil)
+	config.SetURL(clusterUrl)
+
+	client, err := dcos.NewClientWithConfig(config)
+	if err != nil {
+		return "", err
+	}
+
+	loginObject := dcos.LoginObject{Uid: username, Password: password}
+
+	authToken, _, err := client.IAMApi.Login(context.TODO(), loginObject)
+	if err != nil {
+		return "", err
+	}
+
+	return authToken.Token, nil
 }
 
 /*
@@ -96,12 +117,16 @@ func main() {
 		log.Printf("Listing users WITHOUT token failed: %s\n", err)
 	}
 
-	/*
-		token, err := client.Login(os.Args[1], os.Args[2])
+	if len(os.Args) > 3 {
+		token, err := login(os.Args[1], os.Args[2], os.Args[3])
 		if err != nil {
 			log.Fatalf("Login failed: %s\n", err)
 		}
 
+		log.Printf("Logged in and received token: %s", token)
+	}
+
+	/*
 		config.SetACSToken(token)
 
 		httpClient, err = dcos.NewHTTPClient(config)
