@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/antihax/optional"
 	"github.com/dcos/client-go/dcos"
 )
 
@@ -77,6 +78,18 @@ func getSecret(client *dcos.APIClient, secretName string) error {
 	return nil
 }
 
+func describePackage(client *dcos.APIClient, request dcos.PackageDescribeRequest) error {
+	result, _, err := client.CosmosApi.PackageDescribe(context.TODO(), &dcos.PackageDescribeOpts{
+		PackageDescribeRequest: optional.NewInterface(request),
+	})
+	if err != nil {
+		return err
+	}
+	log.Printf("Package %s description: %+v\n", request.PackageName, result.Package.Description)
+
+	return nil
+}
+
 func installPackage(client *dcos.APIClient, request dcos.InstallRequest) error {
 	result, _, err := client.CosmosApi.PackageInstall(context.TODO(), request)
 	if err != nil {
@@ -129,7 +142,12 @@ func main() {
 		log.Fatalf("Creating secrets failed: %s\n", err)
 	}
 
-	err = installPackage(client, dcos.InstallRequest{PackageName: "jenkins"})
+	err = describePackage(client, dcos.PackageDescribeRequest{PackageName: "hello-world"})
+	if err != nil {
+		log.Fatalf("Describing package failed: %s\n", err)
+	}
+
+	err = installPackage(client, dcos.InstallRequest{PackageName: "hello-world"})
 	if err != nil {
 		log.Fatalf("Installing package failed: %s\n", err)
 	}
@@ -146,6 +164,7 @@ func main() {
 			},
 		},
 	}
+
 	err = installPackage(client, dcosMonitoringRequest)
 	if err != nil {
 		log.Fatalf("Installing package failed: %s\n", err)
