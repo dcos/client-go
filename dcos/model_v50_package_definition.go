@@ -11,8 +11,9 @@
 package dcos
 
 type V50PackageDefinition struct {
-	Command     Command `json:"command,omitempty"`
-	Description string  `json:"description"`
+	Command     Command                `json:"command,omitempty"`
+	Config      map[string]interface{} `json:"config,omitempty"`
+	Description string                 `json:"description"`
 	// List of versions that this package can downgrade to. If the property is a list containing the string '*', this package can downgrade to any version. If the property is not set or the empty list, this package cannot downgrade.
 	DowngradesTo []string `json:"downgradesTo,omitempty"`
 	// True if this package installs a new Mesos framework.
