@@ -1,7 +1,7 @@
 export GO111MODULE := on
 
 .PHONY: test
-test: vet
+test: generate vet
 	go test -race -cover ./...
 
 .PHONY: vet
@@ -39,3 +39,8 @@ generate-client:
 	$(call run_generator,-DsupportingFiles=configuration.go)
 	$(call run_generator,-DsupportingFiles=README.md)
 
+.PHONY: validate
+validate: test
+	@export CHANGED_FILES="$$(git status --porcelain)" && \
+		[ -z "$${CHANGED_FILES}" ] || \
+		([ -n "$${CHANGED_FILES}" ] && printf "\nValidation failed: the following files have changed when running generate:\n\n$${CHANGED_FILES}\n\n" && exit 1)
