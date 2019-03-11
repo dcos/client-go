@@ -462,10 +462,7 @@ func TestConfigCurrent(t *testing.T) {
 
 	for _, fixture := range fixtures {
 		dcosDir := filepath.Join(fixturesDir, fixture.name, ".dcos")
-		manager := NewConfigManager(&ConfigManagerOpts{
-			Dir:       dcosDir,
-			EnvLookup: fixture.envLookup,
-		})
+		manager := NewConfigManager(ConfigDirOpt(dcosDir), ConfigEnvLookupOpt(fixture.envLookup))
 
 		t.Run(fixture.name, func(t *testing.T) {
 			conf, err := manager.Current()
@@ -498,9 +495,7 @@ func TestConfigFind(t *testing.T) {
 
 	for _, fixture := range fixtures {
 		dcosDir := filepath.Join(fixturesDir, fixture.name, ".dcos")
-		manager := NewConfigManager(&ConfigManagerOpts{
-			Dir: dcosDir,
-		})
+		manager := NewConfigManager(ConfigDirOpt(dcosDir))
 
 		t.Run(fixture.name, func(t *testing.T) {
 			conf, err := manager.Find(fixture.search, false)
@@ -520,10 +515,7 @@ func TestConfigAttach(t *testing.T) {
 	clusterID := "97193161-f7f1-2295-2514-a6b3918043b6"
 	fs.Create(filepath.Join(".dcos", "clusters", clusterID, "dcos.toml"))
 
-	manager := NewConfigManager(&ConfigManagerOpts{
-		Dir: ".dcos",
-		Fs:  fs,
-	})
+	manager := NewConfigManager(ConfigDirOpt(".dcos"), ConfigFSOpt(fs))
 
 	conf, err := manager.Find(clusterID, true)
 	require.NoError(t, err)

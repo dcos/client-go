@@ -433,18 +433,36 @@ func (c *ConfigStore) searchKeys(tree *toml.Tree, keys *[]string, keyPath []stri
 	}
 }
 
-// ConfigManagerOpts are functional options for a Manager.
-type ConfigManagerOpts struct {
-	// Fs is an abstraction for the filesystem. All filesystem operations
-	// for the manager should be done through it instead of the os package.
-	Fs afero.Fs
+// ConfigManagerOpt are functional options for a Manager.
+type ConfigManagerOpt func(*ConfigManager)
 
-	// EnvLookup is the function used to lookup environment variables.
-	// When not set it defaults to os.LookupEnv.
-	EnvLookup func(key string) (string, bool)
+// ConfigFSOpt returns a ConfigManagerOpt that sets an abstraction for the filesystem for the config manager.
+// All filesystem operations for the manager should be done through it instead of the os package.
+func ConfigFSOpt(fs afero.Fs) ConfigManagerOpt {
+	return func(cm *ConfigManager) {
+		cm.fs = fs
+	}
+}
 
-	// Dir is the root directory for the config manager.
-	Dir string
+// EnvLookup is the function used to lookup environment variables.
+// When not set it defaults to os.LookupEnv.
+type EnvLookup func(key string) (string, bool)
+
+// ConfigEnvLookupOpt returns a ConfigManagerOpt that sets the env lookup func for the config manager.
+func ConfigEnvLookupOpt(f EnvLookup) ConfigManagerOpt {
+	if f == nil {
+		return nil
+	}
+	return func(cm *ConfigManager) {
+		cm.envLookup = f
+	}
+}
+
+// ConfigDirOpt returns a ConfigManagerOpt that sets the root directory for the config manager.
+func ConfigDirOpt(dir string) ConfigManagerOpt {
+	return func(cm *ConfigManager) {
+		cm.dir = dir
+	}
 }
 
 func expandHomeDir() string {
@@ -463,28 +481,20 @@ type ConfigManager struct {
 }
 
 // NewConfigManager creates a new config manager.
-func NewConfigManager(opts *ConfigManagerOpts) *ConfigManager {
-	if opts == nil {
-		opts = &ConfigManagerOpts{}
+func NewConfigManager(opts ...ConfigManagerOpt) *ConfigManager {
+	configManager := &ConfigManager{
+		fs:        afero.NewOsFs(),
+		envLookup: os.LookupEnv,
+		dir:       expandHomeDir(),
 	}
 
-	if opts.Fs == nil {
-		opts.Fs = afero.NewOsFs()
+	for _, opt := range opts {
+		if opt != nil {
+			opt(configManager)
+		}
 	}
 
-	if opts.EnvLookup == nil {
-		opts.EnvLookup = os.LookupEnv
-	}
-
-	if opts.Dir == "" {
-		opts.Dir = expandHomeDir()
-	}
-
-	return &ConfigManager{
-		fs:        opts.Fs,
-		dir:       opts.Dir,
-		envLookup: opts.EnvLookup,
-	}
+	return configManager
 }
 
 // Current retrieves the current config.
