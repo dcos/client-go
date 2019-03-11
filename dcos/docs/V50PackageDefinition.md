@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Command** | [**Command**](command.md) |  | [optional] 
+**Config** | [**map[string]interface{}**](.md) |  | [optional] 
 **Description** | **string** |  | 
 **DowngradesTo** | **[]string** | List of versions that this package can downgrade to. If the property is a list containing the string &#39;*&#39;, this package can downgrade to any version. If the property is not set or the empty list, this package cannot downgrade. | [optional] 
 **Framework** | **bool** | True if this package installs a new Mesos framework. | [optional] [default to false]
