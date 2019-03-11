@@ -44,7 +44,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/vnd.dcos.package.describe-request+json;charset=utf-8;version=v1
- - **Accept**: application/vnd.dcos.package.describe-response+json;charset=utf-8;version=v3
+ - **Accept**: application/vnd.dcos.package.describe-response+json;charset=utf-8;version=v3, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -72,7 +72,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/vnd.dcos.package.install-request+json;charset=utf-8;version=v1
- - **Accept**: application/vnd.dcos.package.install-response+json;charset=utf-8;version=v1
+ - **Accept**: application/vnd.dcos.package.install-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -107,7 +107,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/vnd.dcos.package.repository.add-request+json;charset=utf-8;version=v1
- - **Accept**: application/vnd.dcos.package.repository.add-response+json;charset=utf-8;version=v1
+ - **Accept**: application/vnd.dcos.package.repository.add-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -142,7 +142,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/vnd.dcos.package.repository.delete-request+json;charset=utf-8;version=v1
- - **Accept**: application/vnd.dcos.package.repository.delete-response+json;charset=utf-8;version=v1
+ - **Accept**: application/vnd.dcos.package.repository.delete-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -177,7 +177,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/vnd.dcos.package.uninstall-request+json;charset=utf-8;version=v1
- - **Accept**: application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1
+ - **Accept**: application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

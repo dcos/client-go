@@ -44,12 +44,12 @@ paths:
                 $ref: '#/components/schemas/packageDeleteRepoResponse'
         400:
           content:
-            application/vnd.dcos.package.repository.delete-response+json;charset=utf-8;version=v1:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
         404:
           content:
-            application/vnd.dcos.package.repository.delete-response+json;charset=utf-8;version=v1:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
       tags:
@@ -74,12 +74,12 @@ paths:
                 $ref: '#/components/schemas/packageAddRepoResponse'
         400:
           content:
-            application/vnd.dcos.package.repository.add-response+json;charset=utf-8;version=v1:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
         409:
           content:
-            application/vnd.dcos.package.repository.add-response+json;charset=utf-8;version=v1:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
       tags:
@@ -123,7 +123,7 @@ paths:
                 $ref: '#/components/schemas/v3PackageDescribeResponse'
         400:
           content:
-            application/vnd.dcos.package.describe-response+json;charset=utf-8;version=v3:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
       tags:
@@ -155,17 +155,17 @@ paths:
                 $ref: '#/components/schemas/uninstallResponse'
         400:
           content:
-            application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
         404:
           content:
-            application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
         409:
           content:
-            application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
       tags:
@@ -188,12 +188,12 @@ paths:
                 $ref: '#/components/schemas/installResponse'
         400:
           content:
-            application/vnd.dcos.package.install-response+json;charset=utf-8;version=v1:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
         409:
           content:
-            application/vnd.dcos.package.install-response+json;charset=utf-8;version=v1:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
       tags:

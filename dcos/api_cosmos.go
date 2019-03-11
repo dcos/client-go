@@ -66,7 +66,7 @@ func (a *CosmosApiService) PackageDescribe(ctx context.Context, localVarOptional
 	}
 
 	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"application/vnd.dcos.package.describe-response+json;charset=utf-8;version=v3"}
+	localVarHttpHeaderAccepts := []string{"application/vnd.dcos.package.describe-response+json;charset=utf-8;version=v3", "application/vnd.dcos.package.error+json;charset=utf-8;version=v1"}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -172,7 +172,7 @@ func (a *CosmosApiService) PackageInstall(ctx context.Context, installRequest In
 	}
 
 	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"application/vnd.dcos.package.install-response+json;charset=utf-8;version=v1"}
+	localVarHttpHeaderAccepts := []string{"application/vnd.dcos.package.install-response+json;charset=utf-8;version=v1", "application/vnd.dcos.package.error+json;charset=utf-8;version=v1"}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -287,7 +287,7 @@ func (a *CosmosApiService) PackageRepositoryAdd(ctx context.Context, localVarOpt
 	}
 
 	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"application/vnd.dcos.package.repository.add-response+json;charset=utf-8;version=v1"}
+	localVarHttpHeaderAccepts := []string{"application/vnd.dcos.package.repository.add-response+json;charset=utf-8;version=v1", "application/vnd.dcos.package.error+json;charset=utf-8;version=v1"}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -409,7 +409,7 @@ func (a *CosmosApiService) PackageRepositoryDelete(ctx context.Context, localVar
 	}
 
 	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"application/vnd.dcos.package.repository.delete-response+json;charset=utf-8;version=v1"}
+	localVarHttpHeaderAccepts := []string{"application/vnd.dcos.package.repository.delete-response+json;charset=utf-8;version=v1", "application/vnd.dcos.package.error+json;charset=utf-8;version=v1"}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
@@ -531,7 +531,7 @@ func (a *CosmosApiService) PackageUninstall(ctx context.Context, uninstallReques
 	}
 
 	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1"}
+	localVarHttpHeaderAccepts := []string{"application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1", "application/vnd.dcos.package.error+json;charset=utf-8;version=v1"}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
