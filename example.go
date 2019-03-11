@@ -135,7 +135,7 @@ func main() {
 	dcosMonitoringRequest := dcos.InstallRequest{
 		PackageName: "beta-dcos-monitoring",
 		Options: map[string]map[string]interface{}{
-			"grafana": map[string]interface{}{
+			"grafana": {
 				"default_dashboards": false,
 				"dashboard_config_repository": map[string]string{
 					"url":  "https://github.com/masonse/grafana-dashboards",
