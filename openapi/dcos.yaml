@@ -2163,9 +2163,10 @@ components:
       properties:
         command:
           $ref: '#/components/schemas/command'
-        config:
-          additionalProperties: true
-          type: object
+        # Causes a JSON unmarshal error at the moment, config should be defined as a JSON schema instead.
+        # config:
+        #   additionalProperties: true
+        #   type: object
         description:
           type: string
         downgradesTo:
