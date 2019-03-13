@@ -34,14 +34,12 @@ type APIClient struct {
 	common service // Reuse a single struct instead of allocating one for each service on the heap.
 
 	// API Services
-{{#apiInfo}}
-{{#apis}}
-{{#operations}}
 
-	{{classname}} *{{classname}}Service
-{{/operations}}
-{{/apis}}
-{{/apiInfo}}
+	Cosmos *CosmosApiService
+
+	IAM *IAMApiService
+
+	Secrets *SecretsApiService
 }
 
 type service struct {
@@ -83,14 +81,10 @@ func NewClientWithConfig(config *Config) (*APIClient, error) {
 	c.cfg = cfg
 	c.common.client = c
 
-{{#apiInfo}}
 	// API Services
-{{#apis}}
-{{#operations}}
-	c.{{classname}} = (*{{classname}}Service)(&c.common)
-{{/operations}}
-{{/apis}}
-{{/apiInfo}}
+	c.Cosmos = (*CosmosApiService)(&c.common)
+	c.IAM = (*IAMApiService)(&c.common)
+	c.Secrets = (*SecretsApiService)(&c.common)
 
 	return c, nil
 }
