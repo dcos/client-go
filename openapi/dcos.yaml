@@ -198,6 +198,36 @@ paths:
                 $ref: '#/components/schemas/error'
       tags:
       - cosmos
+  /package/search:
+    post:
+      description: |
+        Lists all matching packages in the repository given a partial pattern.
+        The character \'\*\' can be used to match any number of characters.
+      operationId: package-search
+      requestBody:
+        content:
+          application/vnd.dcos.package.search-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/searchRequest'
+        required: true
+      responses:
+        200:
+          content:
+            application/vnd.dcos.package.search-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/searchResponse'
+        400:
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/error'
+        409:
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/error'
+      tags:
+      - cosmos
   /cosmos/service/update:
     post:
       description: Runs a service update.
@@ -1882,6 +1912,51 @@ components:
       - packageName
       - packageVersion
       type: object
+    searchRequest:
+      additionalProperties: false
+      properties:
+        query:
+          type: string
+      type: object
+    searchResponse:
+      additionalProperties: false
+      properties:
+        packages:
+          type: array
+          items:
+            $ref: '#/components/schemas/packageSearchDetails'
+    packageSearchDetails:
+      additionalProperties: false
+      type: object
+      properties:
+        name:
+          type: "string"
+        currentVersion:
+          type: "string"
+        description:
+          type: "string"
+        framework:
+          type: "boolean"
+        selected:
+          type: "boolean"
+        images:
+          $ref: '#/components/schemas/images'
+        tags:
+          items:
+            pattern: '^[^\s]+$'
+            type: string
+          type: array
+        versions:
+          type: "array"
+          items:
+            type: "string"
+      required:
+        - name
+        - currentVersion
+        - versions
+        - description
+        - framework
+        - tags
     serviceUpdateRequest:
       additionalProperties: false
       properties:
