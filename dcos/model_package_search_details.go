@@ -11,12 +11,12 @@
 package dcos
 
 type PackageSearchDetails struct {
-	Name           string   `json:"name"`
-	CurrentVersion string   `json:"currentVersion"`
-	Description    string   `json:"description"`
-	Framework      bool     `json:"framework"`
-	Selected       bool     `json:"selected,omitempty"`
-	Images         Images   `json:"images,omitempty"`
-	Tags           []string `json:"tags"`
-	Versions       []string `json:"versions"`
+	Name           string                 `json:"name"`
+	CurrentVersion string                 `json:"currentVersion"`
+	Description    string                 `json:"description"`
+	Framework      bool                   `json:"framework"`
+	Selected       bool                   `json:"selected,omitempty"`
+	Images         Images                 `json:"images,omitempty"`
+	Tags           []string               `json:"tags"`
+	Versions       map[string]interface{} `json:"versions"`
 }
