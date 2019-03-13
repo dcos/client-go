@@ -29,6 +29,8 @@ import (
 	"strings"
 	"time"
 	"unicode/utf8"
+
+	marathon "github.com/gambol99/go-marathon"
 )
 
 var (
@@ -49,6 +51,8 @@ type APIClient struct {
 	IAM *IAMApiService
 
 	Secrets *SecretsApiService
+
+	Marathon marathon.Marathon
 }
 
 type service struct {
@@ -94,6 +98,15 @@ func NewClientWithConfig(config *Config) (*APIClient, error) {
 	c.Cosmos = (*CosmosApiService)(&c.common)
 	c.IAM = (*IAMApiService)(&c.common)
 	c.Secrets = (*SecretsApiService)(&c.common)
+
+	marathonConfig := marathon.NewDefaultConfig()
+	marathonConfig.URL = config.URL() + "/service/marathon"
+	marathonConfig.HTTPClient = httpClient
+	marathonClient, err := marathon.NewClient(marathonConfig)
+	if err != nil {
+		return nil, err
+	}
+	c.Marathon = marathonClient
 
 	return c, nil
 }
