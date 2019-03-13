@@ -11,7 +11,7 @@ import (
 )
 
 func listUsers(client *dcos.APIClient) error {
-	users, _, err := client.IAMApi.GetUsers(context.TODO(), nil)
+	users, _, err := client.IAM.GetUsers(context.TODO(), nil)
 	if err != nil {
 		return err
 	}
@@ -37,7 +37,7 @@ func login(clusterURL, username, password string) (string, error) {
 
 	loginObject := dcos.LoginObject{Uid: username, Password: password}
 
-	authToken, _, err := client.IAMApi.Login(context.TODO(), loginObject)
+	authToken, _, err := client.IAM.Login(context.TODO(), loginObject)
 	if err != nil {
 		return "", err
 	}
@@ -48,7 +48,7 @@ func login(clusterURL, username, password string) (string, error) {
 func createSecret(client *dcos.APIClient, secretName, secretValue string) error {
 	secret := dcos.Secret{Value: secretValue}
 
-	_, err := client.SecretsApi.CreateSecret(context.TODO(), "default", secretName, secret)
+	_, err := client.Secrets.CreateSecret(context.TODO(), "default", secretName, secret)
 	if err != nil {
 		switch err := err.(type) {
 		case dcos.GenericOpenAPIError:
@@ -68,7 +68,7 @@ func createSecret(client *dcos.APIClient, secretName, secretValue string) error 
 }
 
 func getSecret(client *dcos.APIClient, secretName string) error {
-	secret, _, err := client.SecretsApi.GetSecret(context.TODO(), "default", secretName, nil)
+	secret, _, err := client.Secrets.GetSecret(context.TODO(), "default", secretName, nil)
 	if err != nil {
 		return err
 	}
@@ -79,7 +79,7 @@ func getSecret(client *dcos.APIClient, secretName string) error {
 }
 
 func describePackage(client *dcos.APIClient, request dcos.PackageDescribeRequest) error {
-	result, _, err := client.CosmosApi.PackageDescribe(context.TODO(), &dcos.PackageDescribeOpts{
+	result, _, err := client.Cosmos.PackageDescribe(context.TODO(), &dcos.PackageDescribeOpts{
 		PackageDescribeRequest: optional.NewInterface(request),
 	})
 	if err != nil {
@@ -91,7 +91,7 @@ func describePackage(client *dcos.APIClient, request dcos.PackageDescribeRequest
 }
 
 func installPackage(client *dcos.APIClient, request dcos.InstallRequest) error {
-	result, _, err := client.CosmosApi.PackageInstall(context.TODO(), request)
+	result, _, err := client.Cosmos.PackageInstall(context.TODO(), request)
 	if err != nil {
 		switch err := err.(type) {
 		case dcos.GenericOpenAPIError:

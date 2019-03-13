@@ -44,11 +44,11 @@ type APIClient struct {
 
 	// API Services
 
-	CosmosApi *CosmosApiService
+	Cosmos *CosmosApiService
 
-	IAMApi *IAMApiService
+	IAM *IAMApiService
 
-	SecretsApi *SecretsApiService
+	Secrets *SecretsApiService
 }
 
 type service struct {
@@ -91,9 +91,9 @@ func NewClientWithConfig(config *Config) (*APIClient, error) {
 	c.common.client = c
 
 	// API Services
-	c.CosmosApi = (*CosmosApiService)(&c.common)
-	c.IAMApi = (*IAMApiService)(&c.common)
-	c.SecretsApi = (*SecretsApiService)(&c.common)
+	c.Cosmos = (*CosmosApiService)(&c.common)
+	c.IAM = (*IAMApiService)(&c.common)
+	c.Secrets = (*SecretsApiService)(&c.common)
 
 	return c, nil
 }
