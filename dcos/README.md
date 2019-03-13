@@ -34,6 +34,7 @@ Class | Method | HTTP request | Description
 *CosmosApi* | [**PackageInstall**](docs/CosmosApi.md#packageinstall) | **Post** /package/install | 
 *CosmosApi* | [**PackageRepositoryAdd**](docs/CosmosApi.md#packagerepositoryadd) | **Post** /package/repository/add | 
 *CosmosApi* | [**PackageRepositoryDelete**](docs/CosmosApi.md#packagerepositorydelete) | **Post** /package/repository/delete | 
+*CosmosApi* | [**PackageSearch**](docs/CosmosApi.md#packagesearch) | **Post** /package/search | 
 *CosmosApi* | [**PackageUninstall**](docs/CosmosApi.md#packageuninstall) | **Post** /package/uninstall | 
 *CosmosApi* | [**ServiceDescribe**](docs/CosmosApi.md#servicedescribe) | **Post** /cosmos/service/describe | 
 *CosmosApi* | [**ServiceUpdate**](docs/CosmosApi.md#serviceupdate) | **Post** /cosmos/service/update | 
@@ -150,9 +151,12 @@ Class | Method | HTTP request | Description
  - [PackageDeleteRepoResponse](docs/PackageDeleteRepoResponse.md)
  - [PackageDescribeRequest](docs/PackageDescribeRequest.md)
  - [PackageDetails](docs/PackageDetails.md)
+ - [PackageSearchDetails](docs/PackageSearchDetails.md)
  - [PkgRepo](docs/PkgRepo.md)
  - [SamlProviderConfig](docs/SamlProviderConfig.md)
  - [SamlacsCallbackUrlObject](docs/SamlacsCallbackUrlObject.md)
+ - [SearchRequest](docs/SearchRequest.md)
+ - [SearchResponse](docs/SearchResponse.md)
  - [Secret](docs/Secret.md)
  - [ServiceDescribeRequest](docs/ServiceDescribeRequest.md)
  - [ServiceDescribeResponse](docs/ServiceDescribeResponse.md)

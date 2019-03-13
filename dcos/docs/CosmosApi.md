@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**PackageInstall**](CosmosApi.md#PackageInstall) | **Post** /package/install | 
 [**PackageRepositoryAdd**](CosmosApi.md#PackageRepositoryAdd) | **Post** /package/repository/add | 
 [**PackageRepositoryDelete**](CosmosApi.md#PackageRepositoryDelete) | **Post** /package/repository/delete | 
+[**PackageSearch**](CosmosApi.md#PackageSearch) | **Post** /package/search | 
 [**PackageUninstall**](CosmosApi.md#PackageUninstall) | **Post** /package/uninstall | 
 [**ServiceDescribe**](CosmosApi.md#ServiceDescribe) | **Post** /cosmos/service/describe | 
 [**ServiceUpdate**](CosmosApi.md#ServiceUpdate) | **Post** /cosmos/service/update | 
@@ -143,6 +144,34 @@ No authorization required
 
  - **Content-Type**: application/vnd.dcos.package.repository.delete-request+json;charset=utf-8;version=v1
  - **Accept**: application/vnd.dcos.package.repository.delete-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PackageSearch**
+> SearchResponse PackageSearch(ctx, searchRequest)
+
+
+Lists all matching packages in the repository given a partial pattern. The character \\'\\*\\' can be used to match any number of characters. 
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **searchRequest** | [**SearchRequest**](SearchRequest.md)|  | 
+
+### Return type
+
+[**SearchResponse**](searchResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/vnd.dcos.package.search-request+json;charset=utf-8;version=v1
+ - **Accept**: application/vnd.dcos.package.search-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
