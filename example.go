@@ -113,6 +113,17 @@ func installPackage(client *dcos.APIClient, request dcos.InstallRequest) error {
 	return nil
 }
 
+func uninstallPackage(client *dcos.APIClient, request dcos.UninstallRequest) error {
+	result, _, err := client.CosmosApi.PackageUninstall(context.TODO(), request, nil)
+	if err != nil {
+		return err
+	}
+
+	log.Printf("Package uninstalled: %+v\n", result)
+
+	return nil
+}
+
 func createMarathonApp(marathonClient marathon.Marathon, app *marathon.Application) error {
 	_, err := marathonClient.CreateApplication(app)
 	if err != nil {
@@ -127,8 +138,6 @@ func createMarathonApp(marathonClient marathon.Marathon, app *marathon.Applicati
 	}
 
 	log.Printf("Marathon application created: %+v\n", app)
-
-	return nil
 }
 
 func listMarathonApps(marathonClient marathon.Marathon) error {
@@ -189,6 +198,11 @@ func main() {
 		log.Fatalf("Installing package failed: %s\n", err)
 	}
 
+	err = uninstallPackage(client, dcos.UninstallRequest{PackageName: "hello-world"})
+	if err != nil {
+		log.Fatalf("Uninstalling package failed: %s\n", err)
+	}
+
 	dcosMonitoringRequest := dcos.InstallRequest{
 		PackageName: "beta-dcos-monitoring",
 		Options: map[string]map[string]interface{}{
@@ -205,6 +219,11 @@ func main() {
 	err = installPackage(client, dcosMonitoringRequest)
 	if err != nil {
 		log.Fatalf("Installing package failed: %s\n", err)
+	}
+
+	err = uninstallPackage(client, dcos.UninstallRequest{PackageName: "beta-dcos-monitoring"})
+	if err != nil {
+		log.Fatalf("Uninstalling package failed: %s\n", err)
 	}
 
 	marathonConfig := marathon.NewDefaultConfig()
