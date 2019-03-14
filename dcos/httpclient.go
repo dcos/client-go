@@ -83,11 +83,7 @@ func cloneRequest(req *http.Request) *http.Request {
 }
 
 // NewHTTPClient provides a http.Client able to communicate to dcos in an authenticated way
-func NewHTTPClient(config *Config) (*http.Client, error) {
-	if config == nil {
-		return nil, fmt.Errorf("Config should not be nil")
-	}
-
+func NewHTTPClient(config *Config) *http.Client {
 	baseTransport := &http.Transport{
 		// Allow http_proxy, https_proxy, and no_proxy.
 		Proxy: http.ProxyFromEnvironment,
@@ -121,7 +117,7 @@ func NewHTTPClient(config *Config) (*http.Client, error) {
 		Logger: logger,
 	}
 
-	return client, nil
+	return client
 }
 
 // AddTransportHTTPClient adds dcos.DefaultTransport to http.Client to add dcos authentication

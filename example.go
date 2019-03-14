@@ -113,8 +113,8 @@ func installPackage(client *dcos.APIClient, request dcos.InstallRequest) error {
 	return nil
 }
 
-func createMarathonApp(client *dcos.APIClient, app *marathon.Application) error {
-	_, err := client.Marathon.CreateApplication(app)
+func createMarathonApp(marathonClient marathon.Marathon, app *marathon.Application) error {
+	_, err := marathonClient.CreateApplication(app)
 	if err != nil {
 		switch err := err.(type) {
 		case *marathon.APIError:
@@ -131,8 +131,8 @@ func createMarathonApp(client *dcos.APIClient, app *marathon.Application) error 
 	return nil
 }
 
-func listMarathonApps(client *dcos.APIClient) error {
-	applications, err := client.Marathon.Applications(nil)
+func listMarathonApps(marathonClient marathon.Marathon) error {
+	applications, err := marathonClient.Applications(nil)
 	if err != nil {
 		return err
 	}
@@ -145,7 +145,12 @@ func listMarathonApps(client *dcos.APIClient) error {
 }
 
 func main() {
-	client, err := dcos.NewClient()
+	config, err := dcos.NewConfigManager().Current()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	client, err := dcos.NewClientWithConfig(config)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -202,6 +207,13 @@ func main() {
 		log.Fatalf("Installing package failed: %s\n", err)
 	}
 
+	marathonConfig := marathon.NewDefaultConfig()
+	marathonConfig.URL = config.URL() + "/service/marathon"
+	marathonConfig.HTTPClient = dcos.NewHTTPClient(config)
+	marathonClient, err := marathon.NewClient(marathonConfig)
+	if err != nil {
+		log.Fatalf("Couldn't create Marathon client: %s\n", err)
+	}
 	marathonApp := marathon.NewDockerApplication().
 		Name("appzzz").
 		CPU(0.1).
@@ -211,12 +223,12 @@ func main() {
 		AddEnv("MY_ENV", "my_val")
 	marathonApp.Container.Docker.Container("alpine:latest")
 
-	err = createMarathonApp(client, marathonApp)
+	err = createMarathonApp(marathonClient, marathonApp)
 	if err != nil {
 		log.Fatalf("Creating Marathon app failed: %s\n", err)
 	}
 
-	err = listMarathonApps(client)
+	err = listMarathonApps(marathonClient)
 	if err != nil {
 		log.Fatalf("Failed to list Marathon applications: %s", err)
 	}

@@ -43,11 +43,7 @@ func TestDefaultHTTPClientAuth(t *testing.T) {
 	}))
 	defer s.Close()
 
-	_, err := NewHTTPClient(nil)
-	require.Error(t, err)
-
-	c, err := NewHTTPClient(config)
-	require.NoError(t, err)
+	c := NewHTTPClient(config)
 
 	resp, err := c.Get(s.URL)
 	require.NoError(t, err)
