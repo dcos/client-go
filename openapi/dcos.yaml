@@ -1947,9 +1947,7 @@ components:
             type: string
           type: array
         versions:
-          type: "array"
-          items:
-            type: "string"
+          type: "object"
       required:
         - name
         - currentVersion
