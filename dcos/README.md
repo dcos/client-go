@@ -38,6 +38,15 @@ Class | Method | HTTP request | Description
 *CosmosApi* | [**PackageUninstall**](docs/CosmosApi.md#packageuninstall) | **Post** /package/uninstall | 
 *CosmosApi* | [**ServiceDescribe**](docs/CosmosApi.md#servicedescribe) | **Post** /cosmos/service/describe | 
 *CosmosApi* | [**ServiceUpdate**](docs/CosmosApi.md#serviceupdate) | **Post** /cosmos/service/update | 
+*EdgelbApi* | [**GetConfigContainer**](docs/EdgelbApi.md#getconfigcontainer) | **Get** /service/edgelb/config | 
+*EdgelbApi* | [**GetPoolContainer**](docs/EdgelbApi.md#getpoolcontainer) | **Get** /service/edgelb/pools/{name} | 
+*EdgelbApi* | [**Ping**](docs/EdgelbApi.md#ping) | **Get** /service/edgelb/ping | 
+*EdgelbApi* | [**V2CreatePool**](docs/EdgelbApi.md#v2createpool) | **Post** /service/edgelb/v2/pools | 
+*EdgelbApi* | [**V2DeletePool**](docs/EdgelbApi.md#v2deletepool) | **Delete** /service/edgelb/v2/pools/{name} | 
+*EdgelbApi* | [**V2GetPool**](docs/EdgelbApi.md#v2getpool) | **Get** /service/edgelb/v2/pools/{name} | 
+*EdgelbApi* | [**V2GetPools**](docs/EdgelbApi.md#v2getpools) | **Get** /service/edgelb/v2/pools | 
+*EdgelbApi* | [**V2UpdatePool**](docs/EdgelbApi.md#v2updatepool) | **Put** /service/edgelb/v2/pools/{name} | 
+*EdgelbApi* | [**Version**](docs/EdgelbApi.md#version) | **Get** /service/edgelb/version | 
 *IAMApi* | [**ConfigureOIDCProvider**](docs/IAMApi.md#configureoidcprovider) | **Put** /acs/api/v1/auth/oidc/providers/{provider-id} | Configure a new OIDC provider.
 *IAMApi* | [**ConfigureSAMLProvider**](docs/IAMApi.md#configuresamlprovider) | **Put** /acs/api/v1/auth/saml/providers/{provider-id} | Configure a new SAML provider.
 *IAMApi* | [**CreateGroup**](docs/IAMApi.md#creategroup) | **Put** /acs/api/v1/groups/{gid} | Create a group.
@@ -110,6 +119,7 @@ Class | Method | HTTP request | Description
  - [Action](docs/Action.md)
  - [ActionAllowed](docs/ActionAllowed.md)
  - [Algo](docs/Algo.md)
+ - [ApiVersion](docs/ApiVersion.md)
  - [Assets](docs/Assets.md)
  - [AssetsContainer](docs/AssetsContainer.md)
  - [AuthToken](docs/AuthToken.md)
@@ -117,6 +127,8 @@ Class | Method | HTTP request | Description
  - [Cli](docs/Cli.md)
  - [CliInfo](docs/CliInfo.md)
  - [Command](docs/Command.md)
+ - [ConfigContainer](docs/ConfigContainer.md)
+ - [EdgeLbError](docs/EdgeLbError.md)
  - [Group](docs/Group.md)
  - [GroupCreate](docs/GroupCreate.md)
  - [GroupPermissions](docs/GroupPermissions.md)
@@ -153,6 +165,7 @@ Class | Method | HTTP request | Description
  - [PackageDetails](docs/PackageDetails.md)
  - [PackageSearchDetails](docs/PackageSearchDetails.md)
  - [PkgRepo](docs/PkgRepo.md)
+ - [PoolContainer](docs/PoolContainer.md)
  - [SamlProviderConfig](docs/SamlProviderConfig.md)
  - [SamlacsCallbackUrlObject](docs/SamlacsCallbackUrlObject.md)
  - [SearchRequest](docs/SearchRequest.md)
@@ -172,6 +185,30 @@ Class | Method | HTTP request | Description
  - [UserPermissionsDirect](docs/UserPermissionsDirect.md)
  - [UserPermissionsGroups](docs/UserPermissionsGroups.md)
  - [UserUpdate](docs/UserUpdate.md)
+ - [V2Backend](docs/V2Backend.md)
+ - [V2BackendCustomCheck](docs/V2BackendCustomCheck.md)
+ - [V2Config](docs/V2Config.md)
+ - [V2Endpoint](docs/V2Endpoint.md)
+ - [V2EndpointCheck](docs/V2EndpointCheck.md)
+ - [V2Frontend](docs/V2Frontend.md)
+ - [V2FrontendLinkBackend](docs/V2FrontendLinkBackend.md)
+ - [V2FrontendLinkBackendMap](docs/V2FrontendLinkBackendMap.md)
+ - [V2FrontendRedirectToHttps](docs/V2FrontendRedirectToHttps.md)
+ - [V2FrontendRedirectToHttpsExcept](docs/V2FrontendRedirectToHttpsExcept.md)
+ - [V2Haproxy](docs/V2Haproxy.md)
+ - [V2Pool](docs/V2Pool.md)
+ - [V2PoolSecrets](docs/V2PoolSecrets.md)
+ - [V2PoolVirtualNetworks](docs/V2PoolVirtualNetworks.md)
+ - [V2Protocol](docs/V2Protocol.md)
+ - [V2RewriteHttp](docs/V2RewriteHttp.md)
+ - [V2RewriteHttpPath](docs/V2RewriteHttpPath.md)
+ - [V2RewriteHttpRequest](docs/V2RewriteHttpRequest.md)
+ - [V2RewriteHttpResponse](docs/V2RewriteHttpResponse.md)
+ - [V2RewriteHttpSticky](docs/V2RewriteHttpSticky.md)
+ - [V2Service](docs/V2Service.md)
+ - [V2ServiceMarathon](docs/V2ServiceMarathon.md)
+ - [V2ServiceMesos](docs/V2ServiceMesos.md)
+ - [V2Stats](docs/V2Stats.md)
  - [V30Resource](docs/V30Resource.md)
  - [V3PackageDescribeResponse](docs/V3PackageDescribeResponse.md)
  - [V50PackageDefinition](docs/V50PackageDefinition.md)
