@@ -46,6 +46,8 @@ type APIClient struct {
 
 	Cosmos *CosmosApiService
 
+	Edgelb *EdgelbApiService
+
 	IAM *IAMApiService
 
 	Secrets *SecretsApiService
@@ -89,6 +91,7 @@ func NewClientWithConfig(config *Config) (*APIClient, error) {
 
 	// API Services
 	c.Cosmos = (*CosmosApiService)(&c.common)
+	c.Edgelb = (*EdgelbApiService)(&c.common)
 	c.IAM = (*IAMApiService)(&c.common)
 	c.Secrets = (*SecretsApiService)(&c.common)
 
@@ -328,12 +331,17 @@ func (c *APIClient) prepareRequest(
 }
 
 func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err error) {
+	if s, ok := v.(*string); ok {
+		*s = string(b)
+		return nil
+	}
 	if xmlCheck.MatchString(contentType) {
 		if err = xml.Unmarshal(b, v); err != nil {
 			return err
 		}
 		return nil
-	} else if jsonCheck.MatchString(contentType) {
+	}
+	if jsonCheck.MatchString(contentType) {
 		if err = json.Unmarshal(b, v); err != nil {
 			return err
 		}

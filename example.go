@@ -114,7 +114,7 @@ func installPackage(client *dcos.APIClient, request dcos.InstallRequest) error {
 }
 
 func uninstallPackage(client *dcos.APIClient, request dcos.UninstallRequest) error {
-	result, _, err := client.CosmosApi.PackageUninstall(context.TODO(), request, nil)
+	result, _, err := client.Cosmos.PackageUninstall(context.TODO(), request, nil)
 	if err != nil {
 		return err
 	}
@@ -138,6 +138,8 @@ func createMarathonApp(marathonClient marathon.Marathon, app *marathon.Applicati
 	}
 
 	log.Printf("Marathon application created: %+v\n", app)
+
+	return nil
 }
 
 func listMarathonApps(marathonClient marathon.Marathon) error {
@@ -150,6 +152,15 @@ func listMarathonApps(marathonClient marathon.Marathon) error {
 	for _, application := range applications.Apps {
 		log.Printf("Application: %+v\n", application)
 	}
+	return nil
+}
+
+func edgeLBPing(client *dcos.APIClient) error {
+	pong, _, err := client.Edgelb.Ping(context.TODO())
+	if err != nil {
+		return err
+	}
+	log.Println(pong)
 	return nil
 }
 
@@ -250,5 +261,10 @@ func main() {
 	err = listMarathonApps(marathonClient)
 	if err != nil {
 		log.Fatalf("Failed to list Marathon applications: %s", err)
+	}
+
+	err = edgeLBPing(client)
+	if err != nil {
+		log.Printf("Coulnd't ping EdgeLB: %s\n", err)
 	}
 }

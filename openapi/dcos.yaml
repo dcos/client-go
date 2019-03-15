@@ -26,6 +26,9 @@ tags:
   description: SAML 2.0 endpoints, including provider management
 - name: ldap
   description: Directory (LDAP) back-end configuration and interaction endpoints
+- name: edgelb
+  description: Create and manage load balancers with DCOS Edge LB API
+
 paths:
   /package/repository/delete:
     post:
@@ -1719,6 +1722,246 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/UserPermissions"
+
+
+  /service/edgelb/ping:
+    get:
+      description: Healthcheck endpoint.
+      operationId: Ping
+      tags:
+        - edgelb
+      responses:
+        "200":
+          description: Pong.
+          content:
+            text/plain:
+              schema:
+                type: string
+        default:
+          description: Unexpected error.
+          content:
+            text/plain:
+              schema:
+                type: string
+  /service/edgelb/version:
+    get:
+      description: Returns the installed Edge-LB package version.
+      operationId: Version
+      tags:
+        - edgelb
+      responses:
+        "200":
+          description: Version.
+          content:
+            text/plain:
+              schema:
+                type: string
+        default:
+          description: Unexpected error.
+          content:
+            text/plain:
+              schema:
+                type: string
+  /service/edgelb/config:
+    get:
+      description: Get the entire configuration object including v1 and v2 pools.
+      operationId: GetConfigContainer
+      tags:
+        - edgelb
+      responses:
+        "200":
+          description: A configuration object containing all load balancer pools.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConfigContainer"
+        default:
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdgeLBError"
+  /service/edgelb/pools/{name}:
+    get:
+      description: Returns a v1 or v2 load balancer pool based on a single name.
+      operationId: GetPoolContainer
+      tags:
+        - edgelb
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Load balancer pool response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PoolContainer"
+        default:
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdgeLBError"
+  /service/edgelb/v2/pools:
+    get:
+      description: Get all load balancer pools.
+      operationId: V2GetPools
+      tags:
+        - edgelb
+      responses:
+        "200":
+          description: An array of load balancer pools.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/V2Pool"
+        default:
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdgeLBError"
+    post:
+      description: Creates a new load balancer pool.
+      operationId: V2CreatePool
+      tags:
+        - edgelb
+      parameters:
+        - name: token
+          description: DCOS Auth Token
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        $ref: "#/components/requestBodies/V2Pool"
+      responses:
+        "200":
+          description: Load Balancer Pool response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/V2Pool"
+        "409":
+          description: Conflict pool.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdgeLBError"
+        default:
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdgeLBError"
+  /service/edgelb/v2/pools/{name}:
+    get:
+      description: Returns a v2 load balancer pool based on a single name.
+      operationId: V2GetPool
+      tags:
+        - edgelb
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Load balancer pool response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/V2Pool"
+        "404":
+          description: Pool not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdgeLBError"
+        default:
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdgeLBError"
+    put:
+      description: Updates a new load balancer pool.
+      operationId: V2UpdatePool
+      tags:
+        - edgelb
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: token
+          description: DCOS Auth Token
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        $ref: "#/components/requestBodies/V2Pool"
+      responses:
+        "200":
+          description: Load Balancer Pool response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/V2Pool"
+        default:
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdgeLBError"
+    delete:
+      description: Deletes a single load balancer pool based on the name supplied.
+      operationId: V2DeletePool
+      tags:
+        - edgelb
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: token
+          description: DCOS Auth Token
+          in: header
+          required: false
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Load balancer deleted.
+        "400":
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdgeLBError"
+        "404":
+          description: Pool not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdgeLBError"
+        default:
+          description: Unexpected error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdgeLBError"
+
 components:
   requestBodies:
     Secret:
@@ -1742,6 +1985,14 @@ components:
             $ref: "#/components/schemas/SAMLProviderConfig"
       description: Provider config JSON object
       required: true
+
+    V2Pool:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/V2Pool"
+      required: true
+
   schemas:
     Secret:
       additionalProperties: false
@@ -2775,6 +3026,598 @@ components:
         description:
           type: string
       additionalProperties: false
+
+    V2Config:
+      type: object
+      description: >-
+        * If a default is not set, then it will be left empty, even for objects.
+        * Set defaults in the object that is furthest from the root object. *
+        Always set a default for arrays. * The purpose of "x-nullable" is to
+        allow the output JSON field to be set
+          to the golang "zero value". Without "x-nullable", the field will be
+          removed altogether from the resulting JSON.
+        * Actual validation is done in the code, not expressed in swagger. * Since an empty boolean is interpreted as "false", don't set
+          a default.
+        * CamelCase * Swagger will only do enum validation if it is a top level definition!
+      default:
+        pools:
+          []
+      properties:
+        pools:
+          type: array
+          description: The array of pools.
+          items:
+            $ref: "#/components/schemas/V2Pool"
+    V2Pool:
+      type: object
+      description: The pool contains information on resources that the pool needs. Changes
+        make to this section will relaunch the tasks.
+      default:
+        apiVersion: V2
+        namespace: dcos-edgelb/pools
+        packageName: edgelb-pool
+        packageVersion: v0.0.0
+        poolHealthcheckGracePeriod: 180
+        poolHealthcheckInterval: 12
+        poolHealthcheckMaxFail: 5
+        poolHealthcheckTimeout: 60
+        role: slave_public
+        cpus: 0.9
+        cpusAdminOverhead: 0.1
+        mem: 992
+        memAdminOverhead: 32
+        disk: 256
+        count: 1
+        constraints: hostname:UNIQUE
+        ports:
+          []
+        secrets:
+          []
+        virtualNetworks:
+          []
+        haproxy:
+          {}
+      properties:
+        poolHealthcheckGracePeriod:
+          description: Pool tasks healthcheck grace period (in seconds)
+          type: integer
+          format: int32
+          minimum: 1
+        poolHealthcheckInterval:
+          description: Pool tasks healthcheck interval (in seconds)
+          type: integer
+          format: int32
+          minimum: 1
+        poolHealthcheckMaxFail:
+          description: Pool tasks healthcheck maximum number of consecutive failures before
+            declaring as unhealthy
+          type: integer
+          format: int32
+          minimum: 1
+        poolHealthcheckTimeout:
+          description: Maximum amount of time that Mesos will wait for the healthcheck
+            container to finish executing
+          type: integer
+          format: int32
+          minimum: 2
+        apiVersion:
+          $ref: "#/components/schemas/APIVersion"
+        name:
+          type: string
+          description: The pool name.
+        namespace:
+          type: string
+          description: The DC/OS space (sometimes also referred to as a "group").
+          nullable: true
+        packageName:
+          type: string
+        packageVersion:
+          type: string
+        role:
+          type: string
+          description: Mesos role for load balancers. Defaults to "slave_public" so that
+            load balancers will be run on public agents. Use "*" to run load
+            balancers on private agents. Read more about Mesos roles at
+            http://mesos.apache.org/documentation/latest/roles/
+        principal:
+          type: string
+          description: Mesos principal for pool framework authentication. If omitted or
+            left blank, the service account used to install Edge-LB will be used
+            if present.
+          nullable: true
+        secretName:
+          type: string
+          description: Service account secret name for pool framework authentication. If
+            omitted or left blank, the service account used to install Edge-LB
+            will be used if present.
+          nullable: true
+        cpus:
+          type: number
+        cpusAdminOverhead:
+          type: number
+        mem:
+          type: integer
+          description: Memory requirements (in MB)
+          format: int32
+        memAdminOverhead:
+          type: integer
+          description: Memory requirements (in MB)
+          format: int32
+        disk:
+          type: integer
+          description: Disk size (in MB)
+          format: int32
+        count:
+          type: integer
+          format: int32
+          description: Number of load balancer instances in the pool.
+          nullable: true
+        constraints:
+          type: string
+          description: Marathon style constraints for load balancer instance placement.
+          nullable: true
+        ports:
+          type: array
+          description: >-
+            Override ports to allocate for each load balancer instance. Defaults
+            to {{haproxy.frontends[].bindPort}} and
+              {{haproxy.stats.bindPort}}.
+            Use this field to pre-allocate all needed ports with or
+              without the frontends present. For example: [80, 443, 9090].
+            If the length of the ports array is not zero, only the
+              ports specified will be allocated by the pool scheduler.
+          items:
+            type: integer
+            format: int32
+        secrets:
+          type: array
+          description: DC/OS secrets.
+          items:
+            type: object
+            properties:
+              secret:
+                description: Secret name
+                type: string
+              file:
+                description: |-
+                  File name.
+                  The file "myfile" will be found at "$SECRETS/myfile"
+                type: string
+        environmentVariables:
+          type: object
+          description: >-
+            Environment variables to pass to tasks.
+
+            Prefix with "ELB_FILE_" and it will be written to a file. For example, the contents of "ELB_FILE_MYENV" will be written to "$ENVFILE/ELB_FILE_MYENV".
+          additionalProperties:
+            type: string
+        autoCertificate:
+          type: boolean
+          description: >-
+            Autogenerate a self-signed SSL/TLS certificate. It is not generated
+            by default.
+
+            It will be written to "$AUTOCERT".
+          x-go-name: AutoCertEnabled
+        virtualNetworks:
+          type: array
+          description: Virtual networks to join.
+          items:
+            type: object
+            properties:
+              name:
+                description: The name of the virtual network to join.
+                type: string
+              labels:
+                description: Labels to pass to the virtual network plugin.
+                additionalProperties:
+                  type: string
+        haproxy:
+          $ref: "#/components/schemas/V2Haproxy"
+    V2Haproxy:
+      type: object
+      default:
+        stats:
+          {}
+        frontends:
+          []
+        backends:
+          []
+      properties:
+        stats:
+          $ref: "#/components/schemas/V2Stats"
+        frontends:
+          description: Array of frontends.
+          type: array
+          items:
+            $ref: "#/components/schemas/V2Frontend"
+        backends:
+          description: Array of backends.
+          type: array
+          items:
+            $ref: "#/components/schemas/V2Backend"
+    V2Stats:
+      type: object
+      default:
+        bindAddress: 0.0.0.0
+        bindPort: 9090
+      properties:
+        bindAddress:
+          type: string
+        bindPort:
+          type: integer
+          format: int32
+    V2Frontend:
+      type: object
+      description: The Frontend maps to the HAProxy frontend. This includes information
+        such as what addresses and ports to listen on, what SSL/TLS certificates
+        to use, and which backends to route to.
+      default:
+        bindAddress: 0.0.0.0
+        bindPort: -1
+        certificates:
+          []
+        miscStrs:
+          []
+        linkBackend:
+          {}
+      properties:
+        name:
+          description: Defaults to frontend_{{bindAddress}}_{{bindPort}}.
+          type: string
+        bindAddress:
+          description: Only use characters that are allowed in the frontend name. Known
+            invalid frontend name characters include "*", "[", and "]".
+          type: string
+        bindPort:
+          description: The port (e.g. 80 for HTTP or 443 for HTTPS) that this frontend will
+            bind to.
+          type: integer
+          format: int32
+          nullable: true
+        bindModifier:
+          description: Additional text to put in the bind field
+          type: string
+        certificates:
+          type: array
+          items:
+            description: >-
+              SSL/TLS certificates in the load balancer.
+
+              For secrets, use "$SECRETS/my_file_name" For environment files, use "$ENVFILE/my_file_name" For autoCertificate, use "$AUTOCERT"
+            type: string
+        redirectToHttps:
+          type: object
+          default:
+            except:
+              []
+          description: Setting this to the empty object is enough to redirect all traffic
+            from HTTP (this frontend) to HTTPS (port 443).
+          properties:
+            except:
+              type: array
+              description: One may additionally set a whitelist of fields that must be
+                matched to allow HTTP.
+              items:
+                type: object
+                description: Boolean AND will be applied with every selected value
+                properties:
+                  host:
+                    type: string
+                    description: Match on host
+                  pathBeg:
+                    type: string
+                    description: Match on path
+        miscStrs:
+          description: Additional template lines inserted before use_backend
+          type: array
+          items:
+            type: string
+        protocol:
+          $ref: "#/components/schemas/V2Protocol"
+        linkBackend:
+          type: object
+          description: This describes what backends to send traffic to. This can be
+            expressed with a variety of filters such as matching on the hostname
+            or the HTTP URL path.
+          default:
+            map:
+              []
+          properties:
+            defaultBackend:
+              type: string
+              description: This is default backend that is routed to if none of the other
+                filters are matched.
+            map:
+              type: array
+              description: This is an optional field that specifies a mapping to various
+                backends. These rules are applied in order.
+              items:
+                type: object
+                description: '"backend" and at least one of the condition fields must be
+                  filled out. If multiple conditions are filled out they will be
+                  combined with a boolean "AND".'
+                properties:
+                  backend:
+                    type: string
+                  hostEq:
+                    description: All lowercase.
+                    type: string
+                  hostReg:
+                    description: All lowercase. It is possible for a port (e.g.
+                      "foo.com:80") to be in this regex!
+                    type: string
+                  pathBeg:
+                    type: string
+                  pathEnd:
+                    type: string
+                  pathReg:
+                    type: string
+    V2Backend:
+      type: object
+      default:
+        miscStrs:
+          []
+        services:
+          []
+        balance: roundrobin
+        rewriteHttp:
+          {}
+      properties:
+        name:
+          type: string
+          description: This is name that frontends refer to.
+        protocol:
+          $ref: "#/components/schemas/V2Protocol"
+        rewriteHttp:
+          $ref: "#/components/schemas/V2RewriteHttp"
+        balance:
+          description: Load balancing strategy. e.g. roundrobin, leastconn, etc.
+          type: string
+        customCheck:
+          type: object
+          description: This is used to specify alternate forms of healthchecks
+          properties:
+            httpchk:
+              type: boolean
+            httpchkMiscStr:
+              type: string
+            sslHelloChk:
+              type: boolean
+            miscStr:
+              type: string
+        miscStrs:
+          description: Additional template lines inserted before servers
+          type: array
+          items:
+            type: string
+        services:
+          description: Array of backend service selectors.
+          type: array
+          items:
+            $ref: "#/components/schemas/V2Service"
+    V2RewriteHttp:
+      type: object
+      default:
+        request:
+          {}
+        response:
+          {}
+      properties:
+        host:
+          description: Set the host header value
+          type: string
+        path:
+          type: object
+          default:
+            fromPath: ""
+            toPath: ""
+          description: Rewrite the HTTP URL path. Adding a slash to fromPath usually is not
+            necessary.
+          properties:
+            fromPath:
+              type: string
+              nullable: true
+            toPath:
+              type: string
+              nullable: true
+        request:
+          $ref: "#/components/schemas/V2RewriteHttpRequest"
+        response:
+          $ref: "#/components/schemas/V2RewriteHttpResponse"
+        sticky:
+          type: object
+          default:
+            enabled: true
+          description: >-
+            Sticky sessions via a cookie.
+
+            To use the default values (recommended), set this field to the empty object.
+          properties:
+            enabled:
+              type: boolean
+              nullable: true
+            customStr:
+              type: string
+    V2RewriteHttpRequest:
+      description: >-
+        Rewrite the request.
+
+        To use the default values (recommended), set this field to the empty object.
+      type: object
+      default:
+        forwardfor: true
+        xForwardedPort: true
+        xForwardedProtoHttpsIfTls: true
+        setHostHeader: true
+        rewritePath: true
+      properties:
+        forwardfor:
+          type: boolean
+          nullable: true
+        xForwardedPort:
+          type: boolean
+          nullable: true
+        xForwardedProtoHttpsIfTls:
+          type: boolean
+          nullable: true
+        setHostHeader:
+          type: boolean
+          nullable: true
+        rewritePath:
+          type: boolean
+          nullable: true
+    V2RewriteHttpResponse:
+      description: >-
+        Rewrite the response.
+
+        To use the default values (recommended), set this field to the empty object.
+      type: object
+      default:
+        rewriteLocation: true
+      properties:
+        rewriteLocation:
+          type: boolean
+          nullable: true
+    V2Service:
+      type: object
+      default:
+        marathon:
+          {}
+        mesos:
+          {}
+        endpoint:
+          {}
+      properties:
+        marathon:
+          type: object
+          properties:
+            serviceID:
+              description: Marathon pod or application ID.
+              type: string
+            serviceIDPattern:
+              type: string
+            containerName:
+              description: Marathon pod container name, optional unless using Marathon pods.
+              type: string
+            containerNamePattern:
+              type: string
+        mesos:
+          type: object
+          properties:
+            frameworkName:
+              description: Mesos framework name.
+              type: string
+            frameworkNamePattern:
+              type: string
+            frameworkID:
+              description: Mesos framework ID.
+              type: string
+            frameworkIDPattern:
+              type: string
+            taskName:
+              description: Mesos task name.
+              type: string
+            taskNamePattern:
+              type: string
+            taskID:
+              description: Mesos task ID.
+              type: string
+            taskIDPattern:
+              type: string
+        endpoint:
+          $ref: "#/components/schemas/V2Endpoint"
+    V2Endpoint:
+      type: object
+      default:
+        type: AUTO_IP
+        check:
+          {}
+        port: -1
+      properties:
+        type:
+          type: string
+          enum:
+            - AUTO_IP
+            - AGENT_IP
+            - CONTAINER_IP
+            - ADDRESS
+        miscStr:
+          description: Append arbitrary string to add to the end of the "server" directive.
+          type: string
+        check:
+          description: Enable health checks. These are by default TCP health checks. For
+            more options see "customCheck". These are required for DNS
+            resolution to function properly.
+          type: object
+          default:
+            enabled: true
+          properties:
+            enabled:
+              type: boolean
+              nullable: true
+            customStr:
+              type: string
+        address:
+          description: Server address override, can be used to specify a cluster internal
+            address such as a VIP.
+          type: string
+        port:
+          type: integer
+          format: int32
+        portName:
+          type: string
+        allPorts:
+          type: boolean
+    V2Protocol:
+      type: string
+      enum:
+        - HTTP
+        - HTTPS
+        - TCP
+        - TLS
+      x-enum-varnames:
+        - V2ProtocolHTTP
+        - V2ProtocolHTTPS
+        - V2ProtocolTCP
+        - V2ProtocolTLS
+    APIVersion:
+      type: string
+      enum:
+        - V1
+        - V2
+    ConfigContainer:
+      type: object
+      description: Object used internally as an interface to handle multple model versions.
+      properties:
+        pools:
+          type: array
+          description: Array of pool containers.
+          items:
+            $ref: "#/components/schemas/PoolContainer"
+    PoolContainer:
+      type: object
+      description: Object used internally as an interface to handle multple model versions.
+      default:
+        apiVersion: V1
+      properties:
+        apiVersion:
+          $ref: "#/components/schemas/APIVersion"
+        name:
+          type: string
+        namespace:
+          type: string
+          nullable: true
+        v2:
+          $ref: "#/components/schemas/V2Pool"
+    EdgeLBError:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
   securitySchemes:
     token:
       in: header
