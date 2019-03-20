@@ -1857,12 +1857,6 @@ paths:
       tags:
         - edgelb
       parameters:
-        - name: token
-          description: DCOS Auth Token
-          in: header
-          required: false
-          schema:
-            type: string
       requestBody:
         $ref: "#/components/requestBodies/V2Pool"
       responses:
@@ -1926,12 +1920,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: token
-          description: DCOS Auth Token
-          in: header
-          required: false
-          schema:
-            type: string
       requestBody:
         $ref: "#/components/requestBodies/V2Pool"
       responses:
@@ -1956,12 +1944,6 @@ paths:
         - name: name
           in: path
           required: true
-          schema:
-            type: string
-        - name: token
-          description: DCOS Auth Token
-          in: header
-          required: false
           schema:
             type: string
       responses:
