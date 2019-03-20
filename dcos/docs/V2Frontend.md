@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Defaults to frontend_{{bindAddress}}_{{bindPort}}. | [optional] 
-**BindAddress** | **string** | Only use characters that are allowed in the frontend name. Known invalid frontend name characters include \&quot;*\&quot;, \&quot;[\&quot;, and \&quot;]\&quot;. | [optional] [default to 0.0.0.0]
-**BindPort** | **int32** | The port (e.g. 80 for HTTP or 443 for HTTPS) that this frontend will bind to. | [optional] [default to -1]
+**BindAddress** | **string** | Only use characters that are allowed in the frontend name. Known invalid frontend name characters include \&quot;*\&quot;, \&quot;[\&quot;, and \&quot;]\&quot;. | [optional] 
+**BindPort** | **int32** | The port (e.g. 80 for HTTP or 443 for HTTPS) that this frontend will bind to. | [optional] 
 **BindModifier** | **string** | Additional text to put in the bind field | [optional] 
 **Certificates** | **[]string** |  | [optional] 
 **RedirectToHttps** | [**V2FrontendRedirectToHttps**](V2Frontend_redirectToHttps.md) |  | [optional] 

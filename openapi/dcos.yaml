@@ -3038,50 +3038,41 @@ components:
         make to this section will relaunch the tasks.
       properties:
         poolHealthcheckGracePeriod:
-          default: 180
           description: Pool tasks healthcheck grace period (in seconds)
           type: integer
           format: int32
           minimum: 1
         poolHealthcheckInterval:
-          default: 12
           description: Pool tasks healthcheck interval (in seconds)
           type: integer
           format: int32
           minimum: 1
         poolHealthcheckMaxFail:
-          default: 5
           description: Pool tasks healthcheck maximum number of consecutive failures before
             declaring as unhealthy
           type: integer
           format: int32
           minimum: 1
         poolHealthcheckTimeout:
-          default: 60
           description: Maximum amount of time that Mesos will wait for the healthcheck
             container to finish executing
           type: integer
           format: int32
           minimum: 2
         apiVersion:
-          default: V2
           $ref: "#/components/schemas/APIVersion"
         name:
           type: string
           description: The pool name.
         namespace:
-          default: dcos-edgelb/pools
           type: string
           description: The DC/OS space (sometimes also referred to as a "group").
           nullable: true
         packageName:
-          default: edgelb-pool
           type: string
         packageVersion:
-          default: v0.0.0
           type: string
         role:
-          default: slave_public
           type: string
           description: Mesos role for load balancers. Defaults to "slave_public" so that
             load balancers will be run on public agents. Use "*" to run load
@@ -3100,34 +3091,27 @@ components:
             will be used if present.
           nullable: true
         cpus:
-          default: 0.9
           type: number
         cpusAdminOverhead:
-          default: 0.1
           type: number
         mem:
-          default: 992
           type: integer
           description: Memory requirements (in MB)
           format: int32
         memAdminOverhead:
-          default: 32
           type: integer
           description: Memory requirements (in MB)
           format: int32
         disk:
-          default: 256
           type: integer
           description: Disk size (in MB)
           format: int32
         count:
-          default: 1
           type: integer
           format: int32
           description: Number of load balancer instances in the pool.
           nullable: true
         constraints:
-          default: hostname:UNIQUE
           type: string
           description: Marathon style constraints for load balancer instance placement.
           nullable: true
@@ -3209,11 +3193,9 @@ components:
       properties:
         bindAddress:
           type: string
-          default: 0.0.0.0
         bindPort:
           type: integer
           format: int32
-          default: 9090
     V2Frontend:
       type: object
       description: The Frontend maps to the HAProxy frontend. This includes information
@@ -3227,14 +3209,12 @@ components:
           description: Only use characters that are allowed in the frontend name. Known
             invalid frontend name characters include "*", "[", and "]".
           type: string
-          default: 0.0.0.0
         bindPort:
           description: The port (e.g. 80 for HTTP or 443 for HTTPS) that this frontend will
             bind to.
           type: integer
           format: int32
           nullable: true
-          default: -1
         bindModifier:
           description: Additional text to put in the bind field
           type: string
@@ -3320,7 +3300,6 @@ components:
         balance:
           description: Load balancing strategy. e.g. roundrobin, leastconn, etc.
           type: string
-          default: roundrobin
         customCheck:
           type: object
           description: This is used to specify alternate forms of healthchecks
@@ -3356,10 +3335,8 @@ components:
           properties:
             fromPath:
               type: string
-              default: ""
               nullable: true
             toPath:
-              default: ""
               type: string
               nullable: true
         request:
@@ -3376,7 +3353,6 @@ components:
             enabled:
               type: boolean
               nullable: true
-              default: true
             customStr:
               type: string
     V2RewriteHttpRequest:
@@ -3389,23 +3365,18 @@ components:
         forwardfor:
           type: boolean
           nullable: true
-          default: true
         xForwardedPort:
           type: boolean
           nullable: true
-          default: true
         xForwardedProtoHttpsIfTls:
           type: boolean
           nullable: true
-          default: true
         setHostHeader:
           type: boolean
           nullable: true
-          default: true
         rewritePath:
           type: boolean
           nullable: true
-          default: true
     V2RewriteHttpResponse:
       description: >-
         Rewrite the response.
@@ -3416,7 +3387,6 @@ components:
         rewriteLocation:
           type: boolean
           nullable: true
-          default: true
     V2Service:
       type: object
       properties:
@@ -3468,7 +3438,6 @@ components:
             - AGENT_IP
             - CONTAINER_IP
             - ADDRESS
-          default: AUTO_IP
         miscStr:
           description: Append arbitrary string to add to the end of the "server" directive.
           type: string
@@ -3481,7 +3450,6 @@ components:
             enabled:
               type: boolean
               nullable: true
-              default: true
             customStr:
               type: string
         address:
@@ -3491,7 +3459,6 @@ components:
         port:
           type: integer
           format: int32
-          default: -1
         portName:
           type: string
         allPorts:
@@ -3527,7 +3494,6 @@ components:
       description: Object used internally as an interface to handle multple model versions.
       properties:
         apiVersion:
-          default: V1
           $ref: "#/components/schemas/APIVersion"
         name:
           type: string
