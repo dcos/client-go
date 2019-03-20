@@ -13,7 +13,6 @@ package dcos
 import (
 	"context"
 	"fmt"
-	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -322,16 +321,9 @@ EdgelbApiService
 Creates a new load balancer pool.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param v2Pool
- * @param optional nil or *V2CreatePoolOpts - Optional Parameters:
- * @param "Token" (optional.String) -  DCOS Auth Token
 @return V2Pool
 */
-
-type V2CreatePoolOpts struct {
-	Token optional.String
-}
-
-func (a *EdgelbApiService) V2CreatePool(ctx context.Context, v2Pool V2Pool, localVarOptionals *V2CreatePoolOpts) (V2Pool, *http.Response, error) {
+func (a *EdgelbApiService) V2CreatePool(ctx context.Context, v2Pool V2Pool) (V2Pool, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -364,9 +356,6 @@ func (a *EdgelbApiService) V2CreatePool(ctx context.Context, v2Pool V2Pool, loca
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	if localVarOptionals != nil && localVarOptionals.Token.IsSet() {
-		localVarHeaderParams["token"] = parameterToString(localVarOptionals.Token.Value(), "")
 	}
 	// body params
 	localVarPostBody = &v2Pool
@@ -441,15 +430,8 @@ EdgelbApiService
 Deletes a single load balancer pool based on the name supplied.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name
- * @param optional nil or *V2DeletePoolOpts - Optional Parameters:
- * @param "Token" (optional.String) -  DCOS Auth Token
 */
-
-type V2DeletePoolOpts struct {
-	Token optional.String
-}
-
-func (a *EdgelbApiService) V2DeletePool(ctx context.Context, name string, localVarOptionals *V2DeletePoolOpts) (*http.Response, error) {
+func (a *EdgelbApiService) V2DeletePool(ctx context.Context, name string) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Delete")
 		localVarPostBody     interface{}
@@ -482,9 +464,6 @@ func (a *EdgelbApiService) V2DeletePool(ctx context.Context, name string, localV
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	if localVarOptionals != nil && localVarOptionals.Token.IsSet() {
-		localVarHeaderParams["token"] = parameterToString(localVarOptionals.Token.Value(), "")
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -753,16 +732,9 @@ Updates a new load balancer pool.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name
  * @param v2Pool
- * @param optional nil or *V2UpdatePoolOpts - Optional Parameters:
- * @param "Token" (optional.String) -  DCOS Auth Token
 @return V2Pool
 */
-
-type V2UpdatePoolOpts struct {
-	Token optional.String
-}
-
-func (a *EdgelbApiService) V2UpdatePool(ctx context.Context, name string, v2Pool V2Pool, localVarOptionals *V2UpdatePoolOpts) (V2Pool, *http.Response, error) {
+func (a *EdgelbApiService) V2UpdatePool(ctx context.Context, name string, v2Pool V2Pool) (V2Pool, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -796,9 +768,6 @@ func (a *EdgelbApiService) V2UpdatePool(ctx context.Context, name string, v2Pool
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	if localVarOptionals != nil && localVarOptionals.Token.IsSet() {
-		localVarHeaderParams["token"] = parameterToString(localVarOptionals.Token.Value(), "")
 	}
 	// body params
 	localVarPostBody = &v2Pool

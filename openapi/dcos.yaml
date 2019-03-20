@@ -1856,7 +1856,6 @@ paths:
       operationId: V2CreatePool
       tags:
         - edgelb
-      parameters:
       requestBody:
         $ref: "#/components/requestBodies/V2Pool"
       responses:
