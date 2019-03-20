@@ -25,7 +25,6 @@ docker run -u $(shell id -u):$(shell id -g) \
 	openapitools/openapi-generator-cli:v4.0.0-beta2 \
 	generate -i openapi/dcos.yaml -g go -o dcos \
 	-t templates \
-	--skip-validate-spec \
 	-DpackageName=dcos -DwithGoCodegenComment=true -Dmodels -Dapis \
 	$(1)
 endef
