@@ -187,7 +187,6 @@ Class | Method | HTTP request | Description
  - [UserUpdate](docs/UserUpdate.md)
  - [V2Backend](docs/V2Backend.md)
  - [V2BackendCustomCheck](docs/V2BackendCustomCheck.md)
- - [V2Config](docs/V2Config.md)
  - [V2Endpoint](docs/V2Endpoint.md)
  - [V2EndpointCheck](docs/V2EndpointCheck.md)
  - [V2Frontend](docs/V2Frontend.md)

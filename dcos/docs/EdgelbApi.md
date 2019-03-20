@@ -92,7 +92,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **V2CreatePool**
-> V2Pool V2CreatePool(ctx, v2Pool, optional)
+> V2Pool V2CreatePool(ctx, v2Pool)
 
 
 Creates a new load balancer pool.
@@ -103,15 +103,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **v2Pool** | [**V2Pool**](V2Pool.md)|  | 
- **optional** | ***V2CreatePoolOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a V2CreatePoolOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **token** | **optional.String**| DCOS Auth Token | 
 
 ### Return type
 
@@ -129,7 +120,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **V2DeletePool**
-> V2DeletePool(ctx, name, optional)
+> V2DeletePool(ctx, name)
 
 
 Deletes a single load balancer pool based on the name supplied.
@@ -140,15 +131,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **name** | **string**|  | 
- **optional** | ***V2DeletePoolOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a V2DeletePoolOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **token** | **optional.String**| DCOS Auth Token | 
 
 ### Return type
 
@@ -218,7 +200,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **V2UpdatePool**
-> V2Pool V2UpdatePool(ctx, name, v2Pool, optional)
+> V2Pool V2UpdatePool(ctx, name, v2Pool)
 
 
 Updates a new load balancer pool.
@@ -230,16 +212,6 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **name** | **string**|  | 
   **v2Pool** | [**V2Pool**](V2Pool.md)|  | 
- **optional** | ***V2UpdatePoolOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a V2UpdatePoolOpts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **token** | **optional.String**| DCOS Auth Token | 
 
 ### Return type
 

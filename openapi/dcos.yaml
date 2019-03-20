@@ -41,16 +41,19 @@ paths:
               $ref: '#/components/schemas/packageDeleteRepoRequest'
       responses:
         200:
+          description: Deletion of package repository successful
           content:
             application/vnd.dcos.package.repository.delete-response+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/packageDeleteRepoResponse'
         400:
+          description: Deletion of package repository failed due to a bad request
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
         404:
+          description: Deletion of package repository failed because the package does not exist
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
@@ -71,16 +74,19 @@ paths:
               $ref: '#/components/schemas/packageAddRepoRequest'
       responses:
         200:
+          description: Adding a package repository was successful
           content:
             application/vnd.dcos.package.repository.add-response+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/packageAddRepoResponse'
         400:
+          description: Adding a package repository failed due to a bad request
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
         409:
+          description: Adding a package repository failed due to a version conflict
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
@@ -98,11 +104,13 @@ paths:
               $ref: '#/components/schemas/serviceDescribeRequest'
       responses:
         200:
+          description: Request successful
           content:
             application/vnd.dcos.service.describe-response+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/serviceDescribeResponse'
         400:
+          description: Request failed due to a bad request
           content:
             application/vnd.dcos.service.describe-response+json;charset=utf-8;version=v1:
               schema:
@@ -120,11 +128,13 @@ paths:
               $ref: '#/components/schemas/packageDescribeRequest'
       responses:
         200:
+          description: Request successful
           content:
             application/vnd.dcos.package.describe-response+json;charset=utf-8;version=v3:
               schema:
                 $ref: '#/components/schemas/v3PackageDescribeResponse'
         400:
+          description: Request failed due to a bad request
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
@@ -152,21 +162,25 @@ paths:
         required: true
       responses:
         200:
+          description: Package successfully uninstalled
           content:
             application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/uninstallResponse'
         400:
+          description: Package could not be uninstalled due to a bad request
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
         404:
+          description: Package not found
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
         409:
+          description: Package could not be uninstalled due to a version conflict
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
@@ -185,16 +199,19 @@ paths:
         required: true
       responses:
         200:
+          description: Package successfully installed
           content:
             application/vnd.dcos.package.install-response+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/installResponse'
         400:
+          description: Package could not be installed due to a bad request
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
         409:
+          description: Package could not be installed due to a version conflict
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
@@ -215,16 +232,19 @@ paths:
         required: true
       responses:
         200:
+          description: Package search successful
           content:
             application/vnd.dcos.package.search-response+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/searchResponse'
         400:
+          description: Package search failed due to a bad request
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
         409:
+          description: Package search failed due to a version conflict
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
@@ -243,21 +263,25 @@ paths:
         required: true
       responses:
         200:
+          description: Service update successful
           content:
             application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/serviceUpdateResponse'
         400:
+          description: Service update failed due to a bad request
           content:
             application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
         404:
+          description: Service update failed because the request contains non-existant information
           content:
             application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
               schema:
                 $ref: '#/components/schemas/error'
         409:
+          description: Service update failed due to version conflict
           content:
             application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
               schema:
@@ -1832,13 +1856,6 @@ paths:
       operationId: V2CreatePool
       tags:
         - edgelb
-      parameters:
-        - name: token
-          description: DCOS Auth Token
-          in: header
-          required: false
-          schema:
-            type: string
       requestBody:
         $ref: "#/components/requestBodies/V2Pool"
       responses:
@@ -1902,12 +1919,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: token
-          description: DCOS Auth Token
-          in: header
-          required: false
-          schema:
-            type: string
       requestBody:
         $ref: "#/components/requestBodies/V2Pool"
       responses:
@@ -1932,12 +1943,6 @@ paths:
         - name: name
           in: path
           required: true
-          schema:
-            type: string
-        - name: token
-          description: DCOS Auth Token
-          in: header
-          required: false
           schema:
             type: string
       responses:
@@ -3027,56 +3032,10 @@ components:
           type: string
       additionalProperties: false
 
-    V2Config:
-      type: object
-      description: >-
-        * If a default is not set, then it will be left empty, even for objects.
-        * Set defaults in the object that is furthest from the root object. *
-        Always set a default for arrays. * The purpose of "x-nullable" is to
-        allow the output JSON field to be set
-          to the golang "zero value". Without "x-nullable", the field will be
-          removed altogether from the resulting JSON.
-        * Actual validation is done in the code, not expressed in swagger. * Since an empty boolean is interpreted as "false", don't set
-          a default.
-        * CamelCase * Swagger will only do enum validation if it is a top level definition!
-      default:
-        pools:
-          []
-      properties:
-        pools:
-          type: array
-          description: The array of pools.
-          items:
-            $ref: "#/components/schemas/V2Pool"
     V2Pool:
       type: object
       description: The pool contains information on resources that the pool needs. Changes
         make to this section will relaunch the tasks.
-      default:
-        apiVersion: V2
-        namespace: dcos-edgelb/pools
-        packageName: edgelb-pool
-        packageVersion: v0.0.0
-        poolHealthcheckGracePeriod: 180
-        poolHealthcheckInterval: 12
-        poolHealthcheckMaxFail: 5
-        poolHealthcheckTimeout: 60
-        role: slave_public
-        cpus: 0.9
-        cpusAdminOverhead: 0.1
-        mem: 992
-        memAdminOverhead: 32
-        disk: 256
-        count: 1
-        constraints: hostname:UNIQUE
-        ports:
-          []
-        secrets:
-          []
-        virtualNetworks:
-          []
-        haproxy:
-          {}
       properties:
         poolHealthcheckGracePeriod:
           description: Pool tasks healthcheck grace period (in seconds)
@@ -3216,13 +3175,6 @@ components:
           $ref: "#/components/schemas/V2Haproxy"
     V2Haproxy:
       type: object
-      default:
-        stats:
-          {}
-        frontends:
-          []
-        backends:
-          []
       properties:
         stats:
           $ref: "#/components/schemas/V2Stats"
@@ -3238,9 +3190,6 @@ components:
             $ref: "#/components/schemas/V2Backend"
     V2Stats:
       type: object
-      default:
-        bindAddress: 0.0.0.0
-        bindPort: 9090
       properties:
         bindAddress:
           type: string
@@ -3252,15 +3201,6 @@ components:
       description: The Frontend maps to the HAProxy frontend. This includes information
         such as what addresses and ports to listen on, what SSL/TLS certificates
         to use, and which backends to route to.
-      default:
-        bindAddress: 0.0.0.0
-        bindPort: -1
-        certificates:
-          []
-        miscStrs:
-          []
-        linkBackend:
-          {}
       properties:
         name:
           description: Defaults to frontend_{{bindAddress}}_{{bindPort}}.
@@ -3288,9 +3228,6 @@ components:
             type: string
         redirectToHttps:
           type: object
-          default:
-            except:
-              []
           description: Setting this to the empty object is enough to redirect all traffic
             from HTTP (this frontend) to HTTPS (port 443).
           properties:
@@ -3320,9 +3257,6 @@ components:
           description: This describes what backends to send traffic to. This can be
             expressed with a variety of filters such as matching on the hostname
             or the HTTP URL path.
-          default:
-            map:
-              []
           properties:
             defaultBackend:
               type: string
@@ -3355,14 +3289,6 @@ components:
                     type: string
     V2Backend:
       type: object
-      default:
-        miscStrs:
-          []
-        services:
-          []
-        balance: roundrobin
-        rewriteHttp:
-          {}
       properties:
         name:
           type: string
@@ -3398,20 +3324,12 @@ components:
             $ref: "#/components/schemas/V2Service"
     V2RewriteHttp:
       type: object
-      default:
-        request:
-          {}
-        response:
-          {}
       properties:
         host:
           description: Set the host header value
           type: string
         path:
           type: object
-          default:
-            fromPath: ""
-            toPath: ""
           description: Rewrite the HTTP URL path. Adding a slash to fromPath usually is not
             necessary.
           properties:
@@ -3427,8 +3345,6 @@ components:
           $ref: "#/components/schemas/V2RewriteHttpResponse"
         sticky:
           type: object
-          default:
-            enabled: true
           description: >-
             Sticky sessions via a cookie.
 
@@ -3445,12 +3361,6 @@ components:
 
         To use the default values (recommended), set this field to the empty object.
       type: object
-      default:
-        forwardfor: true
-        xForwardedPort: true
-        xForwardedProtoHttpsIfTls: true
-        setHostHeader: true
-        rewritePath: true
       properties:
         forwardfor:
           type: boolean
@@ -3473,21 +3383,12 @@ components:
 
         To use the default values (recommended), set this field to the empty object.
       type: object
-      default:
-        rewriteLocation: true
       properties:
         rewriteLocation:
           type: boolean
           nullable: true
     V2Service:
       type: object
-      default:
-        marathon:
-          {}
-        mesos:
-          {}
-        endpoint:
-          {}
       properties:
         marathon:
           type: object
@@ -3529,11 +3430,6 @@ components:
           $ref: "#/components/schemas/V2Endpoint"
     V2Endpoint:
       type: object
-      default:
-        type: AUTO_IP
-        check:
-          {}
-        port: -1
       properties:
         type:
           type: string
@@ -3550,8 +3446,6 @@ components:
             more options see "customCheck". These are required for DNS
             resolution to function properly.
           type: object
-          default:
-            enabled: true
           properties:
             enabled:
               type: boolean
@@ -3598,8 +3492,6 @@ components:
     PoolContainer:
       type: object
       description: Object used internally as an interface to handle multple model versions.
-      default:
-        apiVersion: V1
       properties:
         apiVersion:
           $ref: "#/components/schemas/APIVersion"
