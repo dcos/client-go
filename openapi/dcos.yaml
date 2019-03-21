@@ -51,13 +51,13 @@ paths:
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/CosmosError'
         404:
           description: Deletion of package repository failed because the package does not exist
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/CosmosError'
       tags:
       - cosmos
   /package/repository/add:
@@ -84,13 +84,13 @@ paths:
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/CosmosError'
         409:
           description: Adding a package repository failed due to a version conflict
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/CosmosError'
       tags:
       - cosmos
   /cosmos/service/describe:
@@ -114,7 +114,7 @@ paths:
           content:
             application/vnd.dcos.service.describe-response+json;charset=utf-8;version=v1:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/CosmosError'
       tags:
       - cosmos
   /package/describe:
@@ -138,7 +138,7 @@ paths:
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/CosmosError'
       tags:
       - cosmos
   /package/uninstall:
@@ -172,19 +172,19 @@ paths:
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/CosmosError'
         404:
           description: Package not found
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/CosmosError'
         409:
           description: Package could not be uninstalled due to a version conflict
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/CosmosError'
       tags:
       - cosmos
   /package/install:
@@ -209,13 +209,13 @@ paths:
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/CosmosError'
         409:
           description: Package could not be installed due to a version conflict
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/CosmosError'
       tags:
       - cosmos
   /package/search:
@@ -242,13 +242,13 @@ paths:
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/CosmosError'
         409:
           description: Package search failed due to a version conflict
           content:
             application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/CosmosError'
       tags:
       - cosmos
   /cosmos/service/update:
@@ -273,19 +273,19 @@ paths:
           content:
             application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/CosmosError'
         404:
           description: Service update failed because the request contains non-existant information
           content:
             application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/CosmosError'
         409:
           description: Service update failed due to version conflict
           content:
             application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
               schema:
-                $ref: '#/components/schemas/error'
+                $ref: '#/components/schemas/CosmosError'
       tags:
       - cosmos
   /secrets/v1/secret/{store}/{path-to-secret}:
@@ -2095,7 +2095,7 @@ components:
       additionalProperties:
         type: string
       type: object
-    error:
+    CosmosError:
       additionalProperties: false
       properties:
         type:
