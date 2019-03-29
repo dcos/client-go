@@ -97,7 +97,7 @@ func installPackage(client *dcos.APIClient, request dcos.InstallRequest) error {
 		switch err := err.(type) {
 		case dcos.GenericOpenAPIError:
 			if err.Model() != nil {
-				if e, ok := err.Model().(dcos.ModelError); ok && e.Type == "PackageAlreadyInstalled" {
+				if e, ok := err.Model().(dcos.CosmosError); ok && e.Type == "PackageAlreadyInstalled" {
 					log.Printf("Package %s already installed", request.PackageName)
 					return nil
 				}

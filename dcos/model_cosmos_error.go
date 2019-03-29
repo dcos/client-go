@@ -10,7 +10,7 @@
 
 package dcos
 
-type ModelError struct {
+type CosmosError struct {
 	Type    string                 `json:"type"`
 	Message string                 `json:"message"`
 	Data    map[string]interface{} `json:"data,omitempty"`

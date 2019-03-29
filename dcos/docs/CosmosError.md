@@ -1,4 +1,4 @@
-# ModelError
+# CosmosError
 
 ## Properties
 Name | Type | Description | Notes
