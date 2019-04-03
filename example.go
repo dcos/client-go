@@ -79,9 +79,9 @@ func getSecret(client *dcos.APIClient, secretName string) error {
 	return nil
 }
 
-func describePackage(client *dcos.APIClient, request dcos.PackageDescribeRequest) error {
+func describePackage(client *dcos.APIClient, request dcos.CosmosPackageDescribeV1Request) error {
 	result, _, err := client.Cosmos.PackageDescribe(context.TODO(), &dcos.PackageDescribeOpts{
-		PackageDescribeRequest: optional.NewInterface(request),
+		CosmosPackageDescribeV1Request: optional.NewInterface(request),
 	})
 	if err != nil {
 		return err
@@ -91,7 +91,7 @@ func describePackage(client *dcos.APIClient, request dcos.PackageDescribeRequest
 	return nil
 }
 
-func installPackage(client *dcos.APIClient, request dcos.InstallRequest) error {
+func installPackage(client *dcos.APIClient, request dcos.CosmosPackageInstallV1Request) error {
 	result, _, err := client.Cosmos.PackageInstall(context.TODO(), request)
 	if err != nil {
 		switch err := err.(type) {
@@ -113,7 +113,7 @@ func installPackage(client *dcos.APIClient, request dcos.InstallRequest) error {
 	return nil
 }
 
-func uninstallPackage(client *dcos.APIClient, request dcos.UninstallRequest) error {
+func uninstallPackage(client *dcos.APIClient, request dcos.CosmosPackageUninstallV1Request) error {
 	result, _, err := client.Cosmos.PackageUninstall(context.TODO(), request, nil)
 	if err != nil {
 		return err
@@ -199,22 +199,22 @@ func main() {
 		log.Fatalf("Creating secrets failed: %s\n", err)
 	}
 
-	err = describePackage(client, dcos.PackageDescribeRequest{PackageName: "hello-world"})
+	err = describePackage(client, dcos.CosmosPackageDescribeV1Request{PackageName: "hello-world"})
 	if err != nil {
 		log.Fatalf("Describing package failed: %s\n", err)
 	}
 
-	err = installPackage(client, dcos.InstallRequest{PackageName: "hello-world"})
+	err = installPackage(client, dcos.CosmosPackageInstallV1Request{PackageName: "hello-world"})
 	if err != nil {
 		log.Fatalf("Installing package failed: %s\n", err)
 	}
 
-	err = uninstallPackage(client, dcos.UninstallRequest{PackageName: "hello-world"})
+	err = uninstallPackage(client, dcos.CosmosPackageUninstallV1Request{PackageName: "hello-world"})
 	if err != nil {
 		log.Fatalf("Uninstalling package failed: %s\n", err)
 	}
 
-	dcosMonitoringRequest := dcos.InstallRequest{
+	dcosMonitoringRequest := dcos.CosmosPackageInstallV1Request{
 		PackageName: "beta-dcos-monitoring",
 		Options: map[string]map[string]interface{}{
 			"grafana": {
@@ -232,7 +232,7 @@ func main() {
 		log.Fatalf("Installing package failed: %s\n", err)
 	}
 
-	err = uninstallPackage(client, dcos.UninstallRequest{PackageName: "beta-dcos-monitoring"})
+	err = uninstallPackage(client, dcos.CosmosPackageUninstallV1Request{PackageName: "beta-dcos-monitoring"})
 	if err != nil {
 		log.Fatalf("Uninstalling package failed: %s\n", err)
 	}

@@ -31,22 +31,22 @@ CosmosApiService
 Show information about the package, including the required resources and configuration to start the service, and command line extensions that are included with the package.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *PackageDescribeOpts - Optional Parameters:
- * @param "PackageDescribeRequest" (optional.Interface of PackageDescribeRequest) -
-@return V3PackageDescribeResponse
+ * @param "CosmosPackageDescribeV1Request" (optional.Interface of CosmosPackageDescribeV1Request) -
+@return CosmosPackageDescribeV3Response
 */
 
 type PackageDescribeOpts struct {
-	PackageDescribeRequest optional.Interface
+	CosmosPackageDescribeV1Request optional.Interface
 }
 
-func (a *CosmosApiService) PackageDescribe(ctx context.Context, localVarOptionals *PackageDescribeOpts) (V3PackageDescribeResponse, *http.Response, error) {
+func (a *CosmosApiService) PackageDescribe(ctx context.Context, localVarOptionals *PackageDescribeOpts) (CosmosPackageDescribeV3Response, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  V3PackageDescribeResponse
+		localVarReturnValue  CosmosPackageDescribeV3Response
 	)
 
 	// create path and map variables
@@ -74,12 +74,12 @@ func (a *CosmosApiService) PackageDescribe(ctx context.Context, localVarOptional
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.PackageDescribeRequest.IsSet() {
-		localVarOptionalPackageDescribeRequest, localVarOptionalPackageDescribeRequestok := localVarOptionals.PackageDescribeRequest.Value().(PackageDescribeRequest)
-		if !localVarOptionalPackageDescribeRequestok {
-			return localVarReturnValue, nil, reportError("packageDescribeRequest should be PackageDescribeRequest")
+	if localVarOptionals != nil && localVarOptionals.CosmosPackageDescribeV1Request.IsSet() {
+		localVarOptionalCosmosPackageDescribeV1Request, localVarOptionalCosmosPackageDescribeV1Requestok := localVarOptionals.CosmosPackageDescribeV1Request.Value().(CosmosPackageDescribeV1Request)
+		if !localVarOptionalCosmosPackageDescribeV1Requestok {
+			return localVarReturnValue, nil, reportError("cosmosPackageDescribeV1Request should be CosmosPackageDescribeV1Request")
 		}
-		localVarPostBody = &localVarOptionalPackageDescribeRequest
+		localVarPostBody = &localVarOptionalCosmosPackageDescribeV1Request
 	}
 
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -104,7 +104,7 @@ func (a *CosmosApiService) PackageDescribe(ctx context.Context, localVarOptional
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v V3PackageDescribeResponse
+			var v CosmosPackageDescribeV3Response
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -142,17 +142,17 @@ func (a *CosmosApiService) PackageDescribe(ctx context.Context, localVarOptional
 CosmosApiService
 Runs a service from a Universe package.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param installRequest
-@return InstallResponse
+ * @param cosmosPackageInstallV1Request
+@return CosmosPackageInstallV1Response
 */
-func (a *CosmosApiService) PackageInstall(ctx context.Context, installRequest InstallRequest) (InstallResponse, *http.Response, error) {
+func (a *CosmosApiService) PackageInstall(ctx context.Context, cosmosPackageInstallV1Request CosmosPackageInstallV1Request) (CosmosPackageInstallV1Response, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InstallResponse
+		localVarReturnValue  CosmosPackageInstallV1Response
 	)
 
 	// create path and map variables
@@ -180,7 +180,7 @@ func (a *CosmosApiService) PackageInstall(ctx context.Context, installRequest In
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &installRequest
+	localVarPostBody = &cosmosPackageInstallV1Request
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -203,7 +203,7 @@ func (a *CosmosApiService) PackageInstall(ctx context.Context, installRequest In
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v InstallResponse
+			var v CosmosPackageInstallV1Response
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -252,22 +252,22 @@ CosmosApiService
 Adds a package repository (for example Universe) for use by DC/OS. To add a package repository to the beginning of the list set the index to zero (0). To add a package repository to the end of the list do not specify an index.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *PackageRepositoryAddOpts - Optional Parameters:
- * @param "PackageAddRepoRequest" (optional.Interface of PackageAddRepoRequest) -
-@return PackageAddRepoResponse
+ * @param "CosmosPackageAddRepoV1Request" (optional.Interface of CosmosPackageAddRepoV1Request) -
+@return CosmosPackageAddRepoV1Response
 */
 
 type PackageRepositoryAddOpts struct {
-	PackageAddRepoRequest optional.Interface
+	CosmosPackageAddRepoV1Request optional.Interface
 }
 
-func (a *CosmosApiService) PackageRepositoryAdd(ctx context.Context, localVarOptionals *PackageRepositoryAddOpts) (PackageAddRepoResponse, *http.Response, error) {
+func (a *CosmosApiService) PackageRepositoryAdd(ctx context.Context, localVarOptionals *PackageRepositoryAddOpts) (CosmosPackageAddRepoV1Response, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  PackageAddRepoResponse
+		localVarReturnValue  CosmosPackageAddRepoV1Response
 	)
 
 	// create path and map variables
@@ -295,12 +295,12 @@ func (a *CosmosApiService) PackageRepositoryAdd(ctx context.Context, localVarOpt
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.PackageAddRepoRequest.IsSet() {
-		localVarOptionalPackageAddRepoRequest, localVarOptionalPackageAddRepoRequestok := localVarOptionals.PackageAddRepoRequest.Value().(PackageAddRepoRequest)
-		if !localVarOptionalPackageAddRepoRequestok {
-			return localVarReturnValue, nil, reportError("packageAddRepoRequest should be PackageAddRepoRequest")
+	if localVarOptionals != nil && localVarOptionals.CosmosPackageAddRepoV1Request.IsSet() {
+		localVarOptionalCosmosPackageAddRepoV1Request, localVarOptionalCosmosPackageAddRepoV1Requestok := localVarOptionals.CosmosPackageAddRepoV1Request.Value().(CosmosPackageAddRepoV1Request)
+		if !localVarOptionalCosmosPackageAddRepoV1Requestok {
+			return localVarReturnValue, nil, reportError("cosmosPackageAddRepoV1Request should be CosmosPackageAddRepoV1Request")
 		}
-		localVarPostBody = &localVarOptionalPackageAddRepoRequest
+		localVarPostBody = &localVarOptionalCosmosPackageAddRepoV1Request
 	}
 
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -325,7 +325,7 @@ func (a *CosmosApiService) PackageRepositoryAdd(ctx context.Context, localVarOpt
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v PackageAddRepoResponse
+			var v CosmosPackageAddRepoV1Response
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -374,22 +374,22 @@ CosmosApiService
 Deletes a package repository (for example Universe) from DC/OS.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *PackageRepositoryDeleteOpts - Optional Parameters:
- * @param "PackageDeleteRepoRequest" (optional.Interface of PackageDeleteRepoRequest) -
-@return PackageDeleteRepoResponse
+ * @param "CosmosPackageDeleteRepoV1Request" (optional.Interface of CosmosPackageDeleteRepoV1Request) -
+@return CosmosPackageDeleteRepoV1Response
 */
 
 type PackageRepositoryDeleteOpts struct {
-	PackageDeleteRepoRequest optional.Interface
+	CosmosPackageDeleteRepoV1Request optional.Interface
 }
 
-func (a *CosmosApiService) PackageRepositoryDelete(ctx context.Context, localVarOptionals *PackageRepositoryDeleteOpts) (PackageDeleteRepoResponse, *http.Response, error) {
+func (a *CosmosApiService) PackageRepositoryDelete(ctx context.Context, localVarOptionals *PackageRepositoryDeleteOpts) (CosmosPackageDeleteRepoV1Response, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  PackageDeleteRepoResponse
+		localVarReturnValue  CosmosPackageDeleteRepoV1Response
 	)
 
 	// create path and map variables
@@ -417,12 +417,12 @@ func (a *CosmosApiService) PackageRepositoryDelete(ctx context.Context, localVar
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.PackageDeleteRepoRequest.IsSet() {
-		localVarOptionalPackageDeleteRepoRequest, localVarOptionalPackageDeleteRepoRequestok := localVarOptionals.PackageDeleteRepoRequest.Value().(PackageDeleteRepoRequest)
-		if !localVarOptionalPackageDeleteRepoRequestok {
-			return localVarReturnValue, nil, reportError("packageDeleteRepoRequest should be PackageDeleteRepoRequest")
+	if localVarOptionals != nil && localVarOptionals.CosmosPackageDeleteRepoV1Request.IsSet() {
+		localVarOptionalCosmosPackageDeleteRepoV1Request, localVarOptionalCosmosPackageDeleteRepoV1Requestok := localVarOptionals.CosmosPackageDeleteRepoV1Request.Value().(CosmosPackageDeleteRepoV1Request)
+		if !localVarOptionalCosmosPackageDeleteRepoV1Requestok {
+			return localVarReturnValue, nil, reportError("cosmosPackageDeleteRepoV1Request should be CosmosPackageDeleteRepoV1Request")
 		}
-		localVarPostBody = &localVarOptionalPackageDeleteRepoRequest
+		localVarPostBody = &localVarOptionalCosmosPackageDeleteRepoV1Request
 	}
 
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -447,7 +447,7 @@ func (a *CosmosApiService) PackageRepositoryDelete(ctx context.Context, localVar
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v PackageDeleteRepoResponse
+			var v CosmosPackageDeleteRepoV1Response
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -495,17 +495,17 @@ func (a *CosmosApiService) PackageRepositoryDelete(ctx context.Context, localVar
 CosmosApiService
 Lists all matching packages in the repository given a partial pattern. The character \\&#39;\\*\\&#39; can be used to match any number of characters.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param searchRequest
-@return SearchResponse
+ * @param cosmosPackageSearchV1Request
+@return CosmosPackageSearchV1Response
 */
-func (a *CosmosApiService) PackageSearch(ctx context.Context, searchRequest SearchRequest) (SearchResponse, *http.Response, error) {
+func (a *CosmosApiService) PackageSearch(ctx context.Context, cosmosPackageSearchV1Request CosmosPackageSearchV1Request) (CosmosPackageSearchV1Response, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  SearchResponse
+		localVarReturnValue  CosmosPackageSearchV1Response
 	)
 
 	// create path and map variables
@@ -533,7 +533,7 @@ func (a *CosmosApiService) PackageSearch(ctx context.Context, searchRequest Sear
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &searchRequest
+	localVarPostBody = &cosmosPackageSearchV1Request
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -556,7 +556,7 @@ func (a *CosmosApiService) PackageSearch(ctx context.Context, searchRequest Sear
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v SearchResponse
+			var v CosmosPackageSearchV1Response
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -603,24 +603,24 @@ func (a *CosmosApiService) PackageSearch(ctx context.Context, searchRequest Sear
 /*
 CosmosApiService
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param uninstallRequest
+ * @param cosmosPackageUninstallV1Request
  * @param optional nil or *PackageUninstallOpts - Optional Parameters:
  * @param "Accept" (optional.String) -
-@return UninstallResponse
+@return CosmosPackageUninstallV1Response
 */
 
 type PackageUninstallOpts struct {
 	Accept optional.String
 }
 
-func (a *CosmosApiService) PackageUninstall(ctx context.Context, uninstallRequest UninstallRequest, localVarOptionals *PackageUninstallOpts) (UninstallResponse, *http.Response, error) {
+func (a *CosmosApiService) PackageUninstall(ctx context.Context, cosmosPackageUninstallV1Request CosmosPackageUninstallV1Request, localVarOptionals *PackageUninstallOpts) (CosmosPackageUninstallV1Response, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  UninstallResponse
+		localVarReturnValue  CosmosPackageUninstallV1Response
 	)
 
 	// create path and map variables
@@ -651,7 +651,7 @@ func (a *CosmosApiService) PackageUninstall(ctx context.Context, uninstallReques
 		localVarHeaderParams["Accept"] = parameterToString(localVarOptionals.Accept.Value(), "")
 	}
 	// body params
-	localVarPostBody = &uninstallRequest
+	localVarPostBody = &cosmosPackageUninstallV1Request
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -674,7 +674,7 @@ func (a *CosmosApiService) PackageUninstall(ctx context.Context, uninstallReques
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v UninstallResponse
+			var v CosmosPackageUninstallV1Response
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -733,22 +733,22 @@ CosmosApiService
 Describes a DC/OS Service
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *ServiceDescribeOpts - Optional Parameters:
- * @param "ServiceDescribeRequest" (optional.Interface of ServiceDescribeRequest) -
-@return ServiceDescribeResponse
+ * @param "CosmosServiceDescribeV1Request" (optional.Interface of CosmosServiceDescribeV1Request) -
+@return CosmosServiceDescribeV1Response
 */
 
 type ServiceDescribeOpts struct {
-	ServiceDescribeRequest optional.Interface
+	CosmosServiceDescribeV1Request optional.Interface
 }
 
-func (a *CosmosApiService) ServiceDescribe(ctx context.Context, localVarOptionals *ServiceDescribeOpts) (ServiceDescribeResponse, *http.Response, error) {
+func (a *CosmosApiService) ServiceDescribe(ctx context.Context, localVarOptionals *ServiceDescribeOpts) (CosmosServiceDescribeV1Response, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ServiceDescribeResponse
+		localVarReturnValue  CosmosServiceDescribeV1Response
 	)
 
 	// create path and map variables
@@ -776,12 +776,12 @@ func (a *CosmosApiService) ServiceDescribe(ctx context.Context, localVarOptional
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarOptionals != nil && localVarOptionals.ServiceDescribeRequest.IsSet() {
-		localVarOptionalServiceDescribeRequest, localVarOptionalServiceDescribeRequestok := localVarOptionals.ServiceDescribeRequest.Value().(ServiceDescribeRequest)
-		if !localVarOptionalServiceDescribeRequestok {
-			return localVarReturnValue, nil, reportError("serviceDescribeRequest should be ServiceDescribeRequest")
+	if localVarOptionals != nil && localVarOptionals.CosmosServiceDescribeV1Request.IsSet() {
+		localVarOptionalCosmosServiceDescribeV1Request, localVarOptionalCosmosServiceDescribeV1Requestok := localVarOptionals.CosmosServiceDescribeV1Request.Value().(CosmosServiceDescribeV1Request)
+		if !localVarOptionalCosmosServiceDescribeV1Requestok {
+			return localVarReturnValue, nil, reportError("cosmosServiceDescribeV1Request should be CosmosServiceDescribeV1Request")
 		}
-		localVarPostBody = &localVarOptionalServiceDescribeRequest
+		localVarPostBody = &localVarOptionalCosmosServiceDescribeV1Request
 	}
 
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -806,7 +806,7 @@ func (a *CosmosApiService) ServiceDescribe(ctx context.Context, localVarOptional
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v ServiceDescribeResponse
+			var v CosmosServiceDescribeV1Response
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -844,17 +844,17 @@ func (a *CosmosApiService) ServiceDescribe(ctx context.Context, localVarOptional
 CosmosApiService
 Runs a service update.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param serviceUpdateRequest
-@return ServiceUpdateResponse
+ * @param cosmosServiceUpdateV1Request
+@return CosmosServiceUpdateV1Response
 */
-func (a *CosmosApiService) ServiceUpdate(ctx context.Context, serviceUpdateRequest ServiceUpdateRequest) (ServiceUpdateResponse, *http.Response, error) {
+func (a *CosmosApiService) ServiceUpdate(ctx context.Context, cosmosServiceUpdateV1Request CosmosServiceUpdateV1Request) (CosmosServiceUpdateV1Response, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ServiceUpdateResponse
+		localVarReturnValue  CosmosServiceUpdateV1Response
 	)
 
 	// create path and map variables
@@ -882,7 +882,7 @@ func (a *CosmosApiService) ServiceUpdate(ctx context.Context, serviceUpdateReque
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &serviceUpdateRequest
+	localVarPostBody = &cosmosServiceUpdateV1Request
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -905,7 +905,7 @@ func (a *CosmosApiService) ServiceUpdate(ctx context.Context, serviceUpdateReque
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v ServiceUpdateResponse
+			var v CosmosServiceUpdateV1Response
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
