@@ -30,264 +30,6 @@ tags:
   description: Create and manage load balancers with DCOS Edge LB API
 
 paths:
-  /package/repository/delete:
-    post:
-      description: Deletes a package repository (for example Universe) from DC/OS.
-      operationId: package-repository-delete
-      requestBody:
-        content:
-          application/vnd.dcos.package.repository.delete-request+json;charset=utf-8;version=v1:
-            schema:
-              $ref: '#/components/schemas/CosmosPackageDeleteRepoV1Request'
-      responses:
-        200:
-          description: Deletion of package repository successful
-          content:
-            application/vnd.dcos.package.repository.delete-response+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosPackageDeleteRepoV1Response'
-        400:
-          description: Deletion of package repository failed due to a bad request
-          content:
-            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosError'
-        404:
-          description: Deletion of package repository failed because the package does not exist
-          content:
-            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosError'
-      tags:
-      - cosmos
-  /package/repository/add:
-    post:
-      description: |
-        Adds a package repository (for example Universe) for use by DC/OS. To add a package
-        repository to the beginning of the list set the index to zero (0). To add a package
-        repository to the end of the list do not specify an index.
-      operationId: package-repository-add
-      requestBody:
-        content:
-          application/vnd.dcos.package.repository.add-request+json;charset=utf-8;version=v1:
-            schema:
-              $ref: '#/components/schemas/CosmosPackageAddRepoV1Request'
-      responses:
-        200:
-          description: Adding a package repository was successful
-          content:
-            application/vnd.dcos.package.repository.add-response+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosPackageAddRepoV1Response'
-        400:
-          description: Adding a package repository failed due to a bad request
-          content:
-            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosError'
-        409:
-          description: Adding a package repository failed due to a version conflict
-          content:
-            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosError'
-      tags:
-      - cosmos
-  /cosmos/service/describe:
-    post:
-      description: Describes a DC/OS Service
-      operationId: service-describe
-      requestBody:
-        content:
-          application/vnd.dcos.service.describe-request+json;charset=utf-8;version=v1:
-            schema:
-              $ref: '#/components/schemas/CosmosServiceDescribeV1Request'
-      responses:
-        200:
-          description: Request successful
-          content:
-            application/vnd.dcos.service.describe-response+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosServiceDescribeV1Response'
-        400:
-          description: Request failed due to a bad request
-          content:
-            application/vnd.dcos.service.describe-response+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosError'
-      tags:
-      - cosmos
-  /package/describe:
-    post:
-      description: Show information about the package, including the required resources and configuration to start the service, and command line extensions that are included with the package.
-      operationId: package-describe
-      requestBody:
-        content:
-          application/vnd.dcos.package.describe-request+json;charset=utf-8;version=v1:
-            schema:
-              $ref: '#/components/schemas/CosmosPackageDescribeV1Request'
-      responses:
-        200:
-          description: Request successful
-          content:
-            application/vnd.dcos.package.describe-response+json;charset=utf-8;version=v3:
-              schema:
-                $ref: '#/components/schemas/CosmosPackageDescribeV3Response'
-        400:
-          description: Request failed due to a bad request
-          content:
-            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosError'
-      tags:
-      - cosmos
-  /package/uninstall:
-    post:
-      operationId: package-uninstall
-      parameters:
-      - explode: false
-        in: header
-        name: Accept
-        required: false
-        schema:
-          enum:
-          - application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/vnd.dcos.package.uninstall-request+json;charset=utf-8;version=v1:
-            schema:
-              $ref: '#/components/schemas/CosmosPackageUninstallV1Request'
-        required: true
-      responses:
-        200:
-          description: Package successfully uninstalled
-          content:
-            application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosPackageUninstallV1Response'
-        400:
-          description: Package could not be uninstalled due to a bad request
-          content:
-            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosError'
-        404:
-          description: Package not found
-          content:
-            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosError'
-        409:
-          description: Package could not be uninstalled due to a version conflict
-          content:
-            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosError'
-      tags:
-      - cosmos
-  /package/install:
-    post:
-      description: Runs a service from a Universe package.
-      operationId: package-install
-      requestBody:
-        content:
-          application/vnd.dcos.package.install-request+json;charset=utf-8;version=v1:
-            schema:
-              $ref: '#/components/schemas/CosmosPackageInstallV1Request'
-        required: true
-      responses:
-        200:
-          description: Package successfully installed
-          content:
-            application/vnd.dcos.package.install-response+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosPackageInstallV1Response'
-        400:
-          description: Package could not be installed due to a bad request
-          content:
-            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosError'
-        409:
-          description: Package could not be installed due to a version conflict
-          content:
-            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosError'
-      tags:
-      - cosmos
-  /package/search:
-    post:
-      description: |
-        Lists all matching packages in the repository given a partial pattern.
-        The character \'\*\' can be used to match any number of characters.
-      operationId: package-search
-      requestBody:
-        content:
-          application/vnd.dcos.package.search-request+json;charset=utf-8;version=v1:
-            schema:
-              $ref: '#/components/schemas/CosmosPackageSearchV1Request'
-        required: true
-      responses:
-        200:
-          description: Package search successful
-          content:
-            application/vnd.dcos.package.search-response+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosPackageSearchV1Response'
-        400:
-          description: Package search failed due to a bad request
-          content:
-            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosError'
-        409:
-          description: Package search failed due to a version conflict
-          content:
-            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosError'
-      tags:
-      - cosmos
-  /cosmos/service/update:
-    post:
-      description: Runs a service update.
-      operationId: service-update
-      requestBody:
-        content:
-          application/vnd.dcos.service.update-request+json;charset=utf-8;version=v1:
-            schema:
-              $ref: '#/components/schemas/CosmosServiceUpdateV1Request'
-        required: true
-      responses:
-        200:
-          description: Service update successful
-          content:
-            application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosServiceUpdateV1Response'
-        400:
-          description: Service update failed due to a bad request
-          content:
-            application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosError'
-        404:
-          description: Service update failed because the request contains non-existant information
-          content:
-            application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosError'
-        409:
-          description: Service update failed due to version conflict
-          content:
-            application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
-              schema:
-                $ref: '#/components/schemas/CosmosError'
-      tags:
-      - cosmos
   /secrets/v1/secret/{store}/{path-to-secret}:
     delete:
       description: Delete a secret.
@@ -1747,6 +1489,266 @@ paths:
               schema:
                 $ref: "#/components/schemas/UserPermissions"
 
+  /cosmos/service/describe:
+    post:
+      description: Describes a DC/OS Service
+      operationId: service-describe
+      requestBody:
+        content:
+          application/vnd.dcos.service.describe-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/CosmosServiceDescribeV1Request'
+      responses:
+        200:
+          description: Request successful
+          content:
+            application/vnd.dcos.service.describe-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosServiceDescribeV1Response'
+        400:
+          description: Request failed due to a bad request
+          content:
+            application/vnd.dcos.service.describe-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+      tags:
+      - cosmos
+  /cosmos/service/update:
+    post:
+      description: Runs a service update.
+      operationId: service-update
+      requestBody:
+        content:
+          application/vnd.dcos.service.update-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/CosmosServiceUpdateV1Request'
+        required: true
+      responses:
+        200:
+          description: Service update successful
+          content:
+            application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosServiceUpdateV1Response'
+        400:
+          description: Service update failed due to a bad request
+          content:
+            application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+        404:
+          description: Service update failed because the request contains non-existant information
+          content:
+            application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+        409:
+          description: Service update failed due to version conflict
+          content:
+            application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+      tags:
+      - cosmos
+
+  /package/describe:
+    post:
+      description: Show information about the package, including the required resources and configuration to start the service, and command line extensions that are included with the package.
+      operationId: package-describe
+      requestBody:
+        content:
+          application/vnd.dcos.package.describe-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/CosmosPackageDescribeV1Request'
+      responses:
+        200:
+          description: Request successful
+          content:
+            application/vnd.dcos.package.describe-response+json;charset=utf-8;version=v3:
+              schema:
+                $ref: '#/components/schemas/CosmosPackageDescribeV3Response'
+        400:
+          description: Request failed due to a bad request
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+      tags:
+      - cosmos
+
+  /package/install:
+    post:
+      description: Runs a service from a Universe package.
+      operationId: package-install
+      requestBody:
+        content:
+          application/vnd.dcos.package.install-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/CosmosPackageInstallV1Request'
+        required: true
+      responses:
+        200:
+          description: Package successfully installed
+          content:
+            application/vnd.dcos.package.install-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosPackageInstallV1Response'
+        400:
+          description: Package could not be installed due to a bad request
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+        409:
+          description: Package could not be installed due to a version conflict
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+      tags:
+      - cosmos
+  /package/repository/add:
+    post:
+      description: |
+        Adds a package repository (for example Universe) for use by DC/OS. To add a package
+        repository to the beginning of the list set the index to zero (0). To add a package
+        repository to the end of the list do not specify an index.
+      operationId: package-repository-add
+      requestBody:
+        content:
+          application/vnd.dcos.package.repository.add-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/CosmosPackageAddRepoV1Request'
+      responses:
+        200:
+          description: Adding a package repository was successful
+          content:
+            application/vnd.dcos.package.repository.add-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosPackageAddRepoV1Response'
+        400:
+          description: Adding a package repository failed due to a bad request
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+        409:
+          description: Adding a package repository failed due to a version conflict
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+      tags:
+      - cosmos
+  /package/repository/delete:
+    post:
+      description: Deletes a package repository (for example Universe) from DC/OS.
+      operationId: package-repository-delete
+      requestBody:
+        content:
+          application/vnd.dcos.package.repository.delete-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/CosmosPackageDeleteRepoV1Request'
+      responses:
+        200:
+          description: Deletion of package repository successful
+          content:
+            application/vnd.dcos.package.repository.delete-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosPackageDeleteRepoV1Response'
+        400:
+          description: Deletion of package repository failed due to a bad request
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+        404:
+          description: Deletion of package repository failed because the package does not exist
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+      tags:
+      - cosmos
+  /package/search:
+    post:
+      description: |
+        Lists all matching packages in the repository given a partial pattern.
+        The character \'\*\' can be used to match any number of characters.
+      operationId: package-search
+      requestBody:
+        content:
+          application/vnd.dcos.package.search-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/CosmosPackageSearchV1Request'
+        required: true
+      responses:
+        200:
+          description: Package search successful
+          content:
+            application/vnd.dcos.package.search-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosPackageSearchV1Response'
+        400:
+          description: Package search failed due to a bad request
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+        409:
+          description: Package search failed due to a version conflict
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+      tags:
+      - cosmos
+  /package/uninstall:
+    post:
+      operationId: package-uninstall
+      parameters:
+      - explode: false
+        in: header
+        name: Accept
+        required: false
+        schema:
+          enum:
+          - application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/vnd.dcos.package.uninstall-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/CosmosPackageUninstallV1Request'
+        required: true
+      responses:
+        200:
+          description: Package successfully uninstalled
+          content:
+            application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosPackageUninstallV1Response'
+        400:
+          description: Package could not be uninstalled due to a bad request
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+        404:
+          description: Package not found
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+        409:
+          description: Package could not be uninstalled due to a version conflict
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+      tags:
+      - cosmos
 
   /service/edgelb/ping:
     get:
