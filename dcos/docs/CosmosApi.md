@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **PackageDescribe**
-> V3PackageDescribeResponse PackageDescribe(ctx, optional)
+> CosmosPackageDescribeV3Response PackageDescribe(ctx, optional)
 
 
 Show information about the package, including the required resources and configuration to start the service, and command line extensions that are included with the package.
@@ -32,11 +32,11 @@ Optional parameters are passed through a pointer to a PackageDescribeOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **packageDescribeRequest** | [**optional.Interface of PackageDescribeRequest**](PackageDescribeRequest.md)|  | 
+ **cosmosPackageDescribeV1Request** | [**optional.Interface of CosmosPackageDescribeV1Request**](CosmosPackageDescribeV1Request.md)|  | 
 
 ### Return type
 
-[**V3PackageDescribeResponse**](v3PackageDescribeResponse.md)
+[**CosmosPackageDescribeV3Response**](CosmosPackageDescribeV3Response.md)
 
 ### Authorization
 
@@ -50,7 +50,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PackageInstall**
-> InstallResponse PackageInstall(ctx, installRequest)
+> CosmosPackageInstallV1Response PackageInstall(ctx, cosmosPackageInstallV1Request)
 
 
 Runs a service from a Universe package.
@@ -60,11 +60,11 @@ Runs a service from a Universe package.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **installRequest** | [**InstallRequest**](InstallRequest.md)|  | 
+  **cosmosPackageInstallV1Request** | [**CosmosPackageInstallV1Request**](CosmosPackageInstallV1Request.md)|  | 
 
 ### Return type
 
-[**InstallResponse**](installResponse.md)
+[**CosmosPackageInstallV1Response**](CosmosPackageInstallV1Response.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PackageRepositoryAdd**
-> PackageAddRepoResponse PackageRepositoryAdd(ctx, optional)
+> CosmosPackageAddRepoV1Response PackageRepositoryAdd(ctx, optional)
 
 
 Adds a package repository (for example Universe) for use by DC/OS. To add a package repository to the beginning of the list set the index to zero (0). To add a package repository to the end of the list do not specify an index. 
@@ -95,11 +95,11 @@ Optional parameters are passed through a pointer to a PackageRepositoryAddOpts s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **packageAddRepoRequest** | [**optional.Interface of PackageAddRepoRequest**](PackageAddRepoRequest.md)|  | 
+ **cosmosPackageAddRepoV1Request** | [**optional.Interface of CosmosPackageAddRepoV1Request**](CosmosPackageAddRepoV1Request.md)|  | 
 
 ### Return type
 
-[**PackageAddRepoResponse**](packageAddRepoResponse.md)
+[**CosmosPackageAddRepoV1Response**](CosmosPackageAddRepoV1Response.md)
 
 ### Authorization
 
@@ -113,7 +113,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PackageRepositoryDelete**
-> PackageDeleteRepoResponse PackageRepositoryDelete(ctx, optional)
+> CosmosPackageDeleteRepoV1Response PackageRepositoryDelete(ctx, optional)
 
 
 Deletes a package repository (for example Universe) from DC/OS.
@@ -130,11 +130,11 @@ Optional parameters are passed through a pointer to a PackageRepositoryDeleteOpt
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **packageDeleteRepoRequest** | [**optional.Interface of PackageDeleteRepoRequest**](PackageDeleteRepoRequest.md)|  | 
+ **cosmosPackageDeleteRepoV1Request** | [**optional.Interface of CosmosPackageDeleteRepoV1Request**](CosmosPackageDeleteRepoV1Request.md)|  | 
 
 ### Return type
 
-[**PackageDeleteRepoResponse**](packageDeleteRepoResponse.md)
+[**CosmosPackageDeleteRepoV1Response**](CosmosPackageDeleteRepoV1Response.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PackageSearch**
-> SearchResponse PackageSearch(ctx, searchRequest)
+> CosmosPackageSearchV1Response PackageSearch(ctx, cosmosPackageSearchV1Request)
 
 
 Lists all matching packages in the repository given a partial pattern. The character \\'\\*\\' can be used to match any number of characters. 
@@ -158,11 +158,11 @@ Lists all matching packages in the repository given a partial pattern. The chara
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **searchRequest** | [**SearchRequest**](SearchRequest.md)|  | 
+  **cosmosPackageSearchV1Request** | [**CosmosPackageSearchV1Request**](CosmosPackageSearchV1Request.md)|  | 
 
 ### Return type
 
-[**SearchResponse**](searchResponse.md)
+[**CosmosPackageSearchV1Response**](CosmosPackageSearchV1Response.md)
 
 ### Authorization
 
@@ -176,7 +176,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PackageUninstall**
-> UninstallResponse PackageUninstall(ctx, uninstallRequest, optional)
+> CosmosPackageUninstallV1Response PackageUninstall(ctx, cosmosPackageUninstallV1Request, optional)
 
 
 ### Required Parameters
@@ -184,7 +184,7 @@ No authorization required
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **uninstallRequest** | [**UninstallRequest**](UninstallRequest.md)|  | 
+  **cosmosPackageUninstallV1Request** | [**CosmosPackageUninstallV1Request**](CosmosPackageUninstallV1Request.md)|  | 
  **optional** | ***PackageUninstallOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UninstallResponse**](uninstallResponse.md)
+[**CosmosPackageUninstallV1Response**](CosmosPackageUninstallV1Response.md)
 
 ### Authorization
 
@@ -211,7 +211,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ServiceDescribe**
-> ServiceDescribeResponse ServiceDescribe(ctx, optional)
+> CosmosServiceDescribeV1Response ServiceDescribe(ctx, optional)
 
 
 Describes a DC/OS Service
@@ -228,11 +228,11 @@ Optional parameters are passed through a pointer to a ServiceDescribeOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **serviceDescribeRequest** | [**optional.Interface of ServiceDescribeRequest**](ServiceDescribeRequest.md)|  | 
+ **cosmosServiceDescribeV1Request** | [**optional.Interface of CosmosServiceDescribeV1Request**](CosmosServiceDescribeV1Request.md)|  | 
 
 ### Return type
 
-[**ServiceDescribeResponse**](serviceDescribeResponse.md)
+[**CosmosServiceDescribeV1Response**](CosmosServiceDescribeV1Response.md)
 
 ### Authorization
 
@@ -246,7 +246,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ServiceUpdate**
-> ServiceUpdateResponse ServiceUpdate(ctx, serviceUpdateRequest)
+> CosmosServiceUpdateV1Response ServiceUpdate(ctx, cosmosServiceUpdateV1Request)
 
 
 Runs a service update.
@@ -256,11 +256,11 @@ Runs a service update.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **serviceUpdateRequest** | [**ServiceUpdateRequest**](ServiceUpdateRequest.md)|  | 
+  **cosmosServiceUpdateV1Request** | [**CosmosServiceUpdateV1Request**](CosmosServiceUpdateV1Request.md)|  | 
 
 ### Return type
 
-[**ServiceUpdateResponse**](serviceUpdateResponse.md)
+[**CosmosServiceUpdateV1Response**](CosmosServiceUpdateV1Response.md)
 
 ### Authorization
 
