@@ -47,7 +47,7 @@ func login(clusterURL, username, password string) (string, error) {
 }
 
 func createSecret(client *dcos.APIClient, secretName, secretValue string) error {
-	secret := dcos.Secret{Value: secretValue}
+	secret := dcos.SecretsV1Secret{Value: secretValue}
 
 	_, err := client.Secrets.CreateSecret(context.TODO(), "default", secretName, secret)
 	if err != nil {

@@ -95,7 +95,7 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/Secret'
+                $ref: '#/components/schemas/SecretsV1Secret'
           description: Response body contains secret authorized content.
         400:
           description: Unsupported Accept header.
@@ -127,7 +127,7 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/Secret'
+        $ref: '#/components/requestBodies/SecretsV1Secret'
       responses:
         204:
           description: Secret updated.
@@ -159,7 +159,7 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/Secret'
+        $ref: '#/components/requestBodies/SecretsV1Secret'
       responses:
         201:
           description: Secret created.
@@ -1971,11 +1971,11 @@ paths:
 
 components:
   requestBodies:
-    Secret:
+    SecretsV1Secret:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Secret'
+            $ref: '#/components/schemas/SecretsV1Secret'
       description: Secret value.
       required: true
     OIDCProviderConfig:
@@ -2001,7 +2001,7 @@ components:
       required: true
 
   schemas:
-    Secret:
+    SecretsV1Secret:
       additionalProperties: false
       example:
         value: value

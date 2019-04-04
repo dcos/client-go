@@ -10,6 +10,6 @@
 
 package dcos
 
-type Secret struct {
+type SecretsV1Secret struct {
 	Value string `json:"value,omitempty"`
 }

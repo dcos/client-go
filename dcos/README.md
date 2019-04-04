@@ -180,7 +180,7 @@ Class | Method | HTTP request | Description
  - [PkgRepo](docs/PkgRepo.md)
  - [SamlProviderConfig](docs/SamlProviderConfig.md)
  - [SamlacsCallbackUrlObject](docs/SamlacsCallbackUrlObject.md)
- - [Secret](docs/Secret.md)
+ - [SecretsV1Secret](docs/SecretsV1Secret.md)
  - [User](docs/User.md)
  - [UserCreate](docs/UserCreate.md)
  - [UserGroups](docs/UserGroups.md)

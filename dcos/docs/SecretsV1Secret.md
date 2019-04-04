@@ -1,4 +1,4 @@
-# Secret
+# SecretsV1Secret
 
 ## Properties
 Name | Type | Description | Notes

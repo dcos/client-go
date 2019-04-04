@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **CreateSecret**
-> CreateSecret(ctx, store, pathToSecret, secret)
+> CreateSecret(ctx, store, pathToSecret, secretsV1Secret)
 Create a secret in the store at the path.
 
 Create a secret in the store at the path.
@@ -23,7 +23,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **store** | **string**| The backend to store the secret in. | 
   **pathToSecret** | **string**| The path to store the secret in. | 
-  **secret** | [**Secret**](Secret.md)| Secret value. | 
+  **secretsV1Secret** | [**SecretsV1Secret**](SecretsV1Secret.md)| Secret value. | 
 
 ### Return type
 
@@ -70,7 +70,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetSecret**
-> Secret GetSecret(ctx, store, pathToSecret, optional)
+> SecretsV1Secret GetSecret(ctx, store, pathToSecret, optional)
 Read or list a secret from the store by its path.
 
 Read or list a secret from the store by its path.
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Secret**](Secret.md)
+[**SecretsV1Secret**](SecretsV1Secret.md)
 
 ### Authorization
 
@@ -109,7 +109,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateSecret**
-> UpdateSecret(ctx, store, pathToSecret, secret)
+> UpdateSecret(ctx, store, pathToSecret, secretsV1Secret)
 Update secret.
 
 Update existing secret in the specified store.
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **store** | **string**| The backend to store the secret in. | 
   **pathToSecret** | **string**| The path for the secret to update. | 
-  **secret** | [**Secret**](Secret.md)| Secret value. | 
+  **secretsV1Secret** | [**SecretsV1Secret**](SecretsV1Secret.md)| Secret value. | 
 
 ### Return type
 
