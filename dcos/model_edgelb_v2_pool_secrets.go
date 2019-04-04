@@ -10,7 +10,7 @@
 
 package dcos
 
-type V2PoolSecrets struct {
+type EdgelbV2PoolSecrets struct {
 	// Secret name
 	Secret string `json:"secret,omitempty"`
 	// File name. The file \"myfile\" will be found at \"$SECRETS/myfile\"

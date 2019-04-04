@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **GetConfigContainer**
-> ConfigContainer GetConfigContainer(ctx, )
+> EdgelbConfigContainer GetConfigContainer(ctx, )
 
 
 Get the entire configuration object including v1 and v2 pools.
@@ -26,7 +26,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ConfigContainer**](ConfigContainer.md)
+[**EdgelbConfigContainer**](EdgelbConfigContainer.md)
 
 ### Authorization
 
@@ -40,7 +40,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetPoolContainer**
-> PoolContainer GetPoolContainer(ctx, name)
+> EdgelbPoolContainer GetPoolContainer(ctx, name)
 
 
 Returns a v1 or v2 load balancer pool based on a single name.
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PoolContainer**](PoolContainer.md)
+[**EdgelbPoolContainer**](EdgelbPoolContainer.md)
 
 ### Authorization
 
@@ -92,7 +92,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **V2CreatePool**
-> V2Pool V2CreatePool(ctx, v2Pool)
+> EdgelbV2Pool V2CreatePool(ctx, edgelbV2Pool)
 
 
 Creates a new load balancer pool.
@@ -102,11 +102,11 @@ Creates a new load balancer pool.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **v2Pool** | [**V2Pool**](V2Pool.md)|  | 
+  **edgelbV2Pool** | [**EdgelbV2Pool**](EdgelbV2Pool.md)|  | 
 
 ### Return type
 
-[**V2Pool**](V2Pool.md)
+[**EdgelbV2Pool**](EdgelbV2Pool.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **V2GetPool**
-> V2Pool V2GetPool(ctx, name)
+> EdgelbV2Pool V2GetPool(ctx, name)
 
 
 Returns a v2 load balancer pool based on a single name.
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V2Pool**](V2Pool.md)
+[**EdgelbV2Pool**](EdgelbV2Pool.md)
 
 ### Authorization
 
@@ -176,7 +176,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **V2GetPools**
-> []V2Pool V2GetPools(ctx, )
+> []EdgelbV2Pool V2GetPools(ctx, )
 
 
 Get all load balancer pools.
@@ -186,7 +186,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[]V2Pool**](V2Pool.md)
+[**[]EdgelbV2Pool**](EdgelbV2Pool.md)
 
 ### Authorization
 
@@ -200,7 +200,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **V2UpdatePool**
-> V2Pool V2UpdatePool(ctx, name, v2Pool)
+> EdgelbV2Pool V2UpdatePool(ctx, name, edgelbV2Pool)
 
 
 Updates a new load balancer pool.
@@ -211,11 +211,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **name** | **string**|  | 
-  **v2Pool** | [**V2Pool**](V2Pool.md)|  | 
+  **edgelbV2Pool** | [**EdgelbV2Pool**](EdgelbV2Pool.md)|  | 
 
 ### Return type
 
-[**V2Pool**](V2Pool.md)
+[**EdgelbV2Pool**](EdgelbV2Pool.md)
 
 ### Authorization
 

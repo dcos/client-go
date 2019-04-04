@@ -30,16 +30,16 @@ type EdgelbApiService service
 EdgelbApiService
 Get the entire configuration object including v1 and v2 pools.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return ConfigContainer
+@return EdgelbConfigContainer
 */
-func (a *EdgelbApiService) GetConfigContainer(ctx context.Context) (ConfigContainer, *http.Response, error) {
+func (a *EdgelbApiService) GetConfigContainer(ctx context.Context) (EdgelbConfigContainer, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ConfigContainer
+		localVarReturnValue  EdgelbConfigContainer
 	)
 
 	// create path and map variables
@@ -88,7 +88,7 @@ func (a *EdgelbApiService) GetConfigContainer(ctx context.Context) (ConfigContai
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v ConfigContainer
+			var v EdgelbConfigContainer
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -98,7 +98,7 @@ func (a *EdgelbApiService) GetConfigContainer(ctx context.Context) (ConfigContai
 			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 0 {
-			var v EdgeLbError
+			var v EdgelbError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -127,16 +127,16 @@ EdgelbApiService
 Returns a v1 or v2 load balancer pool based on a single name.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name
-@return PoolContainer
+@return EdgelbPoolContainer
 */
-func (a *EdgelbApiService) GetPoolContainer(ctx context.Context, name string) (PoolContainer, *http.Response, error) {
+func (a *EdgelbApiService) GetPoolContainer(ctx context.Context, name string) (EdgelbPoolContainer, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  PoolContainer
+		localVarReturnValue  EdgelbPoolContainer
 	)
 
 	// create path and map variables
@@ -186,7 +186,7 @@ func (a *EdgelbApiService) GetPoolContainer(ctx context.Context, name string) (P
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v PoolContainer
+			var v EdgelbPoolContainer
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -196,7 +196,7 @@ func (a *EdgelbApiService) GetPoolContainer(ctx context.Context, name string) (P
 			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 0 {
-			var v EdgeLbError
+			var v EdgelbError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -320,17 +320,17 @@ func (a *EdgelbApiService) Ping(ctx context.Context) (string, *http.Response, er
 EdgelbApiService
 Creates a new load balancer pool.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param v2Pool
-@return V2Pool
+ * @param edgelbV2Pool
+@return EdgelbV2Pool
 */
-func (a *EdgelbApiService) V2CreatePool(ctx context.Context, v2Pool V2Pool) (V2Pool, *http.Response, error) {
+func (a *EdgelbApiService) V2CreatePool(ctx context.Context, edgelbV2Pool EdgelbV2Pool) (EdgelbV2Pool, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  V2Pool
+		localVarReturnValue  EdgelbV2Pool
 	)
 
 	// create path and map variables
@@ -358,7 +358,7 @@ func (a *EdgelbApiService) V2CreatePool(ctx context.Context, v2Pool V2Pool) (V2P
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &v2Pool
+	localVarPostBody = &edgelbV2Pool
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -381,7 +381,7 @@ func (a *EdgelbApiService) V2CreatePool(ctx context.Context, v2Pool V2Pool) (V2P
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v V2Pool
+			var v EdgelbV2Pool
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -391,7 +391,7 @@ func (a *EdgelbApiService) V2CreatePool(ctx context.Context, v2Pool V2Pool) (V2P
 			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 409 {
-			var v EdgeLbError
+			var v EdgelbError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -401,7 +401,7 @@ func (a *EdgelbApiService) V2CreatePool(ctx context.Context, v2Pool V2Pool) (V2P
 			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 0 {
-			var v EdgeLbError
+			var v EdgelbError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -487,7 +487,7 @@ func (a *EdgelbApiService) V2DeletePool(ctx context.Context, name string) (*http
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 400 {
-			var v EdgeLbError
+			var v EdgelbError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -497,7 +497,7 @@ func (a *EdgelbApiService) V2DeletePool(ctx context.Context, name string) (*http
 			return localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 404 {
-			var v EdgeLbError
+			var v EdgelbError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -507,7 +507,7 @@ func (a *EdgelbApiService) V2DeletePool(ctx context.Context, name string) (*http
 			return localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 0 {
-			var v EdgeLbError
+			var v EdgelbError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -527,16 +527,16 @@ EdgelbApiService
 Returns a v2 load balancer pool based on a single name.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name
-@return V2Pool
+@return EdgelbV2Pool
 */
-func (a *EdgelbApiService) V2GetPool(ctx context.Context, name string) (V2Pool, *http.Response, error) {
+func (a *EdgelbApiService) V2GetPool(ctx context.Context, name string) (EdgelbV2Pool, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  V2Pool
+		localVarReturnValue  EdgelbV2Pool
 	)
 
 	// create path and map variables
@@ -586,7 +586,7 @@ func (a *EdgelbApiService) V2GetPool(ctx context.Context, name string) (V2Pool, 
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v V2Pool
+			var v EdgelbV2Pool
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -596,7 +596,7 @@ func (a *EdgelbApiService) V2GetPool(ctx context.Context, name string) (V2Pool, 
 			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 404 {
-			var v EdgeLbError
+			var v EdgelbError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -606,7 +606,7 @@ func (a *EdgelbApiService) V2GetPool(ctx context.Context, name string) (V2Pool, 
 			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 0 {
-			var v EdgeLbError
+			var v EdgelbError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -634,16 +634,16 @@ func (a *EdgelbApiService) V2GetPool(ctx context.Context, name string) (V2Pool, 
 EdgelbApiService
 Get all load balancer pools.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return []V2Pool
+@return []EdgelbV2Pool
 */
-func (a *EdgelbApiService) V2GetPools(ctx context.Context) ([]V2Pool, *http.Response, error) {
+func (a *EdgelbApiService) V2GetPools(ctx context.Context) ([]EdgelbV2Pool, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []V2Pool
+		localVarReturnValue  []EdgelbV2Pool
 	)
 
 	// create path and map variables
@@ -692,7 +692,7 @@ func (a *EdgelbApiService) V2GetPools(ctx context.Context) ([]V2Pool, *http.Resp
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v []V2Pool
+			var v []EdgelbV2Pool
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -702,7 +702,7 @@ func (a *EdgelbApiService) V2GetPools(ctx context.Context) ([]V2Pool, *http.Resp
 			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 0 {
-			var v EdgeLbError
+			var v EdgelbError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -731,17 +731,17 @@ EdgelbApiService
 Updates a new load balancer pool.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name
- * @param v2Pool
-@return V2Pool
+ * @param edgelbV2Pool
+@return EdgelbV2Pool
 */
-func (a *EdgelbApiService) V2UpdatePool(ctx context.Context, name string, v2Pool V2Pool) (V2Pool, *http.Response, error) {
+func (a *EdgelbApiService) V2UpdatePool(ctx context.Context, name string, edgelbV2Pool EdgelbV2Pool) (EdgelbV2Pool, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  V2Pool
+		localVarReturnValue  EdgelbV2Pool
 	)
 
 	// create path and map variables
@@ -770,7 +770,7 @@ func (a *EdgelbApiService) V2UpdatePool(ctx context.Context, name string, v2Pool
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &v2Pool
+	localVarPostBody = &edgelbV2Pool
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -793,7 +793,7 @@ func (a *EdgelbApiService) V2UpdatePool(ctx context.Context, name string, v2Pool
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v V2Pool
+			var v EdgelbV2Pool
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -803,7 +803,7 @@ func (a *EdgelbApiService) V2UpdatePool(ctx context.Context, name string, v2Pool
 			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 0 {
-			var v EdgeLbError
+			var v EdgelbError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

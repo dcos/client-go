@@ -1800,13 +1800,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ConfigContainer"
+                $ref: "#/components/schemas/EdgelbConfigContainer"
         default:
           description: Unexpected error.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EdgeLBError"
+                $ref: "#/components/schemas/EdgelbError"
   /service/edgelb/pools/{name}:
     get:
       description: Returns a v1 or v2 load balancer pool based on a single name.
@@ -1825,13 +1825,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PoolContainer"
+                $ref: "#/components/schemas/EdgelbPoolContainer"
         default:
           description: Unexpected error.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EdgeLBError"
+                $ref: "#/components/schemas/EdgelbError"
   /service/edgelb/v2/pools:
     get:
       description: Get all load balancer pools.
@@ -1846,39 +1846,39 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/V2Pool"
+                  $ref: "#/components/schemas/EdgelbV2Pool"
         default:
           description: Unexpected error.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EdgeLBError"
+                $ref: "#/components/schemas/EdgelbError"
     post:
       description: Creates a new load balancer pool.
       operationId: V2CreatePool
       tags:
         - edgelb
       requestBody:
-        $ref: "#/components/requestBodies/V2Pool"
+        $ref: "#/components/requestBodies/EdgelbV2Pool"
       responses:
         "200":
           description: Load Balancer Pool response.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/V2Pool"
+                $ref: "#/components/schemas/EdgelbV2Pool"
         "409":
           description: Conflict pool.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EdgeLBError"
+                $ref: "#/components/schemas/EdgelbError"
         default:
           description: Unexpected error.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EdgeLBError"
+                $ref: "#/components/schemas/EdgelbError"
   /service/edgelb/v2/pools/{name}:
     get:
       description: Returns a v2 load balancer pool based on a single name.
@@ -1897,19 +1897,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/V2Pool"
+                $ref: "#/components/schemas/EdgelbV2Pool"
         "404":
           description: Pool not found.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EdgeLBError"
+                $ref: "#/components/schemas/EdgelbError"
         default:
           description: Unexpected error.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EdgeLBError"
+                $ref: "#/components/schemas/EdgelbError"
     put:
       description: Updates a new load balancer pool.
       operationId: V2UpdatePool
@@ -1922,20 +1922,20 @@ paths:
           schema:
             type: string
       requestBody:
-        $ref: "#/components/requestBodies/V2Pool"
+        $ref: "#/components/requestBodies/EdgelbV2Pool"
       responses:
         "200":
           description: Load Balancer Pool response.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/V2Pool"
+                $ref: "#/components/schemas/EdgelbV2Pool"
         default:
           description: Unexpected error.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EdgeLBError"
+                $ref: "#/components/schemas/EdgelbError"
     delete:
       description: Deletes a single load balancer pool based on the name supplied.
       operationId: V2DeletePool
@@ -1955,19 +1955,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EdgeLBError"
+                $ref: "#/components/schemas/EdgelbError"
         "404":
           description: Pool not found.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EdgeLBError"
+                $ref: "#/components/schemas/EdgelbError"
         default:
           description: Unexpected error.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EdgeLBError"
+                $ref: "#/components/schemas/EdgelbError"
 
 components:
   requestBodies:
@@ -1993,11 +1993,11 @@ components:
       description: Provider config JSON object
       required: true
 
-    V2Pool:
+    EdgelbV2Pool:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/V2Pool"
+            $ref: "#/components/schemas/EdgelbV2Pool"
       required: true
 
   schemas:
@@ -3034,7 +3034,7 @@ components:
           type: string
       additionalProperties: false
 
-    V2Pool:
+    EdgelbV2Pool:
       type: object
       description: The pool contains information on resources that the pool needs. Changes
         make to this section will relaunch the tasks.
@@ -3482,7 +3482,7 @@ components:
       enum:
         - V1
         - V2
-    ConfigContainer:
+    EdgelbConfigContainer:
       type: object
       description: Object used internally as an interface to handle multple model versions.
       properties:
@@ -3490,8 +3490,8 @@ components:
           type: array
           description: Array of pool containers.
           items:
-            $ref: "#/components/schemas/PoolContainer"
-    PoolContainer:
+            $ref: "#/components/schemas/EdgelbPoolContainer"
+    EdgelbPoolContainer:
       type: object
       description: Object used internally as an interface to handle multple model versions.
       properties:
@@ -3503,8 +3503,8 @@ components:
           type: string
           nullable: true
         v2:
-          $ref: "#/components/schemas/V2Pool"
-    EdgeLBError:
+          $ref: "#/components/schemas/EdgelbV2Pool"
+    EdgelbError:
       type: object
       properties:
         code:

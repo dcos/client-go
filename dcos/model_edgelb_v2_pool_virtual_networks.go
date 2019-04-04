@@ -10,7 +10,7 @@
 
 package dcos
 
-type V2PoolVirtualNetworks struct {
+type EdgelbV2PoolVirtualNetworks struct {
 	// The name of the virtual network to join.
 	Name string `json:"name,omitempty"`
 	// Labels to pass to the virtual network plugin.
