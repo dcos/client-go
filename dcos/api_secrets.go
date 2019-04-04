@@ -33,9 +33,9 @@ Create a secret in the store at the path.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param store The backend to store the secret in.
  * @param pathToSecret The path to store the secret in.
- * @param secret Secret value.
+ * @param secretsV1Secret Secret value.
 */
-func (a *SecretsApiService) CreateSecret(ctx context.Context, store string, pathToSecret string, secret Secret) (*http.Response, error) {
+func (a *SecretsApiService) CreateSecret(ctx context.Context, store string, pathToSecret string, secretsV1Secret SecretsV1Secret) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -71,7 +71,7 @@ func (a *SecretsApiService) CreateSecret(ctx context.Context, store string, path
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &secret
+	localVarPostBody = &secretsV1Secret
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -176,21 +176,21 @@ Read or list a secret from the store by its path.
  * @param pathToSecret The path to store the secret in.
  * @param optional nil or *GetSecretOpts - Optional Parameters:
  * @param "List" (optional.String) -  If set to true, list only secret keys.
-@return Secret
+@return SecretsV1Secret
 */
 
 type GetSecretOpts struct {
 	List optional.String
 }
 
-func (a *SecretsApiService) GetSecret(ctx context.Context, store string, pathToSecret string, localVarOptionals *GetSecretOpts) (Secret, *http.Response, error) {
+func (a *SecretsApiService) GetSecret(ctx context.Context, store string, pathToSecret string, localVarOptionals *GetSecretOpts) (SecretsV1Secret, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Secret
+		localVarReturnValue  SecretsV1Secret
 	)
 
 	// create path and map variables
@@ -244,7 +244,7 @@ func (a *SecretsApiService) GetSecret(ctx context.Context, store string, pathToS
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v Secret
+			var v SecretsV1Secret
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -274,9 +274,9 @@ Update existing secret in the specified store.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param store The backend to store the secret in.
  * @param pathToSecret The path for the secret to update.
- * @param secret Secret value.
+ * @param secretsV1Secret Secret value.
 */
-func (a *SecretsApiService) UpdateSecret(ctx context.Context, store string, pathToSecret string, secret Secret) (*http.Response, error) {
+func (a *SecretsApiService) UpdateSecret(ctx context.Context, store string, pathToSecret string, secretsV1Secret SecretsV1Secret) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Patch")
 		localVarPostBody     interface{}
@@ -312,7 +312,7 @@ func (a *SecretsApiService) UpdateSecret(ctx context.Context, store string, path
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &secret
+	localVarPostBody = &secretsV1Secret
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
