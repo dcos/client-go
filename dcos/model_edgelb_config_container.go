@@ -11,7 +11,7 @@
 package dcos
 
 // Object used internally as an interface to handle multple model versions.
-type ConfigContainer struct {
+type EdgelbConfigContainer struct {
 	// Array of pool containers.
-	Pools []PoolContainer `json:"pools,omitempty"`
+	Pools []EdgelbPoolContainer `json:"pools,omitempty"`
 }
