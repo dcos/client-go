@@ -10,17 +10,17 @@
 
 package dcos
 
-type V50PackageDefinition struct {
-	Command     Command                `json:"command,omitempty"`
+type CosmosPackage struct {
+	Command     CosmosPackageCommand   `json:"command,omitempty"`
 	Config      map[string]interface{} `json:"config,omitempty"`
 	Description string                 `json:"description"`
 	// List of versions that this package can downgrade to. If the property is a list containing the string '*', this package can downgrade to any version. If the property is not set or the empty list, this package cannot downgrade.
 	DowngradesTo []string `json:"downgradesTo,omitempty"`
 	// True if this package installs a new Mesos framework.
-	Framework  bool      `json:"framework,omitempty"`
-	Licenses   []License `json:"licenses,omitempty"`
-	Maintainer string    `json:"maintainer"`
-	Marathon   Marathon  `json:"marathon,omitempty"`
+	Framework  bool                   `json:"framework,omitempty"`
+	Licenses   []CosmosPackageLicense `json:"licenses,omitempty"`
+	Maintainer string                 `json:"maintainer"`
+	Marathon   CosmosPackageMarathon  `json:"marathon,omitempty"`
 	// The minimum DC/OS Release Version the package can run on.
 	MinDcosReleaseVersion string `json:"minDcosReleaseVersion,omitempty"`
 	Name                  string `json:"name"`
@@ -32,15 +32,15 @@ type V50PackageDefinition struct {
 	// Pre installation notes that would be useful to the user of this package.
 	PreInstallNotes string `json:"preInstallNotes,omitempty"`
 	// Corresponds to the revision index from the universe directory structure
-	ReleaseVersion int32       `json:"releaseVersion"`
-	Resource       V30Resource `json:"resource,omitempty"`
-	Scm            string      `json:"scm,omitempty"`
+	ReleaseVersion int32                 `json:"releaseVersion"`
+	Resource       CosmosPackageResource `json:"resource,omitempty"`
+	Scm            string                `json:"scm,omitempty"`
 	// Flag indicating if the package is selected in search results
 	Selected bool     `json:"selected,omitempty"`
 	Tags     []string `json:"tags"`
 	// List of versions that can upgrade to this package. If the property is a list containing the string '*', any version can upgrade to this package. If the property is not set or the empty list, no version can upgrade to this package.
-	UpgradesFrom []string `json:"upgradesFrom,omitempty"`
-	Version      string   `json:"version"`
-	Website      string   `json:"website,omitempty"`
-	Manager      Manager  `json:"manager,omitempty"`
+	UpgradesFrom []string             `json:"upgradesFrom,omitempty"`
+	Version      string               `json:"version"`
+	Website      string               `json:"website,omitempty"`
+	Manager      CosmosPackageManager `json:"manager,omitempty"`
 }

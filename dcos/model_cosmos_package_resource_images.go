@@ -10,7 +10,7 @@
 
 package dcos
 
-type Images struct {
+type CosmosPackageResourceImages struct {
 	// PNG icon URL, preferably 256 by 256 pixels.
 	IconLarge string `json:"icon-large,omitempty"`
 	// PNG icon URL, preferably 128 by 128 pixels.

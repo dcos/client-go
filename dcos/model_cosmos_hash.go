@@ -10,6 +10,7 @@
 
 package dcos
 
-type Cli struct {
-	Binaries Binaries `json:"binaries"`
+type CosmosHash struct {
+	Algo  CosmosHashAlgo `json:"algo"`
+	Value string         `json:"value"`
 }

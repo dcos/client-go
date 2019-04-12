@@ -1,4 +1,4 @@
-# AssetsContainer
+# CosmosPackageResourceAssetsContainer
 
 ## Properties
 Name | Type | Description | Notes

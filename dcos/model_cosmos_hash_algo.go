@@ -10,8 +10,9 @@
 
 package dcos
 
-type Binaries struct {
-	Darwin  Os `json:"darwin,omitempty"`
-	Linux   Os `json:"linux,omitempty"`
-	Windows Os `json:"windows,omitempty"`
-}
+type CosmosHashAlgo string
+
+// List of CosmosHashAlgo
+const (
+	SHA256 CosmosHashAlgo = "sha256"
+)

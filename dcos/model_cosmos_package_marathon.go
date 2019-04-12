@@ -10,6 +10,6 @@
 
 package dcos
 
-type Marathon struct {
+type CosmosPackageMarathon struct {
 	V2AppMustacheTemplate string `json:"v2AppMustacheTemplate"`
 }

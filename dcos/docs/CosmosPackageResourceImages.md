@@ -1,4 +1,4 @@
-# Images
+# CosmosPackageResourceImages
 
 ## Properties
 Name | Type | Description | Notes

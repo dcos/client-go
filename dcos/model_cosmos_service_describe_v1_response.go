@@ -11,8 +11,8 @@
 package dcos
 
 type CosmosServiceDescribeV1Response struct {
-	DowngradesTo []string             `json:"downgradesTo"`
-	Package      V50PackageDefinition `json:"package"`
+	DowngradesTo []string      `json:"downgradesTo"`
+	Package      CosmosPackage `json:"package"`
 	// The result of merging the default package options with the user supplied options
 	ResolvedOptions map[string]map[string]interface{} `json:"resolvedOptions,omitempty"`
 	UpgradesTo      []string                          `json:"upgradesTo"`

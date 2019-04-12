@@ -1,11 +1,10 @@
-# Binaries
+# CosmosPackageLicense
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Darwin** | [**Os**](os.md) |  | [optional] 
-**Linux** | [**Os**](os.md) |  | [optional] 
-**Windows** | [**Os**](os.md) |  | [optional] 
+**Name** | **string** | The name of the license. For example one of [Apache License Version 2.0 | MIT License | BSD License | Proprietary] | 
+**Url** | **string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -10,8 +10,6 @@
 
 package dcos
 
-type CliInfo struct {
-	ContentHash []Hash `json:"contentHash"`
-	Kind        string `json:"kind"`
-	Url         string `json:"url"`
+type CosmosPackageResourceCliOsBinaries struct {
+	X8664 CosmosPackageResourceCliArtifact `json:"x86-64"`
 }

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **PoolHealthcheckInterval** | **int32** | Pool tasks healthcheck interval (in seconds) | [optional] 
 **PoolHealthcheckMaxFail** | **int32** | Pool tasks healthcheck maximum number of consecutive failures before declaring as unhealthy | [optional] 
 **PoolHealthcheckTimeout** | **int32** | Maximum amount of time that Mesos will wait for the healthcheck container to finish executing | [optional] 
-**ApiVersion** | [**ApiVersion**](APIVersion.md) |  | [optional] 
+**ApiVersion** | [**EdgelbApiVersion**](EdgelbAPIVersion.md) |  | [optional] 
 **Name** | **string** | The pool name. | [optional] 
 **Namespace** | **string** | The DC/OS space (sometimes also referred to as a \&quot;group\&quot;). | [optional] 
 **PackageName** | **string** |  | [optional] 

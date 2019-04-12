@@ -11,5 +11,5 @@
 package dcos
 
 type CosmosPackageDescribeV3Response struct {
-	Package V50PackageDefinition `json:"package"`
+	Package CosmosPackage `json:"package"`
 }
