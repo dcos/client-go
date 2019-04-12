@@ -2009,48 +2009,45 @@ components:
         value:
           type: string
       type: object
-    algo:
+    CosmosHashAlgo:
       enum:
       - sha256
       type: string
-    assets:
+    CosmosPackageResourceAssets:
       additionalProperties: false
       properties:
         container:
-          $ref: '#/components/schemas/assets_container'
+          $ref: '#/components/schemas/CosmosPackageResourceAssetsContainer'
         uris:
           additionalProperties:
             type: string
           type: object
       type: object
-    base64String:
-      pattern: ^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$
-      type: string
-    binaries:
+    CosmosPackageResourceCliBinaries:
       additionalProperties: false
       minProperties: 1
       properties:
         darwin:
-          $ref: '#/components/schemas/os'
+          $ref: '#/components/schemas/CosmosPackageResourceCliOsBinaries'
         linux:
-          $ref: '#/components/schemas/os'
+          $ref: '#/components/schemas/CosmosPackageResourceCliOsBinaries'
         windows:
-          $ref: '#/components/schemas/os'
+          $ref: '#/components/schemas/CosmosPackageResourceCliOsBinaries'
       type: object
-    cli:
+    CosmosPackageResourceCli:
       additionalProperties: false
       properties:
         binaries:
-          $ref: '#/components/schemas/binaries'
+          $ref: '#/components/schemas/CosmosPackageResourceCliBinaries'
       required:
       - binaries
       type: object
-    cliInfo:
+    CosmosPackageResourceCliArtifact:
       additionalProperties: false
       properties:
         contentHash:
           items:
-            $ref: '#/components/schemas/hash'
+            $ref: '#/components/schemas/CosmosHash'
           minItems: 1
           type: array
         kind:
@@ -2067,7 +2064,7 @@ components:
       - kind
       - url
       type: object
-    command:
+    CosmosPackageCommand:
       additionalProperties: false
       properties:
         pip:
@@ -2080,9 +2077,6 @@ components:
       required:
       - pip
       type: object
-    config:
-      additionalProperties: true
-      type: object
     CosmosPackageDescribeV1Request:
       additionalProperties: false
       properties:
@@ -2092,10 +2086,6 @@ components:
           type: string
       required:
       - packageName
-      type: object
-    docker:
-      additionalProperties:
-        type: string
       type: object
     CosmosError:
       additionalProperties: false
@@ -2109,18 +2099,18 @@ components:
       required:
       - message
       - type
-    hash:
+    CosmosHash:
       additionalProperties: false
       properties:
         algo:
-          $ref: '#/components/schemas/algo'
+          $ref: '#/components/schemas/CosmosHashAlgo'
         value:
           type: string
       required:
       - algo
       - value
       type: object
-    images:
+    CosmosPackageResourceImages:
       additionalProperties: false
       properties:
         icon-large:
@@ -2159,7 +2149,7 @@ components:
         appId:
           type: string
         cli:
-          $ref: '#/components/schemas/cli'
+          $ref: '#/components/schemas/CosmosPackageResourceCli'
         packageName:
           type: string
         packageVersion:
@@ -2211,7 +2201,7 @@ components:
         selected:
           type: "boolean"
         images:
-          $ref: '#/components/schemas/images'
+          $ref: '#/components/schemas/CosmosPackageResourceImages'
         tags:
           items:
             pattern: '^[^\s]+$'
@@ -2251,7 +2241,7 @@ components:
         marathonDeploymentId:
           type: string
         package:
-          $ref: '#/components/schemas/v50PackageDefinition'
+          $ref: '#/components/schemas/CosmosPackage'
         resolvedOptions:
           additionalProperties: true
           description: The result of merging the default package options with the user supplied options
@@ -2288,7 +2278,7 @@ components:
       - appId
       - packageName
       type: object
-    license:
+    CosmosPackageLicense:
       additionalProperties: false
       properties:
         name:
@@ -2302,7 +2292,7 @@ components:
       - name
       - url
       type: object
-    marathon:
+    CosmosPackageMarathon:
       additionalProperties: false
       properties:
         v2AppMustacheTemplate:
@@ -2311,11 +2301,11 @@ components:
       required:
       - v2AppMustacheTemplate
       type: object
-    os:
+    CosmosPackageResourceCliOsBinaries:
       additionalProperties: false
       properties:
         x86-64:
-          $ref: '#/components/schemas/cliInfo'
+          $ref: '#/components/schemas/CosmosPackageResourceCliArtifact'
       required:
       - x86-64
       type: object
@@ -2385,7 +2375,7 @@ components:
             type: string
           type: array
         package:
-          $ref: '#/components/schemas/v50PackageDefinition'
+          $ref: '#/components/schemas/CosmosPackage'
         resolvedOptions:
           additionalProperties: true
           description: The result of merging the default package options with the user supplied options
@@ -2403,37 +2393,29 @@ components:
       - package
       - upgradesTo
       type: object
-    uris:
-      additionalProperties:
-        type: string
-      type: object
-    url:
-      format: uri
-      pattern: ^https?://
-      type: string
-    v30Resource:
+    CosmosPackageResource:
       additionalProperties: false
       properties:
         assets:
-          $ref: '#/components/schemas/assets'
+          $ref: '#/components/schemas/CosmosPackageResourceAssets'
         cli:
-          $ref: '#/components/schemas/cli'
+          $ref: '#/components/schemas/CosmosPackageResourceCli'
         images:
-          $ref: '#/components/schemas/images'
+          $ref: '#/components/schemas/CosmosPackageResourceImages'
       type: object
     CosmosPackageDescribeV3Response:
       additionalProperties: false
       properties:
         package:
-          $ref: '#/components/schemas/v50PackageDefinition'
+          $ref: '#/components/schemas/CosmosPackage'
       required:
       - package
       type: object
-    v50PackageDefinition:
+    CosmosPackage:
       additionalProperties: false
       properties:
         command:
-          $ref: '#/components/schemas/command'
+          $ref: '#/components/schemas/CosmosPackageCommand'
         config:
           # Setting additionalProperties to true causes a JSON unmarshalling error.
           # In the future this property should be set to a JSON schema definition.
@@ -2452,12 +2434,12 @@ components:
           type: boolean
         licenses:
           items:
-            $ref: '#/components/schemas/license'
+            $ref: '#/components/schemas/CosmosPackageLicense'
           type: array
         maintainer:
           type: string
         marathon:
-          $ref: '#/components/schemas/marathon'
+          $ref: '#/components/schemas/CosmosPackageMarathon'
         minDcosReleaseVersion:
           description: The minimum DC/OS Release Version the package can run on.
           pattern: ^(?:0|[1-9][0-9]*)(?:\.(?:0|[1-9][0-9]*))*$
@@ -2483,7 +2465,7 @@ components:
           minimum: 0
           type: integer
         resource:
-          $ref: '#/components/schemas/v30Resource'
+          $ref: '#/components/schemas/CosmosPackageResource'
         scm:
           type: string
         selected:
@@ -2506,7 +2488,7 @@ components:
         website:
           type: string
         manager:
-          $ref: '#/components/schemas/manager'
+          $ref: '#/components/schemas/CosmosPackageManager'
       required:
       - description
       - maintainer
@@ -2516,7 +2498,7 @@ components:
       - tags
       - version
       type: object
-    manager:
+    CosmosPackageManager:
       additionalProperties: false
       properties:
         packageName:
@@ -2526,7 +2508,7 @@ components:
       required:
       - packageName
       type: object
-    assets_container:
+    CosmosPackageResourceAssetsContainer:
       properties:
         docker:
           additionalProperties:
@@ -3002,7 +2984,7 @@ components:
           format: int32
           minimum: 2
         apiVersion:
-          $ref: "#/components/schemas/APIVersion"
+          $ref: "#/components/schemas/EdgelbAPIVersion"
         name:
           type: string
           description: The pool name.

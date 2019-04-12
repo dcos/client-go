@@ -10,7 +10,6 @@
 
 package dcos
 
-type Assets struct {
-	Container AssetsContainer   `json:"container,omitempty"`
-	Uris      map[string]string `json:"uris,omitempty"`
+type CosmosPackageResourceCli struct {
+	Binaries CosmosPackageResourceCliBinaries `json:"binaries"`
 }

@@ -11,8 +11,8 @@
 package dcos
 
 type CosmosServiceUpdateV1Response struct {
-	MarathonDeploymentId string               `json:"marathonDeploymentId"`
-	Package              V50PackageDefinition `json:"package"`
+	MarathonDeploymentId string        `json:"marathonDeploymentId"`
+	Package              CosmosPackage `json:"package"`
 	// The result of merging the default package options with the user supplied options
 	ResolvedOptions map[string]map[string]interface{} `json:"resolvedOptions"`
 }

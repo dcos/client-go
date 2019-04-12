@@ -10,6 +10,7 @@
 
 package dcos
 
-type AssetsContainer struct {
-	Docker map[string]string `json:"docker,omitempty"`
+type CosmosPackageManager struct {
+	PackageName       string `json:"packageName"`
+	MinPackageVersion string `json:"minPackageVersion,omitempty"`
 }

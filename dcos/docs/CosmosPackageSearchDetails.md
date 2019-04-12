@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Description** | **string** |  | 
 **Framework** | **bool** |  | 
 **Selected** | **bool** |  | [optional] 
-**Images** | [**Images**](images.md) |  | [optional] 
+**Images** | [**CosmosPackageResourceImages**](CosmosPackageResourceImages.md) |  | [optional] 
 **Tags** | **[]string** |  | 
 **Versions** | [**map[string]interface{}**](.md) |  | 
 

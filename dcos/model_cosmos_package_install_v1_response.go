@@ -11,9 +11,9 @@
 package dcos
 
 type CosmosPackageInstallV1Response struct {
-	AppId            string `json:"appId,omitempty"`
-	Cli              Cli    `json:"cli,omitempty"`
-	PackageName      string `json:"packageName"`
-	PackageVersion   string `json:"packageVersion"`
-	PostInstallNotes string `json:"postInstallNotes,omitempty"`
+	AppId            string                   `json:"appId,omitempty"`
+	Cli              CosmosPackageResourceCli `json:"cli,omitempty"`
+	PackageName      string                   `json:"packageName"`
+	PackageVersion   string                   `json:"packageVersion"`
+	PostInstallNotes string                   `json:"postInstallNotes,omitempty"`
 }
