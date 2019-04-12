@@ -2275,7 +2275,7 @@ components:
       - appId
       - packageName
       type: object
-    licence:
+    license:
       additionalProperties: false
       properties:
         name:
@@ -2452,7 +2452,7 @@ components:
           type: boolean
         licenses:
           items:
-            $ref: '#/components/schemas/licence'
+            $ref: '#/components/schemas/license'
           type: array
         maintainer:
           type: string

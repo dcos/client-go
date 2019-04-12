@@ -18,7 +18,7 @@ type V50PackageDefinition struct {
 	DowngradesTo []string `json:"downgradesTo,omitempty"`
 	// True if this package installs a new Mesos framework.
 	Framework  bool      `json:"framework,omitempty"`
-	Licenses   []Licence `json:"licenses,omitempty"`
+	Licenses   []License `json:"licenses,omitempty"`
 	Maintainer string    `json:"maintainer"`
 	Marathon   Marathon  `json:"marathon,omitempty"`
 	// The minimum DC/OS Release Version the package can run on.
