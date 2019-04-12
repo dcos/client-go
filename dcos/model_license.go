@@ -10,7 +10,7 @@
 
 package dcos
 
-type Licence struct {
+type License struct {
 	// The name of the license. For example one of [Apache License Version 2.0 | MIT License | BSD License | Proprietary]
 	Name string `json:"name"`
 	Url  string `json:"url"`

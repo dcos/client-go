@@ -170,7 +170,7 @@ Class | Method | HTTP request | Description
  - [LdapTestCredentials](docs/LdapTestCredentials.md)
  - [LdapTestResultObject](docs/LdapTestResultObject.md)
  - [LdapUserSearchConfig](docs/LdapUserSearchConfig.md)
- - [Licence](docs/Licence.md)
+ - [License](docs/License.md)
  - [LoginObject](docs/LoginObject.md)
  - [Manager](docs/Manager.md)
  - [Marathon](docs/Marathon.md)
