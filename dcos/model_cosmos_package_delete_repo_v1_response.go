@@ -11,5 +11,5 @@
 package dcos
 
 type CosmosPackageDeleteRepoV1Response struct {
-	Repositories []PkgRepo `json:"repositories"`
+	Repositories []CosmosPackageRepo `json:"repositories"`
 }
