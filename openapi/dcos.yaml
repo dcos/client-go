@@ -2170,6 +2170,19 @@ components:
       - packageName
       - packageVersion
       type: object
+    CosmosPackageRepo:
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        uri:
+          format: uri
+          pattern: ^https?://
+          type: string
+      required:
+      - name
+      - uri
+      type: object
     CosmosPackageSearchV1Request:
       additionalProperties: false
       properties:
@@ -2332,7 +2345,7 @@ components:
       properties:
         repositories:
           items:
-            $ref: '#/components/schemas/pkgRepo'
+            $ref: '#/components/schemas/CosmosPackageRepo'
           type: array
       required:
       - repositories
@@ -2359,7 +2372,7 @@ components:
       properties:
         repositories:
           items:
-            $ref: '#/components/schemas/pkgRepo'
+            $ref: '#/components/schemas/CosmosPackageRepo'
           type: array
       required:
       - repositories
@@ -2398,19 +2411,6 @@ components:
       format: uri
       pattern: ^https?://
       type: string
-    pkgRepo:
-      additionalProperties: false
-      properties:
-        name:
-          type: string
-        uri:
-          format: uri
-          pattern: ^https?://
-          type: string
-      required:
-      - name
-      - uri
-      type: object
     v30Resource:
       additionalProperties: false
       properties:

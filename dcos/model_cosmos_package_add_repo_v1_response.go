@@ -11,5 +11,5 @@
 package dcos
 
 type CosmosPackageAddRepoV1Response struct {
-	Repositories []PkgRepo `json:"repositories"`
+	Repositories []CosmosPackageRepo `json:"repositories"`
 }

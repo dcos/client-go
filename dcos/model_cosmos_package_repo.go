@@ -10,7 +10,7 @@
 
 package dcos
 
-type PkgRepo struct {
+type CosmosPackageRepo struct {
 	Name string `json:"name"`
 	Uri  string `json:"uri"`
 }
