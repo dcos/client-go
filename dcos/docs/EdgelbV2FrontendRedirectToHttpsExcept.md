@@ -1,12 +1,10 @@
-# EdgelbPoolContainer
+# EdgelbV2FrontendRedirectToHttpsExcept
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApiVersion** | [**EdgelbApiVersion**](EdgelbAPIVersion.md) |  | [optional] 
-**Name** | **string** |  | [optional] 
-**Namespace** | **string** |  | [optional] 
-**V2** | [**EdgelbV2Pool**](EdgelbV2Pool.md) |  | [optional] 
+**Host** | **string** | Match on host | [optional] 
+**PathBeg** | **string** | Match on path | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

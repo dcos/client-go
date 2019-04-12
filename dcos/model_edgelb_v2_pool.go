@@ -19,8 +19,8 @@ type EdgelbV2Pool struct {
 	// Pool tasks healthcheck maximum number of consecutive failures before declaring as unhealthy
 	PoolHealthcheckMaxFail int32 `json:"poolHealthcheckMaxFail,omitempty"`
 	// Maximum amount of time that Mesos will wait for the healthcheck container to finish executing
-	PoolHealthcheckTimeout int32      `json:"poolHealthcheckTimeout,omitempty"`
-	ApiVersion             ApiVersion `json:"apiVersion,omitempty"`
+	PoolHealthcheckTimeout int32            `json:"poolHealthcheckTimeout,omitempty"`
+	ApiVersion             EdgelbApiVersion `json:"apiVersion,omitempty"`
 	// The pool name.
 	Name string `json:"name,omitempty"`
 	// The DC/OS space (sometimes also referred to as a \"group\").
@@ -55,5 +55,5 @@ type EdgelbV2Pool struct {
 	AutoCertificate bool `json:"autoCertificate,omitempty"`
 	// Virtual networks to join.
 	VirtualNetworks []EdgelbV2PoolVirtualNetworks `json:"virtualNetworks,omitempty"`
-	Haproxy         V2Haproxy                     `json:"haproxy,omitempty"`
+	Haproxy         EdgelbV2Haproxy               `json:"haproxy,omitempty"`
 }

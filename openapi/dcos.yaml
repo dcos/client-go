@@ -3114,23 +3114,23 @@ components:
                 additionalProperties:
                   type: string
         haproxy:
-          $ref: "#/components/schemas/V2Haproxy"
-    V2Haproxy:
+          $ref: "#/components/schemas/EdgelbV2Haproxy"
+    EdgelbV2Haproxy:
       type: object
       properties:
         stats:
-          $ref: "#/components/schemas/V2Stats"
+          $ref: "#/components/schemas/EdgelbV2Stats"
         frontends:
           description: Array of frontends.
           type: array
           items:
-            $ref: "#/components/schemas/V2Frontend"
+            $ref: "#/components/schemas/EdgelbV2Frontend"
         backends:
           description: Array of backends.
           type: array
           items:
-            $ref: "#/components/schemas/V2Backend"
-    V2Stats:
+            $ref: "#/components/schemas/EdgelbV2Backend"
+    EdgelbV2Stats:
       type: object
       properties:
         bindAddress:
@@ -3138,7 +3138,7 @@ components:
         bindPort:
           type: integer
           format: int32
-    V2Frontend:
+    EdgelbV2Frontend:
       type: object
       description: The Frontend maps to the HAProxy frontend. This includes information
         such as what addresses and ports to listen on, what SSL/TLS certificates
@@ -3193,7 +3193,7 @@ components:
           items:
             type: string
         protocol:
-          $ref: "#/components/schemas/V2Protocol"
+          $ref: "#/components/schemas/EdgelbV2Protocol"
         linkBackend:
           type: object
           description: This describes what backends to send traffic to. This can be
@@ -3229,16 +3229,16 @@ components:
                     type: string
                   pathReg:
                     type: string
-    V2Backend:
+    EdgelbV2Backend:
       type: object
       properties:
         name:
           type: string
           description: This is name that frontends refer to.
         protocol:
-          $ref: "#/components/schemas/V2Protocol"
+          $ref: "#/components/schemas/EdgelbV2Protocol"
         rewriteHttp:
-          $ref: "#/components/schemas/V2RewriteHttp"
+          $ref: "#/components/schemas/EdgelbV2RewriteHttp"
         balance:
           description: Load balancing strategy. e.g. roundrobin, leastconn, etc.
           type: string
@@ -3263,8 +3263,8 @@ components:
           description: Array of backend service selectors.
           type: array
           items:
-            $ref: "#/components/schemas/V2Service"
-    V2RewriteHttp:
+            $ref: "#/components/schemas/EdgelbV2Service"
+    EdgelbV2RewriteHttp:
       type: object
       properties:
         host:
@@ -3282,9 +3282,9 @@ components:
               type: string
               nullable: true
         request:
-          $ref: "#/components/schemas/V2RewriteHttpRequest"
+          $ref: "#/components/schemas/EdgelbV2RewriteHttpRequest"
         response:
-          $ref: "#/components/schemas/V2RewriteHttpResponse"
+          $ref: "#/components/schemas/EdgelbV2RewriteHttpResponse"
         sticky:
           type: object
           description: >-
@@ -3297,7 +3297,7 @@ components:
               nullable: true
             customStr:
               type: string
-    V2RewriteHttpRequest:
+    EdgelbV2RewriteHttpRequest:
       description: >-
         Rewrite the request.
 
@@ -3319,7 +3319,7 @@ components:
         rewritePath:
           type: boolean
           nullable: true
-    V2RewriteHttpResponse:
+    EdgelbV2RewriteHttpResponse:
       description: >-
         Rewrite the response.
 
@@ -3329,7 +3329,7 @@ components:
         rewriteLocation:
           type: boolean
           nullable: true
-    V2Service:
+    EdgelbV2Service:
       type: object
       properties:
         marathon:
@@ -3369,8 +3369,8 @@ components:
             taskIDPattern:
               type: string
         endpoint:
-          $ref: "#/components/schemas/V2Endpoint"
-    V2Endpoint:
+          $ref: "#/components/schemas/EdgelbV2Endpoint"
+    EdgelbV2Endpoint:
       type: object
       properties:
         type:
@@ -3405,7 +3405,7 @@ components:
           type: string
         allPorts:
           type: boolean
-    V2Protocol:
+    EdgelbV2Protocol:
       type: string
       enum:
         - HTTP
@@ -3413,11 +3413,11 @@ components:
         - TCP
         - TLS
       x-enum-varnames:
-        - V2ProtocolHTTP
-        - V2ProtocolHTTPS
-        - V2ProtocolTCP
-        - V2ProtocolTLS
-    APIVersion:
+        - EdgelbV2ProtocolHTTP
+        - EdgelbV2ProtocolHTTPS
+        - EdgelbV2ProtocolTCP
+        - EdgelbV2ProtocolTLS
+    EdgelbAPIVersion:
       type: string
       enum:
         - V1
@@ -3436,7 +3436,7 @@ components:
       description: Object used internally as an interface to handle multple model versions.
       properties:
         apiVersion:
-          $ref: "#/components/schemas/APIVersion"
+          $ref: "#/components/schemas/EdgelbAPIVersion"
         name:
           type: string
         namespace:
