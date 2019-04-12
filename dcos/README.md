@@ -30,23 +30,23 @@ All URIs are relative to *http://your-dcos-cluster.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CosmosApi* | [**PackageDescribe**](docs/CosmosApi.md#packagedescribe) | **Post** /package/describe | 
-*CosmosApi* | [**PackageInstall**](docs/CosmosApi.md#packageinstall) | **Post** /package/install | 
-*CosmosApi* | [**PackageRepositoryAdd**](docs/CosmosApi.md#packagerepositoryadd) | **Post** /package/repository/add | 
-*CosmosApi* | [**PackageRepositoryDelete**](docs/CosmosApi.md#packagerepositorydelete) | **Post** /package/repository/delete | 
-*CosmosApi* | [**PackageSearch**](docs/CosmosApi.md#packagesearch) | **Post** /package/search | 
-*CosmosApi* | [**PackageUninstall**](docs/CosmosApi.md#packageuninstall) | **Post** /package/uninstall | 
-*CosmosApi* | [**ServiceDescribe**](docs/CosmosApi.md#servicedescribe) | **Post** /cosmos/service/describe | 
-*CosmosApi* | [**ServiceUpdate**](docs/CosmosApi.md#serviceupdate) | **Post** /cosmos/service/update | 
-*EdgelbApi* | [**GetConfigContainer**](docs/EdgelbApi.md#getconfigcontainer) | **Get** /service/edgelb/config | 
-*EdgelbApi* | [**GetPoolContainer**](docs/EdgelbApi.md#getpoolcontainer) | **Get** /service/edgelb/pools/{name} | 
-*EdgelbApi* | [**Ping**](docs/EdgelbApi.md#ping) | **Get** /service/edgelb/ping | 
-*EdgelbApi* | [**V2CreatePool**](docs/EdgelbApi.md#v2createpool) | **Post** /service/edgelb/v2/pools | 
-*EdgelbApi* | [**V2DeletePool**](docs/EdgelbApi.md#v2deletepool) | **Delete** /service/edgelb/v2/pools/{name} | 
-*EdgelbApi* | [**V2GetPool**](docs/EdgelbApi.md#v2getpool) | **Get** /service/edgelb/v2/pools/{name} | 
-*EdgelbApi* | [**V2GetPools**](docs/EdgelbApi.md#v2getpools) | **Get** /service/edgelb/v2/pools | 
-*EdgelbApi* | [**V2UpdatePool**](docs/EdgelbApi.md#v2updatepool) | **Put** /service/edgelb/v2/pools/{name} | 
-*EdgelbApi* | [**Version**](docs/EdgelbApi.md#version) | **Get** /service/edgelb/version | 
+*CosmosApi* | [**PackageDescribe**](docs/CosmosApi.md#packagedescribe) | **Post** /package/describe |
+*CosmosApi* | [**PackageInstall**](docs/CosmosApi.md#packageinstall) | **Post** /package/install |
+*CosmosApi* | [**PackageRepositoryAdd**](docs/CosmosApi.md#packagerepositoryadd) | **Post** /package/repository/add |
+*CosmosApi* | [**PackageRepositoryDelete**](docs/CosmosApi.md#packagerepositorydelete) | **Post** /package/repository/delete |
+*CosmosApi* | [**PackageSearch**](docs/CosmosApi.md#packagesearch) | **Post** /package/search |
+*CosmosApi* | [**PackageUninstall**](docs/CosmosApi.md#packageuninstall) | **Post** /package/uninstall |
+*CosmosApi* | [**ServiceDescribe**](docs/CosmosApi.md#servicedescribe) | **Post** /cosmos/service/describe |
+*CosmosApi* | [**ServiceUpdate**](docs/CosmosApi.md#serviceupdate) | **Post** /cosmos/service/update |
+*EdgelbApi* | [**GetConfigContainer**](docs/EdgelbApi.md#getconfigcontainer) | **Get** /service/edgelb/config |
+*EdgelbApi* | [**GetPoolContainer**](docs/EdgelbApi.md#getpoolcontainer) | **Get** /service/edgelb/pools/{name} |
+*EdgelbApi* | [**Ping**](docs/EdgelbApi.md#ping) | **Get** /service/edgelb/ping |
+*EdgelbApi* | [**V2CreatePool**](docs/EdgelbApi.md#v2createpool) | **Post** /service/edgelb/v2/pools |
+*EdgelbApi* | [**V2DeletePool**](docs/EdgelbApi.md#v2deletepool) | **Delete** /service/edgelb/v2/pools/{name} |
+*EdgelbApi* | [**V2GetPool**](docs/EdgelbApi.md#v2getpool) | **Get** /service/edgelb/v2/pools/{name} |
+*EdgelbApi* | [**V2GetPools**](docs/EdgelbApi.md#v2getpools) | **Get** /service/edgelb/v2/pools |
+*EdgelbApi* | [**V2UpdatePool**](docs/EdgelbApi.md#v2updatepool) | **Put** /service/edgelb/v2/pools/{name} |
+*EdgelbApi* | [**Version**](docs/EdgelbApi.md#version) | **Get** /service/edgelb/version |
 *IAMApi* | [**ConfigureOIDCProvider**](docs/IAMApi.md#configureoidcprovider) | **Put** /acs/api/v1/auth/oidc/providers/{provider-id} | Configure a new OIDC provider.
 *IAMApi* | [**ConfigureSAMLProvider**](docs/IAMApi.md#configuresamlprovider) | **Put** /acs/api/v1/auth/saml/providers/{provider-id} | Configure a new SAML provider.
 *IAMApi* | [**CreateGroup**](docs/IAMApi.md#creategroup) | **Put** /acs/api/v1/groups/{gid} | Create a group.
@@ -176,7 +176,6 @@ Class | Method | HTTP request | Description
  - [Marathon](docs/Marathon.md)
  - [OidcProviderConfig](docs/OidcProviderConfig.md)
  - [Os](docs/Os.md)
- - [PackageDetails](docs/PackageDetails.md)
  - [PkgRepo](docs/PkgRepo.md)
  - [SamlProviderConfig](docs/SamlProviderConfig.md)
  - [SamlacsCallbackUrlObject](docs/SamlacsCallbackUrlObject.md)
@@ -216,7 +215,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 ## token
-- **Type**: API key 
+- **Type**: API key
 
 Example
 ```golang

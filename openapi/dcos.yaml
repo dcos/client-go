@@ -2289,10 +2289,6 @@ components:
       - name
       - url
       type: object
-    licences:
-      items:
-        $ref: '#/components/schemas/licence'
-      type: array
     marathon:
       additionalProperties: false
       properties:
@@ -2309,62 +2305,6 @@ components:
           $ref: '#/components/schemas/cliInfo'
       required:
       - x86-64
-      type: object
-    packageDetails:
-      additionalProperties: false
-      properties:
-        description:
-          type: string
-        framework:
-          default: false
-          description: True if this package installs a new Mesos framework.
-          type: boolean
-        licenses:
-          items:
-            $ref: '#/components/schemas/licence'
-          type: array
-        maintainer:
-          type: string
-        name:
-          type: string
-        packagingVersion:
-          type: string
-        postInstallNotes:
-          description: Post installation notes that would be useful to the user of this package.
-          type: string
-        postUninstallNotes:
-          description: Post uninstallation notes that would be useful to the user of this package.
-          type: string
-        preInstallNotes:
-          description: Pre installation notes that would be useful to the user of this package.
-          type: string
-        releaseVersion:
-          description: Corresponds to the revision index from the universe directory structure
-          format: int32
-          minimum: 0
-          type: integer
-        scm:
-          type: string
-        selected:
-          default: false
-          description: Flag indicating if the package is selected in search results
-          type: boolean
-        tags:
-          items:
-            pattern: ^[^\s]+$
-            type: string
-          type: array
-        version:
-          type: string
-        website:
-          type: string
-      required:
-      - description
-      - maintainer
-      - name
-      - packagingVersion
-      - tags
-      - version
       type: object
     CosmosServiceDescribeV1Request:
       additionalProperties: false
