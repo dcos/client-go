@@ -1,12 +1,9 @@
-# EdgelbPoolContainer
+# EdgelbV2FrontendRedirectToHttps
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApiVersion** | [**EdgelbApiVersion**](EdgelbAPIVersion.md) |  | [optional] 
-**Name** | **string** |  | [optional] 
-**Namespace** | **string** |  | [optional] 
-**V2** | [**EdgelbV2Pool**](EdgelbV2Pool.md) |  | [optional] 
+**Except** | [**[]EdgelbV2FrontendRedirectToHttpsExcept**](EdgelbV2Frontend_redirectToHttps_except.md) | One may additionally set a whitelist of fields that must be matched to allow HTTP. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

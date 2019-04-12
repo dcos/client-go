@@ -30,23 +30,23 @@ All URIs are relative to *http://your-dcos-cluster.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CosmosApi* | [**PackageDescribe**](docs/CosmosApi.md#packagedescribe) | **Post** /package/describe |
-*CosmosApi* | [**PackageInstall**](docs/CosmosApi.md#packageinstall) | **Post** /package/install |
-*CosmosApi* | [**PackageRepositoryAdd**](docs/CosmosApi.md#packagerepositoryadd) | **Post** /package/repository/add |
-*CosmosApi* | [**PackageRepositoryDelete**](docs/CosmosApi.md#packagerepositorydelete) | **Post** /package/repository/delete |
-*CosmosApi* | [**PackageSearch**](docs/CosmosApi.md#packagesearch) | **Post** /package/search |
-*CosmosApi* | [**PackageUninstall**](docs/CosmosApi.md#packageuninstall) | **Post** /package/uninstall |
-*CosmosApi* | [**ServiceDescribe**](docs/CosmosApi.md#servicedescribe) | **Post** /cosmos/service/describe |
-*CosmosApi* | [**ServiceUpdate**](docs/CosmosApi.md#serviceupdate) | **Post** /cosmos/service/update |
-*EdgelbApi* | [**GetConfigContainer**](docs/EdgelbApi.md#getconfigcontainer) | **Get** /service/edgelb/config |
-*EdgelbApi* | [**GetPoolContainer**](docs/EdgelbApi.md#getpoolcontainer) | **Get** /service/edgelb/pools/{name} |
-*EdgelbApi* | [**Ping**](docs/EdgelbApi.md#ping) | **Get** /service/edgelb/ping |
-*EdgelbApi* | [**V2CreatePool**](docs/EdgelbApi.md#v2createpool) | **Post** /service/edgelb/v2/pools |
-*EdgelbApi* | [**V2DeletePool**](docs/EdgelbApi.md#v2deletepool) | **Delete** /service/edgelb/v2/pools/{name} |
-*EdgelbApi* | [**V2GetPool**](docs/EdgelbApi.md#v2getpool) | **Get** /service/edgelb/v2/pools/{name} |
-*EdgelbApi* | [**V2GetPools**](docs/EdgelbApi.md#v2getpools) | **Get** /service/edgelb/v2/pools |
-*EdgelbApi* | [**V2UpdatePool**](docs/EdgelbApi.md#v2updatepool) | **Put** /service/edgelb/v2/pools/{name} |
-*EdgelbApi* | [**Version**](docs/EdgelbApi.md#version) | **Get** /service/edgelb/version |
+*CosmosApi* | [**PackageDescribe**](docs/CosmosApi.md#packagedescribe) | **Post** /package/describe | 
+*CosmosApi* | [**PackageInstall**](docs/CosmosApi.md#packageinstall) | **Post** /package/install | 
+*CosmosApi* | [**PackageRepositoryAdd**](docs/CosmosApi.md#packagerepositoryadd) | **Post** /package/repository/add | 
+*CosmosApi* | [**PackageRepositoryDelete**](docs/CosmosApi.md#packagerepositorydelete) | **Post** /package/repository/delete | 
+*CosmosApi* | [**PackageSearch**](docs/CosmosApi.md#packagesearch) | **Post** /package/search | 
+*CosmosApi* | [**PackageUninstall**](docs/CosmosApi.md#packageuninstall) | **Post** /package/uninstall | 
+*CosmosApi* | [**ServiceDescribe**](docs/CosmosApi.md#servicedescribe) | **Post** /cosmos/service/describe | 
+*CosmosApi* | [**ServiceUpdate**](docs/CosmosApi.md#serviceupdate) | **Post** /cosmos/service/update | 
+*EdgelbApi* | [**GetConfigContainer**](docs/EdgelbApi.md#getconfigcontainer) | **Get** /service/edgelb/config | 
+*EdgelbApi* | [**GetPoolContainer**](docs/EdgelbApi.md#getpoolcontainer) | **Get** /service/edgelb/pools/{name} | 
+*EdgelbApi* | [**Ping**](docs/EdgelbApi.md#ping) | **Get** /service/edgelb/ping | 
+*EdgelbApi* | [**V2CreatePool**](docs/EdgelbApi.md#v2createpool) | **Post** /service/edgelb/v2/pools | 
+*EdgelbApi* | [**V2DeletePool**](docs/EdgelbApi.md#v2deletepool) | **Delete** /service/edgelb/v2/pools/{name} | 
+*EdgelbApi* | [**V2GetPool**](docs/EdgelbApi.md#v2getpool) | **Get** /service/edgelb/v2/pools/{name} | 
+*EdgelbApi* | [**V2GetPools**](docs/EdgelbApi.md#v2getpools) | **Get** /service/edgelb/v2/pools | 
+*EdgelbApi* | [**V2UpdatePool**](docs/EdgelbApi.md#v2updatepool) | **Put** /service/edgelb/v2/pools/{name} | 
+*EdgelbApi* | [**Version**](docs/EdgelbApi.md#version) | **Get** /service/edgelb/version | 
 *IAMApi* | [**ConfigureOIDCProvider**](docs/IAMApi.md#configureoidcprovider) | **Put** /acs/api/v1/auth/oidc/providers/{provider-id} | Configure a new OIDC provider.
 *IAMApi* | [**ConfigureSAMLProvider**](docs/IAMApi.md#configuresamlprovider) | **Put** /acs/api/v1/auth/saml/providers/{provider-id} | Configure a new SAML provider.
 *IAMApi* | [**CreateGroup**](docs/IAMApi.md#creategroup) | **Put** /acs/api/v1/groups/{gid} | Create a group.
@@ -119,7 +119,6 @@ Class | Method | HTTP request | Description
  - [Action](docs/Action.md)
  - [ActionAllowed](docs/ActionAllowed.md)
  - [Algo](docs/Algo.md)
- - [ApiVersion](docs/ApiVersion.md)
  - [Assets](docs/Assets.md)
  - [AssetsContainer](docs/AssetsContainer.md)
  - [AuthToken](docs/AuthToken.md)
@@ -146,12 +145,33 @@ Class | Method | HTTP request | Description
  - [CosmosServiceDescribeV1Response](docs/CosmosServiceDescribeV1Response.md)
  - [CosmosServiceUpdateV1Request](docs/CosmosServiceUpdateV1Request.md)
  - [CosmosServiceUpdateV1Response](docs/CosmosServiceUpdateV1Response.md)
+ - [EdgelbApiVersion](docs/EdgelbApiVersion.md)
  - [EdgelbConfigContainer](docs/EdgelbConfigContainer.md)
  - [EdgelbError](docs/EdgelbError.md)
  - [EdgelbPoolContainer](docs/EdgelbPoolContainer.md)
+ - [EdgelbV2Backend](docs/EdgelbV2Backend.md)
+ - [EdgelbV2BackendCustomCheck](docs/EdgelbV2BackendCustomCheck.md)
+ - [EdgelbV2Endpoint](docs/EdgelbV2Endpoint.md)
+ - [EdgelbV2EndpointCheck](docs/EdgelbV2EndpointCheck.md)
+ - [EdgelbV2Frontend](docs/EdgelbV2Frontend.md)
+ - [EdgelbV2FrontendLinkBackend](docs/EdgelbV2FrontendLinkBackend.md)
+ - [EdgelbV2FrontendLinkBackendMap](docs/EdgelbV2FrontendLinkBackendMap.md)
+ - [EdgelbV2FrontendRedirectToHttps](docs/EdgelbV2FrontendRedirectToHttps.md)
+ - [EdgelbV2FrontendRedirectToHttpsExcept](docs/EdgelbV2FrontendRedirectToHttpsExcept.md)
+ - [EdgelbV2Haproxy](docs/EdgelbV2Haproxy.md)
  - [EdgelbV2Pool](docs/EdgelbV2Pool.md)
  - [EdgelbV2PoolSecrets](docs/EdgelbV2PoolSecrets.md)
  - [EdgelbV2PoolVirtualNetworks](docs/EdgelbV2PoolVirtualNetworks.md)
+ - [EdgelbV2Protocol](docs/EdgelbV2Protocol.md)
+ - [EdgelbV2RewriteHttp](docs/EdgelbV2RewriteHttp.md)
+ - [EdgelbV2RewriteHttpPath](docs/EdgelbV2RewriteHttpPath.md)
+ - [EdgelbV2RewriteHttpRequest](docs/EdgelbV2RewriteHttpRequest.md)
+ - [EdgelbV2RewriteHttpResponse](docs/EdgelbV2RewriteHttpResponse.md)
+ - [EdgelbV2RewriteHttpSticky](docs/EdgelbV2RewriteHttpSticky.md)
+ - [EdgelbV2Service](docs/EdgelbV2Service.md)
+ - [EdgelbV2ServiceMarathon](docs/EdgelbV2ServiceMarathon.md)
+ - [EdgelbV2ServiceMesos](docs/EdgelbV2ServiceMesos.md)
+ - [EdgelbV2Stats](docs/EdgelbV2Stats.md)
  - [Group](docs/Group.md)
  - [GroupCreate](docs/GroupCreate.md)
  - [GroupPermissions](docs/GroupPermissions.md)
@@ -188,26 +208,6 @@ Class | Method | HTTP request | Description
  - [UserPermissionsDirect](docs/UserPermissionsDirect.md)
  - [UserPermissionsGroups](docs/UserPermissionsGroups.md)
  - [UserUpdate](docs/UserUpdate.md)
- - [V2Backend](docs/V2Backend.md)
- - [V2BackendCustomCheck](docs/V2BackendCustomCheck.md)
- - [V2Endpoint](docs/V2Endpoint.md)
- - [V2EndpointCheck](docs/V2EndpointCheck.md)
- - [V2Frontend](docs/V2Frontend.md)
- - [V2FrontendLinkBackend](docs/V2FrontendLinkBackend.md)
- - [V2FrontendLinkBackendMap](docs/V2FrontendLinkBackendMap.md)
- - [V2FrontendRedirectToHttps](docs/V2FrontendRedirectToHttps.md)
- - [V2FrontendRedirectToHttpsExcept](docs/V2FrontendRedirectToHttpsExcept.md)
- - [V2Haproxy](docs/V2Haproxy.md)
- - [V2Protocol](docs/V2Protocol.md)
- - [V2RewriteHttp](docs/V2RewriteHttp.md)
- - [V2RewriteHttpPath](docs/V2RewriteHttpPath.md)
- - [V2RewriteHttpRequest](docs/V2RewriteHttpRequest.md)
- - [V2RewriteHttpResponse](docs/V2RewriteHttpResponse.md)
- - [V2RewriteHttpSticky](docs/V2RewriteHttpSticky.md)
- - [V2Service](docs/V2Service.md)
- - [V2ServiceMarathon](docs/V2ServiceMarathon.md)
- - [V2ServiceMesos](docs/V2ServiceMesos.md)
- - [V2Stats](docs/V2Stats.md)
  - [V30Resource](docs/V30Resource.md)
  - [V50PackageDefinition](docs/V50PackageDefinition.md)
 
@@ -215,7 +215,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 ## token
-- **Type**: API key
+- **Type**: API key 
 
 Example
 ```golang
