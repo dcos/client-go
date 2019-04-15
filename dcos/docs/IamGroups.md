@@ -1,4 +1,4 @@
-# InlineResponse2002
+# IamGroups
 
 ## Properties
 Name | Type | Description | Notes

@@ -10,6 +10,6 @@
 
 package dcos
 
-type InlineResponse2001 struct {
-	Array []IamAction `json:"array,omitempty"`
+type IamUsers struct {
+	Array []IamUser `json:"array,omitempty"`
 }

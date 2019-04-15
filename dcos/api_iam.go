@@ -1267,16 +1267,16 @@ func (a *IAMApiService) ForbitResourceGroupActions(ctx context.Context, rid stri
 IAMApiService Retrieve all ACL objects.
 Get array of &#x60;ACL&#x60; objects.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return InlineResponse200
+@return IamAcls
 */
-func (a *IAMApiService) GetACLs(ctx context.Context) (InlineResponse200, *http.Response, error) {
+func (a *IAMApiService) GetACLs(ctx context.Context) (IamAcls, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse200
+		localVarReturnValue  IamAcls
 	)
 
 	// create path and map variables
@@ -1325,7 +1325,7 @@ func (a *IAMApiService) GetACLs(ctx context.Context) (InlineResponse200, *http.R
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v InlineResponse200
+			var v IamAcls
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1627,16 +1627,16 @@ func (a *IAMApiService) GetGroupUsers(ctx context.Context, gid string, localVarO
 IAMApiService Retrieve all group objects.
 Retrieve array of &#x60;Group&#x60; objects.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return InlineResponse2002
+@return IamGroups
 */
-func (a *IAMApiService) GetGroups(ctx context.Context) (InlineResponse2002, *http.Response, error) {
+func (a *IAMApiService) GetGroups(ctx context.Context) (IamGroups, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2002
+		localVarReturnValue  IamGroups
 	)
 
 	// create path and map variables
@@ -1685,7 +1685,7 @@ func (a *IAMApiService) GetGroups(ctx context.Context) (InlineResponse2002, *htt
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v InlineResponse2002
+			var v IamGroups
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2199,16 +2199,16 @@ Get allowed actions for given resource and group.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid resource ID
  * @param gid group ID
-@return InlineResponse2001
+@return IamActions
 */
-func (a *IAMApiService) GetResourceGroupActions(ctx context.Context, rid string, gid string) (InlineResponse2001, *http.Response, error) {
+func (a *IAMApiService) GetResourceGroupActions(ctx context.Context, rid string, gid string) (IamActions, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2001
+		localVarReturnValue  IamActions
 	)
 
 	// create path and map variables
@@ -2259,7 +2259,7 @@ func (a *IAMApiService) GetResourceGroupActions(ctx context.Context, rid string,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v InlineResponse2001
+			var v IamActions
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2469,16 +2469,16 @@ Get allowed actions for given resource and user.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid resource ID
  * @param uid account ID
-@return InlineResponse2001
+@return InlineResponse200
 */
-func (a *IAMApiService) GetResourceUserActions(ctx context.Context, rid string, uid string) (InlineResponse2001, *http.Response, error) {
+func (a *IAMApiService) GetResourceUserActions(ctx context.Context, rid string, uid string) (InlineResponse200, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2001
+		localVarReturnValue  InlineResponse200
 	)
 
 	// create path and map variables
@@ -2529,7 +2529,7 @@ func (a *IAMApiService) GetResourceUserActions(ctx context.Context, rid string, 
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v InlineResponse2001
+			var v InlineResponse200
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3131,21 +3131,21 @@ Retrieve &#x60;User&#x60; objects. By default the list consists of regular user 
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *GetUsersOpts - Optional Parameters:
  * @param "Type_" (optional.String) -  If set to `service`, list only service user accounts. If unset, default to only listing regular user accounts.
-@return InlineResponse2003
+@return IamUsers
 */
 
 type GetUsersOpts struct {
 	Type_ optional.String
 }
 
-func (a *IAMApiService) GetUsers(ctx context.Context, localVarOptionals *GetUsersOpts) (InlineResponse2003, *http.Response, error) {
+func (a *IAMApiService) GetUsers(ctx context.Context, localVarOptionals *GetUsersOpts) (IamUsers, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2003
+		localVarReturnValue  IamUsers
 	)
 
 	// create path and map variables
@@ -3197,7 +3197,7 @@ func (a *IAMApiService) GetUsers(ctx context.Context, localVarOptionals *GetUser
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v InlineResponse2003
+			var v IamUsers
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
