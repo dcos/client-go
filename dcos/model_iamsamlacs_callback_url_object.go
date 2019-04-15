@@ -10,6 +10,6 @@
 
 package dcos
 
-type InlineResponse200 struct {
-	Array []Iamacl `json:"array,omitempty"`
+type IamsamlacsCallbackUrlObject struct {
+	AcsCallbackUrl string `json:"acs-callback-url"`
 }

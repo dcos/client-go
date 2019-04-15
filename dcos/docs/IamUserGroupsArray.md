@@ -1,9 +1,10 @@
-# InlineResponse2003
+# IamUserGroupsArray
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Array** | [**[]IamUser**](IAMUser.md) |  | [optional] 
+**Membershipurl** | **string** |  | 
+**Group** | [**IamGroup**](IAMGroup.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

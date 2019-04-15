@@ -10,6 +10,8 @@
 
 package dcos
 
-type InlineResponse200 struct {
-	Array []Iamacl `json:"array,omitempty"`
+type IamsamlProviderConfig struct {
+	Description string `json:"description"`
+	IdpMetadata string `json:"idp_metadata"`
+	SpBaseUrl   string `json:"sp_base_url"`
 }

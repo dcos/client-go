@@ -10,6 +10,7 @@
 
 package dcos
 
-type InlineResponse200 struct {
-	Array []Iamacl `json:"array,omitempty"`
+type IamldapTestResultObject struct {
+	Code        string `json:"code"`
+	Description string `json:"description"`
 }

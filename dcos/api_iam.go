@@ -32,9 +32,9 @@ IAMApiService Configure a new OIDC provider.
 Set up OIDC provider with the ID as specified in the URL, and with the config as specified via JSON in the request body.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the provider to create.
- * @param oidcProviderConfig Provider config JSON object
+ * @param iamoidcProviderConfig Provider config JSON object
 */
-func (a *IAMApiService) ConfigureOIDCProvider(ctx context.Context, providerId string, oidcProviderConfig OidcProviderConfig) (*http.Response, error) {
+func (a *IAMApiService) ConfigureOIDCProvider(ctx context.Context, providerId string, iamoidcProviderConfig IamoidcProviderConfig) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -69,7 +69,7 @@ func (a *IAMApiService) ConfigureOIDCProvider(ctx context.Context, providerId st
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &oidcProviderConfig
+	localVarPostBody = &iamoidcProviderConfig
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -102,9 +102,9 @@ IAMApiService Configure a new SAML provider.
 Set up a SAML provider with the ID as specified in the URL, and with the config as given by the JSON document in the request body.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the provider to create.
- * @param samlProviderConfig Provider config JSON object
+ * @param iamsamlProviderConfig Provider config JSON object
 */
-func (a *IAMApiService) ConfigureSAMLProvider(ctx context.Context, providerId string, samlProviderConfig SamlProviderConfig) (*http.Response, error) {
+func (a *IAMApiService) ConfigureSAMLProvider(ctx context.Context, providerId string, iamsamlProviderConfig IamsamlProviderConfig) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -139,7 +139,7 @@ func (a *IAMApiService) ConfigureSAMLProvider(ctx context.Context, providerId st
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &samlProviderConfig
+	localVarPostBody = &iamsamlProviderConfig
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -172,9 +172,9 @@ IAMApiService Create a group.
 Create a group.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param gid The ID of the group.
- * @param groupCreate
+ * @param iamGroupCreate
 */
-func (a *IAMApiService) CreateGroup(ctx context.Context, gid string, groupCreate GroupCreate) (*http.Response, error) {
+func (a *IAMApiService) CreateGroup(ctx context.Context, gid string, iamGroupCreate IamGroupCreate) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -209,7 +209,7 @@ func (a *IAMApiService) CreateGroup(ctx context.Context, gid string, groupCreate
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &groupCreate
+	localVarPostBody = &iamGroupCreate
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -310,9 +310,9 @@ func (a *IAMApiService) CreateGroupUser(ctx context.Context, gid string, uid str
 IAMApiService Set new LDAP configuration.
 Set new directory (LDAP) back-end configuration. Replace current configuration, if existing.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param ldapConfiguration JSON object containing the LDAP configuration details.
+ * @param iamldapConfiguration JSON object containing the LDAP configuration details.
 */
-func (a *IAMApiService) CreateLDAPConfiguration(ctx context.Context, ldapConfiguration LdapConfiguration) (*http.Response, error) {
+func (a *IAMApiService) CreateLDAPConfiguration(ctx context.Context, iamldapConfiguration IamldapConfiguration) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -346,7 +346,7 @@ func (a *IAMApiService) CreateLDAPConfiguration(ctx context.Context, ldapConfigu
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &ldapConfiguration
+	localVarPostBody = &iamldapConfiguration
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -379,9 +379,9 @@ IAMApiService Create ACL for a certain resource.
 Create new ACL for resource with ID &#x60;rid&#x60; (description in body, no permissions by default).
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid The ID of the resource for which the ACL should be created.
- * @param aclCreate
+ * @param iamaclCreate
 */
-func (a *IAMApiService) CreateResourceACL(ctx context.Context, rid string, aclCreate AclCreate) (*http.Response, error) {
+func (a *IAMApiService) CreateResourceACL(ctx context.Context, rid string, iamaclCreate IamaclCreate) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -416,7 +416,7 @@ func (a *IAMApiService) CreateResourceACL(ctx context.Context, rid string, aclCr
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &aclCreate
+	localVarPostBody = &iamaclCreate
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -449,9 +449,9 @@ IAMApiService Create user account.
 Create user (uid in url, details incl. credentials in body).
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param uid The ID of the user account to create.
- * @param userCreate Password/description.
+ * @param iamUserCreate Password/description.
 */
-func (a *IAMApiService) CreateUser(ctx context.Context, uid string, userCreate UserCreate) (*http.Response, error) {
+func (a *IAMApiService) CreateUser(ctx context.Context, uid string, iamUserCreate IamUserCreate) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -486,7 +486,7 @@ func (a *IAMApiService) CreateUser(ctx context.Context, uid string, userCreate U
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &userCreate
+	localVarPostBody = &iamUserCreate
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -1354,16 +1354,16 @@ IAMApiService Get single group object.
 Get specific &#x60;Group&#x60; object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param gid The ID of the group to retrieve.
-@return Group
+@return IamGroup
 */
-func (a *IAMApiService) GetGroup(ctx context.Context, gid string) (Group, *http.Response, error) {
+func (a *IAMApiService) GetGroup(ctx context.Context, gid string) (IamGroup, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Group
+		localVarReturnValue  IamGroup
 	)
 
 	// create path and map variables
@@ -1413,7 +1413,7 @@ func (a *IAMApiService) GetGroup(ctx context.Context, gid string) (Group, *http.
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v Group
+			var v IamGroup
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1442,16 +1442,16 @@ IAMApiService Retrieve group permissions.
 Retrieve permissions of this group.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param gid The group ID.
-@return GroupPermissions
+@return IamGroupPermissions
 */
-func (a *IAMApiService) GetGroupPermissions(ctx context.Context, gid string) (GroupPermissions, *http.Response, error) {
+func (a *IAMApiService) GetGroupPermissions(ctx context.Context, gid string) (IamGroupPermissions, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  GroupPermissions
+		localVarReturnValue  IamGroupPermissions
 	)
 
 	// create path and map variables
@@ -1501,7 +1501,7 @@ func (a *IAMApiService) GetGroupPermissions(ctx context.Context, gid string) (Gr
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v GroupPermissions
+			var v IamGroupPermissions
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1532,21 +1532,21 @@ Retrieve users that are member of this group. Allows to query service accounts, 
  * @param gid The group ID.
  * @param optional nil or *GetGroupUsersOpts - Optional Parameters:
  * @param "Type_" (optional.String) -  If set to `service`, list only service accounts. If unset, default to only listing user accounts members of a group.
-@return GroupUsers
+@return IamGroupUsers
 */
 
 type GetGroupUsersOpts struct {
 	Type_ optional.String
 }
 
-func (a *IAMApiService) GetGroupUsers(ctx context.Context, gid string, localVarOptionals *GetGroupUsersOpts) (GroupUsers, *http.Response, error) {
+func (a *IAMApiService) GetGroupUsers(ctx context.Context, gid string, localVarOptionals *GetGroupUsersOpts) (IamGroupUsers, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  GroupUsers
+		localVarReturnValue  IamGroupUsers
 	)
 
 	// create path and map variables
@@ -1599,7 +1599,7 @@ func (a *IAMApiService) GetGroupUsers(ctx context.Context, gid string, localVarO
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v GroupUsers
+			var v IamGroupUsers
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1778,16 +1778,16 @@ func (a *IAMApiService) GetJWKS(ctx context.Context) (*http.Response, error) {
 IAMApiService Retrieve current LDAP configuration.
 Retrieve current directory (LDAP) back-end configuration.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return LdapConfiguration
+@return IamldapConfiguration
 */
-func (a *IAMApiService) GetLDAPConfiguration(ctx context.Context) (LdapConfiguration, *http.Response, error) {
+func (a *IAMApiService) GetLDAPConfiguration(ctx context.Context) (IamldapConfiguration, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  LdapConfiguration
+		localVarReturnValue  IamldapConfiguration
 	)
 
 	// create path and map variables
@@ -1836,7 +1836,7 @@ func (a *IAMApiService) GetLDAPConfiguration(ctx context.Context) (LdapConfigura
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v LdapConfiguration
+			var v IamldapConfiguration
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1865,16 +1865,16 @@ IAMApiService Get configuration for a specific provider.
 Get configuration for a specific provider.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the OIDC provider to retrieve the config for.
-@return OidcProviderConfig
+@return IamoidcProviderConfig
 */
-func (a *IAMApiService) GetOIDCProvider(ctx context.Context, providerId string) (OidcProviderConfig, *http.Response, error) {
+func (a *IAMApiService) GetOIDCProvider(ctx context.Context, providerId string) (IamoidcProviderConfig, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  OidcProviderConfig
+		localVarReturnValue  IamoidcProviderConfig
 	)
 
 	// create path and map variables
@@ -1924,7 +1924,7 @@ func (a *IAMApiService) GetOIDCProvider(ctx context.Context, providerId string) 
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v OidcProviderConfig
+			var v IamoidcProviderConfig
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2018,16 +2018,16 @@ IAMApiService Retrieve ACL for a certain resource.
 Retrieve single &#x60;ACL&#x60; object, for a specific resource.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid The ID of the resource to retrieve the ACL for.
-@return Acl
+@return Iamacl
 */
-func (a *IAMApiService) GetResourceACLs(ctx context.Context, rid string) (Acl, *http.Response, error) {
+func (a *IAMApiService) GetResourceACLs(ctx context.Context, rid string) (Iamacl, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  Acl
+		localVarReturnValue  Iamacl
 	)
 
 	// create path and map variables
@@ -2077,7 +2077,7 @@ func (a *IAMApiService) GetResourceACLs(ctx context.Context, rid string) (Acl, *
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v Acl
+			var v Iamacl
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2108,16 +2108,16 @@ Query whether action is allowed or not.
  * @param rid resource ID
  * @param gid group ID
  * @param action action name
-@return ActionAllowed
+@return IamActionAllowed
 */
-func (a *IAMApiService) GetResourceGroupAction(ctx context.Context, rid string, gid string, action string) (ActionAllowed, *http.Response, error) {
+func (a *IAMApiService) GetResourceGroupAction(ctx context.Context, rid string, gid string, action string) (IamActionAllowed, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ActionAllowed
+		localVarReturnValue  IamActionAllowed
 	)
 
 	// create path and map variables
@@ -2169,7 +2169,7 @@ func (a *IAMApiService) GetResourceGroupAction(ctx context.Context, rid string, 
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v ActionAllowed
+			var v IamActionAllowed
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2288,16 +2288,16 @@ IAMApiService Retrieve all permissions for resource.
 Retrieve all permissions that are set for a specific resource.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid resource ID
-@return AclPermissions
+@return IamaclPermissions
 */
-func (a *IAMApiService) GetResourcePermissions(ctx context.Context, rid string) (AclPermissions, *http.Response, error) {
+func (a *IAMApiService) GetResourcePermissions(ctx context.Context, rid string) (IamaclPermissions, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  AclPermissions
+		localVarReturnValue  IamaclPermissions
 	)
 
 	// create path and map variables
@@ -2347,7 +2347,7 @@ func (a *IAMApiService) GetResourcePermissions(ctx context.Context, rid string) 
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v AclPermissions
+			var v IamaclPermissions
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2378,16 +2378,16 @@ Query whether action is allowed or not.
  * @param rid resource ID
  * @param uid account ID
  * @param action action name
-@return ActionAllowed
+@return IamActionAllowed
 */
-func (a *IAMApiService) GetResourceUserAction(ctx context.Context, rid string, uid string, action string) (ActionAllowed, *http.Response, error) {
+func (a *IAMApiService) GetResourceUserAction(ctx context.Context, rid string, uid string, action string) (IamActionAllowed, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  ActionAllowed
+		localVarReturnValue  IamActionAllowed
 	)
 
 	// create path and map variables
@@ -2439,7 +2439,7 @@ func (a *IAMApiService) GetResourceUserAction(ctx context.Context, rid string, u
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v ActionAllowed
+			var v IamActionAllowed
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2558,16 +2558,16 @@ IAMApiService Get configuration for a specific SAML provider.
 Get configuration for a specific SAML provider.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the SAML provider to retrieve the config for.
-@return SamlProviderConfig
+@return IamsamlProviderConfig
 */
-func (a *IAMApiService) GetSAMLProvider(ctx context.Context, providerId string) (SamlProviderConfig, *http.Response, error) {
+func (a *IAMApiService) GetSAMLProvider(ctx context.Context, providerId string) (IamsamlProviderConfig, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  SamlProviderConfig
+		localVarReturnValue  IamsamlProviderConfig
 	)
 
 	// create path and map variables
@@ -2617,7 +2617,7 @@ func (a *IAMApiService) GetSAMLProvider(ctx context.Context, providerId string) 
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v SamlProviderConfig
+			var v IamsamlProviderConfig
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2646,16 +2646,16 @@ IAMApiService Get the authentication callback URL for this SP.
 The IAM acts as SAML service provider (SP). A SAML identity provider (IdP) usually requires to be configured with the Assertion Consumer Service (ACS) callback URL of the SP (which is where the IdP makes the end-user submit the authentication response).
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the SAML provider to retrieve the ACS callback URL for.
-@return SamlacsCallbackUrlObject
+@return IamsamlacsCallbackUrlObject
 */
-func (a *IAMApiService) GetSAMLProviderACSCallbackURL(ctx context.Context, providerId string) (SamlacsCallbackUrlObject, *http.Response, error) {
+func (a *IAMApiService) GetSAMLProviderACSCallbackURL(ctx context.Context, providerId string) (IamsamlacsCallbackUrlObject, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  SamlacsCallbackUrlObject
+		localVarReturnValue  IamsamlacsCallbackUrlObject
 	)
 
 	// create path and map variables
@@ -2705,7 +2705,7 @@ func (a *IAMApiService) GetSAMLProviderACSCallbackURL(ctx context.Context, provi
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v SamlacsCallbackUrlObject
+			var v IamsamlacsCallbackUrlObject
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2866,16 +2866,16 @@ IAMApiService Get single user object.
 Get specific &#x60;User&#x60; object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param uid The ID of the user object to retrieve.
-@return User
+@return IamUser
 */
-func (a *IAMApiService) GetUser(ctx context.Context, uid string) (User, *http.Response, error) {
+func (a *IAMApiService) GetUser(ctx context.Context, uid string) (IamUser, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  User
+		localVarReturnValue  IamUser
 	)
 
 	// create path and map variables
@@ -2925,7 +2925,7 @@ func (a *IAMApiService) GetUser(ctx context.Context, uid string) (User, *http.Re
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v User
+			var v IamUser
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2954,16 +2954,16 @@ IAMApiService Retrieve groups the user is member of.
 Retrieve groups the user is member of.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param uid The ID of the user.
-@return UserGroups
+@return IamUserGroups
 */
-func (a *IAMApiService) GetUserGroups(ctx context.Context, uid string) (UserGroups, *http.Response, error) {
+func (a *IAMApiService) GetUserGroups(ctx context.Context, uid string) (IamUserGroups, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  UserGroups
+		localVarReturnValue  IamUserGroups
 	)
 
 	// create path and map variables
@@ -3013,7 +3013,7 @@ func (a *IAMApiService) GetUserGroups(ctx context.Context, uid string) (UserGrou
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v UserGroups
+			var v IamUserGroups
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3042,16 +3042,16 @@ IAMApiService Retrieve permissions an account has.
 Retrieve the permissions for this account with direct permissions distinguished from those that are obtained through group membership.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param uid The id of the user.
-@return UserPermissions
+@return IamUserPermissions
 */
-func (a *IAMApiService) GetUserPermissions(ctx context.Context, uid string) (UserPermissions, *http.Response, error) {
+func (a *IAMApiService) GetUserPermissions(ctx context.Context, uid string) (IamUserPermissions, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  UserPermissions
+		localVarReturnValue  IamUserPermissions
 	)
 
 	// create path and map variables
@@ -3101,7 +3101,7 @@ func (a *IAMApiService) GetUserPermissions(ctx context.Context, uid string) (Use
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v UserPermissions
+			var v IamUserPermissions
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3225,9 +3225,9 @@ func (a *IAMApiService) GetUsers(ctx context.Context, localVarOptionals *GetUser
 IAMApiService Import an LDAP group.
 Attempt to import a group of users from the configured directory (LDAP) back-end. See docs/ldap.md for details on group import.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param ldapImportGroupObject A JSON object specifying the name of the group to be imported. The meaning of the name depends on the group search settings.
+ * @param iamldapImportGroupObject A JSON object specifying the name of the group to be imported. The meaning of the name depends on the group search settings.
 */
-func (a *IAMApiService) ImportLDAPGroup(ctx context.Context, ldapImportGroupObject LdapImportGroupObject) (*http.Response, error) {
+func (a *IAMApiService) ImportLDAPGroup(ctx context.Context, iamldapImportGroupObject IamldapImportGroupObject) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -3261,7 +3261,7 @@ func (a *IAMApiService) ImportLDAPGroup(ctx context.Context, ldapImportGroupObje
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &ldapImportGroupObject
+	localVarPostBody = &iamldapImportGroupObject
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -3293,9 +3293,9 @@ func (a *IAMApiService) ImportLDAPGroup(ctx context.Context, ldapImportGroupObje
 IAMApiService Import an LDAP user.
 Attempt to import a user from the configured directory (LDAP) back-end.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param ldapImportUserObject A JSON object specifying the username (read: \"login\" or \"user ID\") of the user that should be imported. That string is equivalent to the `uid` the user is supposed to log in with after successful import. The exact meaning of this string depends on the configured LDAP authentication method.
+ * @param iamldapImportUserObject A JSON object specifying the username (read: \"login\" or \"user ID\") of the user that should be imported. That string is equivalent to the `uid` the user is supposed to log in with after successful import. The exact meaning of this string depends on the configured LDAP authentication method.
 */
-func (a *IAMApiService) ImportLDAPUser(ctx context.Context, ldapImportUserObject LdapImportUserObject) (*http.Response, error) {
+func (a *IAMApiService) ImportLDAPUser(ctx context.Context, iamldapImportUserObject IamldapImportUserObject) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
@@ -3329,7 +3329,7 @@ func (a *IAMApiService) ImportLDAPUser(ctx context.Context, ldapImportUserObject
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &ldapImportUserObject
+	localVarPostBody = &iamldapImportUserObject
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -3361,17 +3361,17 @@ func (a *IAMApiService) ImportLDAPUser(ctx context.Context, ldapImportUserObject
 IAMApiService Log in (obtain a DC/OS authentication token).
 Exchange user credentials (regular user account: uid and password; service user account: uid and service login token) for a DC/OS authentication token. The resulting DC/OS authentication token is an RFC 7519 JSON Web Token (JWT) of type RS256. It has a limited lifetime which depends on the IAM configuration (only, i.e. the lifetime cannot be chosen as part of the login HTTP request). The DC/OS authentication token can be verified out-of-band using a standards-compliant RS256 JWT verification procedure based on the long-lived public key material presented by the IAM&#39;s /auth/jwks endpoint, and by requiring the two claims &#x60;exp&#x60; and &#x60;uid&#x60; to be present.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param loginObject uid & password or uid & service login token.
-@return AuthToken
+ * @param iamLoginObject uid & password or uid & service login token.
+@return IamAuthToken
 */
-func (a *IAMApiService) Login(ctx context.Context, loginObject LoginObject) (AuthToken, *http.Response, error) {
+func (a *IAMApiService) Login(ctx context.Context, iamLoginObject IamLoginObject) (IamAuthToken, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  AuthToken
+		localVarReturnValue  IamAuthToken
 	)
 
 	// create path and map variables
@@ -3399,7 +3399,7 @@ func (a *IAMApiService) Login(ctx context.Context, loginObject LoginObject) (Aut
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &loginObject
+	localVarPostBody = &iamLoginObject
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3422,7 +3422,7 @@ func (a *IAMApiService) Login(ctx context.Context, loginObject LoginObject) (Aut
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v AuthToken
+			var v IamAuthToken
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3799,17 +3799,17 @@ func (a *IAMApiService) SAMLProviderACSCallbackEndpoint(ctx context.Context, pro
 IAMApiService Test connection to the LDAP back-end.
 Perform basic feature tests. Verify that the current directory (LDAP) configuration parameters allow for a successful connection to the directory back-end. For instance, this endpoint simulates the procedure for authentication via LDAP, but provides more useful feedback upon failure than the actual login endpoint.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param ldapTestCredentials JSON object containing `uid` and password of an LDAP user. For the most expressive test result, choose credentials different from the lookup credentials. The `uid` is the string the user is supposed to log in with after successful LDAP back-end configuration.
-@return LdapTestResultObject
+ * @param iamldapTestCredentials JSON object containing `uid` and password of an LDAP user. For the most expressive test result, choose credentials different from the lookup credentials. The `uid` is the string the user is supposed to log in with after successful LDAP back-end configuration.
+@return IamldapTestResultObject
 */
-func (a *IAMApiService) TestLDAPBackendConnection(ctx context.Context, ldapTestCredentials LdapTestCredentials) (LdapTestResultObject, *http.Response, error) {
+func (a *IAMApiService) TestLDAPBackendConnection(ctx context.Context, iamldapTestCredentials IamldapTestCredentials) (IamldapTestResultObject, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  LdapTestResultObject
+		localVarReturnValue  IamldapTestResultObject
 	)
 
 	// create path and map variables
@@ -3837,7 +3837,7 @@ func (a *IAMApiService) TestLDAPBackendConnection(ctx context.Context, ldapTestC
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &ldapTestCredentials
+	localVarPostBody = &iamldapTestCredentials
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3860,7 +3860,7 @@ func (a *IAMApiService) TestLDAPBackendConnection(ctx context.Context, ldapTestC
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v LdapTestResultObject
+			var v IamldapTestResultObject
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3870,7 +3870,7 @@ func (a *IAMApiService) TestLDAPBackendConnection(ctx context.Context, ldapTestC
 			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 502 {
-			var v LdapTestResultObject
+			var v IamldapTestResultObject
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -3899,9 +3899,9 @@ IAMApiService Update group.
 Update existing group (description).
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param gid The ID of the group to modify.
- * @param groupUpdate
+ * @param iamGroupUpdate
 */
-func (a *IAMApiService) UpdateGroup(ctx context.Context, gid string, groupUpdate GroupUpdate) (*http.Response, error) {
+func (a *IAMApiService) UpdateGroup(ctx context.Context, gid string, iamGroupUpdate IamGroupUpdate) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Patch")
 		localVarPostBody     interface{}
@@ -3936,7 +3936,7 @@ func (a *IAMApiService) UpdateGroup(ctx context.Context, gid string, groupUpdate
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &groupUpdate
+	localVarPostBody = &iamGroupUpdate
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -3969,9 +3969,9 @@ IAMApiService Update OIDC provider config.
 Update config for existing OIDC provider.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the provider to modify.
- * @param oidcProviderConfig Provider config JSON object
+ * @param iamoidcProviderConfig Provider config JSON object
 */
-func (a *IAMApiService) UpdateOIDCProvider(ctx context.Context, providerId string, oidcProviderConfig OidcProviderConfig) (*http.Response, error) {
+func (a *IAMApiService) UpdateOIDCProvider(ctx context.Context, providerId string, iamoidcProviderConfig IamoidcProviderConfig) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Patch")
 		localVarPostBody     interface{}
@@ -4006,7 +4006,7 @@ func (a *IAMApiService) UpdateOIDCProvider(ctx context.Context, providerId strin
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &oidcProviderConfig
+	localVarPostBody = &iamoidcProviderConfig
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -4039,9 +4039,9 @@ IAMApiService Update ACL for a certain resource.
 Update ACL for resource with ID &#x60;rid&#x60;.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param rid The ID of the resource for which the ACL should be created.
- * @param aclUpdate New ACL.
+ * @param iamaclUpdate New ACL.
 */
-func (a *IAMApiService) UpdateResourceACL(ctx context.Context, rid string, aclUpdate AclUpdate) (*http.Response, error) {
+func (a *IAMApiService) UpdateResourceACL(ctx context.Context, rid string, iamaclUpdate IamaclUpdate) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Patch")
 		localVarPostBody     interface{}
@@ -4076,7 +4076,7 @@ func (a *IAMApiService) UpdateResourceACL(ctx context.Context, rid string, aclUp
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &aclUpdate
+	localVarPostBody = &iamaclUpdate
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -4109,9 +4109,9 @@ IAMApiService Update SAML provider config.
 Update config for existing SAML provider.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param providerId The ID of the provider to modify.
- * @param samlProviderConfig Provider config JSON object
+ * @param iamsamlProviderConfig Provider config JSON object
 */
-func (a *IAMApiService) UpdateSAMLProvider(ctx context.Context, providerId string, samlProviderConfig SamlProviderConfig) (*http.Response, error) {
+func (a *IAMApiService) UpdateSAMLProvider(ctx context.Context, providerId string, iamsamlProviderConfig IamsamlProviderConfig) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Patch")
 		localVarPostBody     interface{}
@@ -4146,7 +4146,7 @@ func (a *IAMApiService) UpdateSAMLProvider(ctx context.Context, providerId strin
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &samlProviderConfig
+	localVarPostBody = &iamsamlProviderConfig
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -4179,9 +4179,9 @@ IAMApiService Update user account.
 Update existing user account (meta data and/or password).
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param uid The ID of the user account to modify.
- * @param userUpdate Password/description.
+ * @param iamUserUpdate Password/description.
 */
-func (a *IAMApiService) UpdateUser(ctx context.Context, uid string, userUpdate UserUpdate) (*http.Response, error) {
+func (a *IAMApiService) UpdateUser(ctx context.Context, uid string, iamUserUpdate IamUserUpdate) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Patch")
 		localVarPostBody     interface{}
@@ -4216,7 +4216,7 @@ func (a *IAMApiService) UpdateUser(ctx context.Context, uid string, userUpdate U
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &userUpdate
+	localVarPostBody = &iamUserUpdate
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err

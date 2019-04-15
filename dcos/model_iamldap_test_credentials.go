@@ -10,6 +10,7 @@
 
 package dcos
 
-type InlineResponse200 struct {
-	Array []Iamacl `json:"array,omitempty"`
+type IamldapTestCredentials struct {
+	Uid      string `json:"uid"`
+	Password string `json:"password"`
 }

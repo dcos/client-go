@@ -10,6 +10,7 @@
 
 package dcos
 
-type InlineResponse200 struct {
-	Array []Iamacl `json:"array,omitempty"`
+type IamUserUpdate struct {
+	Description string `json:"description,omitempty"`
+	Password    string `json:"password,omitempty"`
 }

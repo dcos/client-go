@@ -11,5 +11,5 @@
 package dcos
 
 type InlineResponse2002 struct {
-	Array []Group `json:"array,omitempty"`
+	Array []IamGroup `json:"array,omitempty"`
 }

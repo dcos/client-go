@@ -10,6 +10,8 @@
 
 package dcos
 
-type InlineResponse200 struct {
-	Array []Iamacl `json:"array,omitempty"`
+type Iamacl struct {
+	Rid         string `json:"rid"`
+	Url         string `json:"url"`
+	Description string `json:"description"`
 }

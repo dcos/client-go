@@ -11,5 +11,5 @@
 package dcos
 
 type InlineResponse2001 struct {
-	Array []Action `json:"array,omitempty"`
+	Array []IamAction `json:"array,omitempty"`
 }

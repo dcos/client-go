@@ -36,7 +36,7 @@ func login(clusterURL, username, password string) (string, error) {
 		return "", err
 	}
 
-	loginObject := dcos.LoginObject{Uid: username, Password: password}
+	loginObject := dcos.IamLoginObject{Uid: username, Password: password}
 
 	authToken, _, err := client.IAM.Login(context.TODO(), loginObject)
 	if err != nil {
