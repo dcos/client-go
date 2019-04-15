@@ -186,12 +186,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  array:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/IAMACL"
+                $ref: "#/components/schemas/IAMAcls"
   /acs/api/v1/acls/{rid}:
     get:
       operationId: getResourceACLs
@@ -310,12 +305,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  array:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/IAMAction"
+                $ref: "#/components/schemas/IAMActions"
     delete:
       operationId: forbitResourceGroupActions
       summary: Forbid all actions of given group to given resource.
@@ -972,12 +962,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  array:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/IAMGroup"
+                $ref: "#/components/schemas/IAMGroups"
   /acs/api/v1/groups/{gid}:
     get:
       operationId: getGroup
@@ -1342,12 +1327,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  array:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/IAMUser"
+                $ref: "#/components/schemas/IAMUsers"
   /acs/api/v1/users/{uid}:
     get:
       operationId: getUser
@@ -1844,9 +1824,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/EdgelbV2Pool"
+                $ref: "#/components/schemas/EdgelbV2Pools"
         default:
           description: Unexpected error.
           content:
@@ -2558,6 +2536,13 @@ components:
         provider_id:
           type: string
       additionalProperties: false
+    IAMUsers:
+      type: object
+      properties:
+        array:
+          type: array
+          items:
+            $ref: "#/components/schemas/IAMUser"
     IAMUserCreate:
       type: object
       properties:
@@ -2619,6 +2604,13 @@ components:
         url:
           type: string
       additionalProperties: false
+    IAMActions:
+      type: object
+      properties:
+        array:
+          type: array
+          items:
+            $ref: "#/components/schemas/IAMAction"
     IAMUserGroups:
       type: object
       properties:
@@ -2704,6 +2696,15 @@ components:
         provider_type:
           type: string
       additionalProperties: false
+
+    IAMGroups:
+      type: object
+      properties:
+        array:
+          type: array
+          items:
+            $ref: "#/components/schemas/IAMGroup"
+
     IAMGroupCreate:
       type: object
       required:
@@ -2776,6 +2777,15 @@ components:
         description:
           type: string
       additionalProperties: false
+
+    IAMAcls:
+      type: object
+      properties:
+        array:
+          type: array
+          items:
+            $ref: "#/components/schemas/IAMACL"
+
     IAMACLCreate:
       type: object
       required:
@@ -3097,6 +3107,12 @@ components:
                   type: string
         haproxy:
           $ref: "#/components/schemas/EdgelbV2Haproxy"
+
+    EdgelbV2Pools:
+      type: array
+      items:
+        $ref: "#/components/schemas/EdgelbV2Pool"
+
     EdgelbV2Haproxy:
       type: object
       properties:

@@ -575,7 +575,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetACLs**
-> InlineResponse200 GetACLs(ctx, )
+> IamAcls GetACLs(ctx, )
 Retrieve all ACL objects.
 
 Get array of `ACL` objects.
@@ -585,7 +585,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse200**](inline_response_200.md)
+[**IamAcls**](IAMAcls.md)
 
 ### Authorization
 
@@ -692,7 +692,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetGroups**
-> InlineResponse2002 GetGroups(ctx, )
+> IamGroups GetGroups(ctx, )
 Retrieve all group objects.
 
 Retrieve array of `Group` objects.
@@ -702,7 +702,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2002**](inline_response_200_2.md)
+[**IamGroups**](IAMGroups.md)
 
 ### Authorization
 
@@ -874,7 +874,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetResourceGroupActions**
-> InlineResponse2001 GetResourceGroupActions(ctx, rid, gid)
+> IamActions GetResourceGroupActions(ctx, rid, gid)
 Get allowed actions for given resource and group.
 
 Get allowed actions for given resource and group.
@@ -889,7 +889,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](inline_response_200_1.md)
+[**IamActions**](IAMActions.md)
 
 ### Authorization
 
@@ -961,7 +961,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetResourceUserActions**
-> InlineResponse2001 GetResourceUserActions(ctx, rid, uid)
+> InlineResponse200 GetResourceUserActions(ctx, rid, uid)
 Get allowed actions for given resource and user.
 
 Get allowed actions for given resource and user.
@@ -976,7 +976,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](inline_response_200_1.md)
+[**InlineResponse200**](inline_response_200.md)
 
 ### Authorization
 
@@ -1182,7 +1182,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetUsers**
-> InlineResponse2003 GetUsers(ctx, optional)
+> IamUsers GetUsers(ctx, optional)
 Retrieve all regular user accounts or service user accounts.
 
 Retrieve `User` objects. By default the list consists of regular user accounts, only. Alternatively, service user accounts may be requested instead.
@@ -1203,7 +1203,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](inline_response_200_3.md)
+[**IamUsers**](IAMUsers.md)
 
 ### Authorization
 
