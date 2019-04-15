@@ -1,9 +1,11 @@
-# InlineResponse2003
+# IamldapGroupSearchConfig
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Array** | [**[]IamUser**](IAMUser.md) |  | [optional] 
+**SearchBase** | **string** |  | 
+**SearchFilterTemplate** | **string** |  | 
+**MemberAttributes** | **[]string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

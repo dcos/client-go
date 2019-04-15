@@ -191,7 +191,7 @@ paths:
                   array:
                     type: array
                     items:
-                      $ref: "#/components/schemas/ACL"
+                      $ref: "#/components/schemas/IAMACL"
   /acs/api/v1/acls/{rid}:
     get:
       operationId: getResourceACLs
@@ -213,7 +213,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ACL"
+                $ref: "#/components/schemas/IAMACL"
     put:
       operationId: createResourceACL
       summary: Create ACL for a certain resource.
@@ -233,7 +233,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ACLCreate"
+              $ref: "#/components/schemas/IAMACLCreate"
         required: true
       responses:
         "201":
@@ -258,7 +258,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ACLUpdate"
+              $ref: "#/components/schemas/IAMACLUpdate"
         description: New ACL.
         required: true
       responses:
@@ -315,7 +315,7 @@ paths:
                   array:
                     type: array
                     items:
-                      $ref: "#/components/schemas/Action"
+                      $ref: "#/components/schemas/IAMAction"
     delete:
       operationId: forbitResourceGroupActions
       summary: Forbid all actions of given group to given resource.
@@ -372,7 +372,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ActionAllowed"
+                $ref: "#/components/schemas/IAMActionAllowed"
     put:
       operationId: permitResourceGroupAction
       summary: Permit single action for given resource and group.
@@ -452,7 +452,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ACLPermissions"
+                $ref: "#/components/schemas/IAMACLPermissions"
   /acs/api/v1/acls/{rid}/users/{uid}:
     get:
       operationId: getResourceUserActions
@@ -485,7 +485,7 @@ paths:
                   array:
                     type: array
                     items:
-                      $ref: "#/components/schemas/Action"
+                      $ref: "#/components/schemas/IAMAction"
     delete:
       operationId: forbidResourceUserActions
       summary: Forbid all actions of given account to given resource.
@@ -542,7 +542,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ActionAllowed"
+                $ref: "#/components/schemas/IAMActionAllowed"
     put:
       operationId: permitResourceUserAction
       summary: Permit single action for given account and resource.
@@ -642,7 +642,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/LoginObject"
+              $ref: "#/components/schemas/IAMLoginObject"
         description: uid & password or uid & service login token.
         required: true
       responses:
@@ -659,7 +659,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/AuthToken"
+                $ref: "#/components/schemas/IAMAuthToken"
         "401":
           description: Login failed.
     get:
@@ -733,7 +733,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OIDCProviderConfig"
+                $ref: "#/components/schemas/IAMOIDCProviderConfig"
     put:
       operationId: configureOIDCProvider
       summary: Configure a new OIDC provider.
@@ -829,7 +829,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SAMLProviderConfig"
+                $ref: "#/components/schemas/IAMSAMLProviderConfig"
     put:
       operationId: configureSAMLProvider
       summary: Configure a new SAML provider.
@@ -936,7 +936,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SAMLACSCallbackUrlObject"
+                $ref: "#/components/schemas/IAMSAMLACSCallbackUrlObject"
   /acs/api/v1/auth/saml/providers/{provider-id}/sp-metadata:
     get:
       operationId: getSAMLProviderSPMetadata
@@ -977,7 +977,7 @@ paths:
                   array:
                     type: array
                     items:
-                      $ref: "#/components/schemas/Group"
+                      $ref: "#/components/schemas/IAMGroup"
   /acs/api/v1/groups/{gid}:
     get:
       operationId: getGroup
@@ -999,7 +999,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Group"
+                $ref: "#/components/schemas/IAMGroup"
     put:
       operationId: createGroup
       summary: Create a group.
@@ -1018,7 +1018,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/GroupCreate"
+              $ref: "#/components/schemas/IAMGroupCreate"
         required: true
       responses:
         "201":
@@ -1043,7 +1043,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/GroupUpdate"
+              $ref: "#/components/schemas/IAMGroupUpdate"
         required: true
       responses:
         "204":
@@ -1086,7 +1086,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GroupPermissions"
+                $ref: "#/components/schemas/IAMGroupPermissions"
   /acs/api/v1/groups/{gid}/users:
     get:
       operationId: getGroupUsers
@@ -1115,7 +1115,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GroupUsers"
+                $ref: "#/components/schemas/IAMGroupUsers"
   /acs/api/v1/groups/{gid}/users/{uid}:
     delete:
       operationId: deleteGroupUser
@@ -1180,7 +1180,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/LDAPConfiguration"
+                $ref: "#/components/schemas/IAMLDAPConfiguration"
         "400":
           description: Various errors. If no config has yet been stored, the custom error
             code `ERR_LDAP_CONFIG_NOT_AVAILABLE` is set in the response.
@@ -1196,7 +1196,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/LDAPConfiguration"
+              $ref: "#/components/schemas/IAMLDAPConfiguration"
         description: JSON object containing the LDAP configuration details.
         required: true
       responses:
@@ -1239,7 +1239,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/LDAPTestCredentials"
+              $ref: "#/components/schemas/IAMLDAPTestCredentials"
         description: JSON object containing `uid` and password of an LDAP user. For the
           most expressive test result, choose credentials different from the
           lookup credentials. The `uid` is the string the user is supposed to
@@ -1251,7 +1251,7 @@ paths:
           content:
             "*/*":
               schema:
-                $ref: "#/components/schemas/LDAPTestResultObject"
+                $ref: "#/components/schemas/IAMLDAPTestResultObject"
         "502":
           description: Either there was a connection error or one of the feature tests
             failed. To distinguish this response from a proxy-generated 502, a
@@ -1260,7 +1260,7 @@ paths:
           content:
             "*/*":
               schema:
-                $ref: "#/components/schemas/LDAPTestResultObject"
+                $ref: "#/components/schemas/IAMLDAPTestResultObject"
   /acs/api/v1/ldap/importgroup:
     post:
       operationId: importLDAPGroup
@@ -1274,7 +1274,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/LDAPImportGroupObject"
+              $ref: "#/components/schemas/IAMLDAPImportGroupObject"
         description: A JSON object specifying the name of the group to be imported. The
           meaning of the name depends on the group search settings.
         required: true
@@ -1301,7 +1301,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/LDAPImportUserObject"
+              $ref: "#/components/schemas/IAMLDAPImportUserObject"
         description: 'A JSON object specifying the username (read: "login" or "user ID") of
           the user that should be imported. That string is equivalent to the
           `uid` the user is supposed to log in with after successful import. The
@@ -1347,7 +1347,7 @@ paths:
                   array:
                     type: array
                     items:
-                      $ref: "#/components/schemas/User"
+                      $ref: "#/components/schemas/IAMUser"
   /acs/api/v1/users/{uid}:
     get:
       operationId: getUser
@@ -1369,7 +1369,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/User"
+                $ref: "#/components/schemas/IAMUser"
     put:
       operationId: createUser
       summary: Create user account.
@@ -1388,7 +1388,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UserCreate"
+              $ref: "#/components/schemas/IAMUserCreate"
         description: Password/description.
         required: true
       responses:
@@ -1414,7 +1414,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UserUpdate"
+              $ref: "#/components/schemas/IAMUserUpdate"
         description: Password/description.
         required: true
       responses:
@@ -1464,7 +1464,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UserGroups"
+                $ref: "#/components/schemas/IAMUserGroups"
   /acs/api/v1/users/{uid}/permissions:
     get:
       operationId: getUserPermissions
@@ -1487,7 +1487,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/UserPermissions"
+                $ref: "#/components/schemas/IAMUserPermissions"
 
   /cosmos/service/describe:
     post:
@@ -1982,14 +1982,14 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/OIDCProviderConfig"
+            $ref: "#/components/schemas/IAMOIDCProviderConfig"
       description: Provider config JSON object
       required: true
     SAMLProviderConfig:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/SAMLProviderConfig"
+            $ref: "#/components/schemas/IAMSAMLProviderConfig"
       description: Provider config JSON object
       required: true
 
@@ -2514,7 +2514,7 @@ components:
           additionalProperties:
             type: string
           type: object
-    LoginObject:
+    IAMLoginObject:
       type: object
       properties:
         uid:
@@ -2523,7 +2523,7 @@ components:
           type: string
         token:
           type: string
-    AuthToken:
+    IAMAuthToken:
       type: object
       required:
         - token
@@ -2531,7 +2531,7 @@ components:
         token:
           type: string
       additionalProperties: false
-    User:
+    IAMUser:
       type: object
       required:
         - uid
@@ -2558,7 +2558,7 @@ components:
         provider_id:
           type: string
       additionalProperties: false
-    UserCreate:
+    IAMUserCreate:
       type: object
       properties:
         description:
@@ -2576,7 +2576,7 @@ components:
         creator_uid:
           type: string
       additionalProperties: false
-    UserUpdate:
+    IAMUserUpdate:
       type: object
       properties:
         description:
@@ -2584,7 +2584,7 @@ components:
         password:
           type: string
       additionalProperties: false
-    OIDCProviderConfig:
+    IAMOIDCProviderConfig:
       type: object
       required:
         - description
@@ -2608,7 +2608,7 @@ components:
         ca_certs:
           type: string
       additionalProperties: false
-    Action:
+    IAMAction:
       type: object
       required:
         - name
@@ -2619,7 +2619,7 @@ components:
         url:
           type: string
       additionalProperties: false
-    UserGroups:
+    IAMUserGroups:
       type: object
       properties:
         array:
@@ -2633,9 +2633,9 @@ components:
               membershipurl:
                 type: string
               group:
-                $ref: "#/components/schemas/Group"
+                $ref: "#/components/schemas/IAMGroup"
             additionalProperties: false
-    UserPermissions:
+    IAMUserPermissions:
       type: object
       properties:
         direct:
@@ -2657,7 +2657,7 @@ components:
               actions:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Action"
+                  $ref: "#/components/schemas/IAMAction"
             additionalProperties: false
         groups:
           type: array
@@ -2684,10 +2684,10 @@ components:
               actions:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Action"
+                  $ref: "#/components/schemas/IAMAction"
             additionalProperties: false
       additionalProperties: false
-    Group:
+    IAMGroup:
       type: object
       required:
         - gid
@@ -2704,7 +2704,7 @@ components:
         provider_type:
           type: string
       additionalProperties: false
-    GroupCreate:
+    IAMGroupCreate:
       type: object
       required:
         - description
@@ -2714,7 +2714,7 @@ components:
         provider_type:
           type: string
       additionalProperties: false
-    GroupUpdate:
+    IAMGroupUpdate:
       type: object
       required:
         - description
@@ -2722,7 +2722,7 @@ components:
         description:
           type: string
       additionalProperties: false
-    GroupUsers:
+    IAMGroupUsers:
       type: object
       properties:
         array:
@@ -2736,9 +2736,9 @@ components:
               membershipurl:
                 type: string
               user:
-                $ref: "#/components/schemas/User"
+                $ref: "#/components/schemas/IAMUser"
       additionalProperties: false
-    GroupPermissions:
+    IAMGroupPermissions:
       type: object
       properties:
         array:
@@ -2760,9 +2760,9 @@ components:
               actions:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Action"
+                  $ref: "#/components/schemas/IAMAction"
       additionalProperties: false
-    ACL:
+    IAMACL:
       type: object
       required:
         - rid
@@ -2776,7 +2776,7 @@ components:
         description:
           type: string
       additionalProperties: false
-    ACLCreate:
+    IAMACLCreate:
       type: object
       required:
         - description
@@ -2784,7 +2784,7 @@ components:
         description:
           type: string
       additionalProperties: false
-    ACLUpdate:
+    IAMACLUpdate:
       type: object
       required:
         - description
@@ -2792,7 +2792,7 @@ components:
         description:
           type: string
       additionalProperties: false
-    ACLPermissions:
+    IAMACLPermissions:
       type: object
       properties:
         groups:
@@ -2811,7 +2811,7 @@ components:
               actions:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Action"
+                  $ref: "#/components/schemas/IAMAction"
         users:
           type: array
           items:
@@ -2828,9 +2828,9 @@ components:
               actions:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Action"
+                  $ref: "#/components/schemas/IAMAction"
       additionalProperties: false
-    ActionAllowed:
+    IAMActionAllowed:
       type: object
       required:
         - allowed
@@ -2838,7 +2838,7 @@ components:
         allowed:
           type: boolean
       additionalProperties: false
-    SAMLProviderConfig:
+    IAMSAMLProviderConfig:
       type: object
       required:
         - description
@@ -2852,7 +2852,7 @@ components:
         sp_base_url:
           type: string
       additionalProperties: false
-    SAMLACSCallbackUrlObject:
+    IAMSAMLACSCallbackUrlObject:
       type: object
       required:
         - acs-callback-url
@@ -2860,7 +2860,7 @@ components:
         acs-callback-url:
           type: string
       additionalProperties: false
-    LDAPUserSearchConfig:
+    IAMLDAPUserSearchConfig:
       type: object
       required:
         - search-base
@@ -2871,7 +2871,7 @@ components:
         search-filter-template:
           type: string
       additionalProperties: false
-    LDAPGroupSearchConfig:
+    IAMLDAPGroupSearchConfig:
       type: object
       required:
         - search-base
@@ -2886,7 +2886,7 @@ components:
           items:
             type: string
       additionalProperties: false
-    LDAPConfiguration:
+    IAMLDAPConfiguration:
       type: object
       required:
         - host
@@ -2909,15 +2909,15 @@ components:
         lookup-password:
           type: string
         user-search:
-          $ref: "#/components/schemas/LDAPUserSearchConfig"
+          $ref: "#/components/schemas/IAMLDAPUserSearchConfig"
         group-search:
-          $ref: "#/components/schemas/LDAPGroupSearchConfig"
+          $ref: "#/components/schemas/IAMLDAPGroupSearchConfig"
         ca-certs:
           type: string
         client-cert:
           type: string
       additionalProperties: false
-    LDAPImportUserObject:
+    IAMLDAPImportUserObject:
       type: object
       required:
         - username
@@ -2925,7 +2925,7 @@ components:
         username:
           type: string
       additionalProperties: false
-    LDAPImportGroupObject:
+    IAMLDAPImportGroupObject:
       type: object
       required:
         - groupname
@@ -2933,7 +2933,7 @@ components:
         groupname:
           type: string
       additionalProperties: false
-    LDAPTestCredentials:
+    IAMLDAPTestCredentials:
       type: object
       required:
         - uid
@@ -2944,7 +2944,7 @@ components:
         password:
           type: string
       additionalProperties: false
-    LDAPTestResultObject:
+    IAMLDAPTestResultObject:
       type: object
       required:
         - code

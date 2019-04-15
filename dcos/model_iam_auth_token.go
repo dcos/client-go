@@ -10,6 +10,6 @@
 
 package dcos
 
-type InlineResponse200 struct {
-	Array []Iamacl `json:"array,omitempty"`
+type IamAuthToken struct {
+	Token string `json:"token"`
 }

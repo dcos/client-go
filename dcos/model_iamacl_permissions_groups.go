@@ -10,6 +10,8 @@
 
 package dcos
 
-type InlineResponse200 struct {
-	Array []Iamacl `json:"array,omitempty"`
+type IamaclPermissionsGroups struct {
+	Gid      string      `json:"gid"`
+	Groupurl string      `json:"groupurl"`
+	Actions  []IamAction `json:"actions"`
 }

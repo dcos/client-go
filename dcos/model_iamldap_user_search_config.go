@@ -10,6 +10,7 @@
 
 package dcos
 
-type InlineResponse200 struct {
-	Array []Iamacl `json:"array,omitempty"`
+type IamldapUserSearchConfig struct {
+	SearchBase           string `json:"search-base"`
+	SearchFilterTemplate string `json:"search-filter-template"`
 }

@@ -62,7 +62,7 @@ Method | HTTP request | Description
 
 
 # **ConfigureOIDCProvider**
-> ConfigureOIDCProvider(ctx, providerId, oidcProviderConfig)
+> ConfigureOIDCProvider(ctx, providerId, iamoidcProviderConfig)
 Configure a new OIDC provider.
 
 Set up OIDC provider with the ID as specified in the URL, and with the config as specified via JSON in the request body.
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **providerId** | **string**| The ID of the provider to create. | 
-  **oidcProviderConfig** | [**OidcProviderConfig**](OidcProviderConfig.md)| Provider config JSON object | 
+  **iamoidcProviderConfig** | [**IamoidcProviderConfig**](IamoidcProviderConfig.md)| Provider config JSON object | 
 
 ### Return type
 
@@ -91,7 +91,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ConfigureSAMLProvider**
-> ConfigureSAMLProvider(ctx, providerId, samlProviderConfig)
+> ConfigureSAMLProvider(ctx, providerId, iamsamlProviderConfig)
 Configure a new SAML provider.
 
 Set up a SAML provider with the ID as specified in the URL, and with the config as given by the JSON document in the request body.
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **providerId** | **string**| The ID of the provider to create. | 
-  **samlProviderConfig** | [**SamlProviderConfig**](SamlProviderConfig.md)| Provider config JSON object | 
+  **iamsamlProviderConfig** | [**IamsamlProviderConfig**](IamsamlProviderConfig.md)| Provider config JSON object | 
 
 ### Return type
 
@@ -120,7 +120,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateGroup**
-> CreateGroup(ctx, gid, groupCreate)
+> CreateGroup(ctx, gid, iamGroupCreate)
 Create a group.
 
 Create a group.
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **gid** | **string**| The ID of the group. | 
-  **groupCreate** | [**GroupCreate**](GroupCreate.md)|  | 
+  **iamGroupCreate** | [**IamGroupCreate**](IamGroupCreate.md)|  | 
 
 ### Return type
 
@@ -178,7 +178,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateLDAPConfiguration**
-> CreateLDAPConfiguration(ctx, ldapConfiguration)
+> CreateLDAPConfiguration(ctx, iamldapConfiguration)
 Set new LDAP configuration.
 
 Set new directory (LDAP) back-end configuration. Replace current configuration, if existing.
@@ -188,7 +188,7 @@ Set new directory (LDAP) back-end configuration. Replace current configuration, 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **ldapConfiguration** | [**LdapConfiguration**](LdapConfiguration.md)| JSON object containing the LDAP configuration details. | 
+  **iamldapConfiguration** | [**IamldapConfiguration**](IamldapConfiguration.md)| JSON object containing the LDAP configuration details. | 
 
 ### Return type
 
@@ -206,7 +206,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateResourceACL**
-> CreateResourceACL(ctx, rid, aclCreate)
+> CreateResourceACL(ctx, rid, iamaclCreate)
 Create ACL for a certain resource.
 
 Create new ACL for resource with ID `rid` (description in body, no permissions by default).
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **rid** | **string**| The ID of the resource for which the ACL should be created. | 
-  **aclCreate** | [**AclCreate**](AclCreate.md)|  | 
+  **iamaclCreate** | [**IamaclCreate**](IamaclCreate.md)|  | 
 
 ### Return type
 
@@ -235,7 +235,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateUser**
-> CreateUser(ctx, uid, userCreate)
+> CreateUser(ctx, uid, iamUserCreate)
 Create user account.
 
 Create user (uid in url, details incl. credentials in body).
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **uid** | **string**| The ID of the user account to create. | 
-  **userCreate** | [**UserCreate**](UserCreate.md)| Password/description. | 
+  **iamUserCreate** | [**IamUserCreate**](IamUserCreate.md)| Password/description. | 
 
 ### Return type
 
@@ -599,7 +599,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetGroup**
-> Group GetGroup(ctx, gid)
+> IamGroup GetGroup(ctx, gid)
 Get single group object.
 
 Get specific `Group` object.
@@ -613,7 +613,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Group**](Group.md)
+[**IamGroup**](IAMGroup.md)
 
 ### Authorization
 
@@ -627,7 +627,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetGroupPermissions**
-> GroupPermissions GetGroupPermissions(ctx, gid)
+> IamGroupPermissions GetGroupPermissions(ctx, gid)
 Retrieve group permissions.
 
 Retrieve permissions of this group.
@@ -641,7 +641,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GroupPermissions**](GroupPermissions.md)
+[**IamGroupPermissions**](IAMGroupPermissions.md)
 
 ### Authorization
 
@@ -655,7 +655,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetGroupUsers**
-> GroupUsers GetGroupUsers(ctx, gid, optional)
+> IamGroupUsers GetGroupUsers(ctx, gid, optional)
 Retrieve members of a group.
 
 Retrieve users that are member of this group. Allows to query service accounts, defaults to list only user accounts.
@@ -678,7 +678,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GroupUsers**](GroupUsers.md)
+[**IamGroupUsers**](IAMGroupUsers.md)
 
 ### Authorization
 
@@ -740,7 +740,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetLDAPConfiguration**
-> LdapConfiguration GetLDAPConfiguration(ctx, )
+> IamldapConfiguration GetLDAPConfiguration(ctx, )
 Retrieve current LDAP configuration.
 
 Retrieve current directory (LDAP) back-end configuration.
@@ -750,7 +750,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**LdapConfiguration**](LDAPConfiguration.md)
+[**IamldapConfiguration**](IAMLDAPConfiguration.md)
 
 ### Authorization
 
@@ -764,7 +764,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetOIDCProvider**
-> OidcProviderConfig GetOIDCProvider(ctx, providerId)
+> IamoidcProviderConfig GetOIDCProvider(ctx, providerId)
 Get configuration for a specific provider.
 
 Get configuration for a specific provider.
@@ -778,7 +778,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OidcProviderConfig**](OIDCProviderConfig.md)
+[**IamoidcProviderConfig**](IAMOIDCProviderConfig.md)
 
 ### Authorization
 
@@ -816,7 +816,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetResourceACLs**
-> Acl GetResourceACLs(ctx, rid)
+> Iamacl GetResourceACLs(ctx, rid)
 Retrieve ACL for a certain resource.
 
 Retrieve single `ACL` object, for a specific resource.
@@ -830,7 +830,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Acl**](ACL.md)
+[**Iamacl**](IAMACL.md)
 
 ### Authorization
 
@@ -844,7 +844,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetResourceGroupAction**
-> ActionAllowed GetResourceGroupAction(ctx, rid, gid, action)
+> IamActionAllowed GetResourceGroupAction(ctx, rid, gid, action)
 Query whether action is allowed or not.
 
 Query whether action is allowed or not.
@@ -860,7 +860,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ActionAllowed**](ActionAllowed.md)
+[**IamActionAllowed**](IAMActionAllowed.md)
 
 ### Authorization
 
@@ -903,7 +903,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetResourcePermissions**
-> AclPermissions GetResourcePermissions(ctx, rid)
+> IamaclPermissions GetResourcePermissions(ctx, rid)
 Retrieve all permissions for resource.
 
 Retrieve all permissions that are set for a specific resource.
@@ -917,7 +917,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AclPermissions**](ACLPermissions.md)
+[**IamaclPermissions**](IAMACLPermissions.md)
 
 ### Authorization
 
@@ -931,7 +931,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetResourceUserAction**
-> ActionAllowed GetResourceUserAction(ctx, rid, uid, action)
+> IamActionAllowed GetResourceUserAction(ctx, rid, uid, action)
 Query whether action is allowed or not.
 
 Query whether action is allowed or not.
@@ -947,7 +947,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ActionAllowed**](ActionAllowed.md)
+[**IamActionAllowed**](IAMActionAllowed.md)
 
 ### Authorization
 
@@ -990,7 +990,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetSAMLProvider**
-> SamlProviderConfig GetSAMLProvider(ctx, providerId)
+> IamsamlProviderConfig GetSAMLProvider(ctx, providerId)
 Get configuration for a specific SAML provider.
 
 Get configuration for a specific SAML provider.
@@ -1004,7 +1004,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SamlProviderConfig**](SAMLProviderConfig.md)
+[**IamsamlProviderConfig**](IAMSAMLProviderConfig.md)
 
 ### Authorization
 
@@ -1018,7 +1018,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetSAMLProviderACSCallbackURL**
-> SamlacsCallbackUrlObject GetSAMLProviderACSCallbackURL(ctx, providerId)
+> IamsamlacsCallbackUrlObject GetSAMLProviderACSCallbackURL(ctx, providerId)
 Get the authentication callback URL for this SP.
 
 The IAM acts as SAML service provider (SP). A SAML identity provider (IdP) usually requires to be configured with the Assertion Consumer Service (ACS) callback URL of the SP (which is where the IdP makes the end-user submit the authentication response).
@@ -1032,7 +1032,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SamlacsCallbackUrlObject**](SAMLACSCallbackUrlObject.md)
+[**IamsamlacsCallbackUrlObject**](IAMSAMLACSCallbackUrlObject.md)
 
 ### Authorization
 
@@ -1098,7 +1098,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetUser**
-> User GetUser(ctx, uid)
+> IamUser GetUser(ctx, uid)
 Get single user object.
 
 Get specific `User` object.
@@ -1112,7 +1112,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**IamUser**](IAMUser.md)
 
 ### Authorization
 
@@ -1126,7 +1126,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetUserGroups**
-> UserGroups GetUserGroups(ctx, uid)
+> IamUserGroups GetUserGroups(ctx, uid)
 Retrieve groups the user is member of.
 
 Retrieve groups the user is member of.
@@ -1140,7 +1140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserGroups**](UserGroups.md)
+[**IamUserGroups**](IAMUserGroups.md)
 
 ### Authorization
 
@@ -1154,7 +1154,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetUserPermissions**
-> UserPermissions GetUserPermissions(ctx, uid)
+> IamUserPermissions GetUserPermissions(ctx, uid)
 Retrieve permissions an account has.
 
 Retrieve the permissions for this account with direct permissions distinguished from those that are obtained through group membership.
@@ -1168,7 +1168,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserPermissions**](UserPermissions.md)
+[**IamUserPermissions**](IAMUserPermissions.md)
 
 ### Authorization
 
@@ -1217,7 +1217,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ImportLDAPGroup**
-> ImportLDAPGroup(ctx, ldapImportGroupObject)
+> ImportLDAPGroup(ctx, iamldapImportGroupObject)
 Import an LDAP group.
 
 Attempt to import a group of users from the configured directory (LDAP) back-end. See docs/ldap.md for details on group import.
@@ -1227,7 +1227,7 @@ Attempt to import a group of users from the configured directory (LDAP) back-end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **ldapImportGroupObject** | [**LdapImportGroupObject**](LdapImportGroupObject.md)| A JSON object specifying the name of the group to be imported. The meaning of the name depends on the group search settings. | 
+  **iamldapImportGroupObject** | [**IamldapImportGroupObject**](IamldapImportGroupObject.md)| A JSON object specifying the name of the group to be imported. The meaning of the name depends on the group search settings. | 
 
 ### Return type
 
@@ -1245,7 +1245,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ImportLDAPUser**
-> ImportLDAPUser(ctx, ldapImportUserObject)
+> ImportLDAPUser(ctx, iamldapImportUserObject)
 Import an LDAP user.
 
 Attempt to import a user from the configured directory (LDAP) back-end.
@@ -1255,7 +1255,7 @@ Attempt to import a user from the configured directory (LDAP) back-end.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **ldapImportUserObject** | [**LdapImportUserObject**](LdapImportUserObject.md)| A JSON object specifying the username (read: \&quot;login\&quot; or \&quot;user ID\&quot;) of the user that should be imported. That string is equivalent to the &#x60;uid&#x60; the user is supposed to log in with after successful import. The exact meaning of this string depends on the configured LDAP authentication method. | 
+  **iamldapImportUserObject** | [**IamldapImportUserObject**](IamldapImportUserObject.md)| A JSON object specifying the username (read: \&quot;login\&quot; or \&quot;user ID\&quot;) of the user that should be imported. That string is equivalent to the &#x60;uid&#x60; the user is supposed to log in with after successful import. The exact meaning of this string depends on the configured LDAP authentication method. | 
 
 ### Return type
 
@@ -1273,7 +1273,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Login**
-> AuthToken Login(ctx, loginObject)
+> IamAuthToken Login(ctx, iamLoginObject)
 Log in (obtain a DC/OS authentication token).
 
 Exchange user credentials (regular user account: uid and password; service user account: uid and service login token) for a DC/OS authentication token. The resulting DC/OS authentication token is an RFC 7519 JSON Web Token (JWT) of type RS256. It has a limited lifetime which depends on the IAM configuration (only, i.e. the lifetime cannot be chosen as part of the login HTTP request). The DC/OS authentication token can be verified out-of-band using a standards-compliant RS256 JWT verification procedure based on the long-lived public key material presented by the IAM's /auth/jwks endpoint, and by requiring the two claims `exp` and `uid` to be present.
@@ -1283,11 +1283,11 @@ Exchange user credentials (regular user account: uid and password; service user 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **loginObject** | [**LoginObject**](LoginObject.md)| uid &amp; password or uid &amp; service login token. | 
+  **iamLoginObject** | [**IamLoginObject**](IamLoginObject.md)| uid &amp; password or uid &amp; service login token. | 
 
 ### Return type
 
-[**AuthToken**](AuthToken.md)
+[**IamAuthToken**](IAMAuthToken.md)
 
 ### Authorization
 
@@ -1448,7 +1448,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TestLDAPBackendConnection**
-> LdapTestResultObject TestLDAPBackendConnection(ctx, ldapTestCredentials)
+> IamldapTestResultObject TestLDAPBackendConnection(ctx, iamldapTestCredentials)
 Test connection to the LDAP back-end.
 
 Perform basic feature tests. Verify that the current directory (LDAP) configuration parameters allow for a successful connection to the directory back-end. For instance, this endpoint simulates the procedure for authentication via LDAP, but provides more useful feedback upon failure than the actual login endpoint.
@@ -1458,11 +1458,11 @@ Perform basic feature tests. Verify that the current directory (LDAP) configurat
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **ldapTestCredentials** | [**LdapTestCredentials**](LdapTestCredentials.md)| JSON object containing &#x60;uid&#x60; and password of an LDAP user. For the most expressive test result, choose credentials different from the lookup credentials. The &#x60;uid&#x60; is the string the user is supposed to log in with after successful LDAP back-end configuration. | 
+  **iamldapTestCredentials** | [**IamldapTestCredentials**](IamldapTestCredentials.md)| JSON object containing &#x60;uid&#x60; and password of an LDAP user. For the most expressive test result, choose credentials different from the lookup credentials. The &#x60;uid&#x60; is the string the user is supposed to log in with after successful LDAP back-end configuration. | 
 
 ### Return type
 
-[**LdapTestResultObject**](LDAPTestResultObject.md)
+[**IamldapTestResultObject**](IAMLDAPTestResultObject.md)
 
 ### Authorization
 
@@ -1476,7 +1476,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateGroup**
-> UpdateGroup(ctx, gid, groupUpdate)
+> UpdateGroup(ctx, gid, iamGroupUpdate)
 Update group.
 
 Update existing group (description).
@@ -1487,7 +1487,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **gid** | **string**| The ID of the group to modify. | 
-  **groupUpdate** | [**GroupUpdate**](GroupUpdate.md)|  | 
+  **iamGroupUpdate** | [**IamGroupUpdate**](IamGroupUpdate.md)|  | 
 
 ### Return type
 
@@ -1505,7 +1505,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateOIDCProvider**
-> UpdateOIDCProvider(ctx, providerId, oidcProviderConfig)
+> UpdateOIDCProvider(ctx, providerId, iamoidcProviderConfig)
 Update OIDC provider config.
 
 Update config for existing OIDC provider.
@@ -1516,7 +1516,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **providerId** | **string**| The ID of the provider to modify. | 
-  **oidcProviderConfig** | [**OidcProviderConfig**](OidcProviderConfig.md)| Provider config JSON object | 
+  **iamoidcProviderConfig** | [**IamoidcProviderConfig**](IamoidcProviderConfig.md)| Provider config JSON object | 
 
 ### Return type
 
@@ -1534,7 +1534,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateResourceACL**
-> UpdateResourceACL(ctx, rid, aclUpdate)
+> UpdateResourceACL(ctx, rid, iamaclUpdate)
 Update ACL for a certain resource.
 
 Update ACL for resource with ID `rid`.
@@ -1545,7 +1545,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **rid** | **string**| The ID of the resource for which the ACL should be created. | 
-  **aclUpdate** | [**AclUpdate**](AclUpdate.md)| New ACL. | 
+  **iamaclUpdate** | [**IamaclUpdate**](IamaclUpdate.md)| New ACL. | 
 
 ### Return type
 
@@ -1563,7 +1563,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateSAMLProvider**
-> UpdateSAMLProvider(ctx, providerId, samlProviderConfig)
+> UpdateSAMLProvider(ctx, providerId, iamsamlProviderConfig)
 Update SAML provider config.
 
 Update config for existing SAML provider.
@@ -1574,7 +1574,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **providerId** | **string**| The ID of the provider to modify. | 
-  **samlProviderConfig** | [**SamlProviderConfig**](SamlProviderConfig.md)| Provider config JSON object | 
+  **iamsamlProviderConfig** | [**IamsamlProviderConfig**](IamsamlProviderConfig.md)| Provider config JSON object | 
 
 ### Return type
 
@@ -1592,7 +1592,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateUser**
-> UpdateUser(ctx, uid, userUpdate)
+> UpdateUser(ctx, uid, iamUserUpdate)
 Update user account.
 
 Update existing user account (meta data and/or password).
@@ -1603,7 +1603,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **uid** | **string**| The ID of the user account to modify. | 
-  **userUpdate** | [**UserUpdate**](UserUpdate.md)| Password/description. | 
+  **iamUserUpdate** | [**IamUserUpdate**](IamUserUpdate.md)| Password/description. | 
 
 ### Return type
 

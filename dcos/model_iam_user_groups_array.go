@@ -10,6 +10,7 @@
 
 package dcos
 
-type InlineResponse200 struct {
-	Array []Iamacl `json:"array,omitempty"`
+type IamUserGroupsArray struct {
+	Membershipurl string   `json:"membershipurl"`
+	Group         IamGroup `json:"group"`
 }
