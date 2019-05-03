@@ -3467,7 +3467,7 @@ type IamServiceAccountObject struct {
 	Expire 				time.Duration `json:"expire"`
 }
 
-func (a *IAMApiService) LoginWithServiceAccount(ctx context.Context, opt *IamServiceAccountObject) (IamAuthToken, *http.Response, error) {
+func (a *IAMApiService) LoginWithServiceAccount(ctx context.Context, opt IamServiceAccountObject) (IamAuthToken, *http.Response, error) {
 	var (
 		localEmptyIamToken  	IamAuthToken
 	)
