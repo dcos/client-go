@@ -11,17 +11,17 @@
 package dcos
 
 import (
-	"context"
-	"crypto/rsa"
-	"fmt"
-	"github.com/antihax/optional"
-	"gopkg.in/square/go-jose.v2"
-	"gopkg.in/square/go-jose.v2/jwt"
-	"io/ioutil"
-	"net/http"
-	"net/url"
-	"strings"
-	"time"
+  "context"
+  "crypto/rsa"
+  "fmt"
+  "github.com/antihax/optional"
+  "gopkg.in/square/go-jose.v2"
+  "gopkg.in/square/go-jose.v2/jwt"
+  "io/ioutil"
+  "net/http"
+  "net/url"
+  "strings"
+  "time"
   "crypto/x509"
   "encoding/pem"
 )
