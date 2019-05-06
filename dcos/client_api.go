@@ -21,20 +21,22 @@ import (
 )
 
 /*
-IAMApiService Log in using a service account secret, as created using
-dcos security secrets create-sa-secret.
-
-  * @param opt ServiceAccountOptions - the options for logging in with service account
+ServiceAccountOptions describe the service account parameters.
 */
-
 type ServiceAccountOptions struct {
 	LoginEndoint string        `json:"login_endpoint"`
 	PrivateKey   string        `json:"private_key"`
 	Scheme       string        `json:"scheme"`
-	Uid          string        `json:"uid"`
+	UID          string        `json:"uid"`
 	Expire       time.Duration `json:"expire"`
 }
 
+/*
+LoginWithServiceAccount Logs in using a service account secret, as created using
+dcos security secrets create-sa-secret.
+
+* @param opt ServiceAccountOptions - the options for logging in with service account
+*/
 func (c *APIClient) LoginWithServiceAccount(ctx context.Context, opt ServiceAccountOptions) (IamAuthToken, *http.Response, error) {
 	var (
 		localEmptyIamToken IamAuthToken
@@ -79,7 +81,7 @@ func (c *APIClient) LoginWithServiceAccount(ctx context.Context, opt ServiceAcco
 		UID string `json:"uid"`
 		Exp int64  `json:"exp"`
 	}{
-		opt.Uid,
+		opt.UID,
 		time.Now().Add(opt.Expire).Unix(),
 	}
 	tokenStr, err := jwt.Signed(sig).Claims(cl).CompactSerialize()
@@ -89,7 +91,7 @@ func (c *APIClient) LoginWithServiceAccount(ctx context.Context, opt ServiceAcco
 
 	// Create an IamLoginObject and delegate to Login method
 	loginObj := IamLoginObject{
-		Uid:   opt.Uid,
+		Uid:   opt.UID,
 		Token: tokenStr,
 	}
 
