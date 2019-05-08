@@ -10,7 +10,7 @@ vet: lint
 
 .PHONY: lint
 lint: fmt
-	golint -set_exit_status ./...
+	golint -set_exit_status ./dcos/...
 
 .PHONY: fmt
 fmt:
@@ -37,6 +37,7 @@ generate-client:
 	$(call run_generator,-DsupportingFiles=response.go)
 	$(call run_generator,-DsupportingFiles=configuration.go)
 	$(call run_generator,-DsupportingFiles=README.md)
+	cp templates/model_edgelb_v2_frontend.go.tmpl dcos/model_edgelb_v2_frontend.go
 
 .PHONY: validate
 validate: generate
