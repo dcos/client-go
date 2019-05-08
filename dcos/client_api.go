@@ -14,21 +14,22 @@ import (
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
-	"gopkg.in/square/go-jose.v2"
-	"gopkg.in/square/go-jose.v2/jwt"
 	"net/http"
 	"time"
+
+	"gopkg.in/square/go-jose.v2"
+	"gopkg.in/square/go-jose.v2/jwt"
 )
 
 /*
 ServiceAccountOptions describe the service account parameters.
 */
 type ServiceAccountOptions struct {
-	LoginEndoint string        `json:"login_endpoint"`
-	PrivateKey   string        `json:"private_key"`
-	Scheme       string        `json:"scheme"`
-	UID          string        `json:"uid"`
-	Expire       time.Duration `json:"expire"`
+	LoginEndpoint string        `json:"login_endpoint"`
+	PrivateKey    string        `json:"private_key"`
+	Scheme        string        `json:"scheme"`
+	UID           string        `json:"uid"`
+	Expire        time.Duration `json:"expire"`
 }
 
 /*
