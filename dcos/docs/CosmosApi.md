@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**PackageDescribe**](CosmosApi.md#PackageDescribe) | **Post** /package/describe | 
 [**PackageInstall**](CosmosApi.md#PackageInstall) | **Post** /package/install | 
+[**PackageList**](CosmosApi.md#PackageList) | **Post** /package/list | 
 [**PackageRepositoryAdd**](CosmosApi.md#PackageRepositoryAdd) | **Post** /package/repository/add | 
 [**PackageRepositoryDelete**](CosmosApi.md#PackageRepositoryDelete) | **Post** /package/repository/delete | 
 [**PackageSearch**](CosmosApi.md#PackageSearch) | **Post** /package/search | 
@@ -74,6 +75,41 @@ No authorization required
 
  - **Content-Type**: application/vnd.dcos.package.install-request+json;charset=utf-8;version=v1
  - **Accept**: application/vnd.dcos.package.install-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PackageList**
+> CosmosPackageListV1Response PackageList(ctx, optional)
+
+
+Lists all of the running DC/OS services started from a DC/OS package..
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***PackageListOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a PackageListOpts struct
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cosmosPackageListV1Request** | [**optional.Interface of CosmosPackageListV1Request**](CosmosPackageListV1Request.md)|  | 
+
+### Return type
+
+[**CosmosPackageListV1Response**](CosmosPackageListV1Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/vnd.dcos.package.list-request+json;charset=utf-8;version=v1
+ - **Accept**: application/vnd.dcos.package.list-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

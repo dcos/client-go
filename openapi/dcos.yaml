@@ -1587,6 +1587,31 @@ paths:
                 $ref: '#/components/schemas/CosmosError'
       tags:
       - cosmos
+  /package/list:
+    post:
+      description: Lists all of the running DC/OS services started from a DC/OS package..
+      operationId: package-list
+      requestBody:
+        content:
+          application/vnd.dcos.package.list-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/CosmosPackageListV1Request'
+      responses:
+        200:
+          description: Request successful
+          content:
+            application/vnd.dcos.package.list-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosPackageListV1Response'
+        400:
+          description: Request failed due to a bad request
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+      tags:
+      - cosmos
+
   /package/repository/add:
     post:
       description: |
@@ -2065,6 +2090,14 @@ components:
       required:
       - packageName
       type: object
+    CosmosPackageListV1Request:
+      additionalProperties: false
+      properties:
+        packageName:
+          type: string
+        appId:
+          type: string
+      type: object
     CosmosError:
       additionalProperties: false
       properties:
@@ -2388,6 +2421,34 @@ components:
           $ref: '#/components/schemas/CosmosPackage'
       required:
       - package
+      type: object
+    CosmosPackageListV1Response:
+      additionalProperties: false
+      properties:
+        packages:
+          type: array
+          items:
+            $ref: '#/components/schemas/CosmosPackageListV1Package'
+      required:
+      - packages
+      type: object
+    CosmosPackageListV1Package:
+      additionalProperties: false
+      properties:
+        appId:
+          type: string
+        packageInformation:
+          type: object
+          $ref: '#/components/schemas/CosmosPackageListV1PackageInformation'
+      type: object
+    CosmosPackageListV1PackageInformation:
+      additionalProperties: false
+      properties:
+        appId:
+          type: string
+        packageDefinition:
+          type: object
+          $ref: '#/components/schemas/CosmosPackage'
       type: object
     CosmosPackage:
       additionalProperties: false
