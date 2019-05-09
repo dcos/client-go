@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 
 	"github.com/antihax/optional"
@@ -42,6 +43,20 @@ func installPackage(client *dcos.APIClient, request dcos.CosmosPackageInstallV1R
 	return nil
 }
 
+func listPackages(client *dcos.APIClient) error {
+	result, _, err := client.Cosmos.PackageList(context.TODO(), &dcos.PackageListOpts{
+		CosmosPackageListV1Request: optional.NewInterface(dcos.CosmosPackageListV1Request{}),
+	})
+	if err != nil {
+		return err
+	}
+	fmt.Println("Installed packages:")
+	for _, pkg := range result.Packages {
+		fmt.Println(" - " + pkg.PackageInformation.PackageDefinition.Name)
+	}
+	return nil
+}
+
 func uninstallPackage(client *dcos.APIClient, request dcos.CosmosPackageUninstallV1Request) error {
 	result, _, err := client.Cosmos.PackageUninstall(context.TODO(), request, nil)
 	if err != nil {
@@ -69,6 +84,11 @@ func main() {
 		log.Fatalf("Installing package failed: %s\n", err)
 	}
 
+	err = listPackages(client)
+	if err != nil {
+		log.Fatalf("Listing packages failed: %s\n", err)
+	}
+
 	err = uninstallPackage(client, dcos.CosmosPackageUninstallV1Request{PackageName: "hello-world"})
 	if err != nil {
 		log.Fatalf("Uninstalling package failed: %s\n", err)
@@ -90,6 +110,11 @@ func main() {
 	err = installPackage(client, dcosMonitoringRequest)
 	if err != nil {
 		log.Fatalf("Installing package failed: %s\n", err)
+	}
+
+	err = listPackages(client)
+	if err != nil {
+		log.Fatalf("Listing packages failed: %s\n", err)
 	}
 
 	err = uninstallPackage(client, dcos.CosmosPackageUninstallV1Request{PackageName: "beta-dcos-monitoring"})
