@@ -62,10 +62,10 @@ Class | Method | HTTP request | Description
 *IAMApi* | [**DeleteResourceACL**](docs/IAMApi.md#deleteresourceacl) | **Delete** /acs/api/v1/acls/{rid} | Delete ACL for a certain resource.
 *IAMApi* | [**DeleteSAMLProvider**](docs/IAMApi.md#deletesamlprovider) | **Delete** /acs/api/v1/auth/saml/providers/{provider-id} | Delete provider.
 *IAMApi* | [**DeleteUser**](docs/IAMApi.md#deleteuser) | **Delete** /acs/api/v1/users/{uid} | Delete account.
+*IAMApi* | [**ForbidResourceGroupActions**](docs/IAMApi.md#forbidresourcegroupactions) | **Delete** /acs/api/v1/acls/{rid}/groups/{gid} | Forbid all actions of given group to given resource.
 *IAMApi* | [**ForbidResourceUserAction**](docs/IAMApi.md#forbidresourceuseraction) | **Delete** /acs/api/v1/acls/{rid}/users/{uid}/{action} | Forbid single action for given account and resource.
 *IAMApi* | [**ForbidResourceUserActions**](docs/IAMApi.md#forbidresourceuseractions) | **Delete** /acs/api/v1/acls/{rid}/users/{uid} | Forbid all actions of given account to given resource.
 *IAMApi* | [**ForbitResourceGroupAction**](docs/IAMApi.md#forbitresourcegroupaction) | **Delete** /acs/api/v1/acls/{rid}/groups/{gid}/{action} | Forbid single action for given resource and group.
-*IAMApi* | [**ForbitResourceGroupActions**](docs/IAMApi.md#forbitresourcegroupactions) | **Delete** /acs/api/v1/acls/{rid}/groups/{gid} | Forbid all actions of given group to given resource.
 *IAMApi* | [**GetACLs**](docs/IAMApi.md#getacls) | **Get** /acs/api/v1/acls | Retrieve all ACL objects.
 *IAMApi* | [**GetGroup**](docs/IAMApi.md#getgroup) | **Get** /acs/api/v1/groups/{gid} | Get single group object.
 *IAMApi* | [**GetGroupPermissions**](docs/IAMApi.md#getgrouppermissions) | **Get** /acs/api/v1/groups/{gid}/permissions | Retrieve group permissions.

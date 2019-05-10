@@ -307,7 +307,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/IAMActions"
     delete:
-      operationId: forbitResourceGroupActions
+      operationId: forbidResourceGroupActions
       summary: Forbid all actions of given group to given resource.
       description: Forbid all actions of given group to given resource.
       tags:

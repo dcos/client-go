@@ -18,10 +18,10 @@ Method | HTTP request | Description
 [**DeleteResourceACL**](IAMApi.md#DeleteResourceACL) | **Delete** /acs/api/v1/acls/{rid} | Delete ACL for a certain resource.
 [**DeleteSAMLProvider**](IAMApi.md#DeleteSAMLProvider) | **Delete** /acs/api/v1/auth/saml/providers/{provider-id} | Delete provider.
 [**DeleteUser**](IAMApi.md#DeleteUser) | **Delete** /acs/api/v1/users/{uid} | Delete account.
+[**ForbidResourceGroupActions**](IAMApi.md#ForbidResourceGroupActions) | **Delete** /acs/api/v1/acls/{rid}/groups/{gid} | Forbid all actions of given group to given resource.
 [**ForbidResourceUserAction**](IAMApi.md#ForbidResourceUserAction) | **Delete** /acs/api/v1/acls/{rid}/users/{uid}/{action} | Forbid single action for given account and resource.
 [**ForbidResourceUserActions**](IAMApi.md#ForbidResourceUserActions) | **Delete** /acs/api/v1/acls/{rid}/users/{uid} | Forbid all actions of given account to given resource.
 [**ForbitResourceGroupAction**](IAMApi.md#ForbitResourceGroupAction) | **Delete** /acs/api/v1/acls/{rid}/groups/{gid}/{action} | Forbid single action for given resource and group.
-[**ForbitResourceGroupActions**](IAMApi.md#ForbitResourceGroupActions) | **Delete** /acs/api/v1/acls/{rid}/groups/{gid} | Forbid all actions of given group to given resource.
 [**GetACLs**](IAMApi.md#GetACLs) | **Get** /acs/api/v1/acls | Retrieve all ACL objects.
 [**GetGroup**](IAMApi.md#GetGroup) | **Get** /acs/api/v1/groups/{gid} | Get single group object.
 [**GetGroupPermissions**](IAMApi.md#GetGroupPermissions) | **Get** /acs/api/v1/groups/{gid}/permissions | Retrieve group permissions.
@@ -456,6 +456,35 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **ForbidResourceGroupActions**
+> ForbidResourceGroupActions(ctx, rid, gid)
+Forbid all actions of given group to given resource.
+
+Forbid all actions of given group to given resource.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **rid** | **string**| resource ID. | 
+  **gid** | **string**| group ID. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **ForbidResourceUserAction**
 > ForbidResourceUserAction(ctx, rid, uid, action)
 Forbid single action for given account and resource.
@@ -529,35 +558,6 @@ Name | Type | Description  | Notes
   **rid** | **string**| resource ID. | 
   **gid** | **string**| group ID. | 
   **action** | **string**| action name | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **ForbitResourceGroupActions**
-> ForbitResourceGroupActions(ctx, rid, gid)
-Forbid all actions of given group to given resource.
-
-Forbid all actions of given group to given resource.
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **rid** | **string**| resource ID. | 
-  **gid** | **string**| group ID. | 
 
 ### Return type
 
