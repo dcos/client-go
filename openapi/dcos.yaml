@@ -948,6 +948,10 @@ paths:
         "200":
           description: The response body contains the metadata in UTF-8 encoding, setting
             the Content-Type to `application/samlmetadata+xml`.
+          content:
+            application/samlmetadata+xml:
+              schema:
+                type: string
   /acs/api/v1/groups:
     get:
       operationId: getGroups
