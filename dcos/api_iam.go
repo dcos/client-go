@@ -2764,7 +2764,7 @@ func (a *IAMApiService) GetSAMLProviderSPMetadata(ctx context.Context, providerI
 	}
 
 	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"application/samlmetadata+xml"}
+	localVarHttpHeaderAccepts := []string{"application/samlmetadata+xml", "application/json"}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)

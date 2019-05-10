@@ -952,6 +952,10 @@ paths:
             application/samlmetadata+xml:
               schema:
                 type: string
+            application/json:
+              # Workaround mandatory accept application/json (DCOS-53724)
+              schema:
+                type: string
   /acs/api/v1/groups:
     get:
       operationId: getGroups
