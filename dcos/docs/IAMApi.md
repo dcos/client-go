@@ -1046,7 +1046,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetSAMLProviderSPMetadata**
-> GetSAMLProviderSPMetadata(ctx, providerId)
+> string GetSAMLProviderSPMetadata(ctx, providerId)
 Get SP metadata (XML).
 
 The IAM acts as SAML service provider (SP). This endpoint provides the SP metadata as an XML document. Certain identity providers (IdPs) may want to directly consume this document.
@@ -1060,7 +1060,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 
@@ -1069,7 +1069,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/samlmetadata+xml, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
