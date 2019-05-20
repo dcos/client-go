@@ -28,6 +28,8 @@ tags:
   description: Directory (LDAP) back-end configuration and interaction endpoints
 - name: edgelb
   description: Create and manage load balancers with DCOS Edge LB API
+- name: metadata
+  description: DC/OS Cluster metadata
 
 paths:
   /secrets/v1/secret/{store}/{path-to-secret}:
@@ -1979,6 +1981,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/EdgelbError"
+  /metadata:
+    get:
+      description: Public IP and Cluster ID
+      operationId: Metadata
+      tags:
+        - metadata
+      responses:
+        "200":
+          description: Public IP and Cluster ID
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Metadata"
 
 components:
   requestBodies:
@@ -3519,6 +3534,15 @@ components:
           format: int32
         message:
           type: string
+    Metadata:
+      type: object
+      properties:
+        PUBLIC_IPV4:
+          type: string
+          format: ipv4
+        CLUSTER_ID:
+          type: string
+          format: uuid
   securitySchemes:
     token:
       in: header

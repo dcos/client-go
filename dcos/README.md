@@ -103,6 +103,7 @@ Class | Method | HTTP request | Description
 *IAMApi* | [**UpdateResourceACL**](docs/IAMApi.md#updateresourceacl) | **Patch** /acs/api/v1/acls/{rid} | Update ACL for a certain resource.
 *IAMApi* | [**UpdateSAMLProvider**](docs/IAMApi.md#updatesamlprovider) | **Patch** /acs/api/v1/auth/saml/providers/{provider-id} | Update SAML provider config.
 *IAMApi* | [**UpdateUser**](docs/IAMApi.md#updateuser) | **Patch** /acs/api/v1/users/{uid} | Update user account.
+*MetadataApi* | [**Metadata**](docs/MetadataApi.md#metadata) | **Get** /metadata | 
 *SecretsApi* | [**CreateSecret**](docs/SecretsApi.md#createsecret) | **Put** /secrets/v1/secret/{store}/{path-to-secret} | Create a secret in the store at the path.
 *SecretsApi* | [**DeleteSecret**](docs/SecretsApi.md#deletesecret) | **Delete** /secrets/v1/secret/{store}/{path-to-secret} | Delete a secret.
 *SecretsApi* | [**GetSecret**](docs/SecretsApi.md#getsecret) | **Get** /secrets/v1/secret/{store}/{path-to-secret} | Read or list a secret from the store by its path.
@@ -215,6 +216,7 @@ Class | Method | HTTP request | Description
  - [IamsamlProviderConfig](docs/IamsamlProviderConfig.md)
  - [IamsamlacsCallbackUrlObject](docs/IamsamlacsCallbackUrlObject.md)
  - [InlineResponse200](docs/InlineResponse200.md)
+ - [Metadata](docs/Metadata.md)
  - [SecretsV1Secret](docs/SecretsV1Secret.md)
 
 

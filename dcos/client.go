@@ -51,6 +51,8 @@ type APIClient struct {
 	IAM *IAMApiService
 
 	Secrets *SecretsApiService
+
+	Metadata *MetadataApiService
 }
 
 type service struct {
@@ -94,6 +96,7 @@ func NewClientWithConfig(config *Config) (*APIClient, error) {
 	c.Edgelb = (*EdgelbApiService)(&c.common)
 	c.IAM = (*IAMApiService)(&c.common)
 	c.Secrets = (*SecretsApiService)(&c.common)
+	c.Metadata = (*MetadataApiService)(&c.common)
 
 	return c, nil
 }
@@ -182,6 +185,11 @@ func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 // Change base path to allow switching to mocks
 func (c *APIClient) ChangeBasePath(path string) {
 	c.cfg.BasePath = path
+}
+
+// Config returns the current *Configuration used by APIClient
+func (c *APIClient) Config() *Configuration {
+	return c.cfg
 }
 
 // prepareRequest build the request
