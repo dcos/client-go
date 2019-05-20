@@ -5,4 +5,5 @@
 - [IAM](iam)
 - [Kubernetes](kubernetes)
 - [Marathon](marathon)
+- [Metadata](metadata)
 - [Secrets](secrets)
