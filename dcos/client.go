@@ -187,11 +187,6 @@ func (c *APIClient) ChangeBasePath(path string) {
 	c.cfg.BasePath = path
 }
 
-// Config returns the current *Configuration used by APIClient
-func (c *APIClient) Config() *Configuration {
-	return c.cfg
-}
-
 // prepareRequest build the request
 func (c *APIClient) prepareRequest(
 	ctx context.Context,
