@@ -51,6 +51,8 @@ type APIClient struct {
 	IAM *IAMApiService
 
 	Secrets *SecretsApiService
+
+	Metadata *MetadataApiService
 }
 
 type service struct {
@@ -94,6 +96,7 @@ func NewClientWithConfig(config *Config) (*APIClient, error) {
 	c.Edgelb = (*EdgelbApiService)(&c.common)
 	c.IAM = (*IAMApiService)(&c.common)
 	c.Secrets = (*SecretsApiService)(&c.common)
+	c.Metadata = (*MetadataApiService)(&c.common)
 
 	return c, nil
 }
