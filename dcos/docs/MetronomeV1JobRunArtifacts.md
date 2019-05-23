@@ -1,6 +1,7 @@
 # MetronomeV1JobRunArtifacts
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uri** | **string** | URI to be fetched by Mesos fetcher module | 

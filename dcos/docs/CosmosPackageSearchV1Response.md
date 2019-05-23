@@ -1,6 +1,7 @@
 # CosmosPackageSearchV1Response
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Packages** | [**[]CosmosPackageSearchDetails**](CosmosPackageSearchDetails.md) |  | [optional] 

@@ -1,6 +1,7 @@
 # IamUserGroups
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Array** | [**[]IamUserGroupsArray**](IAMUserGroups_array.md) |  | [optional] 

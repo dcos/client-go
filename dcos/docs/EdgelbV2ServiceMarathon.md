@@ -1,6 +1,7 @@
 # EdgelbV2ServiceMarathon
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ServiceID** | **string** | Marathon pod or application ID. | [optional] 

@@ -1,6 +1,7 @@
 # IamUserGroupsArray
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Membershipurl** | **string** |  | 

@@ -1,6 +1,7 @@
 # IamldapTestResultObject
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Code** | **string** |  | 

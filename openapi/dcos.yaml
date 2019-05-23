@@ -3494,7 +3494,6 @@ components:
         namespace:
           type: string
           description: The DC/OS space (sometimes also referred to as a "group").
-          nullable: true
         packageName:
           type: string
         packageVersion:
@@ -3510,13 +3509,11 @@ components:
           description: Mesos principal for pool framework authentication. If omitted or
             left blank, the service account used to install Edge-LB will be used
             if present.
-          nullable: true
         secretName:
           type: string
           description: Service account secret name for pool framework authentication. If
             omitted or left blank, the service account used to install Edge-LB
             will be used if present.
-          nullable: true
         cpus:
           type: number
         cpusAdminOverhead:
@@ -3537,11 +3534,9 @@ components:
           type: integer
           format: int32
           description: Number of load balancer instances in the pool.
-          nullable: true
         constraints:
           type: string
           description: Marathon style constraints for load balancer instance placement.
-          nullable: true
         ports:
           type: array
           description: >-
@@ -3647,7 +3642,6 @@ components:
             bind to.
           type: integer
           format: int32
-          nullable: true
         bindModifier:
           description: Additional text to put in the bind field
           type: string
@@ -3663,6 +3657,7 @@ components:
           type: object
           description: Setting this to the empty object is enough to redirect all traffic
             from HTTP (this frontend) to HTTPS (port 443).
+          nullable: true
           properties:
             except:
               type: array
@@ -3768,10 +3763,8 @@ components:
           properties:
             fromPath:
               type: string
-              nullable: true
             toPath:
               type: string
-              nullable: true
         request:
           $ref: "#/components/schemas/EdgelbV2RewriteHttpRequest"
         response:
@@ -3785,7 +3778,6 @@ components:
           properties:
             enabled:
               type: boolean
-              nullable: true
             customStr:
               type: string
     EdgelbV2RewriteHttpRequest:
@@ -3797,19 +3789,14 @@ components:
       properties:
         forwardfor:
           type: boolean
-          nullable: true
         xForwardedPort:
           type: boolean
-          nullable: true
         xForwardedProtoHttpsIfTls:
           type: boolean
-          nullable: true
         setHostHeader:
           type: boolean
-          nullable: true
         rewritePath:
           type: boolean
-          nullable: true
     EdgelbV2RewriteHttpResponse:
       description: >-
         Rewrite the response.
@@ -3819,7 +3806,6 @@ components:
       properties:
         rewriteLocation:
           type: boolean
-          nullable: true
     EdgelbV2Service:
       type: object
       properties:
@@ -3882,7 +3868,6 @@ components:
           properties:
             enabled:
               type: boolean
-              nullable: true
             customStr:
               type: string
         address:
@@ -3932,7 +3917,6 @@ components:
           type: string
         namespace:
           type: string
-          nullable: true
         v2:
           $ref: "#/components/schemas/EdgelbV2Pool"
     EdgelbError:

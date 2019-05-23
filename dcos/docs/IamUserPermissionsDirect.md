@@ -1,6 +1,7 @@
 # IamUserPermissionsDirect
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Rid** | **string** |  | 

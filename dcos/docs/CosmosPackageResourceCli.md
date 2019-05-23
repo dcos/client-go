@@ -1,6 +1,7 @@
 # CosmosPackageResourceCli
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Binaries** | [**CosmosPackageResourceCliBinaries**](CosmosPackageResourceCliBinaries.md) |  | 

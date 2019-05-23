@@ -1,6 +1,7 @@
 # CosmosPackageResourceCliOsBinaries
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **X8664** | [**CosmosPackageResourceCliArtifact**](CosmosPackageResourceCliArtifact.md) |  | 

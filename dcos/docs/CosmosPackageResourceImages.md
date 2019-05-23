@@ -1,6 +1,7 @@
 # CosmosPackageResourceImages
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **IconLarge** | **string** | PNG icon URL, preferably 256 by 256 pixels. | [optional] 

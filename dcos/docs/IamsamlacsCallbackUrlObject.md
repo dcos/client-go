@@ -1,6 +1,7 @@
 # IamsamlacsCallbackUrlObject
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AcsCallbackUrl** | **string** |  | 

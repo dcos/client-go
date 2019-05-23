@@ -1,6 +1,7 @@
 # CosmosPackageResource
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Assets** | [**CosmosPackageResourceAssets**](CosmosPackageResourceAssets.md) |  | [optional] 

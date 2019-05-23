@@ -1,6 +1,7 @@
 # MetronomeV1JobRun
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Args** | **[]string** | An array of strings that represents an alternative mode of specifying the command to run. This was motivated by safe usage of containerizer features like a custom Docker ENTRYPOINT. Either &#x60;cmd&#x60; or &#x60;args&#x60; must be supplied. It is invalid to supply both &#x60;cmd&#x60; and &#x60;args&#x60; in the same job. | [optional] 

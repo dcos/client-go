@@ -1,6 +1,7 @@
 # MetronomeV1ErrorDetails
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Path** | **string** |  | [optional] 

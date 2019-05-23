@@ -1,6 +1,7 @@
 # IamUserUpdate
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | **string** |  | [optional] 

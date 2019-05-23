@@ -1,6 +1,7 @@
 # CosmosPackageMarathon
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **V2AppMustacheTemplate** | **string** |  | 

@@ -1,6 +1,7 @@
 # IamErrorCode
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

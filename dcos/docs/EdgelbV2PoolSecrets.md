@@ -1,6 +1,7 @@
 # EdgelbV2PoolSecrets
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Secret** | **string** | Secret name | [optional] 

@@ -1,6 +1,7 @@
 # CosmosPackageUninstallV1Request
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AppId** | **string** |  | [optional] 

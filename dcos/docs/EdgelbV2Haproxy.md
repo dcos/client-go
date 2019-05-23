@@ -1,6 +1,7 @@
 # EdgelbV2Haproxy
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Stats** | [**EdgelbV2Stats**](EdgelbV2Stats.md) |  | [optional] 

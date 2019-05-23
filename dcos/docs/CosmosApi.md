@@ -15,7 +15,9 @@ Method | HTTP request | Description
 [**ServiceUpdate**](CosmosApi.md#ServiceUpdate) | **Post** /cosmos/service/update | 
 
 
-# **PackageDescribe**
+
+## PackageDescribe
+
 > CosmosPackageDescribeV3Response PackageDescribe(ctx, optional)
 
 
@@ -23,13 +25,16 @@ Show information about the package, including the required resources and configu
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
  **optional** | ***PackageDescribeOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a PackageDescribeOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -45,12 +50,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/vnd.dcos.package.describe-request+json;charset=utf-8;version=v1
- - **Accept**: application/vnd.dcos.package.describe-response+json;charset=utf-8;version=v3, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
+- **Content-Type**: application/vnd.dcos.package.describe-request+json;charset=utf-8;version=v1
+- **Accept**: application/vnd.dcos.package.describe-response+json;charset=utf-8;version=v3, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **PackageInstall**
+
+## PackageInstall
+
 > CosmosPackageInstallV1Response PackageInstall(ctx, cosmosPackageInstallV1Request)
 
 
@@ -58,10 +67,11 @@ Runs a service from a Universe package.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **cosmosPackageInstallV1Request** | [**CosmosPackageInstallV1Request**](CosmosPackageInstallV1Request.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**cosmosPackageInstallV1Request** | [**CosmosPackageInstallV1Request**](CosmosPackageInstallV1Request.md)|  | 
 
 ### Return type
 
@@ -73,12 +83,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/vnd.dcos.package.install-request+json;charset=utf-8;version=v1
- - **Accept**: application/vnd.dcos.package.install-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
+- **Content-Type**: application/vnd.dcos.package.install-request+json;charset=utf-8;version=v1
+- **Accept**: application/vnd.dcos.package.install-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **PackageList**
+
+## PackageList
+
 > CosmosPackageListV1Response PackageList(ctx, optional)
 
 
@@ -86,13 +100,16 @@ Lists all of the running DC/OS services started from a DC/OS package..
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
  **optional** | ***PackageListOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a PackageListOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -108,12 +125,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/vnd.dcos.package.list-request+json;charset=utf-8;version=v1
- - **Accept**: application/vnd.dcos.package.list-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
+- **Content-Type**: application/vnd.dcos.package.list-request+json;charset=utf-8;version=v1
+- **Accept**: application/vnd.dcos.package.list-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **PackageRepositoryAdd**
+
+## PackageRepositoryAdd
+
 > CosmosPackageAddRepoV1Response PackageRepositoryAdd(ctx, optional)
 
 
@@ -121,13 +142,16 @@ Adds a package repository (for example Universe) for use by DC/OS. To add a pack
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
  **optional** | ***PackageRepositoryAddOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a PackageRepositoryAddOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -143,12 +167,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/vnd.dcos.package.repository.add-request+json;charset=utf-8;version=v1
- - **Accept**: application/vnd.dcos.package.repository.add-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
+- **Content-Type**: application/vnd.dcos.package.repository.add-request+json;charset=utf-8;version=v1
+- **Accept**: application/vnd.dcos.package.repository.add-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **PackageRepositoryDelete**
+
+## PackageRepositoryDelete
+
 > CosmosPackageDeleteRepoV1Response PackageRepositoryDelete(ctx, optional)
 
 
@@ -156,13 +184,16 @@ Deletes a package repository (for example Universe) from DC/OS.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
  **optional** | ***PackageRepositoryDeleteOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a PackageRepositoryDeleteOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -178,12 +209,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/vnd.dcos.package.repository.delete-request+json;charset=utf-8;version=v1
- - **Accept**: application/vnd.dcos.package.repository.delete-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
+- **Content-Type**: application/vnd.dcos.package.repository.delete-request+json;charset=utf-8;version=v1
+- **Accept**: application/vnd.dcos.package.repository.delete-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **PackageSearch**
+
+## PackageSearch
+
 > CosmosPackageSearchV1Response PackageSearch(ctx, cosmosPackageSearchV1Request)
 
 
@@ -191,10 +226,11 @@ Lists all matching packages in the repository given a partial pattern. The chara
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **cosmosPackageSearchV1Request** | [**CosmosPackageSearchV1Request**](CosmosPackageSearchV1Request.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**cosmosPackageSearchV1Request** | [**CosmosPackageSearchV1Request**](CosmosPackageSearchV1Request.md)|  | 
 
 ### Return type
 
@@ -206,25 +242,32 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/vnd.dcos.package.search-request+json;charset=utf-8;version=v1
- - **Accept**: application/vnd.dcos.package.search-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
+- **Content-Type**: application/vnd.dcos.package.search-request+json;charset=utf-8;version=v1
+- **Accept**: application/vnd.dcos.package.search-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **PackageUninstall**
+
+## PackageUninstall
+
 > CosmosPackageUninstallV1Response PackageUninstall(ctx, cosmosPackageUninstallV1Request, optional)
 
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **cosmosPackageUninstallV1Request** | [**CosmosPackageUninstallV1Request**](CosmosPackageUninstallV1Request.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**cosmosPackageUninstallV1Request** | [**CosmosPackageUninstallV1Request**](CosmosPackageUninstallV1Request.md)|  | 
  **optional** | ***PackageUninstallOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a PackageUninstallOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -241,12 +284,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/vnd.dcos.package.uninstall-request+json;charset=utf-8;version=v1
- - **Accept**: application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
+- **Content-Type**: application/vnd.dcos.package.uninstall-request+json;charset=utf-8;version=v1
+- **Accept**: application/vnd.dcos.package.uninstall-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ServiceDescribe**
+
+## ServiceDescribe
+
 > CosmosServiceDescribeV1Response ServiceDescribe(ctx, optional)
 
 
@@ -254,13 +301,16 @@ Describes a DC/OS Service
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
  **optional** | ***ServiceDescribeOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a ServiceDescribeOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -276,12 +326,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/vnd.dcos.service.describe-request+json;charset=utf-8;version=v1
- - **Accept**: application/vnd.dcos.service.describe-response+json;charset=utf-8;version=v1
+- **Content-Type**: application/vnd.dcos.service.describe-request+json;charset=utf-8;version=v1
+- **Accept**: application/vnd.dcos.service.describe-response+json;charset=utf-8;version=v1
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ServiceUpdate**
+
+## ServiceUpdate
+
 > CosmosServiceUpdateV1Response ServiceUpdate(ctx, cosmosServiceUpdateV1Request)
 
 
@@ -289,10 +343,11 @@ Runs a service update.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **cosmosServiceUpdateV1Request** | [**CosmosServiceUpdateV1Request**](CosmosServiceUpdateV1Request.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**cosmosServiceUpdateV1Request** | [**CosmosServiceUpdateV1Request**](CosmosServiceUpdateV1Request.md)|  | 
 
 ### Return type
 
@@ -304,8 +359,10 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/vnd.dcos.service.update-request+json;charset=utf-8;version=v1
- - **Accept**: application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1
+- **Content-Type**: application/vnd.dcos.service.update-request+json;charset=utf-8;version=v1
+- **Accept**: application/vnd.dcos.service.update-response+json;charset=utf-8;version=v1
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
