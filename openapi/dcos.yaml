@@ -30,6 +30,8 @@ tags:
   description: Create and manage load balancers with DCOS Edge LB API
 - name: metadata
   description: DC/OS Cluster metadata
+- name: metronome
+  description: Create and manage scheduled Jobs with DCOS Metronome API
 
 paths:
   /secrets/v1/secret/{store}/{path-to-secret}:
@@ -2249,6 +2251,29 @@ paths:
               schema:
                 $ref: "#/components/schemas/Metadata"
 
+  /service/metronome/v1/jobs:
+    get:
+      description: Get the list of all jobs.
+      operationId: V1GetJobs
+      tags:
+        - metronome
+      parameters:
+        - name: embeded
+          in: query
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/MetronomeEmbeded"
+      responses:
+         200:
+          description: The list of jobs.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MetronomeV1Job"
+
 components:
   requestBodies:
     SecretsV1Secret:
@@ -3877,6 +3902,309 @@ components:
         CLUSTER_ID:
           type: string
           format: uuid
+    MetronomeEmbeded:
+      type: string
+      enum:
+        - activeRuns
+        - schedules
+        - history
+        - historySummary
+      x-enum-varnames:
+        - METRONOME_EMBEDED_ACTIVE_RUNS
+        - METRONOME_EMBEDED_SCHEDULES
+        - METRONOME_EMBEDED_HISTORY
+        - METRONOME_EMBEDED_HISTORY_SUMMARY
+    MetronomeRestartPolicy:
+      type: string
+      enum:
+        - NEVER
+        - ON_FAILURE
+      x-enum-varnames:
+        - METRONOME_RESTART_POLICY_NEVER
+        - METRONOME_RESTART_POLICY_ON_FAILURE
+    MetronomeV1Job:
+      type: object
+      additionalProperties: false
+      properties:
+        id:
+          type: string
+          pattern: '^([a-z0-9]([a-z0-9-]*[a-z0-9]+)*)([.][a-z0-9]([a-z0-9-]*[a-z0-9]+)*)*$'
+          minLength: 1
+          description: >-
+            Unique identifier for the job consisting of a series of names separated by
+            dots. Each name must be at least 1 character and may only contain digits
+            (`0-9`), dashes (`-`), and lowercase letters (`a-z`). The name may not
+            begin or end with a dash.
+        description:
+          type: string
+          description: A description of this job.
+        labels:
+          type: object
+          description: >-
+            Attaching metadata to jobs can be useful to expose additional information
+            to other services, so we added the ability to place labels on jobs (for
+            example, you could label jobs staging and production to mark services by
+            their position in the pipeline).
+          additionalProperties:
+            type: string
+        run:
+          type: object
+          additionalProperties: false
+          description: A run specification
+          properties:
+            args:
+              items:
+                type: string
+              type: array
+              description: >-
+                An array of strings that represents an alternative mode of specifying
+                the command to run. This was motivated by safe usage of containerizer
+                features like a custom Docker ENTRYPOINT. Either `cmd` or `args` must
+                be supplied. It is invalid to supply both `cmd` and `args` in the same
+                job.
+            artifacts:
+              type: array
+              description: >-
+                Provided URIs are passed to Mesos fetcher module and resolved in
+                runtime.
+              items:
+                type: object
+                additionalProperties: false
+                properties:
+                  uri:
+                    type: string
+                    description: URI to be fetched by Mesos fetcher module
+                  executable:
+                    type: boolean
+                    description: Set fetched artifact as executable
+                  extract:
+                    type: boolean
+                    description: Extract fetched artifact if supported by Mesos fetcher module
+                  cache:
+                    type: boolean
+                    description: Cache fetched artifact if supported by Mesos fetcher module
+                required:
+                  - uri
+            cmd:
+              description: >-
+                The command that is executed.  This value is wrapped by Mesos via
+                `/bin/sh -c ${job.cmd}`.  Either `cmd` or `args` must be supplied. It
+                is invalid to supply both `cmd` and `args` in the same job.
+              type: string
+              minLength: 1
+            cpus:
+              type: number
+              description: >-
+                The number of CPU shares this job needs per instance. This number does
+                not have to be integer, but can be a fraction.
+              minimum: 0.01
+            gpus:
+              type: integer
+              description: >-
+                The number of GPU shares this job needs per instance. This number does
+                not have to be integer, but can be a fraction.
+              minimum: 0
+            disk:
+              type: number
+              description: >-
+                How much disk space is needed for this job. This number does not have
+                to be an integer, but can be a fraction.
+              minimum: 0
+            ucr:
+              type: object
+              additionalProperties: false
+              properties:
+                image:
+                  type: object
+                  additionalProperties: false
+                  properties:
+                    id:
+                      type: string
+                      description: The repository image name.
+                    kind:
+                      type: string
+                      description: The type of image
+                      enum:
+                        - docker
+                        - appc
+                      default: docker
+                    forcePull:
+                      type: boolean
+                      description: >-
+                        The containerizer will pull the image from the registry, even
+                        if the image is already downloaded on the agent.
+                  required:
+                    - id
+                privileged:
+                  type: boolean
+                  description: Run this docker image in privileged mode
+              required:
+                - image
+            docker:
+              type: object
+              additionalProperties: false
+              properties:
+                image:
+                  type: string
+                  description: The docker repository image name.
+                forcePullImage:
+                  type: boolean
+                  description: >-
+                    The containerizer will pull the image from the registry, even if
+                    the image is already downloaded on the agent.
+                privileged:
+                  type: boolean
+                  description: Run this docker image in privileged mode
+                parameters:
+                  type: array
+                  description: ''
+                  items:
+                    type: object
+                    additionalProperties: false
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                    required:
+                      - key
+                      - value
+              required:
+                - image
+            env:
+              type: object
+              x-patternProperties:
+                .*:
+                  oneOf:
+                    - type: string
+                    - type: object
+                      description: An environment variable set to a secret
+                      properties:
+                        secret:
+                          type: string
+                          description: >-
+                            The name of the secret to refer to. At runtime, the value
+                            of the secret will be injected into the value of the
+                            variable.
+              additionalProperties: true
+            maxLaunchDelay:
+              type: integer
+              minimum: 1
+              description: >-
+                The number of seconds until the job needs to be running. If the
+                deadline is reached without successfully running the job, the job is
+                aborted.
+            mem:
+              type: number
+              description: The amount of memory in MB that is needed for the job per instance.
+              minimum: 32
+            placement:
+              type: object
+              additionalProperties: false
+              properties:
+                constraints:
+                  type: array
+                  description: The array of constraints to place this job.
+                  items:
+                    type: object
+                    additionalProperties: false
+                    properties:
+                      attribute:
+                        type: string
+                        description: The attribute name for this constraint.
+                      operator:
+                        type: string
+                        description: The operator for this constraint.
+                        enum:
+                          - IS
+                          - EQ
+                          - LIKE
+                          - UNLIKE
+                      value:
+                        type: string
+                        description: The value for this constraint.
+                    required:
+                      - attribute
+                      - operator
+            user:
+              type: string
+              description: The user to use to run the tasks on the agent.
+            taskKillGracePeriodSeconds:
+              type: number
+              description: >-
+                Configures the number of seconds between escalating from SIGTERM to
+                SIGKILL when signalling tasks to terminate. Using this grace period,
+                tasks should perform orderly shut down immediately upon receiving
+                SIGTERM.
+            restart:
+              type: object
+              additionalProperties: false
+              description: Defines the behavior if a task fails
+              properties:
+                policy:
+                  type: string
+                  description: >-
+                    The policy to use if a job fails. NEVER will never try to relaunch
+                    a job. ON_FAILURE will try to start a job in case of failure.
+                  enum:
+                    - NEVER
+                    - ON_FAILURE
+                activeDeadlineSeconds:
+                  type: integer
+                  description: >-
+                    If the job fails, how long should we try to restart the job. If no
+                    value is set, this means forever.
+              required:
+                - policy
+            volumes:
+              type: array
+              description: The list of volumes for this job.
+              items:
+                type: object
+                additionalProperties: false
+                description: A volume definition for this job.
+                properties:
+                  containerPath:
+                    type: string
+                    description: The path of the volume in the container
+                    minLength: 1
+                  hostPath:
+                    type: string
+                    description: The path of the volume on the host
+                    minLength: 1
+                  mode:
+                    type: string
+                    description: Possible values are RO for ReadOnly and RW for Read/Write
+                    enum:
+                      - RO
+                      - RW
+                  secret:
+                    type: string
+                    description: References the secret that is used by this volume
+                    minLength: 1
+                required:
+                  - containerPath
+            secrets:
+              type: object
+              x-patternProperties:
+                .*:
+                  type: object
+                  description: An environment variable set to a secret
+                  properties:
+                    source:
+                      type: string
+                      description: >-
+                        The name of the secret to refer to. At runtime, the value of
+                        the secret will be injected into the value of the variable.
+              additionalProperties: true
+          required:
+            - cpus
+            - mem
+            - disk
+      required:
+        - id
+        - run
+
   securitySchemes:
     token:
       in: header
