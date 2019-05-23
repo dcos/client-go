@@ -2,63 +2,63 @@
 
 All URIs are relative to *http://your-dcos-cluster.com*
 
-| Method                                                                           | HTTP request                                                           | Description                                                             |
-|:---------------------------------------------------------------------------------|:-----------------------------------------------------------------------|:------------------------------------------------------------------------|
-| [**ConfigureOIDCProvider**](IAMApi.md#ConfigureOIDCProvider)                     | **Put** /acs/api/v1/auth/oidc/providers/{provider-id}                  | Configure a new OIDC provider.                                          |
-| [**ConfigureSAMLProvider**](IAMApi.md#ConfigureSAMLProvider)                     | **Put** /acs/api/v1/auth/saml/providers/{provider-id}                  | Configure a new SAML provider.                                          |
-| [**CreateGroup**](IAMApi.md#CreateGroup)                                         | **Put** /acs/api/v1/groups/{gid}                                       | Create a group.                                                         |
-| [**CreateGroupUser**](IAMApi.md#CreateGroupUser)                                 | **Put** /acs/api/v1/groups/{gid}/users/{uid}                           | Add account to group.                                                   |
-| [**CreateLDAPConfiguration**](IAMApi.md#CreateLDAPConfiguration)                 | **Put** /acs/api/v1/ldap/config                                        | Set new LDAP configuration.                                             |
-| [**CreateResourceACL**](IAMApi.md#CreateResourceACL)                             | **Put** /acs/api/v1/acls/{rid}                                         | Create ACL for a certain resource.                                      |
-| [**CreateUser**](IAMApi.md#CreateUser)                                           | **Put** /acs/api/v1/users/{uid}                                        | Create user account.                                                    |
-| [**DeleteGroup**](IAMApi.md#DeleteGroup)                                         | **Delete** /acs/api/v1/groups/{gid}                                    | Delete group.                                                           |
-| [**DeleteGroupUser**](IAMApi.md#DeleteGroupUser)                                 | **Delete** /acs/api/v1/groups/{gid}/users/{uid}                        | Delete user account from group.                                         |
-| [**DeleteLDAPConfiguration**](IAMApi.md#DeleteLDAPConfiguration)                 | **Delete** /acs/api/v1/ldap/config                                     | Delete current LDAP configuration.                                      |
-| [**DeleteOIDCProvider**](IAMApi.md#DeleteOIDCProvider)                           | **Delete** /acs/api/v1/auth/oidc/providers/{provider-id}               | Delete provider.                                                        |
-| [**DeleteResourceACL**](IAMApi.md#DeleteResourceACL)                             | **Delete** /acs/api/v1/acls/{rid}                                      | Delete ACL for a certain resource.                                      |
-| [**DeleteSAMLProvider**](IAMApi.md#DeleteSAMLProvider)                           | **Delete** /acs/api/v1/auth/saml/providers/{provider-id}               | Delete provider.                                                        |
-| [**DeleteUser**](IAMApi.md#DeleteUser)                                           | **Delete** /acs/api/v1/users/{uid}                                     | Delete account.                                                         |
-| [**ForbidResourceGroupActions**](IAMApi.md#ForbidResourceGroupActions)           | **Delete** /acs/api/v1/acls/{rid}/groups/{gid}                         | Forbid all actions of given group to given resource.                    |
-| [**ForbidResourceUserAction**](IAMApi.md#ForbidResourceUserAction)               | **Delete** /acs/api/v1/acls/{rid}/users/{uid}/{action}                 | Forbid single action for given account and resource.                    |
-| [**ForbidResourceUserActions**](IAMApi.md#ForbidResourceUserActions)             | **Delete** /acs/api/v1/acls/{rid}/users/{uid}                          | Forbid all actions of given account to given resource.                  |
-| [**ForbitResourceGroupAction**](IAMApi.md#ForbitResourceGroupAction)             | **Delete** /acs/api/v1/acls/{rid}/groups/{gid}/{action}                | Forbid single action for given resource and group.                      |
-| [**GetACLs**](IAMApi.md#GetACLs)                                                 | **Get** /acs/api/v1/acls                                               | Retrieve all ACL objects.                                               |
-| [**GetGroup**](IAMApi.md#GetGroup)                                               | **Get** /acs/api/v1/groups/{gid}                                       | Get single group object.                                                |
-| [**GetGroupPermissions**](IAMApi.md#GetGroupPermissions)                         | **Get** /acs/api/v1/groups/{gid}/permissions                           | Retrieve group permissions.                                             |
-| [**GetGroupUsers**](IAMApi.md#GetGroupUsers)                                     | **Get** /acs/api/v1/groups/{gid}/users                                 | Retrieve members of a group.                                            |
-| [**GetGroups**](IAMApi.md#GetGroups)                                             | **Get** /acs/api/v1/groups                                             | Retrieve all group objects.                                             |
-| [**GetJWKS**](IAMApi.md#GetJWKS)                                                 | **Get** /acs/api/v1/auth/jwks                                          | Get the IAM&#39;s JSON Web Key Set (JWKS, according to RFCs 7517/7518). |
-| [**GetLDAPConfiguration**](IAMApi.md#GetLDAPConfiguration)                       | **Get** /acs/api/v1/ldap/config                                        | Retrieve current LDAP configuration.                                    |
-| [**GetOIDCProvider**](IAMApi.md#GetOIDCProvider)                                 | **Get** /acs/api/v1/auth/oidc/providers/{provider-id}                  | Get configuration for a specific provider.                              |
-| [**GetOIDCProviders**](IAMApi.md#GetOIDCProviders)                               | **Get** /acs/api/v1/auth/oidc/providers                                | Get an overview for the configured OIDC providers.                      |
-| [**GetResourceACLs**](IAMApi.md#GetResourceACLs)                                 | **Get** /acs/api/v1/acls/{rid}                                         | Retrieve ACL for a certain resource.                                    |
-| [**GetResourceGroupAction**](IAMApi.md#GetResourceGroupAction)                   | **Get** /acs/api/v1/acls/{rid}/groups/{gid}/{action}                   | Query whether action is allowed or not.                                 |
-| [**GetResourceGroupActions**](IAMApi.md#GetResourceGroupActions)                 | **Get** /acs/api/v1/acls/{rid}/groups/{gid}                            | Get allowed actions for given resource and group.                       |
-| [**GetResourcePermissions**](IAMApi.md#GetResourcePermissions)                   | **Get** /acs/api/v1/acls/{rid}/permissions                             | Retrieve all permissions for resource.                                  |
-| [**GetResourceUserAction**](IAMApi.md#GetResourceUserAction)                     | **Get** /acs/api/v1/acls/{rid}/users/{uid}/{action}                    | Query whether action is allowed or not.                                 |
-| [**GetResourceUserActions**](IAMApi.md#GetResourceUserActions)                   | **Get** /acs/api/v1/acls/{rid}/users/{uid}                             | Get allowed actions for given resource and user.                        |
-| [**GetSAMLProvider**](IAMApi.md#GetSAMLProvider)                                 | **Get** /acs/api/v1/auth/saml/providers/{provider-id}                  | Get configuration for a specific SAML provider.                         |
-| [**GetSAMLProviderACSCallbackURL**](IAMApi.md#GetSAMLProviderACSCallbackURL)     | **Get** /acs/api/v1/auth/saml/providers/{provider-id}/acs-callback-url | Get the authentication callback URL for this SP.                        |
-| [**GetSAMLProviderSPMetadata**](IAMApi.md#GetSAMLProviderSPMetadata)             | **Get** /acs/api/v1/auth/saml/providers/{provider-id}/sp-metadata      | Get SP metadata (XML).                                                  |
-| [**GetSAMLProviders**](IAMApi.md#GetSAMLProviders)                               | **Get** /acs/api/v1/auth/saml/providers                                | Get an overview for the configured SAML 2.0 providers.                  |
-| [**GetUser**](IAMApi.md#GetUser)                                                 | **Get** /acs/api/v1/users/{uid}                                        | Get single user object.                                                 |
-| [**GetUserGroups**](IAMApi.md#GetUserGroups)                                     | **Get** /acs/api/v1/users/{uid}/groups                                 | Retrieve groups the user is member of.                                  |
-| [**GetUserPermissions**](IAMApi.md#GetUserPermissions)                           | **Get** /acs/api/v1/users/{uid}/permissions                            | Retrieve permissions an account has.                                    |
-| [**GetUsers**](IAMApi.md#GetUsers)                                               | **Get** /acs/api/v1/users                                              | Retrieve all regular user accounts or service user accounts.            |
-| [**ImportLDAPGroup**](IAMApi.md#ImportLDAPGroup)                                 | **Post** /acs/api/v1/ldap/importgroup                                  | Import an LDAP group.                                                   |
-| [**ImportLDAPUser**](IAMApi.md#ImportLDAPUser)                                   | **Post** /acs/api/v1/ldap/importuser                                   | Import an LDAP user.                                                    |
-| [**Login**](IAMApi.md#Login)                                                     | **Post** /acs/api/v1/auth/login                                        | Log in (obtain a DC/OS authentication token).                           |
-| [**LoginWithProvider**](IAMApi.md#LoginWithProvider)                             | **Get** /acs/api/v1/auth/login                                         | Log in using an external identity provider.                             |
-| [**OpenIDConnectCallbackURL**](IAMApi.md#OpenIDConnectCallbackURL)               | **Get** /acs/api/v1/auth/oidc/callback                                 | OpenID Connect callback URL.                                            |
-| [**PermitResourceGroupAction**](IAMApi.md#PermitResourceGroupAction)             | **Put** /acs/api/v1/acls/{rid}/groups/{gid}/{action}                   | Permit single action for given resource and group.                      |
-| [**PermitResourceUserAction**](IAMApi.md#PermitResourceUserAction)               | **Put** /acs/api/v1/acls/{rid}/users/{uid}/{action}                    | Permit single action for given account and resource.                    |
-| [**SAMLProviderACSCallbackEndpoint**](IAMApi.md#SAMLProviderACSCallbackEndpoint) | **Post** /acs/api/v1/auth/saml/providers/{provider-id}/acs-callback    | The SP ACS callback endpoint.                                           |
-| [**TestLDAPBackendConnection**](IAMApi.md#TestLDAPBackendConnection)             | **Post** /acs/api/v1/ldap/config/test                                  | Test connection to the LDAP back-end.                                   |
-| [**UpdateGroup**](IAMApi.md#UpdateGroup)                                         | **Patch** /acs/api/v1/groups/{gid}                                     | Update group.                                                           |
-| [**UpdateOIDCProvider**](IAMApi.md#UpdateOIDCProvider)                           | **Patch** /acs/api/v1/auth/oidc/providers/{provider-id}                | Update OIDC provider config.                                            |
-| [**UpdateResourceACL**](IAMApi.md#UpdateResourceACL)                             | **Patch** /acs/api/v1/acls/{rid}                                       | Update ACL for a certain resource.                                      |
-| [**UpdateSAMLProvider**](IAMApi.md#UpdateSAMLProvider)                           | **Patch** /acs/api/v1/auth/saml/providers/{provider-id}                | Update SAML provider config.                                            |
-| [**UpdateUser**](IAMApi.md#UpdateUser)                                           | **Patch** /acs/api/v1/users/{uid}                                      | Update user account.                                                    |
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**ConfigureOIDCProvider**](IAMApi.md#ConfigureOIDCProvider) | **Put** /acs/api/v1/auth/oidc/providers/{provider-id} | Configure a new OIDC provider.
+[**ConfigureSAMLProvider**](IAMApi.md#ConfigureSAMLProvider) | **Put** /acs/api/v1/auth/saml/providers/{provider-id} | Configure a new SAML provider.
+[**CreateGroup**](IAMApi.md#CreateGroup) | **Put** /acs/api/v1/groups/{gid} | Create a group.
+[**CreateGroupUser**](IAMApi.md#CreateGroupUser) | **Put** /acs/api/v1/groups/{gid}/users/{uid} | Add account to group.
+[**CreateLDAPConfiguration**](IAMApi.md#CreateLDAPConfiguration) | **Put** /acs/api/v1/ldap/config | Set new LDAP configuration.
+[**CreateResourceACL**](IAMApi.md#CreateResourceACL) | **Put** /acs/api/v1/acls/{rid} | Create ACL for a certain resource.
+[**CreateUser**](IAMApi.md#CreateUser) | **Put** /acs/api/v1/users/{uid} | Create user account.
+[**DeleteGroup**](IAMApi.md#DeleteGroup) | **Delete** /acs/api/v1/groups/{gid} | Delete group.
+[**DeleteGroupUser**](IAMApi.md#DeleteGroupUser) | **Delete** /acs/api/v1/groups/{gid}/users/{uid} | Delete user account from group.
+[**DeleteLDAPConfiguration**](IAMApi.md#DeleteLDAPConfiguration) | **Delete** /acs/api/v1/ldap/config | Delete current LDAP configuration.
+[**DeleteOIDCProvider**](IAMApi.md#DeleteOIDCProvider) | **Delete** /acs/api/v1/auth/oidc/providers/{provider-id} | Delete provider.
+[**DeleteResourceACL**](IAMApi.md#DeleteResourceACL) | **Delete** /acs/api/v1/acls/{rid} | Delete ACL for a certain resource.
+[**DeleteSAMLProvider**](IAMApi.md#DeleteSAMLProvider) | **Delete** /acs/api/v1/auth/saml/providers/{provider-id} | Delete provider.
+[**DeleteUser**](IAMApi.md#DeleteUser) | **Delete** /acs/api/v1/users/{uid} | Delete account.
+[**ForbidResourceGroupActions**](IAMApi.md#ForbidResourceGroupActions) | **Delete** /acs/api/v1/acls/{rid}/groups/{gid} | Forbid all actions of given group to given resource.
+[**ForbidResourceUserAction**](IAMApi.md#ForbidResourceUserAction) | **Delete** /acs/api/v1/acls/{rid}/users/{uid}/{action} | Forbid single action for given account and resource.
+[**ForbidResourceUserActions**](IAMApi.md#ForbidResourceUserActions) | **Delete** /acs/api/v1/acls/{rid}/users/{uid} | Forbid all actions of given account to given resource.
+[**ForbitResourceGroupAction**](IAMApi.md#ForbitResourceGroupAction) | **Delete** /acs/api/v1/acls/{rid}/groups/{gid}/{action} | Forbid single action for given resource and group.
+[**GetACLs**](IAMApi.md#GetACLs) | **Get** /acs/api/v1/acls | Retrieve all ACL objects.
+[**GetGroup**](IAMApi.md#GetGroup) | **Get** /acs/api/v1/groups/{gid} | Get single group object.
+[**GetGroupPermissions**](IAMApi.md#GetGroupPermissions) | **Get** /acs/api/v1/groups/{gid}/permissions | Retrieve group permissions.
+[**GetGroupUsers**](IAMApi.md#GetGroupUsers) | **Get** /acs/api/v1/groups/{gid}/users | Retrieve members of a group.
+[**GetGroups**](IAMApi.md#GetGroups) | **Get** /acs/api/v1/groups | Retrieve all group objects.
+[**GetJWKS**](IAMApi.md#GetJWKS) | **Get** /acs/api/v1/auth/jwks | Get the IAM&#39;s JSON Web Key Set (JWKS, according to RFCs 7517/7518).
+[**GetLDAPConfiguration**](IAMApi.md#GetLDAPConfiguration) | **Get** /acs/api/v1/ldap/config | Retrieve current LDAP configuration.
+[**GetOIDCProvider**](IAMApi.md#GetOIDCProvider) | **Get** /acs/api/v1/auth/oidc/providers/{provider-id} | Get configuration for a specific provider.
+[**GetOIDCProviders**](IAMApi.md#GetOIDCProviders) | **Get** /acs/api/v1/auth/oidc/providers | Get an overview for the configured OIDC providers.
+[**GetResourceACLs**](IAMApi.md#GetResourceACLs) | **Get** /acs/api/v1/acls/{rid} | Retrieve ACL for a certain resource.
+[**GetResourceGroupAction**](IAMApi.md#GetResourceGroupAction) | **Get** /acs/api/v1/acls/{rid}/groups/{gid}/{action} | Query whether action is allowed or not.
+[**GetResourceGroupActions**](IAMApi.md#GetResourceGroupActions) | **Get** /acs/api/v1/acls/{rid}/groups/{gid} | Get allowed actions for given resource and group.
+[**GetResourcePermissions**](IAMApi.md#GetResourcePermissions) | **Get** /acs/api/v1/acls/{rid}/permissions | Retrieve all permissions for resource.
+[**GetResourceUserAction**](IAMApi.md#GetResourceUserAction) | **Get** /acs/api/v1/acls/{rid}/users/{uid}/{action} | Query whether action is allowed or not.
+[**GetResourceUserActions**](IAMApi.md#GetResourceUserActions) | **Get** /acs/api/v1/acls/{rid}/users/{uid} | Get allowed actions for given resource and user.
+[**GetSAMLProvider**](IAMApi.md#GetSAMLProvider) | **Get** /acs/api/v1/auth/saml/providers/{provider-id} | Get configuration for a specific SAML provider.
+[**GetSAMLProviderACSCallbackURL**](IAMApi.md#GetSAMLProviderACSCallbackURL) | **Get** /acs/api/v1/auth/saml/providers/{provider-id}/acs-callback-url | Get the authentication callback URL for this SP.
+[**GetSAMLProviderSPMetadata**](IAMApi.md#GetSAMLProviderSPMetadata) | **Get** /acs/api/v1/auth/saml/providers/{provider-id}/sp-metadata | Get SP metadata (XML).
+[**GetSAMLProviders**](IAMApi.md#GetSAMLProviders) | **Get** /acs/api/v1/auth/saml/providers | Get an overview for the configured SAML 2.0 providers.
+[**GetUser**](IAMApi.md#GetUser) | **Get** /acs/api/v1/users/{uid} | Get single user object.
+[**GetUserGroups**](IAMApi.md#GetUserGroups) | **Get** /acs/api/v1/users/{uid}/groups | Retrieve groups the user is member of.
+[**GetUserPermissions**](IAMApi.md#GetUserPermissions) | **Get** /acs/api/v1/users/{uid}/permissions | Retrieve permissions an account has.
+[**GetUsers**](IAMApi.md#GetUsers) | **Get** /acs/api/v1/users | Retrieve all regular user accounts or service user accounts.
+[**ImportLDAPGroup**](IAMApi.md#ImportLDAPGroup) | **Post** /acs/api/v1/ldap/importgroup | Import an LDAP group.
+[**ImportLDAPUser**](IAMApi.md#ImportLDAPUser) | **Post** /acs/api/v1/ldap/importuser | Import an LDAP user.
+[**Login**](IAMApi.md#Login) | **Post** /acs/api/v1/auth/login | Log in (obtain a DC/OS authentication token).
+[**LoginWithProvider**](IAMApi.md#LoginWithProvider) | **Get** /acs/api/v1/auth/login | Log in using an external identity provider.
+[**OpenIDConnectCallbackURL**](IAMApi.md#OpenIDConnectCallbackURL) | **Get** /acs/api/v1/auth/oidc/callback | OpenID Connect callback URL.
+[**PermitResourceGroupAction**](IAMApi.md#PermitResourceGroupAction) | **Put** /acs/api/v1/acls/{rid}/groups/{gid}/{action} | Permit single action for given resource and group.
+[**PermitResourceUserAction**](IAMApi.md#PermitResourceUserAction) | **Put** /acs/api/v1/acls/{rid}/users/{uid}/{action} | Permit single action for given account and resource.
+[**SAMLProviderACSCallbackEndpoint**](IAMApi.md#SAMLProviderACSCallbackEndpoint) | **Post** /acs/api/v1/auth/saml/providers/{provider-id}/acs-callback | The SP ACS callback endpoint.
+[**TestLDAPBackendConnection**](IAMApi.md#TestLDAPBackendConnection) | **Post** /acs/api/v1/ldap/config/test | Test connection to the LDAP back-end.
+[**UpdateGroup**](IAMApi.md#UpdateGroup) | **Patch** /acs/api/v1/groups/{gid} | Update group.
+[**UpdateOIDCProvider**](IAMApi.md#UpdateOIDCProvider) | **Patch** /acs/api/v1/auth/oidc/providers/{provider-id} | Update OIDC provider config.
+[**UpdateResourceACL**](IAMApi.md#UpdateResourceACL) | **Patch** /acs/api/v1/acls/{rid} | Update ACL for a certain resource.
+[**UpdateSAMLProvider**](IAMApi.md#UpdateSAMLProvider) | **Patch** /acs/api/v1/auth/saml/providers/{provider-id} | Update SAML provider config.
+[**UpdateUser**](IAMApi.md#UpdateUser) | **Patch** /acs/api/v1/users/{uid} | Update user account.
 
 
 
@@ -72,11 +72,11 @@ Set up OIDC provider with the ID as specified in the URL, and with the config as
 ### Required Parameters
 
 
-| Name                      | Type                                                  | Description                                                                 | Notes |
-|:--------------------------|:------------------------------------------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**                   | **context.Context**                                   | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **providerId**            | **string**                                            | The ID of the provider to create.                                           |       |
-| **iamoidcProviderConfig** | [**IamoidcProviderConfig**](IamoidcProviderConfig.md) | Provider config JSON object                                                 |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the provider to create. | 
+**iamoidcProviderConfig** | [**IamoidcProviderConfig**](IamoidcProviderConfig.md)| Provider config JSON object | 
 
 ### Return type
 
@@ -106,11 +106,11 @@ Set up a SAML provider with the ID as specified in the URL, and with the config 
 ### Required Parameters
 
 
-| Name                      | Type                                                  | Description                                                                 | Notes |
-|:--------------------------|:------------------------------------------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**                   | **context.Context**                                   | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **providerId**            | **string**                                            | The ID of the provider to create.                                           |       |
-| **iamsamlProviderConfig** | [**IamsamlProviderConfig**](IamsamlProviderConfig.md) | Provider config JSON object                                                 |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the provider to create. | 
+**iamsamlProviderConfig** | [**IamsamlProviderConfig**](IamsamlProviderConfig.md)| Provider config JSON object | 
 
 ### Return type
 
@@ -140,11 +140,11 @@ Create a group.
 ### Required Parameters
 
 
-| Name               | Type                                    | Description                                                                 | Notes |
-|:-------------------|:----------------------------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**            | **context.Context**                     | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **gid**            | **string**                              | The ID of the group.                                                        |       |
-| **iamGroupCreate** | [**IamGroupCreate**](IamGroupCreate.md) |                                                                             |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**gid** | **string**| The ID of the group. | 
+**iamGroupCreate** | [**IamGroupCreate**](IamGroupCreate.md)|  | 
 
 ### Return type
 
@@ -174,11 +174,11 @@ Add account to group.
 ### Required Parameters
 
 
-| Name    | Type                | Description                                                                 | Notes |
-|:--------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **gid** | **string**          | The ID of the group to add the user account to.                             |       |
-| **uid** | **string**          | The ID of the account to add.                                               |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**gid** | **string**| The ID of the group to add the user account to. | 
+**uid** | **string**| The ID of the account to add. | 
 
 ### Return type
 
@@ -208,10 +208,10 @@ Set new directory (LDAP) back-end configuration. Replace current configuration, 
 ### Required Parameters
 
 
-| Name                     | Type                                                | Description                                                                 | Notes |
-|:-------------------------|:----------------------------------------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**                  | **context.Context**                                 | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **iamldapConfiguration** | [**IamldapConfiguration**](IamldapConfiguration.md) | JSON object containing the LDAP configuration details.                      |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**iamldapConfiguration** | [**IamldapConfiguration**](IamldapConfiguration.md)| JSON object containing the LDAP configuration details. | 
 
 ### Return type
 
@@ -241,11 +241,11 @@ Create new ACL for resource with ID `rid` (description in body, no permissions b
 ### Required Parameters
 
 
-| Name             | Type                                | Description                                                                 | Notes |
-|:-----------------|:------------------------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**          | **context.Context**                 | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **rid**          | **string**                          | The ID of the resource for which the ACL should be created.                 |       |
-| **iamaclCreate** | [**IamaclCreate**](IamaclCreate.md) |                                                                             |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| The ID of the resource for which the ACL should be created. | 
+**iamaclCreate** | [**IamaclCreate**](IamaclCreate.md)|  | 
 
 ### Return type
 
@@ -275,11 +275,11 @@ Create user (uid in url, details incl. credentials in body).
 ### Required Parameters
 
 
-| Name              | Type                                  | Description                                                                 | Notes |
-|:------------------|:--------------------------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**           | **context.Context**                   | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **uid**           | **string**                            | The ID of the user account to create.                                       |       |
-| **iamUserCreate** | [**IamUserCreate**](IamUserCreate.md) | Password/description.                                                       |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uid** | **string**| The ID of the user account to create. | 
+**iamUserCreate** | [**IamUserCreate**](IamUserCreate.md)| Password/description. | 
 
 ### Return type
 
@@ -309,10 +309,10 @@ Delete group.
 ### Required Parameters
 
 
-| Name    | Type                | Description                                                                 | Notes |
-|:--------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **gid** | **string**          | The ID of the group to delete.                                              |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**gid** | **string**| The ID of the group to delete. | 
 
 ### Return type
 
@@ -342,11 +342,11 @@ Delete user account from group.
 ### Required Parameters
 
 
-| Name    | Type                | Description                                                                 | Notes |
-|:--------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **gid** | **string**          | The ID of the group to delete from.                                         |       |
-| **uid** | **string**          | The ID of the user account.                                                 |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**gid** | **string**| The ID of the group to delete from. | 
+**uid** | **string**| The ID of the user account. | 
 
 ### Return type
 
@@ -405,10 +405,10 @@ Delete provider (disables authentication with that provider).
 ### Required Parameters
 
 
-| Name           | Type                | Description                                                                 | Notes |
-|:---------------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**        | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **providerId** | **string**          | The ID of the OIDC provider to delete.                                      |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the OIDC provider to delete. | 
 
 ### Return type
 
@@ -438,10 +438,10 @@ Delete ACL of resource with ID `rid`.
 ### Required Parameters
 
 
-| Name    | Type                | Description                                                                 | Notes |
-|:--------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **rid** | **string**          | The ID of resource for which the ACL should be deleted.                     |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| The ID of resource for which the ACL should be deleted. | 
 
 ### Return type
 
@@ -471,10 +471,10 @@ Delete provider (disables authentication with that provider).
 ### Required Parameters
 
 
-| Name           | Type                | Description                                                                 | Notes |
-|:---------------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**        | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **providerId** | **string**          | The ID of the SAML provider to delete.                                      |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the SAML provider to delete. | 
 
 ### Return type
 
@@ -504,10 +504,44 @@ Delete account.
 ### Required Parameters
 
 
-| Name    | Type                | Description                                                                 | Notes |
-|:--------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **uid** | **string**          | The ID of the user account to delete.                                       |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uid** | **string**| The ID of the user account to delete. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ForbidResourceGroupActions
+
+> ForbidResourceGroupActions(ctx, rid, gid)
+Forbid all actions of given group to given resource.
+
+Forbid all actions of given group to given resource.
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID. | 
+**gid** | **string**| group ID. | 
 
 ### Return type
 
@@ -532,17 +566,17 @@ No authorization required
 > ForbidResourceUserAction(ctx, rid, uid, action)
 Forbid single action for given account and resource.
 
-Forbid all actions of given group to given resource.
+Forbid single action for given account and resource.
 
 ### Required Parameters
 
 
-| Name       | Type                | Description                                                                 | Notes |
-|:-----------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**    | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **rid**    | **string**          | resource ID.                                                                |       |
-| **uid**    | **string**          | account ID.                                                                 |       |
-| **action** | **string**          | action name                                                                 |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID. | 
+**uid** | **string**| account ID. | 
+**action** | **string**| action name | 
 
 ### Return type
 
@@ -567,16 +601,16 @@ No authorization required
 > ForbidResourceUserActions(ctx, rid, uid)
 Forbid all actions of given account to given resource.
 
-Forbid single action for given account and resource.
+Forbid all actions of given account to given resource.
 
 ### Required Parameters
 
 
-| Name    | Type                | Description                                                                 | Notes |
-|:--------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **rid** | **string**          | resource ID.                                                                |       |
-| **uid** | **string**          | account ID.                                                                 |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID. | 
+**uid** | **string**| account ID. | 
 
 ### Return type
 
@@ -601,51 +635,17 @@ No authorization required
 > ForbitResourceGroupAction(ctx, rid, gid, action)
 Forbid single action for given resource and group.
 
-Forbid all actions of given account to given resource.
-
-### Required Parameters
-
-
-| Name       | Type                | Description                                                                 | Notes |
-|:-----------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**    | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **rid**    | **string**          | resource ID.                                                                |       |
-| **gid**    | **string**          | group ID.                                                                   |       |
-| **action** | **string**          | action name                                                                 |       |
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ForbitResourceGroupActions
-
-> ForbitResourceGroupActions(ctx, rid, gid)
-Forbid all actions of given group to given resource.
-
 Forbid single action for given resource and group.
 
 ### Required Parameters
 
 
-| Name    | Type                | Description                                                                 | Notes |
-|:--------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **rid** | **string**          | resource ID.                                                                |       |
-| **gid** | **string**          | group ID.                                                                   |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID. | 
+**gid** | **string**| group ID. | 
+**action** | **string**| action name | 
 
 ### Return type
 
@@ -704,10 +704,10 @@ Get specific `Group` object.
 ### Required Parameters
 
 
-| Name    | Type                | Description                                                                 | Notes |
-|:--------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **gid** | **string**          | The ID of the group to retrieve.                                            |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**gid** | **string**| The ID of the group to retrieve. | 
 
 ### Return type
 
@@ -737,10 +737,10 @@ Retrieve permissions of this group.
 ### Required Parameters
 
 
-| Name    | Type                | Description                                                                 | Notes |
-|:--------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **gid** | **string**          | The group ID.                                                               |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**gid** | **string**| The group ID. | 
 
 ### Return type
 
@@ -770,11 +770,11 @@ Retrieve users that are member of this group. Allows to query service accounts, 
 ### Required Parameters
 
 
-| Name         | Type                   | Description                                                                 | Notes                |
-|:-------------|:-----------------------|:----------------------------------------------------------------------------|:---------------------|
-| **ctx**      | **context.Context**    | context for authentication, logging, cancellation, deadlines, tracing, etc. |                      |
-| **gid**      | **string**             | The group ID.                                                               |                      |
-| **optional** | ***GetGroupUsersOpts** | optional parameters                                                         | nil if no parameters |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**gid** | **string**| The group ID. | 
+ **optional** | ***GetGroupUsersOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 
@@ -784,7 +784,7 @@ Optional parameters are passed through a pointer to a GetGroupUsersOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **type_** | **optional.String**| If set to &#x60;service&#x60;, list only service accounts. If unset, default to only listing user accounts members of a group. |
+ **type_** | **optional.String**| If set to &#x60;service&#x60;, list only service accounts. If unset, default to only listing user accounts members of a group. | 
 
 ### Return type
 
@@ -901,10 +901,10 @@ Get configuration for a specific provider.
 ### Required Parameters
 
 
-| Name           | Type                | Description                                                                 | Notes |
-|:---------------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**        | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **providerId** | **string**          | The ID of the OIDC provider to retrieve the config for.                     |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the OIDC provider to retrieve the config for. | 
 
 ### Return type
 
@@ -963,10 +963,10 @@ Retrieve single `ACL` object, for a specific resource.
 ### Required Parameters
 
 
-| Name    | Type                | Description                                                                 | Notes |
-|:--------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **rid** | **string**          | The ID of the resource to retrieve the ACL for.                             |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| The ID of the resource to retrieve the ACL for. | 
 
 ### Return type
 
@@ -996,12 +996,12 @@ Query whether action is allowed or not.
 ### Required Parameters
 
 
-| Name       | Type                | Description                                                                 | Notes |
-|:-----------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**    | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **rid**    | **string**          | resource ID                                                                 |       |
-| **gid**    | **string**          | group ID                                                                    |       |
-| **action** | **string**          | action name                                                                 |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID | 
+**gid** | **string**| group ID | 
+**action** | **string**| action name | 
 
 ### Return type
 
@@ -1031,11 +1031,11 @@ Get allowed actions for given resource and group.
 ### Required Parameters
 
 
-| Name    | Type                | Description                                                                 | Notes |
-|:--------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **rid** | **string**          | resource ID                                                                 |       |
-| **gid** | **string**          | group ID                                                                    |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID | 
+**gid** | **string**| group ID | 
 
 ### Return type
 
@@ -1065,10 +1065,10 @@ Retrieve all permissions that are set for a specific resource.
 ### Required Parameters
 
 
-| Name    | Type                | Description                                                                 | Notes |
-|:--------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **rid** | **string**          | resource ID                                                                 |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID | 
 
 ### Return type
 
@@ -1098,12 +1098,12 @@ Query whether action is allowed or not.
 ### Required Parameters
 
 
-| Name       | Type                | Description                                                                 | Notes |
-|:-----------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**    | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **rid**    | **string**          | resource ID                                                                 |       |
-| **uid**    | **string**          | account ID                                                                  |       |
-| **action** | **string**          | action name                                                                 |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID | 
+**uid** | **string**| account ID | 
+**action** | **string**| action name | 
 
 ### Return type
 
@@ -1133,11 +1133,11 @@ Get allowed actions for given resource and user.
 ### Required Parameters
 
 
-| Name    | Type                | Description                                                                 | Notes |
-|:--------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **rid** | **string**          | resource ID                                                                 |       |
-| **uid** | **string**          | account ID                                                                  |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID | 
+**uid** | **string**| account ID | 
 
 ### Return type
 
@@ -1167,10 +1167,10 @@ Get configuration for a specific SAML provider.
 ### Required Parameters
 
 
-| Name           | Type                | Description                                                                 | Notes |
-|:---------------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**        | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **providerId** | **string**          | The ID of the SAML provider to retrieve the config for.                     |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the SAML provider to retrieve the config for. | 
 
 ### Return type
 
@@ -1200,10 +1200,10 @@ The IAM acts as SAML service provider (SP). A SAML identity provider (IdP) usual
 ### Required Parameters
 
 
-| Name           | Type                | Description                                                                 | Notes |
-|:---------------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**        | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **providerId** | **string**          | The ID of the SAML provider to retrieve the ACS callback URL for.           |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the SAML provider to retrieve the ACS callback URL for. | 
 
 ### Return type
 
@@ -1233,10 +1233,10 @@ The IAM acts as SAML service provider (SP). This endpoint provides the SP metada
 ### Required Parameters
 
 
-| Name           | Type                | Description                                                                 | Notes |
-|:---------------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**        | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **providerId** | **string**          | The ID of the SAML provider to retrieve the metadata for.                   |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the SAML provider to retrieve the metadata for. | 
 
 ### Return type
 
@@ -1295,10 +1295,10 @@ Get specific `User` object.
 ### Required Parameters
 
 
-| Name    | Type                | Description                                                                 | Notes |
-|:--------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **uid** | **string**          | The ID of the user object to retrieve.                                      |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uid** | **string**| The ID of the user object to retrieve. | 
 
 ### Return type
 
@@ -1328,10 +1328,10 @@ Retrieve groups the user is member of.
 ### Required Parameters
 
 
-| Name    | Type                | Description                                                                 | Notes |
-|:--------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **uid** | **string**          | The ID of the user.                                                         |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uid** | **string**| The ID of the user. | 
 
 ### Return type
 
@@ -1361,10 +1361,10 @@ Retrieve the permissions for this account with direct permissions distinguished 
 ### Required Parameters
 
 
-| Name    | Type                | Description                                                                 | Notes |
-|:--------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **uid** | **string**          | The id of the user.                                                         |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uid** | **string**| The id of the user. | 
 
 ### Return type
 
@@ -1394,19 +1394,19 @@ Retrieve `User` objects. By default the list consists of regular user accounts, 
 ### Required Parameters
 
 
-| Name         | Type                | Description                                                                 | Notes                |
-|:-------------|:--------------------|:----------------------------------------------------------------------------|:---------------------|
-| **ctx**      | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |                      |
-| **optional** | ***GetUsersOpts**   | optional parameters                                                         | nil if no parameters |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***GetUsersOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 
 Optional parameters are passed through a pointer to a GetUsersOpts struct
 
 
-| Name      | Type                | Description                                                                                                              | Notes |
-|:----------|:--------------------|:-------------------------------------------------------------------------------------------------------------------------|:------|
-| **type_** | **optional.String** | If set to &#x60;service&#x60;, list only service user accounts. If unset, default to only listing regular user accounts. |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type_** | **optional.String**| If set to &#x60;service&#x60;, list only service user accounts. If unset, default to only listing regular user accounts. | 
 
 ### Return type
 
@@ -1436,10 +1436,10 @@ Attempt to import a group of users from the configured directory (LDAP) back-end
 ### Required Parameters
 
 
-| Name                         | Type                                                        | Description                                                                                                                  | Notes |
-|:-----------------------------|:------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------|:------|
-| **ctx**                      | **context.Context**                                         | context for authentication, logging, cancellation, deadlines, tracing, etc.                                                  |       |
-| **iamldapImportGroupObject** | [**IamldapImportGroupObject**](IamldapImportGroupObject.md) | A JSON object specifying the name of the group to be imported. The meaning of the name depends on the group search settings. |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**iamldapImportGroupObject** | [**IamldapImportGroupObject**](IamldapImportGroupObject.md)| A JSON object specifying the name of the group to be imported. The meaning of the name depends on the group search settings. | 
 
 ### Return type
 
@@ -1469,10 +1469,10 @@ Attempt to import a user from the configured directory (LDAP) back-end.
 ### Required Parameters
 
 
-| Name                        | Type                                                      | Description                                                                                                                                                                                                                                                                                                                          | Notes |
-|:----------------------------|:----------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------|
-| **ctx**                     | **context.Context**                                       | context for authentication, logging, cancellation, deadlines, tracing, etc.                                                                                                                                                                                                                                                          |       |
-| **iamldapImportUserObject** | [**IamldapImportUserObject**](IamldapImportUserObject.md) | A JSON object specifying the username (read: \&quot;login\&quot; or \&quot;user ID\&quot;) of the user that should be imported. That string is equivalent to the &#x60;uid&#x60; the user is supposed to log in with after successful import. The exact meaning of this string depends on the configured LDAP authentication method. |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**iamldapImportUserObject** | [**IamldapImportUserObject**](IamldapImportUserObject.md)| A JSON object specifying the username (read: \&quot;login\&quot; or \&quot;user ID\&quot;) of the user that should be imported. That string is equivalent to the &#x60;uid&#x60; the user is supposed to log in with after successful import. The exact meaning of this string depends on the configured LDAP authentication method. | 
 
 ### Return type
 
@@ -1502,10 +1502,10 @@ Exchange user credentials (regular user account: uid and password; service user 
 ### Required Parameters
 
 
-| Name               | Type                                    | Description                                                                 | Notes |
-|:-------------------|:----------------------------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**            | **context.Context**                     | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **iamLoginObject** | [**IamLoginObject**](IamLoginObject.md) | uid &amp; password or uid &amp; service login token.                        |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**iamLoginObject** | [**IamLoginObject**](IamLoginObject.md)| uid &amp; password or uid &amp; service login token. | 
 
 ### Return type
 
@@ -1535,19 +1535,19 @@ Log in using an external identity provider (via e.g. OpenID Connect), as specifi
 ### Required Parameters
 
 
-| Name         | Type                       | Description                                                                 | Notes                |
-|:-------------|:---------------------------|:----------------------------------------------------------------------------|:---------------------|
-| **ctx**      | **context.Context**        | context for authentication, logging, cancellation, deadlines, tracing, etc. |                      |
-| **optional** | ***LoginWithProviderOpts** | optional parameters                                                         | nil if no parameters |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***LoginWithProviderOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
 
 Optional parameters are passed through a pointer to a LoginWithProviderOpts struct
 
 
-| Name             | Type                | Description      | Notes |
-|:-----------------|:--------------------|:-----------------|:------|
-| **oidcProvider** | **optional.String** | OIDC provider ID |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **oidcProvider** | **optional.String**| OIDC provider ID | 
 
 ### Return type
 
@@ -1606,12 +1606,12 @@ Permit single action for given resource and group.
 ### Required Parameters
 
 
-| Name       | Type                | Description                                                                 | Notes |
-|:-----------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**    | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **rid**    | **string**          | resource ID.                                                                |       |
-| **gid**    | **string**          | group ID.                                                                   |       |
-| **action** | **string**          | action name                                                                 |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID. | 
+**gid** | **string**| group ID. | 
+**action** | **string**| action name | 
 
 ### Return type
 
@@ -1641,12 +1641,12 @@ Permit single action for given account and resource.
 ### Required Parameters
 
 
-| Name       | Type                | Description                                                                 | Notes |
-|:-----------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**    | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **rid**    | **string**          | resource ID.                                                                |       |
-| **uid**    | **string**          | account ID.                                                                 |       |
-| **action** | **string**          | action name                                                                 |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID. | 
+**uid** | **string**| account ID. | 
+**action** | **string**| action name | 
 
 ### Return type
 
@@ -1676,10 +1676,10 @@ The IAM acts as SAML service provider (SP). As part of the authentication flow, 
 ### Required Parameters
 
 
-| Name           | Type                | Description                                                                 | Notes |
-|:---------------|:--------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**        | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **providerId** | **string**          | The ID of the provider the authentication response is meant for.            |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the provider the authentication response is meant for. | 
 
 ### Return type
 
@@ -1709,10 +1709,10 @@ Perform basic feature tests. Verify that the current directory (LDAP) configurat
 ### Required Parameters
 
 
-| Name                       | Type                                                    | Description                                                                                                                                                                                                                                                                             | Notes |
-|:---------------------------|:--------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------|
-| **ctx**                    | **context.Context**                                     | context for authentication, logging, cancellation, deadlines, tracing, etc.                                                                                                                                                                                                             |       |
-| **iamldapTestCredentials** | [**IamldapTestCredentials**](IamldapTestCredentials.md) | JSON object containing &#x60;uid&#x60; and password of an LDAP user. For the most expressive test result, choose credentials different from the lookup credentials. The &#x60;uid&#x60; is the string the user is supposed to log in with after successful LDAP back-end configuration. |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**iamldapTestCredentials** | [**IamldapTestCredentials**](IamldapTestCredentials.md)| JSON object containing &#x60;uid&#x60; and password of an LDAP user. For the most expressive test result, choose credentials different from the lookup credentials. The &#x60;uid&#x60; is the string the user is supposed to log in with after successful LDAP back-end configuration. | 
 
 ### Return type
 
@@ -1742,11 +1742,11 @@ Update existing group (description).
 ### Required Parameters
 
 
-| Name               | Type                                    | Description                                                                 | Notes |
-|:-------------------|:----------------------------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**            | **context.Context**                     | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **gid**            | **string**                              | The ID of the group to modify.                                              |       |
-| **iamGroupUpdate** | [**IamGroupUpdate**](IamGroupUpdate.md) |                                                                             |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**gid** | **string**| The ID of the group to modify. | 
+**iamGroupUpdate** | [**IamGroupUpdate**](IamGroupUpdate.md)|  | 
 
 ### Return type
 
@@ -1776,11 +1776,11 @@ Update config for existing OIDC provider.
 ### Required Parameters
 
 
-| Name                      | Type                                                  | Description                                                                 | Notes |
-|:--------------------------|:------------------------------------------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**                   | **context.Context**                                   | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **providerId**            | **string**                                            | The ID of the provider to modify.                                           |       |
-| **iamoidcProviderConfig** | [**IamoidcProviderConfig**](IamoidcProviderConfig.md) | Provider config JSON object                                                 |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the provider to modify. | 
+**iamoidcProviderConfig** | [**IamoidcProviderConfig**](IamoidcProviderConfig.md)| Provider config JSON object | 
 
 ### Return type
 
@@ -1810,11 +1810,11 @@ Update ACL for resource with ID `rid`.
 ### Required Parameters
 
 
-| Name             | Type                                | Description                                                                 | Notes |
-|:-----------------|:------------------------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**          | **context.Context**                 | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **rid**          | **string**                          | The ID of the resource for which the ACL should be created.                 |       |
-| **iamaclUpdate** | [**IamaclUpdate**](IamaclUpdate.md) | New ACL.                                                                    |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| The ID of the resource for which the ACL should be created. | 
+**iamaclUpdate** | [**IamaclUpdate**](IamaclUpdate.md)| New ACL. | 
 
 ### Return type
 
@@ -1844,11 +1844,11 @@ Update config for existing SAML provider.
 ### Required Parameters
 
 
-| Name                      | Type                                                  | Description                                                                 | Notes |
-|:--------------------------|:------------------------------------------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**                   | **context.Context**                                   | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **providerId**            | **string**                                            | The ID of the provider to modify.                                           |       |
-| **iamsamlProviderConfig** | [**IamsamlProviderConfig**](IamsamlProviderConfig.md) | Provider config JSON object                                                 |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the provider to modify. | 
+**iamsamlProviderConfig** | [**IamsamlProviderConfig**](IamsamlProviderConfig.md)| Provider config JSON object | 
 
 ### Return type
 
@@ -1878,11 +1878,11 @@ Update existing user account (meta data and/or password).
 ### Required Parameters
 
 
-| Name              | Type                                  | Description                                                                 | Notes |
-|:------------------|:--------------------------------------|:----------------------------------------------------------------------------|:------|
-| **ctx**           | **context.Context**                   | context for authentication, logging, cancellation, deadlines, tracing, etc. |       |
-| **uid**           | **string**                            | The ID of the user account to modify.                                       |       |
-| **iamUserUpdate** | [**IamUserUpdate**](IamUserUpdate.md) | Password/description.                                                       |       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uid** | **string**| The ID of the user account to modify. | 
+**iamUserUpdate** | [**IamUserUpdate**](IamUserUpdate.md)| Password/description. | 
 
 ### Return type
 
@@ -1900,3 +1900,4 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
+
