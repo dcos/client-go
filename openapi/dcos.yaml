@@ -2273,6 +2273,49 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/MetronomeV1Job"
+    post:
+      description: Create a new job.
+      operationId: V1CreateJob
+      tags:
+        - metronome
+      requestBody:
+        $ref: "#/components/requestBodies/MetronomeV1Job"
+      responses:
+        "201":
+          description: The job has been created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Job"
+        "422":
+          description: The given entity can not be processed due to validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+  /service/metronome/v1/jobs/{jobId}:
+    delete:
+      description: Delete a job. All data about that job will be deleted.
+      operationId: V1DeleteJob
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Job deleted.
+        "404":
+          description: No job found for given `jobId`.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+
+
 
 components:
   requestBodies:
@@ -2303,6 +2346,13 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/EdgelbV2Pool"
+      required: true
+
+    MetronomeV1Job:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/MetronomeV1Job"
       required: true
 
   schemas:
@@ -4204,6 +4254,22 @@ components:
       required:
         - id
         - run
+    MetronomeV1Error:
+      type: object
+      properties:
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                type: string
+              errors:
+                type: array
+                items:
+                  type: string
 
   securitySchemes:
     token:
