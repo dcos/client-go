@@ -211,6 +211,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/IAMACL"
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     put:
       operationId: createResourceACL
       summary: Create ACL for a certain resource.
@@ -237,6 +243,12 @@ paths:
           description: ACL created.
         "409":
           description: Already exists (this resource already has an ACL set).
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     patch:
       operationId: updateResourceACL
       summary: Update ACL for a certain resource.
@@ -261,6 +273,12 @@ paths:
       responses:
         "204":
           description: Success.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     delete:
       operationId: deleteResourceACL
       summary: Delete ACL for a certain resource.
@@ -280,6 +298,12 @@ paths:
           description: Success.
         "404":
           description: ACL not found.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/acls/{rid}/groups/{gid}:
     get:
       operationId: getResourceGroupActions
@@ -308,6 +332,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/IAMActions"
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     delete:
       operationId: forbidResourceGroupActions
       summary: Forbid all actions of given group to given resource.
@@ -331,6 +361,12 @@ paths:
       responses:
         "204":
           description: Success.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/acls/{rid}/groups/{gid}/{action}:
     get:
       operationId: getResourceGroupAction
@@ -365,6 +401,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/IAMActionAllowed"
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     put:
       operationId: permitResourceGroupAction
       summary: Permit single action for given resource and group.
@@ -394,6 +436,12 @@ paths:
       responses:
         "204":
           description: Success.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     delete:
       operationId: forbitResourceGroupAction
       summary: Forbid single action for given resource and group.
@@ -423,6 +471,12 @@ paths:
       responses:
         "204":
           description: Success.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/acls/{rid}/permissions:
     get:
       operationId: getResourcePermissions
@@ -445,6 +499,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/IAMACLPermissions"
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/acls/{rid}/users/{uid}:
     get:
       operationId: getResourceUserActions
@@ -478,6 +538,12 @@ paths:
                     type: array
                     items:
                       $ref: "#/components/schemas/IAMAction"
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     delete:
       operationId: forbidResourceUserActions
       summary: Forbid all actions of given account to given resource.
@@ -501,6 +567,12 @@ paths:
       responses:
         "204":
           description: Success.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/acls/{rid}/users/{uid}/{action}:
     get:
       operationId: getResourceUserAction
@@ -535,6 +607,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/IAMActionAllowed"
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     put:
       operationId: permitResourceUserAction
       summary: Permit single action for given account and resource.
@@ -566,6 +644,12 @@ paths:
           description: Success.
         "409":
           description: Already exists (this account already has this action).
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     delete:
       operationId: forbidResourceUserAction
       summary: Forbid single action for given account and resource.
@@ -595,6 +679,12 @@ paths:
       responses:
         "204":
           description: Success.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/auth/jwks:
     get:
       operationId: getJWKS
@@ -613,6 +703,12 @@ paths:
       responses:
         "200":
           description: The response body contains a JSON Web Key Set document.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/auth/login:
     post:
       operationId: login
@@ -654,6 +750,12 @@ paths:
                 $ref: "#/components/schemas/IAMAuthToken"
         "401":
           description: Login failed.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     get:
       operationId: loginWithProvider
       summary: Log in using an external identity provider.
@@ -726,6 +828,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/IAMOIDCProviderConfig"
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     put:
       operationId: configureOIDCProvider
       summary: Configure a new OIDC provider.
@@ -748,6 +856,12 @@ paths:
           description: Provider created.
         "409":
           description: Provider already exists.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     patch:
       operationId: updateOIDCProvider
       summary: Update OIDC provider config.
@@ -769,6 +883,12 @@ paths:
           description: Update applied.
         "400":
           description: Various errors (e.g. provider not yet configured).
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     delete:
       operationId: deleteOIDCProvider
       summary: Delete provider.
@@ -786,6 +906,12 @@ paths:
       responses:
         "204":
           description: Success.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/auth/saml/providers:
     get:
       operationId: getSAMLProviders
@@ -822,6 +948,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/IAMSAMLProviderConfig"
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     put:
       operationId: configureSAMLProvider
       summary: Configure a new SAML provider.
@@ -844,6 +976,12 @@ paths:
           description: Provider created.
         "409":
           description: Provider already exists.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     patch:
       operationId: updateSAMLProvider
       summary: Update SAML provider config.
@@ -863,8 +1001,12 @@ paths:
       responses:
         "204":
           description: Update applied.
-        "400":
-          description: Various errors (e.g. provider not yet configured).
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     delete:
       operationId: deleteSAMLProvider
       summary: Delete provider.
@@ -882,6 +1024,12 @@ paths:
       responses:
         "204":
           description: Success.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/auth/saml/providers/{provider-id}/acs-callback:
     post:
       operationId: SAMLProviderACSCallbackEndpoint
@@ -973,6 +1121,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/IAMGroups"
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/groups/{gid}:
     get:
       operationId: getGroup
@@ -995,6 +1149,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/IAMGroup"
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     put:
       operationId: createGroup
       summary: Create a group.
@@ -1020,6 +1180,12 @@ paths:
           description: Group created.
         "409":
           description: Group exists.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     patch:
       operationId: updateGroup
       summary: Update group.
@@ -1043,6 +1209,12 @@ paths:
       responses:
         "204":
           description: Update applied.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     delete:
       operationId: deleteGroup
       summary: Delete group.
@@ -1060,6 +1232,12 @@ paths:
       responses:
         "204":
           description: Success
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/groups/{gid}/permissions:
     get:
       operationId: getGroupPermissions
@@ -1082,6 +1260,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/IAMGroupPermissions"
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/groups/{gid}/users:
     get:
       operationId: getGroupUsers
@@ -1111,6 +1295,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/IAMGroupUsers"
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/groups/{gid}/users/{uid}:
     delete:
       operationId: deleteGroupUser
@@ -1135,6 +1325,12 @@ paths:
       responses:
         "204":
           description: Success.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     put:
       operationId: createGroupUser
       summary: Add account to group.
@@ -1160,6 +1356,12 @@ paths:
           description: Success
         "409":
           description: account is already part of the group.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/ldap/config:
     get:
       operationId: getLDAPConfiguration
@@ -1176,9 +1378,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/IAMLDAPConfiguration"
-        "400":
-          description: Various errors. If no config has yet been stored, the custom error
-            code `ERR_LDAP_CONFIG_NOT_AVAILABLE` is set in the response.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     put:
       operationId: createLDAPConfiguration
       summary: Set new LDAP configuration.
@@ -1200,10 +1405,12 @@ paths:
             the directory service was not contacted. You're encouraged to now
             perform a basic feature check against the directory back-end with
             the newly set configuration by using the the config test endpoint.
-        "400":
-          description: Various errors. If the configuration object itself is invalid, the
-            custom error code `ERR_LDAP_CONFIG_INVALID` is set in the response
-            and a description sheds light onto the problem specifics.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     delete:
       operationId: deleteLDAPConfiguration
       summary: Delete current LDAP configuration.
@@ -1215,9 +1422,12 @@ paths:
       responses:
         "204":
           description: Configuration deleted.
-        "400":
-          description: Various errors. If no config has yet been stored, the custom error
-            code `ERR_LDAP_CONFIG_NOT_AVAILABLE` is set in the response.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/ldap/config/test:
     post:
       operationId: testLDAPBackendConnection
@@ -1256,6 +1466,12 @@ paths:
             "*/*":
               schema:
                 $ref: "#/components/schemas/IAMLDAPTestResultObject"
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/ldap/importgroup:
     post:
       operationId: importLDAPGroup
@@ -1276,14 +1492,12 @@ paths:
       responses:
         "201":
           description: Success.
-        "400":
-          description: Various errors. If no directory back-end has been configured yet,
-            the custom error code `ERR_LDAP_CONFIG_NOT_AVAILABLE` is set in the
-            response. If there was no LDAP search result or an error occured
-            during the search process, one of the custom error codes
-            `ERR_LDAP_IMPORT_GROUP_NOT_FOUND` and
-            `ERR_LDAP_IMPORT_SEARCH_FAILED` is set in the response, and a
-            description is provided to report the problem specifics.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/ldap/importuser:
     post:
       operationId: importLDAPUser
@@ -1306,14 +1520,12 @@ paths:
       responses:
         "201":
           description: Success.
-        "400":
-          description: Various errors. If no directory back-end has been configured yet,
-            the custom error code `ERR_LDAP_CONFIG_NOT_AVAILABLE` is set in the
-            response. If there was no LDAP search result or an error occured
-            during the search process, one of the custom error codes
-            `ERR_LDAP_IMPORT_USER_NOT_FOUND` and `ERR_LDAP_IMPORT_SEARCH_FAILED`
-            is set in the response, and a description is provided to report the
-            problem specifics.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/users:
     get:
       operationId: getUsers
@@ -1338,6 +1550,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/IAMUsers"
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/users/{uid}:
     get:
       operationId: getUser
@@ -1360,6 +1578,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/IAMUser"
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     put:
       operationId: createUser
       summary: Create user account.
@@ -1386,6 +1610,12 @@ paths:
           description: User created.
         "409":
           description: User already exists.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     patch:
       operationId: updateUser
       summary: Update user account.
@@ -1412,6 +1642,12 @@ paths:
           description: Update applied.
         "501":
           description: Not implemented for service user accounts.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
     delete:
       operationId: deleteUser
       summary: Delete account.
@@ -1433,6 +1669,12 @@ paths:
           description: Bad request.
         "404":
           description: User account not found.
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/users/{uid}/groups:
     get:
       operationId: getUserGroups
@@ -1455,6 +1697,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/IAMUserGroups"
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
   /acs/api/v1/users/{uid}/permissions:
     get:
       operationId: getUserPermissions
@@ -1478,6 +1726,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/IAMUserPermissions"
+        default:
+          description: IAM Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IAMError"
 
   /cosmos/service/describe:
     post:
@@ -3049,7 +3303,87 @@ components:
         description:
           type: string
       additionalProperties: false
-
+    IAMError:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        code:
+          $ref: '#/components/schemas/IAMErrorCode'
+    IAMErrorCode:
+      type: string
+      enum:
+        - ERR_ACL_EXISTS
+        - ERR_ACTION_NOT_YET_STORED
+        - ERR_CANNOT_IMPORT_USER
+        - ERR_GROUP_EXISTS
+        - ERR_GROUP_NOT_IN_ACL
+        - ERR_INVALID_ACTION
+        - ERR_INVALID_CREDENTIALS
+        - ERR_INVALID_CREDENTIALS_LDAP
+        - ERR_INVALID_DATA
+        - ERR_INVALID_GROUP_ID
+        - ERR_INVALID_PUBLIC_KEY
+        - ERR_INVALID_RESOURCE_ID
+        - ERR_INVALID_USER_ID
+        - ERR_IS_SUPERUSER_ACL
+        - ERR_IS_SUPERUSER_GROUP
+        - ERR_JWKS_NOT_IMPLEMENTED_FOR_HS256
+        - ERR_LDAP_AUTH_FAILED
+        - ERR_LDAP_CONFIG_INVALID
+        - ERR_LDAP_CONFIG_NOT_AVAILABLE
+        - ERR_LDAP_IMPORT
+        - ERR_LDAP_IMPORT_GROUP_NOT_FOUND
+        - ERR_LDAP_IMPORT_SEARCH_FAILED
+        - ERR_LDAP_IMPORT_USER_NOT_FOUND
+        - ERR_MISSING_QUERY_PARAMETERS
+        - ERR_NO_MORE_SUPERUSERS
+        - ERR_OIDC_PROVIDER_CONFIG_INVALID
+        - ERR_PERMISSION_EXISTS
+        - ERR_UNKNOWN_GROUP_ID
+        - ERR_UNKNOWN_RESOURCE_ID
+        - ERR_UNKNOWN_USER_ID
+        - ERR_USER_ALREADY_IN_GROUP
+        - ERR_USER_EXISTS
+        - ERR_USER_NOT_IN_ACL
+        - ERR_USER_NOT_IN_GROUP
+      x-enum-varnames:
+        - IAM_ERR_ACL_EXISTS
+        - IAM_ERR_ACTION_NOT_YET_STORED
+        - IAM_ERR_CANNOT_IMPORT_USER
+        - IAM_ERR_GROUP_EXISTS
+        - IAM_ERR_GROUP_NOT_IN_ACL
+        - IAM_ERR_INVALID_ACTION
+        - IAM_ERR_INVALID_CREDENTIALS
+        - IAM_ERR_INVALID_CREDENTIALS_LDAP
+        - IAM_ERR_INVALID_DATA
+        - IAM_ERR_INVALID_GROUP_ID
+        - IAM_ERR_INVALID_PUBLIC_KEY
+        - IAM_ERR_INVALID_RESOURCE_ID
+        - IAM_ERR_INVALID_USER_ID
+        - IAM_ERR_IS_SUPERUSER_ACL
+        - IAM_ERR_IS_SUPERUSER_GROUP
+        - IAM_ERR_JWKS_NOT_IMPLEMENTED_FOR_HS256
+        - IAM_ERR_LDAP_AUTH_FAILED
+        - IAM_ERR_LDAP_CONFIG_INVALID
+        - IAM_ERR_LDAP_CONFIG_NOT_AVAILABLE
+        - IAM_ERR_LDAP_IMPORT
+        - IAM_ERR_LDAP_IMPORT_GROUP_NOT_FOUND
+        - IAM_ERR_LDAP_IMPORT_SEARCH_FAILED
+        - IAM_ERR_LDAP_IMPORT_USER_NOT_FOUND
+        - IAM_ERR_MISSING_QUERY_PARAMETERS
+        - IAM_ERR_NO_MORE_SUPERUSERS
+        - IAM_ERR_OIDC_PROVIDER_CONFIG_INVALID
+        - IAM_ERR_PERMISSION_EXISTS
+        - IAM_ERR_UNKNOWN_GROUP_ID
+        - IAM_ERR_UNKNOWN_RESOURCE_ID
+        - IAM_ERR_UNKNOWN_USER_ID
+        - IAM_ERR_USER_ALREADY_IN_GROUP
+        - IAM_ERR_USER_EXISTS
+        - IAM_ERR_USER_NOT_IN_ACL
+        - IAM_ERR_USER_NOT_IN_GROUP
     EdgelbV2Pool:
       type: object
       description: The pool contains information on resources that the pool needs. Changes

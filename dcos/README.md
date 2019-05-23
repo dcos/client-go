@@ -182,6 +182,8 @@ Class | Method | HTTP request | Description
  - [IamActionAllowed](docs/IamActionAllowed.md)
  - [IamActions](docs/IamActions.md)
  - [IamAuthToken](docs/IamAuthToken.md)
+ - [IamError](docs/IamError.md)
+ - [IamErrorCode](docs/IamErrorCode.md)
  - [IamGroup](docs/IamGroup.md)
  - [IamGroupCreate](docs/IamGroupCreate.md)
  - [IamGroupPermissions](docs/IamGroupPermissions.md)
