@@ -24,19 +24,19 @@ type MetronomeV1JobRun struct {
 	Gpus int32 `json:"gpus,omitempty"`
 	// How much disk space is needed for this job. This number does not have to be an integer, but can be a fraction.
 	Disk   float32                           `json:"disk"`
-	Ucr    MetronomeV1JobRunUcr              `json:"ucr,omitempty"`
-	Docker MetronomeV1JobRunDocker           `json:"docker,omitempty"`
+	Ucr    *MetronomeV1JobRunUcr             `json:"ucr,omitempty"`
+	Docker *MetronomeV1JobRunDocker          `json:"docker,omitempty"`
 	Env    map[string]map[string]interface{} `json:"env,omitempty"`
 	// The number of seconds until the job needs to be running. If the deadline is reached without successfully running the job, the job is aborted.
 	MaxLaunchDelay int32 `json:"maxLaunchDelay,omitempty"`
 	// The amount of memory in MB that is needed for the job per instance.
-	Mem       float32                    `json:"mem"`
-	Placement MetronomeV1JobRunPlacement `json:"placement,omitempty"`
+	Mem       float32                     `json:"mem"`
+	Placement *MetronomeV1JobRunPlacement `json:"placement,omitempty"`
 	// The user to use to run the tasks on the agent.
 	User string `json:"user,omitempty"`
 	// Configures the number of seconds between escalating from SIGTERM to SIGKILL when signalling tasks to terminate. Using this grace period, tasks should perform orderly shut down immediately upon receiving SIGTERM.
-	TaskKillGracePeriodSeconds float32                  `json:"taskKillGracePeriodSeconds,omitempty"`
-	Restart                    MetronomeV1JobRunRestart `json:"restart,omitempty"`
+	TaskKillGracePeriodSeconds float32                   `json:"taskKillGracePeriodSeconds,omitempty"`
+	Restart                    *MetronomeV1JobRunRestart `json:"restart,omitempty"`
 	// The list of volumes for this job.
 	Volumes []MetronomeV1JobRunVolumes        `json:"volumes,omitempty"`
 	Secrets map[string]map[string]interface{} `json:"secrets,omitempty"`

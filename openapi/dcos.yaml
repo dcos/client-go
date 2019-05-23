@@ -4047,6 +4047,7 @@ components:
             ucr:
               type: object
               additionalProperties: false
+              nullable: true
               properties:
                 image:
                   type: object
@@ -4077,6 +4078,7 @@ components:
             docker:
               type: object
               additionalProperties: false
+              nullable: true
               properties:
                 image:
                   type: string
@@ -4135,6 +4137,7 @@ components:
             placement:
               type: object
               additionalProperties: false
+              nullable: true
               properties:
                 constraints:
                   type: array
@@ -4174,6 +4177,7 @@ components:
               type: object
               additionalProperties: false
               description: Defines the behavior if a task fails
+              nullable: true
               properties:
                 policy:
                   type: string

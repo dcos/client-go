@@ -29,7 +29,7 @@ func main() {
 
 	initialJobs := len(mJobs)
 	for _, job := range mJobs {
-		fmt.Printf("Found Job %s with cmd %s", job.Id, job.Run.Cmd)
+		fmt.Printf("Found Job %s with cmd %s\n", job.Id, job.Run.Cmd)
 	}
 
 	jobID := "testjob1"
@@ -43,15 +43,29 @@ func main() {
 			Disk: 10.0,
 		},
 	}
-	_, _, err = client.Metronome.V1CreateJob(ctx, metronomeV1Job)
+	_, resp, err := client.Metronome.V1CreateJob(ctx, metronomeV1Job)
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	fmt.Printf("created Job - %s\n", resp.Status)
 
 	mJobs2 := getJobs(ctx, client)
 
 	if len(mJobs2) == initialJobs {
 		log.Fatal("no job created")
 	}
+
+	for _, job := range mJobs {
+		fmt.Printf("Found Job %s with cmd %s\n", job.Id, job.Run.Cmd)
+	}
+
+	resp, err = client.Metronome.V1DeleteJob(ctx, jobID)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Deleted Job %s\n", resp.Status)
 
 }
