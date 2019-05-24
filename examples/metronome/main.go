@@ -24,7 +24,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
+	// Get Jobs probably empty list
 	mJobs := getJobs(ctx, client)
 
 	initialJobs := len(mJobs)
@@ -43,6 +43,7 @@ func main() {
 			Disk: 10.0,
 		},
 	}
+	// Create Job
 	_, resp, err := client.Metronome.V1CreateJob(ctx, metronomeV1Job)
 	if err != nil {
 		log.Fatal(err)
@@ -55,10 +56,16 @@ func main() {
 	if len(mJobs2) == initialJobs {
 		log.Fatal("no job created")
 	}
-
+	// Get Jobs 2nd time
 	for _, job := range mJobs {
 		fmt.Printf("Found Job %s with cmd %s\n", job.Id, job.Run.Cmd)
 	}
+	// Get Job
+	retJob, _, err := client.Metronome.V1GetJob(ctx, jobID, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("Job with ID: %s found - %#v", jobID, retJob)
 
 	resp, err = client.Metronome.V1DeleteJob(ctx, jobID)
 

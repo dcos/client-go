@@ -2294,6 +2294,36 @@ paths:
               schema:
                 $ref: "#/components/schemas/MetronomeV1Error"
   /service/metronome/v1/jobs/{jobId}:
+    get:
+      description: Get the job with id `jobId`. You can specify optional embed arguments to get more embedded information.
+      operationId: V1GetJob
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: embeded
+          in: query
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/MetronomeEmbeded"
+      responses:
+        "200":
+          description: Requested Job found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Job"
+        "404":
+          description: No job found for given `jobId`.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
     delete:
       description: Delete a job. All data about that job will be deleted.
       operationId: V1DeleteJob

@@ -108,6 +108,7 @@ Class | Method | HTTP request | Description
 *MetadataApi* | [**Metadata**](docs/MetadataApi.md#metadata) | **Get** /metadata | 
 *MetronomeApi* | [**V1CreateJob**](docs/MetronomeApi.md#v1createjob) | **Post** /service/metronome/v1/jobs | 
 *MetronomeApi* | [**V1DeleteJob**](docs/MetronomeApi.md#v1deletejob) | **Delete** /service/metronome/v1/jobs/{jobId} | 
+*MetronomeApi* | [**V1GetJob**](docs/MetronomeApi.md#v1getjob) | **Get** /service/metronome/v1/jobs/{jobId} | 
 *MetronomeApi* | [**V1GetJobs**](docs/MetronomeApi.md#v1getjobs) | **Get** /service/metronome/v1/jobs | 
 *SecretsApi* | [**CreateSecret**](docs/SecretsApi.md#createsecret) | **Put** /secrets/v1/secret/{store}/{path-to-secret} | Create a secret in the store at the path.
 *SecretsApi* | [**DeleteSecret**](docs/SecretsApi.md#deletesecret) | **Delete** /secrets/v1/secret/{store}/{path-to-secret} | Delete a secret.
