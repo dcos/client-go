@@ -110,6 +110,7 @@ Class | Method | HTTP request | Description
 *MetronomeApi* | [**V1DeleteJob**](docs/MetronomeApi.md#v1deletejob) | **Delete** /service/metronome/v1/jobs/{jobId} | 
 *MetronomeApi* | [**V1GetJob**](docs/MetronomeApi.md#v1getjob) | **Get** /service/metronome/v1/jobs/{jobId} | 
 *MetronomeApi* | [**V1GetJobs**](docs/MetronomeApi.md#v1getjobs) | **Get** /service/metronome/v1/jobs | 
+*MetronomeApi* | [**V1UpdateJob**](docs/MetronomeApi.md#v1updatejob) | **Put** /service/metronome/v1/jobs/{jobId} | 
 *SecretsApi* | [**CreateSecret**](docs/SecretsApi.md#createsecret) | **Put** /secrets/v1/secret/{store}/{path-to-secret} | Create a secret in the store at the path.
 *SecretsApi* | [**DeleteSecret**](docs/SecretsApi.md#deletesecret) | **Delete** /secrets/v1/secret/{store}/{path-to-secret} | Delete a secret.
 *SecretsApi* | [**GetSecret**](docs/SecretsApi.md#getsecret) | **Get** /secrets/v1/secret/{store}/{path-to-secret} | Read or list a secret from the store by its path.

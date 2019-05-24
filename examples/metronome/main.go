@@ -67,8 +67,30 @@ func main() {
 	}
 	fmt.Printf("Job with ID: %s found - %#v", jobID, retJob)
 
-	resp, err = client.Metronome.V1DeleteJob(ctx, jobID)
+	updateJobDescription := "Updated jobs description"
+	// Update Job
+	retJob.Description = updateJobDescription
+	_, _, err = client.Metronome.V1UpdateJob(ctx, jobID, retJob)
+	if err != nil {
+		fmt.Printf("Error: update did not work %v\n", err)
+	} else {
+		fmt.Printf("Updated job with id %s\n", jobID)
 
+	}
+
+	// Get job again and compare Description
+	retupdatedJob, _, err := client.Metronome.V1GetJob(ctx, jobID, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if retupdatedJob.Description != updateJobDescription {
+		fmt.Printf("Error: update did not work\n")
+	} else {
+		fmt.Printf("Update successfull\n")
+	}
+
+	resp, err = client.Metronome.V1DeleteJob(ctx, jobID)
 	if err != nil {
 		log.Fatal(err)
 	}

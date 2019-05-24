@@ -12,5 +12,5 @@ package dcos
 
 type MetronomeV1JobRunPlacement struct {
 	// The array of constraints to place this job.
-	Constraints []MetronomeV1JobRunPlacementConstraints `json:"constraints,omitempty"`
+	Constraints *[]MetronomeV1JobRunPlacementConstraints `json:"constraints,omitempty"`
 }
