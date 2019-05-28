@@ -57,7 +57,7 @@ func (t *DefaultTransport) RoundTrip(req *http.Request) (*http.Response, error) 
 
 	resp, err := t.base().RoundTrip(req2)
 
-	if t.Logger != nil && os.Getenv("DCOS_DEBUG") != "" {
+	if err == nil && t.Logger != nil && os.Getenv("DCOS_DEBUG") != "" {
 		respDump, err := httputil.DumpResponse(resp, true)
 		if err != nil {
 			t.Logger.Debugf("Couldn't dump response: %s", err)
