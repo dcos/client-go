@@ -2376,6 +2376,69 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/MetronomeV1Error"
+  /service/metronome/v1/jobs/{jobId}/schedules:
+    get:
+      description: Get the list of all schedules for this jobId.
+      operationId: V1GetJobSchedules
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: The list of schedules for this job.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1JobSchedules"
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1JobSchedulesUnauthorized"
+        "403":
+          description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1JobSchedulesForbidden"
+    post:
+      description: Create a new schedule
+      operationId: V1PostJobSchedules
+      tags:
+        - metronome
+      requestBody:
+        $ref: "#/components/requestBodies/MetronomeV1JobSchedules"
+      responses:
+        "201":
+          description: The schedule has been created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1JobSchedules"
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1JobSchedulesUnauthorized"
+        "403":
+          description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1JobSchedulesForbidden"
+        "422":
+          description: The given entity can not be processed due to validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1JobSchedulesValidation"
 
 
 
@@ -2415,6 +2478,34 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/MetronomeV1Job"
+      required: true
+
+    MetronomeV1JobSchedules:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/MetronomeV1JobSchedules"
+      required: true
+
+    MetronomeV1JobSchedulesUnauthorized:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/MetronomeV1JobSchedulesUnauthorized"
+      required: true
+
+    MetronomeV1JobSchedulesForbidden:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/MetronomeV1JobSchedulesForbidden"
+      required: true
+
+    MetronomeV1JobSchedulesValidation:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/MetronomeV1JobSchedulesValidation"
       required: true
 
   schemas:
@@ -4305,6 +4396,7 @@ components:
       required:
         - id
         - run
+
     MetronomeV1Error:
       type: object
       properties:
@@ -4321,6 +4413,50 @@ components:
                 type: array
                 items:
                   type: string
+
+    MetronomeV1JobSchedules:
+      type: object
+      properties:
+        id:
+          type: string
+        cron:
+          type: string
+        concurrencyPolicy:
+          type: string
+        enabled:
+          type: boolean
+        startingDeadlineSeconds:
+          type: integer
+        timezone:
+          type: string
+
+    MetronomeV1JobSchedulesUnauthorized:
+      type: object
+      properties:
+        message:
+          type: string
+
+    MetronomeV1JobSchedulesForbidden:
+      type: object
+      properties:
+        message:
+          type: string
+
+    MetronomeV1JobSchedulesValidation:
+      type: object
+      properties:
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
+            path:
+              type: string
+            errors:
+              type: array
+              items:
+                type: string
 
   securitySchemes:
     token:
