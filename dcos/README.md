@@ -112,6 +112,7 @@ Class | Method | HTTP request | Description
 *MetronomeApi* | [**V1DeleteJobSchedulesByScheduleId**](docs/MetronomeApi.md#v1deletejobschedulesbyscheduleid) | **Delete** /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId} | 
 *MetronomeApi* | [**V1GetJob**](docs/MetronomeApi.md#v1getjob) | **Get** /service/metronome/v1/jobs/{jobId} | 
 *MetronomeApi* | [**V1GetJobIdRuns**](docs/MetronomeApi.md#v1getjobidruns) | **Get** /service/metronome/v1/jobs/{jobId}/runs | 
+*MetronomeApi* | [**V1GetJobRunByRunId**](docs/MetronomeApi.md#v1getjobrunbyrunid) | **Get** /service/metronome/v1/jobs/{jobId}/runs/{runId} | 
 *MetronomeApi* | [**V1GetJobSchedules**](docs/MetronomeApi.md#v1getjobschedules) | **Get** /service/metronome/v1/jobs/{jobId}/schedules | 
 *MetronomeApi* | [**V1GetJobSchedulesByScheduleId**](docs/MetronomeApi.md#v1getjobschedulesbyscheduleid) | **Get** /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId} | 
 *MetronomeApi* | [**V1GetJobs**](docs/MetronomeApi.md#v1getjobs) | **Get** /service/metronome/v1/jobs | 

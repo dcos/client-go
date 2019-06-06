@@ -2627,6 +2627,48 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/MetronomeV1Error"
+  /service/metronome/v1/jobs/{jobId}/runs/{runId}:
+    get:
+      description: Get the job run for job jobId with id runId.
+      operationId: V1GetJobRunByRunId
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: runId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: The list of schedules for this job.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1StartJob"
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "403":
+          description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "404":
+          description: No run found for given runId.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
 
 components:
   requestBodies:

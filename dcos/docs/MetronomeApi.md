@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**V1DeleteJobSchedulesByScheduleId**](MetronomeApi.md#V1DeleteJobSchedulesByScheduleId) | **Delete** /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId} | 
 [**V1GetJob**](MetronomeApi.md#V1GetJob) | **Get** /service/metronome/v1/jobs/{jobId} | 
 [**V1GetJobIdRuns**](MetronomeApi.md#V1GetJobIdRuns) | **Get** /service/metronome/v1/jobs/{jobId}/runs | 
+[**V1GetJobRunByRunId**](MetronomeApi.md#V1GetJobRunByRunId) | **Get** /service/metronome/v1/jobs/{jobId}/runs/{runId} | 
 [**V1GetJobSchedules**](MetronomeApi.md#V1GetJobSchedules) | **Get** /service/metronome/v1/jobs/{jobId}/schedules | 
 [**V1GetJobSchedulesByScheduleId**](MetronomeApi.md#V1GetJobSchedulesByScheduleId) | **Get** /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId} | 
 [**V1GetJobs**](MetronomeApi.md#V1GetJobs) | **Get** /service/metronome/v1/jobs | 
@@ -215,6 +216,40 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]map[string]interface{}**](map[string]interface{}.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1GetJobRunByRunId
+
+> MetronomeV1StartJob V1GetJobRunByRunId(ctx, jobId, runId)
+
+
+Get the job run for job jobId with id runId.
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string**|  | 
+**runId** | **string**|  | 
+
+### Return type
+
+[**MetronomeV1StartJob**](MetronomeV1StartJob.md)
 
 ### Authorization
 
