@@ -2446,6 +2446,127 @@ paths:
               schema:
                 $ref: "#/components/schemas/MetronomeV1Error"
 
+  /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId}:
+    get:
+      description: Get the schedule for jobId with schedule scheduleId
+      operationId: V1GetJobSchedulesByScheduleId
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: scheduleId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: The list of schedules for this job.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1CreateJobSchedules"
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "403":
+          description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "404":
+          description: No schedule found for the given scheduleId.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+    put:
+      description: Replaces an existing schedule.
+      operationId: V1PutJobSchedulesByScheduleId
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: scheduleId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        $ref: "#/components/requestBodies/MetronomeV1CreateJobSchedules"
+      responses:
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "403":
+          description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "404":
+          description: No schedule found for the given scheduleId.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "422":
+          description: The given entity can not be processed due to validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+    delete:
+      description: Destroy a schedule
+      operationId: V1DeleteJobSchedulesByScheduleId
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: scheduleId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "403":
+          description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "404":
+          description: No schedule found for the given scheduleId.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+
 components:
   requestBodies:
     SecretsV1Secret:

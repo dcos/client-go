@@ -34,44 +34,81 @@ func main() {
 
 	jobID := "testjob1"
 
-	metronomeV1Job := dcos.MetronomeV1Job{
-		Id: jobID,
-		Run: dcos.MetronomeV1JobRun{
-			Cmd:  "echo foobar",
-			Cpus: 0.1,
-			Mem:  128,
-			Disk: 10.0,
-		},
-	}
-	// Create Job
-	_, resp, err := client.Metronome.V1CreateJob(ctx, metronomeV1Job)
-	if err != nil {
-		log.Fatal(err)
-	}
+	/*
+		metronomeV1Job := dcos.MetronomeV1Job{
+			Id: jobID,
+			Run: dcos.MetronomeV1JobRun{
+				Cmd:  "echo foobar",
+				Cpus: 0.1,
+				Mem:  128,
+				Disk: 10.0,
+			},
+		}
+		// Create Job
+		_, resp, err := client.Metronome.V1CreateJob(ctx, metronomeV1Job)
+		if err != nil {
+			log.Fatal(err)
+		}
 
-	fmt.Printf("created Job - %s\n", resp.Status)
+		fmt.Printf("created Job - %s\n", resp.Status)
+	*/
 
-	v1mcjs := dcos.MetronomeV1CreateJobSchedules{
-		Id:                      jobID,
-		Cron:                    "* * * * *",
-		ConcurrencyPolicy:       "ALLOW",
-		Enabled:                 true,
-		StartingDeadlineSeconds: 60,
-		Timezone:                "America/Chicago",
-	}
-	m, resp1, e := client.Metronome.V1CreateJobSchedules(ctx, jobID, v1mcjs)
+	resp1, e := client.Metronome.V1DeleteJobSchedulesByScheduleId(ctx, jobID, jobID)
 	if e != nil {
 		log.Println(e)
 	}
-	log.Printf("V1CreateJobSchedules: %+v\n", m)
-	log.Printf("Status code: %s\n", resp1.Status)
+	log.Printf("V1DeleteJobSchedulesByScheduleId Status code: %s\n", resp1.Status)
 
-	m2, resp2, err := client.Metronome.V1GetJobSchedules(ctx, jobID)
-	if err != nil {
-		log.Println(err)
-	}
-	log.Printf("V1GetJobSchedules: %+v\n", m2)
-	log.Printf("Status code: %s\n", resp2.Status)
+	/*
+		v1mcjs := dcos.MetronomeV1CreateJobSchedules{
+			Id:                      jobID,
+			Cron:                    "1 1 1 1 1",
+			ConcurrencyPolicy:       "ALLOW",
+			Enabled:                 true,
+			StartingDeadlineSeconds: 60,
+			Timezone:                "America/Chicago",
+		}
+		resp1, e := client.Metronome.V1PutJobSchedulesByScheduleId(ctx, jobID, jobID, v1mcjs)
+		if e != nil {
+			log.Println(e)
+		}
+		log.Printf("V1PutJobSchedulesByScheduleId Status code: %s\n", resp1.Status)
+	*/
+
+	/*
+		m, resp1, e := client.Metronome.V1GetJobSchedulesByScheduleId(ctx, jobID, jobID)
+		if e != nil {
+			log.Println(e)
+		}
+		log.Printf("V1GetJobSchedulesByScheduleId: %+v\n", m)
+		log.Printf("Status code: %s\n", resp1.Status)
+	*/
+
+	/*
+		v1mcjs := dcos.MetronomeV1CreateJobSchedules{
+			Id:                      jobID,
+			Cron:                    "* * * * *",
+			ConcurrencyPolicy:       "ALLOW",
+			Enabled:                 true,
+			StartingDeadlineSeconds: 60,
+			Timezone:                "America/Chicago",
+		}
+		m, resp1, e := client.Metronome.V1CreateJobSchedules(ctx, jobID, v1mcjs)
+		if e != nil {
+			log.Println(e)
+		}
+		log.Printf("V1CreateJobSchedules: %+v\n", m)
+		log.Printf("Status code: %s\n", resp1.Status)
+	*/
+
+	/*
+		m2, resp2, err := client.Metronome.V1GetJobSchedules(ctx, jobID)
+		if err != nil {
+			log.Println(err)
+		}
+		log.Printf("V1GetJobSchedules: %+v\n", m2)
+		log.Printf("Status code: %s\n", resp2.Status)
+	*/
 
 	/*
 		mJobs2 := getJobs(ctx, client)
