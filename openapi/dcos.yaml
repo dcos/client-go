@@ -2409,7 +2409,7 @@ paths:
                 $ref: "#/components/schemas/MetronomeV1JobSchedulesForbidden"
     post:
       description: Create a new schedule
-      operationId: V1PostJobSchedules
+      operationId: V1CreateJobSchedules
       tags:
         - metronome
       requestBody:
@@ -4423,40 +4423,13 @@ components:
           type: string
         concurrencyPolicy:
           type: string
+          enum: [ALLOW,FORBID]
         enabled:
           type: boolean
         startingDeadlineSeconds:
           type: integer
         timezone:
           type: string
-
-    MetronomeV1JobSchedulesUnauthorized:
-      type: object
-      properties:
-        message:
-          type: string
-
-    MetronomeV1JobSchedulesForbidden:
-      type: object
-      properties:
-        message:
-          type: string
-
-    MetronomeV1JobSchedulesValidation:
-      type: object
-      properties:
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            type: object
-            path:
-              type: string
-            errors:
-              type: array
-              items:
-                type: string
 
   securitySchemes:
     token:
