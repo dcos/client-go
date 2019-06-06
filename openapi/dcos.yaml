@@ -2412,6 +2412,12 @@ paths:
       operationId: V1CreateJobSchedules
       tags:
         - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
       requestBody:
         $ref: "#/components/requestBodies/MetronomeV1JobSchedules"
       responses:
