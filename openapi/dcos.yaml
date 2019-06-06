@@ -2400,13 +2400,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MetronomeV1JobSchedulesUnauthorized"
+                $ref: "#/components/schemas/MetronomeV1Error"
         "403":
           description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MetronomeV1JobSchedulesForbidden"
+                $ref: "#/components/schemas/MetronomeV1Error"
     post:
       description: Create a new schedule
       operationId: V1CreateJobSchedules
@@ -2426,21 +2426,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MetronomeV1JobSchedulesUnauthorized"
+                $ref: "#/components/schemas/MetronomeV1Error"
         "403":
           description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MetronomeV1JobSchedulesForbidden"
+                $ref: "#/components/schemas/MetronomeV1Error"
         "422":
           description: The given entity can not be processed due to validation errors.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MetronomeV1JobSchedulesValidation"
-
-
+                $ref: "#/components/schemas/MetronomeV1Error"
 
 components:
   requestBodies:
@@ -2490,23 +2488,6 @@ components:
     MetronomeV1JobSchedulesUnauthorized:
       content:
         application/json:
-          schema:
-            $ref: "#/components/schemas/MetronomeV1JobSchedulesUnauthorized"
-      required: true
-
-    MetronomeV1JobSchedulesForbidden:
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/MetronomeV1JobSchedulesForbidden"
-      required: true
-
-    MetronomeV1JobSchedulesValidation:
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/MetronomeV1JobSchedulesValidation"
-      required: true
 
   schemas:
     SecretsV1Secret:
