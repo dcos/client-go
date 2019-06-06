@@ -2566,6 +2566,67 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/MetronomeV1Error"
+  /service/metronome/v1/jobs/{jobId}/runs:
+    get:
+      description: Get the list of all runs for this jobId
+      operationId: V1GetJobIdRuns
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: The list of schedules for this job.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1JobsList"
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "403":
+          description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+    post:
+      description: Trigger a new job run.
+      operationId: V1StartJobRun
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "201":
+          description: The job run has been created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1StartJob"
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "403":
+          description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
 
 components:
   requestBodies:
@@ -4554,6 +4615,44 @@ components:
           type: integer
         timezone:
           type: string
+    MetronomeV1JobsList:
+      type: array
+      items:
+        type: object
+        properties:
+          completedAt:
+            type: string
+            nullable: true
+          createdAt:
+            type: string
+          id:
+            type: string
+          jobId:
+            type: string
+          status:
+            type: string
+          tasks:
+            type: array
+            items:
+              type: string
+    MetronomeV1StartJob:
+      type: object
+      properties:
+        completedAt:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+        id:
+          type: string
+        jobId:
+          type: string
+        status:
+          type: string
+        tasks:
+          type: array
+          items:
+            type: string
 
   securitySchemes:
     token:

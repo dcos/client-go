@@ -9,10 +9,12 @@ Method | HTTP request | Description
 [**V1DeleteJob**](MetronomeApi.md#V1DeleteJob) | **Delete** /service/metronome/v1/jobs/{jobId} | 
 [**V1DeleteJobSchedulesByScheduleId**](MetronomeApi.md#V1DeleteJobSchedulesByScheduleId) | **Delete** /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId} | 
 [**V1GetJob**](MetronomeApi.md#V1GetJob) | **Get** /service/metronome/v1/jobs/{jobId} | 
+[**V1GetJobIdRuns**](MetronomeApi.md#V1GetJobIdRuns) | **Get** /service/metronome/v1/jobs/{jobId}/runs | 
 [**V1GetJobSchedules**](MetronomeApi.md#V1GetJobSchedules) | **Get** /service/metronome/v1/jobs/{jobId}/schedules | 
 [**V1GetJobSchedulesByScheduleId**](MetronomeApi.md#V1GetJobSchedulesByScheduleId) | **Get** /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId} | 
 [**V1GetJobs**](MetronomeApi.md#V1GetJobs) | **Get** /service/metronome/v1/jobs | 
 [**V1PutJobSchedulesByScheduleId**](MetronomeApi.md#V1PutJobSchedulesByScheduleId) | **Put** /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId} | 
+[**V1StartJobRun**](MetronomeApi.md#V1StartJobRun) | **Post** /service/metronome/v1/jobs/{jobId}/runs | 
 [**V1UpdateJob**](MetronomeApi.md#V1UpdateJob) | **Put** /service/metronome/v1/jobs/{jobId} | 
 
 
@@ -195,6 +197,39 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## V1GetJobIdRuns
+
+> []map[string]interface{} V1GetJobIdRuns(ctx, jobId)
+
+
+Get the list of all runs for this jobId
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string**|  | 
+
+### Return type
+
+[**[]map[string]interface{}**](map[string]interface{}.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## V1GetJobSchedules
 
 > []map[string]interface{} V1GetJobSchedules(ctx, jobId)
@@ -332,6 +367,39 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1StartJobRun
+
+> MetronomeV1StartJob V1StartJobRun(ctx, jobId)
+
+
+Trigger a new job run.
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string**|  | 
+
+### Return type
+
+[**MetronomeV1StartJob**](MetronomeV1StartJob.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

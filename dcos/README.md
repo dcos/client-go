@@ -111,10 +111,12 @@ Class | Method | HTTP request | Description
 *MetronomeApi* | [**V1DeleteJob**](docs/MetronomeApi.md#v1deletejob) | **Delete** /service/metronome/v1/jobs/{jobId} | 
 *MetronomeApi* | [**V1DeleteJobSchedulesByScheduleId**](docs/MetronomeApi.md#v1deletejobschedulesbyscheduleid) | **Delete** /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId} | 
 *MetronomeApi* | [**V1GetJob**](docs/MetronomeApi.md#v1getjob) | **Get** /service/metronome/v1/jobs/{jobId} | 
+*MetronomeApi* | [**V1GetJobIdRuns**](docs/MetronomeApi.md#v1getjobidruns) | **Get** /service/metronome/v1/jobs/{jobId}/runs | 
 *MetronomeApi* | [**V1GetJobSchedules**](docs/MetronomeApi.md#v1getjobschedules) | **Get** /service/metronome/v1/jobs/{jobId}/schedules | 
 *MetronomeApi* | [**V1GetJobSchedulesByScheduleId**](docs/MetronomeApi.md#v1getjobschedulesbyscheduleid) | **Get** /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId} | 
 *MetronomeApi* | [**V1GetJobs**](docs/MetronomeApi.md#v1getjobs) | **Get** /service/metronome/v1/jobs | 
 *MetronomeApi* | [**V1PutJobSchedulesByScheduleId**](docs/MetronomeApi.md#v1putjobschedulesbyscheduleid) | **Put** /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId} | 
+*MetronomeApi* | [**V1StartJobRun**](docs/MetronomeApi.md#v1startjobrun) | **Post** /service/metronome/v1/jobs/{jobId}/runs | 
 *MetronomeApi* | [**V1UpdateJob**](docs/MetronomeApi.md#v1updatejob) | **Put** /service/metronome/v1/jobs/{jobId} | 
 *SecretsApi* | [**CreateSecret**](docs/SecretsApi.md#createsecret) | **Put** /secrets/v1/secret/{store}/{path-to-secret} | Create a secret in the store at the path.
 *SecretsApi* | [**DeleteSecret**](docs/SecretsApi.md#deletesecret) | **Delete** /secrets/v1/secret/{store}/{path-to-secret} | Delete a secret.
@@ -247,6 +249,7 @@ Class | Method | HTTP request | Description
  - [MetronomeV1JobRunUcr](docs/MetronomeV1JobRunUcr.md)
  - [MetronomeV1JobRunUcrImage](docs/MetronomeV1JobRunUcrImage.md)
  - [MetronomeV1JobRunVolumes](docs/MetronomeV1JobRunVolumes.md)
+ - [MetronomeV1StartJob](docs/MetronomeV1StartJob.md)
  - [SecretsV1Secret](docs/SecretsV1Secret.md)
 
 
