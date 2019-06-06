@@ -2485,10 +2485,6 @@ components:
             $ref: "#/components/schemas/MetronomeV1JobSchedules"
       required: true
 
-    MetronomeV1JobSchedulesUnauthorized:
-      content:
-        application/json:
-
   schemas:
     SecretsV1Secret:
       additionalProperties: false
