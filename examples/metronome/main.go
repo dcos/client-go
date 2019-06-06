@@ -27,7 +27,7 @@ func main() {
 	// Get Jobs probably empty list
 	mJobs := getJobs(ctx, client)
 
-	initialJobs := len(mJobs)
+	//initialJobs := len(mJobs)
 	for _, job := range mJobs {
 		fmt.Printf("Found Job %s with cmd %s\n", job.Id, job.Run.Cmd)
 	}
@@ -51,50 +51,75 @@ func main() {
 
 	fmt.Printf("created Job - %s\n", resp.Status)
 
-	mJobs2 := getJobs(ctx, client)
+	v1mcjs := dcos.MetronomeV1CreateJobSchedules{
+		Id:                      jobID,
+		Cron:                    "* * * * *",
+		ConcurrencyPolicy:       "ALLOW",
+		Enabled:                 true,
+		StartingDeadlineSeconds: 60,
+		Timezone:                "America/Chicago",
+	}
+	m, resp1, e := client.Metronome.V1CreateJobSchedules(ctx, jobID, v1mcjs)
+	if e != nil {
+		log.Println(e)
+	}
+	log.Printf("V1CreateJobSchedules: %+v\n", m)
+	log.Printf("Status code: %s\n", resp1.Status)
 
-	if len(mJobs2) == initialJobs {
-		log.Fatal("no job created")
-	}
-	// Get Jobs 2nd time
-	for _, job := range mJobs {
-		fmt.Printf("Found Job %s with cmd %s\n", job.Id, job.Run.Cmd)
-	}
-	// Get Job
-	retJob, _, err := client.Metronome.V1GetJob(ctx, jobID, nil)
+	m2, resp2, err := client.Metronome.V1GetJobSchedules(ctx, jobID)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
-	fmt.Printf("Job with ID: %s found - %#v", jobID, retJob)
+	log.Printf("V1GetJobSchedules: %+v\n", m2)
+	log.Printf("Status code: %s\n", resp2.Status)
 
-	updateJobDescription := "Updated jobs description"
-	// Update Job
-	retJob.Description = updateJobDescription
-	_, _, err = client.Metronome.V1UpdateJob(ctx, jobID, retJob)
-	if err != nil {
-		fmt.Printf("Error: update did not work %v\n", err)
-	} else {
-		fmt.Printf("Updated job with id %s\n", jobID)
+	/*
+		mJobs2 := getJobs(ctx, client)
 
-	}
+		if len(mJobs2) == initialJobs {
+			log.Fatal("no job created")
+		}
+		// Get Jobs 2nd time
+		for _, job := range mJobs {
+			fmt.Printf("Found Job %s with cmd %s\n", job.Id, job.Run.Cmd)
+		}
+		// Get Job
+		retJob, _, err := client.Metronome.V1GetJob(ctx, jobID, nil)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Printf("Job with ID: %s found - %#v", jobID, retJob)
 
-	// Get job again and compare Description
-	retupdatedJob, _, err := client.Metronome.V1GetJob(ctx, jobID, nil)
-	if err != nil {
-		log.Fatal(err)
-	}
+		updateJobDescription := "Updated jobs description"
+		// Update Job
+		retJob.Description = updateJobDescription
+		_, _, err = client.Metronome.V1UpdateJob(ctx, jobID, retJob)
+		if err != nil {
+			fmt.Printf("Error: update did not work %v\n", err)
+		} else {
+			fmt.Printf("Updated job with id %s\n", jobID)
 
-	if retupdatedJob.Description != updateJobDescription {
-		fmt.Printf("Error: update did not work\n")
-	} else {
-		fmt.Printf("Update successfull\n")
-	}
+		}
 
-	resp, err = client.Metronome.V1DeleteJob(ctx, jobID)
-	if err != nil {
-		log.Fatal(err)
-	}
+		// Get job again and compare Description
+		retupdatedJob, _, err := client.Metronome.V1GetJob(ctx, jobID, nil)
+		if err != nil {
+			log.Fatal(err)
+		}
 
-	fmt.Printf("Deleted Job %s\n", resp.Status)
+		if retupdatedJob.Description != updateJobDescription {
+			fmt.Printf("Error: update did not work\n")
+		} else {
+			fmt.Printf("Update successfull\n")
+		}
+	*/
 
+	/*
+		resp, err = client.Metronome.V1DeleteJob(ctx, jobID)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		fmt.Printf("Deleted Job %s\n", resp.Status)
+	*/
 }

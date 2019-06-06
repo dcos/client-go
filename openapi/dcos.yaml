@@ -2419,14 +2419,14 @@ paths:
           schema:
             type: string
       requestBody:
-        $ref: "#/components/requestBodies/MetronomeV1JobSchedules"
+        $ref: "#/components/requestBodies/MetronomeV1CreateJobSchedules"
       responses:
         "201":
           description: The schedule has been created.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MetronomeV1JobSchedules"
+                $ref: "#/components/schemas/MetronomeV1CreateJobSchedules"
         "401":
           description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
           content:
@@ -2489,6 +2489,13 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/MetronomeV1JobSchedules"
+      required: true
+
+    MetronomeV1CreateJobSchedules:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/MetronomeV1CreateJobSchedules"
       required: true
 
   schemas:
@@ -4398,6 +4405,25 @@ components:
                   type: string
 
     MetronomeV1JobSchedules:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          cron:
+            type: string
+          concurrencyPolicy:
+            type: string
+            enum: [ALLOW,FORBID]
+          enabled:
+            type: boolean
+          startingDeadlineSeconds:
+            type: integer
+          timezone:
+            type: string
+
+    MetronomeV1CreateJobSchedules:
       type: object
       properties:
         id:

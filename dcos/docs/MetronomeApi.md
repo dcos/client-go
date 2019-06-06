@@ -5,8 +5,10 @@ All URIs are relative to *http://your-dcos-cluster.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**V1CreateJob**](MetronomeApi.md#V1CreateJob) | **Post** /service/metronome/v1/jobs | 
+[**V1CreateJobSchedules**](MetronomeApi.md#V1CreateJobSchedules) | **Post** /service/metronome/v1/jobs/{jobId}/schedules | 
 [**V1DeleteJob**](MetronomeApi.md#V1DeleteJob) | **Delete** /service/metronome/v1/jobs/{jobId} | 
 [**V1GetJob**](MetronomeApi.md#V1GetJob) | **Get** /service/metronome/v1/jobs/{jobId} | 
+[**V1GetJobSchedules**](MetronomeApi.md#V1GetJobSchedules) | **Get** /service/metronome/v1/jobs/{jobId}/schedules | 
 [**V1GetJobs**](MetronomeApi.md#V1GetJobs) | **Get** /service/metronome/v1/jobs | 
 [**V1UpdateJob**](MetronomeApi.md#V1UpdateJob) | **Put** /service/metronome/v1/jobs/{jobId} | 
 
@@ -30,6 +32,40 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MetronomeV1Job**](MetronomeV1Job.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1CreateJobSchedules
+
+> MetronomeV1CreateJobSchedules V1CreateJobSchedules(ctx, jobId, metronomeV1CreateJobSchedules)
+
+
+Create a new schedule
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string**|  | 
+**metronomeV1CreateJobSchedules** | [**MetronomeV1CreateJobSchedules**](MetronomeV1CreateJobSchedules.md)|  | 
+
+### Return type
+
+[**MetronomeV1CreateJobSchedules**](MetronomeV1CreateJobSchedules.md)
 
 ### Authorization
 
@@ -107,6 +143,39 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MetronomeV1Job**](MetronomeV1Job.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1GetJobSchedules
+
+> []map[string]interface{} V1GetJobSchedules(ctx, jobId)
+
+
+Get the list of all schedules for this jobId.
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string**|  | 
+
+### Return type
+
+[**[]map[string]interface{}**](map[string]interface{}.md)
 
 ### Authorization
 
