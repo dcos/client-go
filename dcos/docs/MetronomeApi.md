@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**V1GetJobs**](MetronomeApi.md#V1GetJobs) | **Get** /service/metronome/v1/jobs | 
 [**V1PutJobSchedulesByScheduleId**](MetronomeApi.md#V1PutJobSchedulesByScheduleId) | **Put** /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId} | 
 [**V1StartJobRun**](MetronomeApi.md#V1StartJobRun) | **Post** /service/metronome/v1/jobs/{jobId}/runs | 
+[**V1StopJobRunByRunId**](MetronomeApi.md#V1StopJobRunByRunId) | **Post** /service/metronome/v1/jobs/{jobId}/runs/{runId}/actions/stop | 
 [**V1UpdateJob**](MetronomeApi.md#V1UpdateJob) | **Put** /service/metronome/v1/jobs/{jobId} | 
 
 
@@ -427,6 +428,40 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MetronomeV1StartJob**](MetronomeV1StartJob.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1StopJobRunByRunId
+
+> V1StopJobRunByRunId(ctx, jobId, runId)
+
+
+Stop an existing job run
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string**|  | 
+**runId** | **string**|  | 
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 

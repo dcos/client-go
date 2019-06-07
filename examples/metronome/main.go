@@ -53,12 +53,20 @@ func main() {
 		fmt.Printf("created Job - %s\n", resp.Status)
 	*/
 
-	val, resp1, e := client.Metronome.V1GetJobRunByRunId(ctx, jobID, "201906062355158xfU7")
+	resp1, e := client.Metronome.V1StopJobRunByRunId(ctx, jobID, "20190607000515a584s")
 	if e != nil {
 		log.Println(e)
 	}
-	log.Printf("V1GetJobRunByRunId: %+v\n", val)
-	log.Printf("V1GetJobRunByRunId Status code: %s\n", resp1.Status)
+	log.Printf("V1StopJobRunByRunId Status code: %s\n", resp1.Status)
+
+	/*
+		val, resp1, e := client.Metronome.V1GetJobRunByRunId(ctx, jobID, "201906062355158xfU7")
+		if e != nil {
+			log.Println(e)
+		}
+		log.Printf("V1GetJobRunByRunId: %+v\n", val)
+		log.Printf("V1GetJobRunByRunId Status code: %s\n", resp1.Status)
+	*/
 
 	/*
 		val, resp1, e := client.Metronome.V1StartJobRun(ctx, jobID)
