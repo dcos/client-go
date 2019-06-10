@@ -34,24 +34,22 @@ func main() {
 
 	jobID := "testjob1"
 
-	/*
-		metronomeV1Job := dcos.MetronomeV1Job{
-			Id: jobID,
-			Run: dcos.MetronomeV1JobRun{
-				Cmd:  "echo foobar",
-				Cpus: 0.1,
-				Mem:  128,
-				Disk: 10.0,
-			},
-		}
-		// Create Job
-		_, resp, err := client.Metronome.V1CreateJob(ctx, metronomeV1Job)
-		if err != nil {
-			log.Fatal(err)
-		}
+	metronomeV1Job := dcos.MetronomeV1Job{
+		Id: jobID,
+		Run: dcos.MetronomeV1JobRun{
+			Cmd:  "echo foobar",
+			Cpus: 0.1,
+			Mem:  128,
+			Disk: 10.0,
+		},
+	}
+	// Create Job
+	_, resp, err := client.Metronome.V1CreateJob(ctx, metronomeV1Job)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-		fmt.Printf("created Job - %s\n", resp.Status)
-	*/
+	fmt.Printf("created Job - %s\n", resp.Status)
 
 	resp1, e := client.Metronome.V1StopJobRunByRunId(ctx, jobID, "20190607000515a584s")
 	if e != nil {

@@ -4428,6 +4428,7 @@ components:
               minLength: 1
             cpus:
               type: number
+              format: double
               description: >-
                 The number of CPU shares this job needs per instance. This number does
                 not have to be integer, but can be a fraction.
@@ -4439,7 +4440,8 @@ components:
                 not have to be integer, but can be a fraction.
               minimum: 0
             disk:
-              type: number
+              type: integer
+              format: int64
               description: >-
                 How much disk space is needed for this job. This number does not have
                 to be an integer, but can be a fraction.
@@ -4531,7 +4533,8 @@ components:
                 deadline is reached without successfully running the job, the job is
                 aborted.
             mem:
-              type: number
+              type: integer
+              format: int64
               description: The amount of memory in MB that is needed for the job per instance.
               minimum: 32
             placement:
