@@ -4676,24 +4676,6 @@ components:
           type: integer
         timezone:
           type: string
-    MetronomeV1Job:
-      type: object
-      properties:
-        completedAt:
-          type: string
-          nullable: true
-        createdAt:
-          type: string
-        id:
-          type: string
-        jobId:
-          type: string
-        status:
-          type: string
-        tasks:
-          type: array
-          items:
-            type: string
 
   securitySchemes:
     token:
