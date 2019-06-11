@@ -56,7 +56,7 @@ No authorization required
 
 ## V1CreateJobSchedules
 
-> MetronomeV1CreateJobSchedules V1CreateJobSchedules(ctx, jobId, metronomeV1CreateJobSchedules)
+> MetronomeV1JobSchedule V1CreateJobSchedules(ctx, jobId, metronomeV1JobSchedule)
 
 
 Create a new schedule
@@ -68,11 +68,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **jobId** | **string**|  | 
-**metronomeV1CreateJobSchedules** | [**MetronomeV1CreateJobSchedules**](MetronomeV1CreateJobSchedules.md)|  | 
+**metronomeV1JobSchedule** | [**MetronomeV1JobSchedule**](MetronomeV1JobSchedule.md)|  | 
 
 ### Return type
 
-[**MetronomeV1CreateJobSchedules**](MetronomeV1CreateJobSchedules.md)
+[**MetronomeV1JobSchedule**](MetronomeV1JobSchedule.md)
 
 ### Authorization
 
@@ -268,7 +268,7 @@ No authorization required
 
 ## V1GetJobSchedules
 
-> []map[string]interface{} V1GetJobSchedules(ctx, jobId)
+> []MetronomeV1JobSchedule V1GetJobSchedules(ctx, jobId)
 
 
 Get the list of all schedules for this jobId.
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]map[string]interface{}**](map[string]interface{}.md)
+[**[]MetronomeV1JobSchedule**](MetronomeV1JobSchedule.md)
 
 ### Authorization
 
@@ -301,7 +301,7 @@ No authorization required
 
 ## V1GetJobSchedulesByScheduleId
 
-> MetronomeV1CreateJobSchedules V1GetJobSchedulesByScheduleId(ctx, jobId, scheduleId)
+> MetronomeV1JobSchedule V1GetJobSchedulesByScheduleId(ctx, jobId, scheduleId)
 
 
 Get the schedule for jobId with schedule scheduleId
@@ -317,7 +317,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MetronomeV1CreateJobSchedules**](MetronomeV1CreateJobSchedules.md)
+[**MetronomeV1JobSchedule**](MetronomeV1JobSchedule.md)
 
 ### Authorization
 
@@ -377,7 +377,7 @@ No authorization required
 
 ## V1PutJobSchedulesByScheduleId
 
-> V1PutJobSchedulesByScheduleId(ctx, jobId, scheduleId, metronomeV1CreateJobSchedules)
+> V1PutJobSchedulesByScheduleId(ctx, jobId, scheduleId, metronomeV1JobSchedule)
 
 
 Replaces an existing schedule.
@@ -390,7 +390,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **jobId** | **string**|  | 
 **scheduleId** | **string**|  | 
-**metronomeV1CreateJobSchedules** | [**MetronomeV1CreateJobSchedules**](MetronomeV1CreateJobSchedules.md)|  | 
+**metronomeV1JobSchedule** | [**MetronomeV1JobSchedule**](MetronomeV1JobSchedule.md)|  | 
 
 ### Return type
 

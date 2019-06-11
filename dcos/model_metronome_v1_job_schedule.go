@@ -10,7 +10,7 @@
 
 package dcos
 
-type MetronomeV1CreateJobSchedules struct {
+type MetronomeV1JobSchedule struct {
 	Id                      string `json:"id,omitempty"`
 	Cron                    string `json:"cron,omitempty"`
 	ConcurrencyPolicy       string `json:"concurrencyPolicy,omitempty"`

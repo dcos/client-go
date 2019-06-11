@@ -1,4 +1,4 @@
-# MetronomeV1CreateJobSchedules
+# MetronomeV1JobSchedule
 
 ## Properties
 

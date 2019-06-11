@@ -237,7 +237,6 @@ Class | Method | HTTP request | Description
  - [Metadata](docs/Metadata.md)
  - [MetronomeEmbeded](docs/MetronomeEmbeded.md)
  - [MetronomeRestartPolicy](docs/MetronomeRestartPolicy.md)
- - [MetronomeV1CreateJobSchedules](docs/MetronomeV1CreateJobSchedules.md)
  - [MetronomeV1Error](docs/MetronomeV1Error.md)
  - [MetronomeV1ErrorDetails](docs/MetronomeV1ErrorDetails.md)
  - [MetronomeV1Job](docs/MetronomeV1Job.md)
@@ -251,6 +250,7 @@ Class | Method | HTTP request | Description
  - [MetronomeV1JobRunUcr](docs/MetronomeV1JobRunUcr.md)
  - [MetronomeV1JobRunUcrImage](docs/MetronomeV1JobRunUcrImage.md)
  - [MetronomeV1JobRunVolumes](docs/MetronomeV1JobRunVolumes.md)
+ - [MetronomeV1JobSchedule](docs/MetronomeV1JobSchedule.md)
  - [MetronomeV1StartJob](docs/MetronomeV1StartJob.md)
  - [SecretsV1Secret](docs/SecretsV1Secret.md)
 

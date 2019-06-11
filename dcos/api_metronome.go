@@ -131,17 +131,17 @@ MetronomeApiService
 Create a new schedule
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param jobId
- * @param metronomeV1CreateJobSchedules
-@return MetronomeV1CreateJobSchedules
+ * @param metronomeV1JobSchedule
+@return MetronomeV1JobSchedule
 */
-func (a *MetronomeApiService) V1CreateJobSchedules(ctx context.Context, jobId string, metronomeV1CreateJobSchedules MetronomeV1CreateJobSchedules) (MetronomeV1CreateJobSchedules, *http.Response, error) {
+func (a *MetronomeApiService) V1CreateJobSchedules(ctx context.Context, jobId string, metronomeV1JobSchedule MetronomeV1JobSchedule) (MetronomeV1JobSchedule, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  MetronomeV1CreateJobSchedules
+		localVarReturnValue  MetronomeV1JobSchedule
 	)
 
 	// create path and map variables
@@ -170,7 +170,7 @@ func (a *MetronomeApiService) V1CreateJobSchedules(ctx context.Context, jobId st
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &metronomeV1CreateJobSchedules
+	localVarPostBody = &metronomeV1JobSchedule
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -193,7 +193,7 @@ func (a *MetronomeApiService) V1CreateJobSchedules(ctx context.Context, jobId st
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 201 {
-			var v MetronomeV1CreateJobSchedules
+			var v MetronomeV1JobSchedule
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -764,16 +764,16 @@ MetronomeApiService
 Get the list of all schedules for this jobId.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param jobId
-@return []map[string]interface{}
+@return []MetronomeV1JobSchedule
 */
-func (a *MetronomeApiService) V1GetJobSchedules(ctx context.Context, jobId string) ([]map[string]interface{}, *http.Response, error) {
+func (a *MetronomeApiService) V1GetJobSchedules(ctx context.Context, jobId string) ([]MetronomeV1JobSchedule, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []map[string]interface{}
+		localVarReturnValue  []MetronomeV1JobSchedule
 	)
 
 	// create path and map variables
@@ -823,7 +823,7 @@ func (a *MetronomeApiService) V1GetJobSchedules(ctx context.Context, jobId strin
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v []map[string]interface{}
+			var v []MetronomeV1JobSchedule
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -873,16 +873,16 @@ Get the schedule for jobId with schedule scheduleId
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param jobId
  * @param scheduleId
-@return MetronomeV1CreateJobSchedules
+@return MetronomeV1JobSchedule
 */
-func (a *MetronomeApiService) V1GetJobSchedulesByScheduleId(ctx context.Context, jobId string, scheduleId string) (MetronomeV1CreateJobSchedules, *http.Response, error) {
+func (a *MetronomeApiService) V1GetJobSchedulesByScheduleId(ctx context.Context, jobId string, scheduleId string) (MetronomeV1JobSchedule, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  MetronomeV1CreateJobSchedules
+		localVarReturnValue  MetronomeV1JobSchedule
 	)
 
 	// create path and map variables
@@ -933,7 +933,7 @@ func (a *MetronomeApiService) V1GetJobSchedulesByScheduleId(ctx context.Context,
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v MetronomeV1CreateJobSchedules
+			var v MetronomeV1JobSchedule
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1089,9 +1089,9 @@ Replaces an existing schedule.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param jobId
  * @param scheduleId
- * @param metronomeV1CreateJobSchedules
+ * @param metronomeV1JobSchedule
 */
-func (a *MetronomeApiService) V1PutJobSchedulesByScheduleId(ctx context.Context, jobId string, scheduleId string, metronomeV1CreateJobSchedules MetronomeV1CreateJobSchedules) (*http.Response, error) {
+func (a *MetronomeApiService) V1PutJobSchedulesByScheduleId(ctx context.Context, jobId string, scheduleId string, metronomeV1JobSchedule MetronomeV1JobSchedule) (*http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Put")
 		localVarPostBody     interface{}
@@ -1127,7 +1127,7 @@ func (a *MetronomeApiService) V1PutJobSchedulesByScheduleId(ctx context.Context,
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &metronomeV1CreateJobSchedules
+	localVarPostBody = &metronomeV1JobSchedule
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
