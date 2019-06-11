@@ -536,16 +536,16 @@ MetronomeApiService
 Get the list of all runs for this jobId
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param jobId
-@return []map[string]interface{}
+@return []MetronomeV1Job
 */
-func (a *MetronomeApiService) V1GetJobIdRuns(ctx context.Context, jobId string) ([]map[string]interface{}, *http.Response, error) {
+func (a *MetronomeApiService) V1GetJobIdRuns(ctx context.Context, jobId string) ([]MetronomeV1Job, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []map[string]interface{}
+		localVarReturnValue  []MetronomeV1Job
 	)
 
 	// create path and map variables
@@ -595,7 +595,7 @@ func (a *MetronomeApiService) V1GetJobIdRuns(ctx context.Context, jobId string) 
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v []map[string]interface{}
+			var v []MetronomeV1Job
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -645,16 +645,16 @@ Get the job run for job jobId with id runId.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param jobId
  * @param runId
-@return MetronomeV1StartJob
+@return MetronomeV1Job
 */
-func (a *MetronomeApiService) V1GetJobRunByRunId(ctx context.Context, jobId string, runId string) (MetronomeV1StartJob, *http.Response, error) {
+func (a *MetronomeApiService) V1GetJobRunByRunId(ctx context.Context, jobId string, runId string) (MetronomeV1Job, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Get")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  MetronomeV1StartJob
+		localVarReturnValue  MetronomeV1Job
 	)
 
 	// create path and map variables
@@ -705,7 +705,7 @@ func (a *MetronomeApiService) V1GetJobRunByRunId(ctx context.Context, jobId stri
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v MetronomeV1StartJob
+			var v MetronomeV1Job
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1200,16 +1200,16 @@ MetronomeApiService
 Trigger a new job run.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param jobId
-@return MetronomeV1StartJob
+@return MetronomeV1Job
 */
-func (a *MetronomeApiService) V1StartJobRun(ctx context.Context, jobId string) (MetronomeV1StartJob, *http.Response, error) {
+func (a *MetronomeApiService) V1StartJobRun(ctx context.Context, jobId string) (MetronomeV1Job, *http.Response, error) {
 	var (
 		localVarHttpMethod   = strings.ToUpper("Post")
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  MetronomeV1StartJob
+		localVarReturnValue  MetronomeV1Job
 	)
 
 	// create path and map variables
@@ -1259,7 +1259,7 @@ func (a *MetronomeApiService) V1StartJobRun(ctx context.Context, jobId string) (
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 201 {
-			var v MetronomeV1StartJob
+			var v MetronomeV1Job
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

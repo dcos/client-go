@@ -2586,7 +2586,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MetronomeV1JobsList"
+                type: array
+                items:
+                  $ref: "#/components/schemas/MetronomeV1Job"
         "401":
           description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
           content:
@@ -2616,7 +2618,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MetronomeV1StartJob"
+                $ref: "#/components/schemas/MetronomeV1Job"
         "401":
           description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
           content:
@@ -2652,7 +2654,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/MetronomeV1StartJob"
+                $ref: "#/components/schemas/MetronomeV1Job"
         "401":
           description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
           content:
@@ -4674,27 +4676,7 @@ components:
           type: integer
         timezone:
           type: string
-    MetronomeV1JobsList:
-      type: array
-      items:
-        type: object
-        properties:
-          completedAt:
-            type: string
-            nullable: true
-          createdAt:
-            type: string
-          id:
-            type: string
-          jobId:
-            type: string
-          status:
-            type: string
-          tasks:
-            type: array
-            items:
-              type: string
-    MetronomeV1StartJob:
+    MetronomeV1Job:
       type: object
       properties:
         completedAt:

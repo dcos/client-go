@@ -201,7 +201,7 @@ No authorization required
 
 ## V1GetJobIdRuns
 
-> []map[string]interface{} V1GetJobIdRuns(ctx, jobId)
+> []MetronomeV1Job V1GetJobIdRuns(ctx, jobId)
 
 
 Get the list of all runs for this jobId
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]map[string]interface{}**](map[string]interface{}.md)
+[**[]MetronomeV1Job**](MetronomeV1Job.md)
 
 ### Authorization
 
@@ -234,7 +234,7 @@ No authorization required
 
 ## V1GetJobRunByRunId
 
-> MetronomeV1StartJob V1GetJobRunByRunId(ctx, jobId, runId)
+> MetronomeV1Job V1GetJobRunByRunId(ctx, jobId, runId)
 
 
 Get the job run for job jobId with id runId.
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MetronomeV1StartJob**](MetronomeV1StartJob.md)
+[**MetronomeV1Job**](MetronomeV1Job.md)
 
 ### Authorization
 
@@ -412,7 +412,7 @@ No authorization required
 
 ## V1StartJobRun
 
-> MetronomeV1StartJob V1StartJobRun(ctx, jobId)
+> MetronomeV1Job V1StartJobRun(ctx, jobId)
 
 
 Trigger a new job run.
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MetronomeV1StartJob**](MetronomeV1StartJob.md)
+[**MetronomeV1Job**](MetronomeV1Job.md)
 
 ### Authorization
 

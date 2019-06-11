@@ -240,18 +240,7 @@ Class | Method | HTTP request | Description
  - [MetronomeV1Error](docs/MetronomeV1Error.md)
  - [MetronomeV1ErrorDetails](docs/MetronomeV1ErrorDetails.md)
  - [MetronomeV1Job](docs/MetronomeV1Job.md)
- - [MetronomeV1JobRun](docs/MetronomeV1JobRun.md)
- - [MetronomeV1JobRunArtifacts](docs/MetronomeV1JobRunArtifacts.md)
- - [MetronomeV1JobRunDocker](docs/MetronomeV1JobRunDocker.md)
- - [MetronomeV1JobRunDockerParameters](docs/MetronomeV1JobRunDockerParameters.md)
- - [MetronomeV1JobRunPlacement](docs/MetronomeV1JobRunPlacement.md)
- - [MetronomeV1JobRunPlacementConstraints](docs/MetronomeV1JobRunPlacementConstraints.md)
- - [MetronomeV1JobRunRestart](docs/MetronomeV1JobRunRestart.md)
- - [MetronomeV1JobRunUcr](docs/MetronomeV1JobRunUcr.md)
- - [MetronomeV1JobRunUcrImage](docs/MetronomeV1JobRunUcrImage.md)
- - [MetronomeV1JobRunVolumes](docs/MetronomeV1JobRunVolumes.md)
  - [MetronomeV1JobSchedule](docs/MetronomeV1JobSchedule.md)
- - [MetronomeV1StartJob](docs/MetronomeV1StartJob.md)
  - [SecretsV1Secret](docs/SecretsV1Secret.md)
 
 
