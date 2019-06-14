@@ -4509,20 +4509,8 @@ components:
                 - image
             env:
               type: object
-              x-patternProperties:
-                .*:
-                  oneOf:
-                    - type: string
-                    - type: object
-                      description: An environment variable set to a secret
-                      properties:
-                        secret:
-                          type: string
-                          description: >-
-                            The name of the secret to refer to. At runtime, the value
-                            of the secret will be injected into the value of the
-                            variable.
-              additionalProperties: true
+              additionalProperties:
+                type: string
             maxLaunchDelay:
               type: integer
               minimum: 1

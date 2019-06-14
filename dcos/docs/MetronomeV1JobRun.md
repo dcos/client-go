@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Disk** | **int64** | How much disk space is needed for this job. This number does not have to be an integer, but can be a fraction. | 
 **Ucr** | Pointer to [**MetronomeV1JobRunUcr**](MetronomeV1Job_run_ucr.md) |  | [optional] 
 **Docker** | Pointer to [**MetronomeV1JobRunDocker**](MetronomeV1Job_run_docker.md) |  | [optional] 
-**Env** | [**map[string]map[string]interface{}**](map[string]interface{}.md) |  | [optional] 
+**Env** | **map[string]string** |  | [optional] 
 **MaxLaunchDelay** | **int32** | The number of seconds until the job needs to be running. If the deadline is reached without successfully running the job, the job is aborted. | [optional] 
 **Mem** | **int64** | The amount of memory in MB that is needed for the job per instance. | 
 **Placement** | Pointer to [**MetronomeV1JobRunPlacement**](MetronomeV1Job_run_placement.md) |  | [optional] 

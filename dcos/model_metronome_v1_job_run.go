@@ -23,10 +23,10 @@ type MetronomeV1JobRun struct {
 	// The number of GPU shares this job needs per instance. This number does not have to be integer, but can be a fraction.
 	Gpus int32 `json:"gpus,omitempty"`
 	// How much disk space is needed for this job. This number does not have to be an integer, but can be a fraction.
-	Disk   int64                             `json:"disk"`
-	Ucr    *MetronomeV1JobRunUcr             `json:"ucr,omitempty"`
-	Docker *MetronomeV1JobRunDocker          `json:"docker,omitempty"`
-	Env    map[string]map[string]interface{} `json:"env,omitempty"`
+	Disk   int64                    `json:"disk"`
+	Ucr    *MetronomeV1JobRunUcr    `json:"ucr,omitempty"`
+	Docker *MetronomeV1JobRunDocker `json:"docker,omitempty"`
+	Env    map[string]string        `json:"env,omitempty"`
 	// The number of seconds until the job needs to be running. If the deadline is reached without successfully running the job, the job is aborted.
 	MaxLaunchDelay int32 `json:"maxLaunchDelay,omitempty"`
 	// The amount of memory in MB that is needed for the job per instance.
