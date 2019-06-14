@@ -101,6 +101,16 @@ func NewClientWithConfig(config *Config) (*APIClient, error) {
 	return c, nil
 }
 
+// CurrentConfig returns the *Configuration used by the client
+func (a *APIClient) CurrentConfig() *Configuration {
+	return a.cfg
+}
+
+// HTTPClient returns a http.Client which does authenticated requests to DC/OS
+func (a *APIClient) HTTPClient() *http.Client {
+	return a.cfg.HTTPClient
+}
+
 func atoi(in string) (int, error) {
 	return strconv.Atoi(in)
 }

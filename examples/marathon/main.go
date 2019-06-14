@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"time"
 
 	"github.com/dcos/client-go/dcos"
 	marathon "github.com/gambol99/go-marathon"
@@ -39,14 +40,15 @@ func listApps(marathonClient marathon.Marathon) error {
 }
 
 func main() {
-	config, err := dcos.NewConfigManager().Current()
+	client, err := dcos.NewClient()
 	if err != nil {
 		log.Fatal(err)
 	}
+	config := client.CurrentConfig()
 
 	marathonConfig := marathon.NewDefaultConfig()
-	marathonConfig.URL = config.URL() + "/service/marathon"
-	marathonConfig.HTTPClient = dcos.NewHTTPClient(config)
+	marathonConfig.URL = config.BasePath + "/service/marathon"
+	marathonConfig.HTTPClient = client.HTTPClient()
 	marathonClient, err := marathon.NewClient(marathonConfig)
 	if err != nil {
 		log.Fatalf("Couldn't create Marathon client: %s\n", err)
@@ -69,4 +71,15 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to list Marathon applications: %s", err)
 	}
+
+	deploymentID, err := marathonClient.DeleteApplication(marathonApp.ID, true)
+	if err != nil {
+		log.Fatalf("Failed to delete Marathon application: %s", err)
+	}
+
+	err = marathonClient.WaitOnDeployment(deploymentID.DeploymentID, 60*time.Second)
+	if err != nil {
+		log.Fatalf("Error waiting for deployment %s: %s", deploymentID.DeploymentID, err)
+	}
+
 }
