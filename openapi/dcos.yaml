@@ -4510,7 +4510,9 @@ components:
             env:
               type: object
               additionalProperties:
-                type: string
+                oneOf:
+                  - type: string
+                  - type: '#/components/schemas/MetronomeV1RunEnvSecret'
             maxLaunchDelay:
               type: integer
               minimum: 1
@@ -4664,6 +4666,10 @@ components:
           type: integer
         timezone:
           type: string
+    MetronomeV1RunEnvSecret:
+      type: object
+      additionalProperties:
+        type: string
 
   securitySchemes:
     token:
