@@ -36,7 +36,7 @@ Create a new job.
 */
 func (a *MetronomeApiService) V1CreateJob(ctx context.Context, metronomeV1Job MetronomeV1Job) (MetronomeV1Job, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -136,7 +136,7 @@ Create a new schedule
 */
 func (a *MetronomeApiService) V1CreateJobSchedules(ctx context.Context, jobId string, metronomeV1JobSchedule MetronomeV1JobSchedule) (MetronomeV1JobSchedule, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -255,7 +255,7 @@ Delete a job. All data about that job will be deleted.
 */
 func (a *MetronomeApiService) V1DeleteJob(ctx context.Context, jobId string) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Delete")
+		localVarHttpMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -333,7 +333,7 @@ Destroy a schedule
 */
 func (a *MetronomeApiService) V1DeleteJobSchedulesByScheduleId(ctx context.Context, jobId string, scheduleId string) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Delete")
+		localVarHttpMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -439,7 +439,7 @@ type V1GetJobOpts struct {
 
 func (a *MetronomeApiService) V1GetJob(ctx context.Context, jobId string, localVarOptionals *V1GetJobOpts) (MetronomeV1Job, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -540,7 +540,7 @@ Get the list of all runs for this jobId
 */
 func (a *MetronomeApiService) V1GetJobIdRuns(ctx context.Context, jobId string) ([]MetronomeV1Job, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -649,7 +649,7 @@ Get the job run for job jobId with id runId.
 */
 func (a *MetronomeApiService) V1GetJobRunByRunId(ctx context.Context, jobId string, runId string) (MetronomeV1Job, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -768,7 +768,7 @@ Get the list of all schedules for this jobId.
 */
 func (a *MetronomeApiService) V1GetJobSchedules(ctx context.Context, jobId string) ([]MetronomeV1JobSchedule, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -877,7 +877,7 @@ Get the schedule for jobId with schedule scheduleId
 */
 func (a *MetronomeApiService) V1GetJobSchedulesByScheduleId(ctx context.Context, jobId string, scheduleId string) (MetronomeV1JobSchedule, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1002,7 +1002,7 @@ type V1GetJobsOpts struct {
 
 func (a *MetronomeApiService) V1GetJobs(ctx context.Context, localVarOptionals *V1GetJobsOpts) ([]MetronomeV1Job, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1093,7 +1093,7 @@ Replaces an existing schedule.
 */
 func (a *MetronomeApiService) V1PutJobSchedulesByScheduleId(ctx context.Context, jobId string, scheduleId string, metronomeV1JobSchedule MetronomeV1JobSchedule) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Put")
+		localVarHttpMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1204,7 +1204,7 @@ Trigger a new job run.
 */
 func (a *MetronomeApiService) V1StartJobRun(ctx context.Context, jobId string) (MetronomeV1Job, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1312,7 +1312,7 @@ Stop an existing job run
 */
 func (a *MetronomeApiService) V1StopJobRunByRunId(ctx context.Context, jobId string, runId string) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1412,7 +1412,7 @@ Update an existing job.
 */
 func (a *MetronomeApiService) V1UpdateJob(ctx context.Context, jobId string, metronomeV1Job MetronomeV1Job) (MetronomeV1Job, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Put")
+		localVarHttpMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string

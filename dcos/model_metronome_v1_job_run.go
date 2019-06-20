@@ -38,6 +38,6 @@ type MetronomeV1JobRun struct {
 	TaskKillGracePeriodSeconds float32                   `json:"taskKillGracePeriodSeconds,omitempty"`
 	Restart                    *MetronomeV1JobRunRestart `json:"restart,omitempty"`
 	// The list of volumes for this job.
-	Volumes []MetronomeV1JobRunVolumes        `json:"volumes,omitempty"`
-	Secrets map[string]map[string]interface{} `json:"secrets,omitempty"`
+	Volumes []MetronomeV1JobRunVolumes `json:"volumes,omitempty"`
+	Secrets map[string]interface{}     `json:"secrets,omitempty"`
 }

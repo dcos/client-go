@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **TaskKillGracePeriodSeconds** | **float32** | Configures the number of seconds between escalating from SIGTERM to SIGKILL when signalling tasks to terminate. Using this grace period, tasks should perform orderly shut down immediately upon receiving SIGTERM. | [optional] 
 **Restart** | Pointer to [**MetronomeV1JobRunRestart**](MetronomeV1Job_run_restart.md) |  | [optional] 
 **Volumes** | [**[]MetronomeV1JobRunVolumes**](MetronomeV1Job_run_volumes.md) | The list of volumes for this job. | [optional] 
-**Secrets** | [**map[string]map[string]interface{}**](map[string]interface{}.md) |  | [optional] 
+**Secrets** | [**map[string]interface{}**](.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

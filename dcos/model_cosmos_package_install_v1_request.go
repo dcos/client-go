@@ -11,8 +11,8 @@
 package dcos
 
 type CosmosPackageInstallV1Request struct {
-	AppId          string                            `json:"appId,omitempty"`
-	Options        map[string]map[string]interface{} `json:"options,omitempty"`
-	PackageName    string                            `json:"packageName"`
-	PackageVersion string                            `json:"packageVersion,omitempty"`
+	AppId          string                 `json:"appId,omitempty"`
+	Options        map[string]interface{} `json:"options,omitempty"`
+	PackageName    string                 `json:"packageName"`
+	PackageVersion string                 `json:"packageVersion,omitempty"`
 }
