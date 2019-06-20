@@ -96,8 +96,8 @@ func main() {
 
 	dcosMonitoringRequest := dcos.CosmosPackageInstallV1Request{
 		PackageName: "beta-dcos-monitoring",
-		Options: map[string]map[string]interface{}{
-			"grafana": {
+		Options: map[string]interface{}{
+			"grafana": map[string]interface{}{
 				"default_dashboards": false,
 				"dashboard_config_repository": map[string]string{
 					"url":  "https://github.com/masonse/grafana-dashboards",
