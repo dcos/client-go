@@ -237,6 +237,7 @@ Class | Method | HTTP request | Description
  - [Metadata](docs/Metadata.md)
  - [MetronomeEmbeded](docs/MetronomeEmbeded.md)
  - [MetronomeRestartPolicy](docs/MetronomeRestartPolicy.md)
+ - [MetronomeV1EnvSecretValue](docs/MetronomeV1EnvSecretValue.md)
  - [MetronomeV1Error](docs/MetronomeV1Error.md)
  - [MetronomeV1ErrorDetails](docs/MetronomeV1ErrorDetails.md)
  - [MetronomeV1Job](docs/MetronomeV1Job.md)

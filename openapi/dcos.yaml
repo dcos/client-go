@@ -4430,10 +4430,11 @@ components:
                 - image
             env:
               type: object
-              additionalProperties:
-                oneOf:
-                  - type: string
-                  - type: '#/components/schemas/MetronomeV1RunEnvSecret'
+              x-patternProperties:
+                .*:
+                  oneOf:
+                    - $ref: "#/components/schemas/MetronomeV1EnvSecret"
+                    - type: string
             maxLaunchDelay:
               type: integer
               minimum: 1
@@ -4582,10 +4583,15 @@ components:
           type: integer
         timezone:
           type: string
-    MetronomeV1RunEnvSecret:
+    MetronomeV1EnvSecret:
       type: object
       additionalProperties:
-        type: string
+        $ref: "#/components/schemas/MetronomeV1EnvSecret"
+    MetronomeV1EnvSecretValue:
+      type: object
+      properties:
+        secret:
+          type: string
 
   securitySchemes:
     token:
