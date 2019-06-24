@@ -1,6 +1,7 @@
 # CosmosPackage
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Command** | [**CosmosPackageCommand**](CosmosPackageCommand.md) |  | [optional] 

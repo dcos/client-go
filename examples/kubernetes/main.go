@@ -95,8 +95,8 @@ func installMKE() {
 
 	_, resp, err := client.Cosmos.PackageInstall(context.TODO(), dcos.CosmosPackageInstallV1Request{
 		PackageName: "kubernetes",
-		Options: map[string]map[string]interface{}{
-			"service": {
+		Options: map[string]interface{}{
+			"service": map[string]interface{}{
 				"service_account":        "kubernetes",
 				"service_account_secret": "kubernetes/sa",
 			},
@@ -140,8 +140,8 @@ func createKubernetesCluster() {
 
 	_, resp, err := client.Cosmos.PackageInstall(context.TODO(), dcos.CosmosPackageInstallV1Request{
 		PackageName: "kubernetes-cluster",
-		Options: map[string]map[string]interface{}{
-			"service": {
+		Options: map[string]interface{}{
+			"service": map[string]interface{}{
 				"name":                   "kubernetes-cluster1",
 				"service_account":        "kubernetes-cluster1",
 				"service_account_secret": "kubernetes-cluster1/sa",
@@ -177,8 +177,8 @@ func configureEdgeLB() {
 	// Install EdgeLB
 	_, resp, err = client.Cosmos.PackageInstall(context.TODO(), dcos.CosmosPackageInstallV1Request{
 		PackageName: "edgelb",
-		Options: map[string]map[string]interface{}{
-			"service": {
+		Options: map[string]interface{}{
+			"service": map[string]interface{}{
 				"secretName":    "dcos-edgelb/sa",
 				"principal":     "dcos-edgelb",
 				"mesosProtocol": "https",

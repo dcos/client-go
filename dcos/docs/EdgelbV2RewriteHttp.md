@@ -1,6 +1,7 @@
 # EdgelbV2RewriteHttp
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Host** | **string** | Set the host header value | [optional] 

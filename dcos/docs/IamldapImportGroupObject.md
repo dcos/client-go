@@ -1,6 +1,7 @@
 # IamldapImportGroupObject
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Groupname** | **string** |  | 

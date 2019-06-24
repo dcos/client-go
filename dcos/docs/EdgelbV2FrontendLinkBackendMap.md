@@ -1,6 +1,7 @@
 # EdgelbV2FrontendLinkBackendMap
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Backend** | **string** |  | [optional] 

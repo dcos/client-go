@@ -1,6 +1,7 @@
 # CosmosPackageSearchV1Request
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Query** | **string** |  | [optional] 

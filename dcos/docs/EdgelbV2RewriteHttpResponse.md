@@ -1,6 +1,7 @@
 # EdgelbV2RewriteHttpResponse
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RewriteLocation** | **bool** |  | [optional] 

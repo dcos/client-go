@@ -1,6 +1,7 @@
 # CosmosPackageResourceCliBinaries
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Darwin** | [**CosmosPackageResourceCliOsBinaries**](CosmosPackageResourceCliOsBinaries.md) |  | [optional] 

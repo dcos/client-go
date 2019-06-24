@@ -1,6 +1,7 @@
 # IamAuthToken
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Token** | **string** |  | 

@@ -36,7 +36,7 @@ Set up OIDC provider with the ID as specified in the URL, and with the config as
 */
 func (a *IAMApiService) ConfigureOIDCProvider(ctx context.Context, providerId string, iamoidcProviderConfig IamoidcProviderConfig) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Put")
+		localVarHttpMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -116,7 +116,7 @@ Set up a SAML provider with the ID as specified in the URL, and with the config 
 */
 func (a *IAMApiService) ConfigureSAMLProvider(ctx context.Context, providerId string, iamsamlProviderConfig IamsamlProviderConfig) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Put")
+		localVarHttpMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -196,7 +196,7 @@ Create a group.
 */
 func (a *IAMApiService) CreateGroup(ctx context.Context, gid string, iamGroupCreate IamGroupCreate) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Put")
+		localVarHttpMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -276,7 +276,7 @@ Add account to group.
 */
 func (a *IAMApiService) CreateGroupUser(ctx context.Context, gid string, uid string) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Put")
+		localVarHttpMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -354,7 +354,7 @@ Set new directory (LDAP) back-end configuration. Replace current configuration, 
 */
 func (a *IAMApiService) CreateLDAPConfiguration(ctx context.Context, iamldapConfiguration IamldapConfiguration) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Put")
+		localVarHttpMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -433,7 +433,7 @@ Create new ACL for resource with ID &#x60;rid&#x60; (description in body, no per
 */
 func (a *IAMApiService) CreateResourceACL(ctx context.Context, rid string, iamaclCreate IamaclCreate) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Put")
+		localVarHttpMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -513,7 +513,7 @@ Create user (uid in url, details incl. credentials in body).
 */
 func (a *IAMApiService) CreateUser(ctx context.Context, uid string, iamUserCreate IamUserCreate) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Put")
+		localVarHttpMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -592,7 +592,7 @@ Delete group.
 */
 func (a *IAMApiService) DeleteGroup(ctx context.Context, gid string) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Delete")
+		localVarHttpMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -670,7 +670,7 @@ Delete user account from group.
 */
 func (a *IAMApiService) DeleteGroupUser(ctx context.Context, gid string, uid string) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Delete")
+		localVarHttpMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -747,7 +747,7 @@ Delete current directory (LDAP) back-end configuration. This deactivates the LDA
 */
 func (a *IAMApiService) DeleteLDAPConfiguration(ctx context.Context) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Delete")
+		localVarHttpMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -823,7 +823,7 @@ Delete provider (disables authentication with that provider).
 */
 func (a *IAMApiService) DeleteOIDCProvider(ctx context.Context, providerId string) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Delete")
+		localVarHttpMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -900,7 +900,7 @@ Delete ACL of resource with ID &#x60;rid&#x60;.
 */
 func (a *IAMApiService) DeleteResourceACL(ctx context.Context, rid string) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Delete")
+		localVarHttpMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -977,7 +977,7 @@ Delete provider (disables authentication with that provider).
 */
 func (a *IAMApiService) DeleteSAMLProvider(ctx context.Context, providerId string) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Delete")
+		localVarHttpMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1054,7 +1054,7 @@ Delete account.
 */
 func (a *IAMApiService) DeleteUser(ctx context.Context, uid string) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Delete")
+		localVarHttpMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1132,7 +1132,7 @@ Forbid all actions of given group to given resource.
 */
 func (a *IAMApiService) ForbidResourceGroupActions(ctx context.Context, rid string, gid string) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Delete")
+		localVarHttpMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1212,7 +1212,7 @@ Forbid single action for given account and resource.
 */
 func (a *IAMApiService) ForbidResourceUserAction(ctx context.Context, rid string, uid string, action string) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Delete")
+		localVarHttpMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1292,7 +1292,7 @@ Forbid all actions of given account to given resource.
 */
 func (a *IAMApiService) ForbidResourceUserActions(ctx context.Context, rid string, uid string) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Delete")
+		localVarHttpMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1372,7 +1372,7 @@ Forbid single action for given resource and group.
 */
 func (a *IAMApiService) ForbitResourceGroupAction(ctx context.Context, rid string, gid string, action string) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Delete")
+		localVarHttpMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1451,7 +1451,7 @@ Get array of &#x60;ACL&#x60; objects.
 */
 func (a *IAMApiService) GetACLs(ctx context.Context) (IamAcls, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1538,7 +1538,7 @@ Get specific &#x60;Group&#x60; object.
 */
 func (a *IAMApiService) GetGroup(ctx context.Context, gid string) (IamGroup, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1636,7 +1636,7 @@ Retrieve permissions of this group.
 */
 func (a *IAMApiService) GetGroupPermissions(ctx context.Context, gid string) (IamGroupPermissions, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1741,7 +1741,7 @@ type GetGroupUsersOpts struct {
 
 func (a *IAMApiService) GetGroupUsers(ctx context.Context, gid string, localVarOptionals *GetGroupUsersOpts) (IamGroupUsers, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1841,7 +1841,7 @@ Retrieve array of &#x60;Group&#x60; objects.
 */
 func (a *IAMApiService) GetGroups(ctx context.Context) (IamGroups, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -1936,7 +1936,7 @@ This endpoint provides the IAM&#39;s JSON Web Key Set (JWKS), exposing public ke
 */
 func (a *IAMApiService) GetJWKS(ctx context.Context) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -2012,7 +2012,7 @@ Retrieve current directory (LDAP) back-end configuration.
 */
 func (a *IAMApiService) GetLDAPConfiguration(ctx context.Context) (IamldapConfiguration, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -2109,7 +2109,7 @@ Get configuration for a specific provider.
 */
 func (a *IAMApiService) GetOIDCProvider(ctx context.Context, providerId string) (IamoidcProviderConfig, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -2205,7 +2205,7 @@ Get an overview for the configured OIDC providers. The response contains a JSON 
 */
 func (a *IAMApiService) GetOIDCProviders(ctx context.Context) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -2272,7 +2272,7 @@ Retrieve single &#x60;ACL&#x60; object, for a specific resource.
 */
 func (a *IAMApiService) GetResourceACLs(ctx context.Context, rid string) (Iamacl, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -2372,7 +2372,7 @@ Query whether action is allowed or not.
 */
 func (a *IAMApiService) GetResourceGroupAction(ctx context.Context, rid string, gid string, action string) (IamActionAllowed, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -2473,7 +2473,7 @@ Get allowed actions for given resource and group.
 */
 func (a *IAMApiService) GetResourceGroupActions(ctx context.Context, rid string, gid string) (IamActions, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -2572,7 +2572,7 @@ Retrieve all permissions that are set for a specific resource.
 */
 func (a *IAMApiService) GetResourcePermissions(ctx context.Context, rid string) (IamaclPermissions, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -2672,7 +2672,7 @@ Query whether action is allowed or not.
 */
 func (a *IAMApiService) GetResourceUserAction(ctx context.Context, rid string, uid string, action string) (IamActionAllowed, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -2773,7 +2773,7 @@ Get allowed actions for given resource and user.
 */
 func (a *IAMApiService) GetResourceUserActions(ctx context.Context, rid string, uid string) (InlineResponse200, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -2872,7 +2872,7 @@ Get configuration for a specific SAML provider.
 */
 func (a *IAMApiService) GetSAMLProvider(ctx context.Context, providerId string) (IamsamlProviderConfig, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -2970,7 +2970,7 @@ The IAM acts as SAML service provider (SP). A SAML identity provider (IdP) usual
 */
 func (a *IAMApiService) GetSAMLProviderACSCallbackURL(ctx context.Context, providerId string) (IamsamlacsCallbackUrlObject, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -3058,7 +3058,7 @@ The IAM acts as SAML service provider (SP). This endpoint provides the SP metada
 */
 func (a *IAMApiService) GetSAMLProviderSPMetadata(ctx context.Context, providerId string) (string, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -3144,7 +3144,7 @@ Get an overview for the configured SAML 2.0 providers. The response contains a J
 */
 func (a *IAMApiService) GetSAMLProviders(ctx context.Context) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -3211,7 +3211,7 @@ Get specific &#x60;User&#x60; object.
 */
 func (a *IAMApiService) GetUser(ctx context.Context, uid string) (IamUser, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -3309,7 +3309,7 @@ Retrieve groups the user is member of.
 */
 func (a *IAMApiService) GetUserGroups(ctx context.Context, uid string) (IamUserGroups, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -3407,7 +3407,7 @@ Retrieve the permissions for this account with direct permissions distinguished 
 */
 func (a *IAMApiService) GetUserPermissions(ctx context.Context, uid string) (IamUserPermissions, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -3511,7 +3511,7 @@ type GetUsersOpts struct {
 
 func (a *IAMApiService) GetUsers(ctx context.Context, localVarOptionals *GetUsersOpts) (IamUsers, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -3610,7 +3610,7 @@ Attempt to import a group of users from the configured directory (LDAP) back-end
 */
 func (a *IAMApiService) ImportLDAPGroup(ctx context.Context, iamldapImportGroupObject IamldapImportGroupObject) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -3688,7 +3688,7 @@ Attempt to import a user from the configured directory (LDAP) back-end.
 */
 func (a *IAMApiService) ImportLDAPUser(ctx context.Context, iamldapImportUserObject IamldapImportUserObject) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -3767,7 +3767,7 @@ Exchange user credentials (regular user account: uid and password; service user 
 */
 func (a *IAMApiService) Login(ctx context.Context, iamLoginObject IamLoginObject) (IamAuthToken, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -3871,7 +3871,7 @@ type LoginWithProviderOpts struct {
 
 func (a *IAMApiService) LoginWithProvider(ctx context.Context, localVarOptionals *LoginWithProviderOpts) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -3939,7 +3939,7 @@ After successfully logging in to an OpenID Connect identity provider, the end-us
 */
 func (a *IAMApiService) OpenIDConnectCallbackURL(ctx context.Context) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Get")
+		localVarHttpMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -4007,7 +4007,7 @@ Permit single action for given resource and group.
 */
 func (a *IAMApiService) PermitResourceGroupAction(ctx context.Context, rid string, gid string, action string) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Put")
+		localVarHttpMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -4088,7 +4088,7 @@ Permit single action for given account and resource.
 */
 func (a *IAMApiService) PermitResourceUserAction(ctx context.Context, rid string, uid string, action string) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Put")
+		localVarHttpMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -4167,7 +4167,7 @@ The IAM acts as SAML service provider (SP). As part of the authentication flow, 
 */
 func (a *IAMApiService) SAMLProviderACSCallbackEndpoint(ctx context.Context, providerId string) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -4235,7 +4235,7 @@ Perform basic feature tests. Verify that the current directory (LDAP) configurat
 */
 func (a *IAMApiService) TestLDAPBackendConnection(ctx context.Context, iamldapTestCredentials IamldapTestCredentials) (IamldapTestResultObject, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -4344,7 +4344,7 @@ Update existing group (description).
 */
 func (a *IAMApiService) UpdateGroup(ctx context.Context, gid string, iamGroupUpdate IamGroupUpdate) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Patch")
+		localVarHttpMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -4424,7 +4424,7 @@ Update config for existing OIDC provider.
 */
 func (a *IAMApiService) UpdateOIDCProvider(ctx context.Context, providerId string, iamoidcProviderConfig IamoidcProviderConfig) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Patch")
+		localVarHttpMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -4504,7 +4504,7 @@ Update ACL for resource with ID &#x60;rid&#x60;.
 */
 func (a *IAMApiService) UpdateResourceACL(ctx context.Context, rid string, iamaclUpdate IamaclUpdate) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Patch")
+		localVarHttpMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -4584,7 +4584,7 @@ Update config for existing SAML provider.
 */
 func (a *IAMApiService) UpdateSAMLProvider(ctx context.Context, providerId string, iamsamlProviderConfig IamsamlProviderConfig) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Patch")
+		localVarHttpMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -4664,7 +4664,7 @@ Update existing user account (meta data and/or password).
 */
 func (a *IAMApiService) UpdateUser(ctx context.Context, uid string, iamUserUpdate IamUserUpdate) (*http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Patch")
+		localVarHttpMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string

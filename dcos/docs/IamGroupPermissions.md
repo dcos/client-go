@@ -1,6 +1,7 @@
 # IamGroupPermissions
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Array** | [**[]IamUserPermissionsDirect**](IAMUserPermissions_direct.md) |  | [optional] 

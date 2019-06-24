@@ -1,6 +1,7 @@
 # EdgelbV2Pool
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PoolHealthcheckGracePeriod** | **int32** | Pool tasks healthcheck grace period (in seconds) | [optional] 

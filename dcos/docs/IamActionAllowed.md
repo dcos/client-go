@@ -1,6 +1,7 @@
 # IamActionAllowed
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Allowed** | **bool** |  | 

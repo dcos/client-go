@@ -1,6 +1,7 @@
 # EdgelbV2FrontendRedirectToHttps
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Except** | [**[]EdgelbV2FrontendRedirectToHttpsExcept**](EdgelbV2Frontend_redirectToHttps_except.md) | One may additionally set a whitelist of fields that must be matched to allow HTTP. | [optional] 

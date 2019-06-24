@@ -1,6 +1,7 @@
 # EdgelbV2Backend
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | This is name that frontends refer to. | [optional] 

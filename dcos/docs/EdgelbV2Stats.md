@@ -1,6 +1,7 @@
 # EdgelbV2Stats
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BindAddress** | **string** |  | [optional] 

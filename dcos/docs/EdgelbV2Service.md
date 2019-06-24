@@ -1,6 +1,7 @@
 # EdgelbV2Service
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Marathon** | [**EdgelbV2ServiceMarathon**](EdgelbV2Service_marathon.md) |  | [optional] 

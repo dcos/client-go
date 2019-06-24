@@ -1,6 +1,7 @@
 # EdgelbV2FrontendRedirectToHttpsExcept
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Host** | **string** | Match on host | [optional] 
