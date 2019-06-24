@@ -14,3 +14,12 @@
 /.vscode
 
 /vendor
+
+examples/cosmos/cosmos
+examples/edgelb/edgelb
+examples/iam/iam
+examples/kubernetes/kubernetes
+examples/marathon/marathon
+examples/metadata/metadata
+examples/metronome/metronome
+examples/secrets/secrets

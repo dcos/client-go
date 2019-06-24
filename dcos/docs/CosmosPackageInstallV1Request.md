@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AppId** | **string** |  | [optional] 
-**Options** | [**map[string]map[string]interface{}**](map[string]interface{}.md) |  | [optional] 
+**Options** | [**map[string]interface{}**](.md) |  | [optional] 
 **PackageName** | **string** |  | 
 **PackageVersion** | **string** |  | [optional] 
 

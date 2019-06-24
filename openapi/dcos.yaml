@@ -2376,8 +2376,339 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/MetronomeV1Error"
+  /service/metronome/v1/jobs/{jobId}/schedules:
+    get:
+      description: Get the list of all schedules for this jobId.
+      operationId: V1GetJobSchedules
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: The list of schedules for this job.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MetronomeV1JobSchedule"
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "403":
+          description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+    post:
+      description: Create a new schedule
+      operationId: V1CreateJobSchedules
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        $ref: "#/components/requestBodies/MetronomeV1JobSchedule"
+      responses:
+        "201":
+          description: The schedule has been created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1JobSchedule"
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "403":
+          description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "422":
+          description: The given entity can not be processed due to validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
 
-
+  /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId}:
+    get:
+      description: Get the schedule for jobId with schedule scheduleId
+      operationId: V1GetJobSchedulesByScheduleId
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: scheduleId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: The list of schedules for this job.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1JobSchedule"
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "403":
+          description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "404":
+          description: No schedule found for the given scheduleId.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+    put:
+      description: Replaces an existing schedule.
+      operationId: V1PutJobSchedulesByScheduleId
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: scheduleId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        $ref: "#/components/requestBodies/MetronomeV1JobSchedule"
+      responses:
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "403":
+          description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "404":
+          description: No schedule found for the given scheduleId.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "422":
+          description: The given entity can not be processed due to validation errors.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+    delete:
+      description: Destroy a schedule
+      operationId: V1DeleteJobSchedulesByScheduleId
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: scheduleId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "403":
+          description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "404":
+          description: No schedule found for the given scheduleId.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+  /service/metronome/v1/jobs/{jobId}/runs:
+    get:
+      description: Get the list of all runs for this jobId
+      operationId: V1GetJobIdRuns
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: The list of schedules for this job.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MetronomeV1Job"
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "403":
+          description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+    post:
+      description: Trigger a new job run.
+      operationId: V1StartJobRun
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "201":
+          description: The job run has been created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Job"
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "403":
+          description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+  /service/metronome/v1/jobs/{jobId}/runs/{runId}:
+    get:
+      description: Get the job run for job jobId with id runId.
+      operationId: V1GetJobRunByRunId
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: runId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: The list of schedules for this job.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Job"
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "403":
+          description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "404":
+          description: No run found for given runId.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+  /service/metronome/v1/jobs/{jobId}/runs/{runId}/actions/stop:
+    post:
+      description: Stop an existing job run
+      operationId: V1StopJobRunByRunId
+      tags:
+        - metronome
+      parameters:
+        - name: jobId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: runId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "403":
+          description: Forbidden. Authorization is granted but the identity provided does not have sufficient access rights to perform that action.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
+        "404":
+          description: No run found for given runId.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetronomeV1Error"
 
 components:
   requestBodies:
@@ -2409,17 +2740,21 @@ components:
           schema:
             $ref: "#/components/schemas/EdgelbV2Pool"
       required: true
-
     MetronomeV1Job:
       content:
         application/json:
           schema:
             $ref: "#/components/schemas/MetronomeV1Job"
       required: true
+    MetronomeV1JobSchedule:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/MetronomeV1JobSchedule"
+      required: true
 
   schemas:
     SecretsV1Secret:
-      additionalProperties: false
       example:
         value: value
       properties:
@@ -2431,7 +2766,6 @@ components:
       - sha256
       type: string
     CosmosPackageResourceAssets:
-      additionalProperties: false
       properties:
         container:
           $ref: '#/components/schemas/CosmosPackageResourceAssetsContainer'
@@ -2441,7 +2775,6 @@ components:
           type: object
       type: object
     CosmosPackageResourceCliBinaries:
-      additionalProperties: false
       minProperties: 1
       properties:
         darwin:
@@ -2452,7 +2785,6 @@ components:
           $ref: '#/components/schemas/CosmosPackageResourceCliOsBinaries'
       type: object
     CosmosPackageResourceCli:
-      additionalProperties: false
       properties:
         binaries:
           $ref: '#/components/schemas/CosmosPackageResourceCliBinaries'
@@ -2460,7 +2792,6 @@ components:
       - binaries
       type: object
     CosmosPackageResourceCliArtifact:
-      additionalProperties: false
       properties:
         contentHash:
           items:
@@ -2482,7 +2813,6 @@ components:
       - url
       type: object
     CosmosPackageCommand:
-      additionalProperties: false
       properties:
         pip:
           description: '[Deprecated v3.x] An array of strings representing of the
@@ -2495,7 +2825,6 @@ components:
       - pip
       type: object
     CosmosPackageDescribeV1Request:
-      additionalProperties: false
       properties:
         packageName:
           type: string
@@ -2505,7 +2834,6 @@ components:
       - packageName
       type: object
     CosmosPackageListV1Request:
-      additionalProperties: false
       properties:
         packageName:
           type: string
@@ -2513,7 +2841,6 @@ components:
           type: string
       type: object
     CosmosError:
-      additionalProperties: false
       properties:
         type:
           type: string
@@ -2525,7 +2852,6 @@ components:
       - message
       - type
     CosmosHash:
-      additionalProperties: false
       properties:
         algo:
           $ref: '#/components/schemas/CosmosHashAlgo'
@@ -2536,7 +2862,6 @@ components:
       - value
       type: object
     CosmosPackageResourceImages:
-      additionalProperties: false
       properties:
         icon-large:
           description: PNG icon URL, preferably 256 by 256 pixels.
@@ -2554,12 +2879,10 @@ components:
           type: array
       type: object
     CosmosPackageInstallV1Request:
-      additionalProperties: false
       properties:
         appId:
           type: string
         options:
-          additionalProperties: true
           type: object
         packageName:
           type: string
@@ -2569,7 +2892,6 @@ components:
       - packageName
       type: object
     CosmosPackageInstallV1Response:
-      additionalProperties: false
       properties:
         appId:
           type: string
@@ -2586,7 +2908,6 @@ components:
       - packageVersion
       type: object
     CosmosPackageRepo:
-      additionalProperties: false
       properties:
         name:
           type: string
@@ -2599,20 +2920,17 @@ components:
       - uri
       type: object
     CosmosPackageSearchV1Request:
-      additionalProperties: false
       properties:
         query:
           type: string
       type: object
     CosmosPackageSearchV1Response:
-      additionalProperties: false
       properties:
         packages:
           type: array
           items:
             $ref: '#/components/schemas/CosmosPackageSearchDetails'
     CosmosPackageSearchDetails:
-      additionalProperties: false
       type: object
       properties:
         name:
@@ -2642,12 +2960,10 @@ components:
         - framework
         - tags
     CosmosServiceUpdateV1Request:
-      additionalProperties: false
       properties:
         appId:
           type: string
         options:
-          additionalProperties: true
           type: object
         packageName:
           type: string
@@ -2661,14 +2977,12 @@ components:
       - replace
       type: object
     CosmosServiceUpdateV1Response:
-      additionalProperties: false
       properties:
         marathonDeploymentId:
           type: string
         package:
           $ref: '#/components/schemas/CosmosPackage'
         resolvedOptions:
-          additionalProperties: true
           description: The result of merging the default package options with the user supplied options
           type: object
       required:
@@ -2677,7 +2991,6 @@ components:
       - resolvedOptions
       type: object
     CosmosPackageUninstallV1Request:
-      additionalProperties: false
       properties:
         appId:
           type: string
@@ -2689,7 +3002,6 @@ components:
       - packageName
       type: object
     CosmosPackageUninstallV1Response:
-      additionalProperties: false
       properties:
         appId:
           type: string
@@ -2704,7 +3016,6 @@ components:
       - packageName
       type: object
     CosmosPackageLicense:
-      additionalProperties: false
       properties:
         name:
           description: The name of the license. For example one of [Apache License Version 2.0 | MIT License | BSD License | Proprietary]
@@ -2718,7 +3029,6 @@ components:
       - url
       type: object
     CosmosPackageMarathon:
-      additionalProperties: false
       properties:
         v2AppMustacheTemplate:
           pattern: ^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$
@@ -2727,7 +3037,6 @@ components:
       - v2AppMustacheTemplate
       type: object
     CosmosPackageResourceCliOsBinaries:
-      additionalProperties: false
       properties:
         x86-64:
           $ref: '#/components/schemas/CosmosPackageResourceCliArtifact'
@@ -2735,7 +3044,6 @@ components:
       - x86-64
       type: object
     CosmosServiceDescribeV1Request:
-      additionalProperties: false
       properties:
         appId:
           type: string
@@ -2746,7 +3054,6 @@ components:
       - managerId
       type: object
     CosmosPackageDeleteRepoV1Request:
-      additionalProperties: false
       properties:
         name:
           type: string
@@ -2756,7 +3063,6 @@ components:
           type: string
       type: object
     CosmosPackageDeleteRepoV1Response:
-      additionalProperties: false
       properties:
         repositories:
           items:
@@ -2766,7 +3072,6 @@ components:
       - repositories
       type: object
     CosmosPackageAddRepoV1Request:
-      additionalProperties: false
       properties:
         name:
           type: string
@@ -2783,7 +3088,6 @@ components:
       - uri
       type: object
     CosmosPackageAddRepoV1Response:
-      additionalProperties: false
       properties:
         repositories:
           items:
@@ -2793,7 +3097,6 @@ components:
       - repositories
       type: object
     CosmosServiceDescribeV1Response:
-      additionalProperties: false
       properties:
         downgradesTo:
           items:
@@ -2802,7 +3105,6 @@ components:
         package:
           $ref: '#/components/schemas/CosmosPackage'
         resolvedOptions:
-          additionalProperties: true
           description: The result of merging the default package options with the user supplied options
           type: object
         upgradesTo:
@@ -2810,7 +3112,6 @@ components:
             type: string
           type: array
         userProvidedOptions:
-          additionalProperties: true
           description: The options the user provided to run the service
           type: object
       required:
@@ -2819,7 +3120,6 @@ components:
       - upgradesTo
       type: object
     CosmosPackageResource:
-      additionalProperties: false
       properties:
         assets:
           $ref: '#/components/schemas/CosmosPackageResourceAssets'
@@ -2829,7 +3129,6 @@ components:
           $ref: '#/components/schemas/CosmosPackageResourceImages'
       type: object
     CosmosPackageDescribeV3Response:
-      additionalProperties: false
       properties:
         package:
           $ref: '#/components/schemas/CosmosPackage'
@@ -2837,7 +3136,6 @@ components:
       - package
       type: object
     CosmosPackageListV1Response:
-      additionalProperties: false
       properties:
         packages:
           type: array
@@ -2847,7 +3145,6 @@ components:
       - packages
       type: object
     CosmosPackageListV1Package:
-      additionalProperties: false
       properties:
         appId:
           type: string
@@ -2856,7 +3153,6 @@ components:
           $ref: '#/components/schemas/CosmosPackageListV1PackageInformation'
       type: object
     CosmosPackageListV1PackageInformation:
-      additionalProperties: false
       properties:
         appId:
           type: string
@@ -2865,14 +3161,12 @@ components:
           $ref: '#/components/schemas/CosmosPackage'
       type: object
     CosmosPackage:
-      additionalProperties: false
       properties:
         command:
           $ref: '#/components/schemas/CosmosPackageCommand'
         config:
           # Setting additionalProperties to true causes a JSON unmarshalling error.
           # In the future this property should be set to a JSON schema definition.
-          additionalProperties: false
           type: object
         description:
           type: string
@@ -2952,7 +3246,6 @@ components:
       - version
       type: object
     CosmosPackageManager:
-      additionalProperties: false
       properties:
         packageName:
           type: string
@@ -2983,7 +3276,6 @@ components:
       properties:
         token:
           type: string
-      additionalProperties: false
     IAMUser:
       type: object
       required:
@@ -3010,7 +3302,6 @@ components:
           type: string
         provider_id:
           type: string
-      additionalProperties: false
     IAMUsers:
       type: object
       properties:
@@ -3035,7 +3326,6 @@ components:
           type: string
         creator_uid:
           type: string
-      additionalProperties: false
     IAMUserUpdate:
       type: object
       properties:
@@ -3043,7 +3333,6 @@ components:
           type: string
         password:
           type: string
-      additionalProperties: false
     IAMOIDCProviderConfig:
       type: object
       required:
@@ -3067,7 +3356,6 @@ components:
           type: boolean
         ca_certs:
           type: string
-      additionalProperties: false
     IAMAction:
       type: object
       required:
@@ -3078,7 +3366,6 @@ components:
           type: string
         url:
           type: string
-      additionalProperties: false
     IAMActions:
       type: object
       properties:
@@ -3101,7 +3388,6 @@ components:
                 type: string
               group:
                 $ref: "#/components/schemas/IAMGroup"
-            additionalProperties: false
     IAMUserPermissions:
       type: object
       properties:
@@ -3125,7 +3411,6 @@ components:
                 type: array
                 items:
                   $ref: "#/components/schemas/IAMAction"
-            additionalProperties: false
         groups:
           type: array
           items:
@@ -3152,8 +3437,6 @@ components:
                 type: array
                 items:
                   $ref: "#/components/schemas/IAMAction"
-            additionalProperties: false
-      additionalProperties: false
     IAMGroup:
       type: object
       required:
@@ -3170,7 +3453,6 @@ components:
           type: string
         provider_type:
           type: string
-      additionalProperties: false
 
     IAMGroups:
       type: object
@@ -3189,7 +3471,6 @@ components:
           type: string
         provider_type:
           type: string
-      additionalProperties: false
     IAMGroupUpdate:
       type: object
       required:
@@ -3197,7 +3478,6 @@ components:
       properties:
         description:
           type: string
-      additionalProperties: false
     IAMGroupUsers:
       type: object
       properties:
@@ -3213,7 +3493,6 @@ components:
                 type: string
               user:
                 $ref: "#/components/schemas/IAMUser"
-      additionalProperties: false
     IAMGroupPermissions:
       type: object
       properties:
@@ -3237,7 +3516,6 @@ components:
                 type: array
                 items:
                   $ref: "#/components/schemas/IAMAction"
-      additionalProperties: false
     IAMACL:
       type: object
       required:
@@ -3251,7 +3529,6 @@ components:
           type: string
         description:
           type: string
-      additionalProperties: false
 
     IAMAcls:
       type: object
@@ -3268,7 +3545,6 @@ components:
       properties:
         description:
           type: string
-      additionalProperties: false
     IAMACLUpdate:
       type: object
       required:
@@ -3276,7 +3552,6 @@ components:
       properties:
         description:
           type: string
-      additionalProperties: false
     IAMACLPermissions:
       type: object
       properties:
@@ -3314,7 +3589,6 @@ components:
                 type: array
                 items:
                   $ref: "#/components/schemas/IAMAction"
-      additionalProperties: false
     IAMActionAllowed:
       type: object
       required:
@@ -3322,7 +3596,6 @@ components:
       properties:
         allowed:
           type: boolean
-      additionalProperties: false
     IAMSAMLProviderConfig:
       type: object
       required:
@@ -3336,7 +3609,6 @@ components:
           type: string
         sp_base_url:
           type: string
-      additionalProperties: false
     IAMSAMLACSCallbackUrlObject:
       type: object
       required:
@@ -3344,7 +3616,6 @@ components:
       properties:
         acs-callback-url:
           type: string
-      additionalProperties: false
     IAMLDAPUserSearchConfig:
       type: object
       required:
@@ -3355,7 +3626,6 @@ components:
           type: string
         search-filter-template:
           type: string
-      additionalProperties: false
     IAMLDAPGroupSearchConfig:
       type: object
       required:
@@ -3370,7 +3640,6 @@ components:
           type: array
           items:
             type: string
-      additionalProperties: false
     IAMLDAPConfiguration:
       type: object
       required:
@@ -3401,7 +3670,6 @@ components:
           type: string
         client-cert:
           type: string
-      additionalProperties: false
     IAMLDAPImportUserObject:
       type: object
       required:
@@ -3409,7 +3677,6 @@ components:
       properties:
         username:
           type: string
-      additionalProperties: false
     IAMLDAPImportGroupObject:
       type: object
       required:
@@ -3417,7 +3684,6 @@ components:
       properties:
         groupname:
           type: string
-      additionalProperties: false
     IAMLDAPTestCredentials:
       type: object
       required:
@@ -3428,7 +3694,6 @@ components:
           type: string
         password:
           type: string
-      additionalProperties: false
     IAMLDAPTestResultObject:
       type: object
       required:
@@ -3439,7 +3704,6 @@ components:
           type: string
         description:
           type: string
-      additionalProperties: false
     IAMError:
       type: object
       properties:
@@ -4020,7 +4284,6 @@ components:
         - METRONOME_RESTART_POLICY_ON_FAILURE
     MetronomeV1Job:
       type: object
-      additionalProperties: false
       properties:
         id:
           type: string
@@ -4045,7 +4308,6 @@ components:
             type: string
         run:
           type: object
-          additionalProperties: false
           description: A run specification
           properties:
             args:
@@ -4065,7 +4327,6 @@ components:
                 runtime.
               items:
                 type: object
-                additionalProperties: false
                 properties:
                   uri:
                     type: string
@@ -4090,6 +4351,7 @@ components:
               minLength: 1
             cpus:
               type: number
+              format: double
               description: >-
                 The number of CPU shares this job needs per instance. This number does
                 not have to be integer, but can be a fraction.
@@ -4101,19 +4363,18 @@ components:
                 not have to be integer, but can be a fraction.
               minimum: 0
             disk:
-              type: number
+              type: integer
+              format: int64
               description: >-
                 How much disk space is needed for this job. This number does not have
                 to be an integer, but can be a fraction.
               minimum: 0
             ucr:
               type: object
-              additionalProperties: false
               nullable: true
               properties:
                 image:
                   type: object
-                  additionalProperties: false
                   properties:
                     id:
                       type: string
@@ -4139,7 +4400,6 @@ components:
                 - image
             docker:
               type: object
-              additionalProperties: false
               nullable: true
               properties:
                 image:
@@ -4158,7 +4418,6 @@ components:
                   description: ''
                   items:
                     type: object
-                    additionalProperties: false
                     properties:
                       key:
                         type: string
@@ -4174,17 +4433,8 @@ components:
               x-patternProperties:
                 .*:
                   oneOf:
+                    - $ref: "#/components/schemas/MetronomeV1EnvSecret"
                     - type: string
-                    - type: object
-                      description: An environment variable set to a secret
-                      properties:
-                        secret:
-                          type: string
-                          description: >-
-                            The name of the secret to refer to. At runtime, the value
-                            of the secret will be injected into the value of the
-                            variable.
-              additionalProperties: true
             maxLaunchDelay:
               type: integer
               minimum: 1
@@ -4193,12 +4443,12 @@ components:
                 deadline is reached without successfully running the job, the job is
                 aborted.
             mem:
-              type: number
+              type: integer
+              format: int64
               description: The amount of memory in MB that is needed for the job per instance.
               minimum: 32
             placement:
               type: object
-              additionalProperties: false
               nullable: true
               properties:
                 constraints:
@@ -4207,7 +4457,6 @@ components:
                   nullable: true
                   items:
                     type: object
-                    additionalProperties: false
                     properties:
                       attribute:
                         type: string
@@ -4238,7 +4487,6 @@ components:
                 SIGTERM.
             restart:
               type: object
-              additionalProperties: false
               description: Defines the behavior if a task fails
               nullable: true
               properties:
@@ -4262,7 +4510,6 @@ components:
               description: The list of volumes for this job.
               items:
                 type: object
-                additionalProperties: false
                 description: A volume definition for this job.
                 properties:
                   containerPath:
@@ -4297,7 +4544,6 @@ components:
                       description: >-
                         The name of the secret to refer to. At runtime, the value of
                         the secret will be injected into the value of the variable.
-              additionalProperties: true
           required:
             - cpus
             - mem
@@ -4321,6 +4567,31 @@ components:
                 type: array
                 items:
                   type: string
+    MetronomeV1JobSchedule:
+      type: object
+      properties:
+        id:
+          type: string
+        cron:
+          type: string
+        concurrencyPolicy:
+          type: string
+          enum: [ALLOW,FORBID]
+        enabled:
+          type: boolean
+        startingDeadlineSeconds:
+          type: integer
+        timezone:
+          type: string
+    MetronomeV1EnvSecret:
+      type: object
+      additionalProperties:
+        $ref: "#/components/schemas/MetronomeV1EnvSecret"
+    MetronomeV1EnvSecretValue:
+      type: object
+      properties:
+        secret:
+          type: string
 
   securitySchemes:
     token:

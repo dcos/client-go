@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AppId** | **string** |  | 
-**Options** | [**map[string]map[string]interface{}**](map[string]interface{}.md) |  | [optional] 
+**Options** | [**map[string]interface{}**](.md) |  | [optional] 
 **PackageName** | **string** |  | [optional] 
 **PackageVersion** | **string** |  | [optional] 
 **Replace** | **bool** | If true any stored configuration will be ignored when producing the updated service configuration. | 

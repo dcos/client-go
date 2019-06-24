@@ -1,12 +1,10 @@
-# CosmosServiceUpdateV1Response
+# MetronomeV1EnvSecretValue
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MarathonDeploymentId** | **string** |  | 
-**Package** | [**CosmosPackage**](CosmosPackage.md) |  | 
-**ResolvedOptions** | [**map[string]interface{}**](.md) | The result of merging the default package options with the user supplied options | 
+**Secret** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

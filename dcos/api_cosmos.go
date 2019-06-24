@@ -16,7 +16,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
-	"strings"
 )
 
 // Linger please
@@ -41,7 +40,7 @@ type PackageDescribeOpts struct {
 
 func (a *CosmosApiService) PackageDescribe(ctx context.Context, localVarOptionals *PackageDescribeOpts) (CosmosPackageDescribeV3Response, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -147,7 +146,7 @@ Runs a service from a Universe package.
 */
 func (a *CosmosApiService) PackageInstall(ctx context.Context, cosmosPackageInstallV1Request CosmosPackageInstallV1Request) (CosmosPackageInstallV1Response, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -262,7 +261,7 @@ type PackageListOpts struct {
 
 func (a *CosmosApiService) PackageList(ctx context.Context, localVarOptionals *PackageListOpts) (CosmosPackageListV1Response, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -374,7 +373,7 @@ type PackageRepositoryAddOpts struct {
 
 func (a *CosmosApiService) PackageRepositoryAdd(ctx context.Context, localVarOptionals *PackageRepositoryAddOpts) (CosmosPackageAddRepoV1Response, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -496,7 +495,7 @@ type PackageRepositoryDeleteOpts struct {
 
 func (a *CosmosApiService) PackageRepositoryDelete(ctx context.Context, localVarOptionals *PackageRepositoryDeleteOpts) (CosmosPackageDeleteRepoV1Response, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -612,7 +611,7 @@ Lists all matching packages in the repository given a partial pattern. The chara
 */
 func (a *CosmosApiService) PackageSearch(ctx context.Context, cosmosPackageSearchV1Request CosmosPackageSearchV1Request) (CosmosPackageSearchV1Response, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -727,7 +726,7 @@ type PackageUninstallOpts struct {
 
 func (a *CosmosApiService) PackageUninstall(ctx context.Context, cosmosPackageUninstallV1Request CosmosPackageUninstallV1Request, localVarOptionals *PackageUninstallOpts) (CosmosPackageUninstallV1Response, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -855,7 +854,7 @@ type ServiceDescribeOpts struct {
 
 func (a *CosmosApiService) ServiceDescribe(ctx context.Context, localVarOptionals *ServiceDescribeOpts) (CosmosServiceDescribeV1Response, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
@@ -961,7 +960,7 @@ Runs a service update.
 */
 func (a *CosmosApiService) ServiceUpdate(ctx context.Context, cosmosServiceUpdateV1Request CosmosServiceUpdateV1Request) (CosmosServiceUpdateV1Response, *http.Response, error) {
 	var (
-		localVarHttpMethod   = strings.ToUpper("Post")
+		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
