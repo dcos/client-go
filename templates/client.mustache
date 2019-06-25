@@ -106,7 +106,7 @@ func (a *APIClient) CurrentDCOSConfig() Config {
 
 // HTTPClient returns a http.Client which does authenticated requests to DC/OS
 func (a *APIClient) HTTPClient() *http.Client {
-	newClient := *a.cfg.HTTPClient
+	newClient := NewHTTPClient(a.cfg)
 	return &newClient
 }
 

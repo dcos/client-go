@@ -108,15 +108,15 @@ func (a *APIClient) CurrentConfig() *Configuration {
 	return a.cfg
 }
 
-// CurrentDCOSConfig returns a copy Config used to create *APIClient.
+// CurrentDCOSConfig returns a copy of Config used to create *APIClient.
 func (a *APIClient) CurrentDCOSConfig() Config {
-	newClient := *a.cfg.HTTPClient
-	return &newClient
+	return *a.dcosConfig
 }
 
 // HTTPClient returns a http.Client which does authenticated requests to DC/OS
 func (a *APIClient) HTTPClient() *http.Client {
-	return a.cfg.HTTPClient
+	newClient := NewHTTPClient(a.cfg)
+	return &newClient
 }
 
 func atoi(in string) (int, error) {
