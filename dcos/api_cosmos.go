@@ -607,16 +607,16 @@ CosmosApiService
 Enumerates the package repositories (for example Universe) that are already installed and in-use by DC/OS.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body
-@return []CosmosPackageListRepoV1Response
+@return CosmosPackageListRepoV1Response
 */
-func (a *CosmosApiService) PackageRepositoryList(ctx context.Context, body map[string]interface{}) ([]CosmosPackageListRepoV1Response, *http.Response, error) {
+func (a *CosmosApiService) PackageRepositoryList(ctx context.Context, body map[string]interface{}) (CosmosPackageListRepoV1Response, *http.Response, error) {
 	var (
 		localVarHttpMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []CosmosPackageListRepoV1Response
+		localVarReturnValue  CosmosPackageListRepoV1Response
 	)
 
 	// create path and map variables
@@ -667,7 +667,7 @@ func (a *CosmosApiService) PackageRepositoryList(ctx context.Context, body map[s
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v []CosmosPackageListRepoV1Response
+			var v CosmosPackageListRepoV1Response
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

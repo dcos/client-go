@@ -220,7 +220,7 @@ No authorization required
 
 ## PackageRepositoryList
 
-> []CosmosPackageListRepoV1Response PackageRepositoryList(ctx, body)
+> CosmosPackageListRepoV1Response PackageRepositoryList(ctx, body)
 
 
 Enumerates the package repositories (for example Universe) that are already installed and in-use by DC/OS. 
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]CosmosPackageListRepoV1Response**](CosmosPackageListRepoV1Response.md)
+[**CosmosPackageListRepoV1Response**](CosmosPackageListRepoV1Response.md)
 
 ### Authorization
 

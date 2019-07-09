@@ -1959,9 +1959,8 @@ paths:
           content:
             application/vnd.dcos.package.repository.list-response+json;charset=utf-8;version=v1:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/CosmosPackageListRepoV1Response"
+                $ref: '#/components/schemas/CosmosPackageListRepoV1Response'
+
       tags:
       - cosmos
   /package/search:
