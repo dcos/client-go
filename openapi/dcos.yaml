@@ -1941,6 +1941,29 @@ paths:
                 $ref: '#/components/schemas/CosmosError'
       tags:
       - cosmos
+  /package/repository/list:
+    post:
+      description: |
+        Enumerates the package repositories (for example Universe) that are already installed
+        and in-use by DC/OS.
+      operationId: package-repository-list
+      requestBody:
+        content:
+          application/vnd.dcos.package.repository.list-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/CosmosPackageListRepoV1Request'
+        required: true
+      responses:
+         200:
+          description: The list of repositories available on DC/OS.
+          content:
+            application/vnd.dcos.package.repository.list-response+json;charset=utf-8;version=v1:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CosmosPackageListRepoV1Response"
+      tags:
+      - cosmos
   /package/search:
     post:
       description: |
@@ -3088,6 +3111,17 @@ components:
       - uri
       type: object
     CosmosPackageAddRepoV1Response:
+      properties:
+        repositories:
+          items:
+            $ref: '#/components/schemas/CosmosPackageRepo'
+          type: array
+      required:
+      - repositories
+      type: object
+    CosmosPackageListRepoV1Request:
+      type: object
+    CosmosPackageListRepoV1Response:
       properties:
         repositories:
           items:
