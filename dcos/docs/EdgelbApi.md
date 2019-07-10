@@ -15,13 +15,16 @@ Method | HTTP request | Description
 [**Version**](EdgelbApi.md#Version) | **Get** /service/edgelb/version | 
 
 
-# **GetConfigContainer**
+
+## GetConfigContainer
+
 > EdgelbConfigContainer GetConfigContainer(ctx, )
 
 
 Get the entire configuration object including v1 and v2 pools.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -34,12 +37,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetPoolContainer**
+
+## GetPoolContainer
+
 > EdgelbPoolContainer GetPoolContainer(ctx, name)
 
 
@@ -47,10 +54,11 @@ Returns a v1 or v2 load balancer pool based on a single name.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name** | **string**|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string**|  | 
 
 ### Return type
 
@@ -62,18 +70,23 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Ping**
+
+## Ping
+
 > string Ping(ctx, )
 
 
 Healthcheck endpoint.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -86,12 +99,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text/plain
+- **Content-Type**: Not defined
+- **Accept**: text/plain
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **V2CreatePool**
+
+## V2CreatePool
+
 > EdgelbV2Pool V2CreatePool(ctx, edgelbV2Pool)
 
 
@@ -99,10 +116,11 @@ Creates a new load balancer pool.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **edgelbV2Pool** | [**EdgelbV2Pool**](EdgelbV2Pool.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**edgelbV2Pool** | [**EdgelbV2Pool**](EdgelbV2Pool.md)|  | 
 
 ### Return type
 
@@ -114,12 +132,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **V2DeletePool**
+
+## V2DeletePool
+
 > V2DeletePool(ctx, name)
 
 
@@ -127,10 +149,11 @@ Deletes a single load balancer pool based on the name supplied.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name** | **string**|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string**|  | 
 
 ### Return type
 
@@ -142,12 +165,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **V2GetPool**
+
+## V2GetPool
+
 > EdgelbV2Pool V2GetPool(ctx, name)
 
 
@@ -155,10 +182,11 @@ Returns a v2 load balancer pool based on a single name.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name** | **string**|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string**|  | 
 
 ### Return type
 
@@ -170,18 +198,23 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **V2GetPools**
+
+## V2GetPools
+
 > []EdgelbV2Pool V2GetPools(ctx, )
 
 
 Get all load balancer pools.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -194,12 +227,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **V2UpdatePool**
+
+## V2UpdatePool
+
 > EdgelbV2Pool V2UpdatePool(ctx, name, edgelbV2Pool)
 
 
@@ -207,11 +244,12 @@ Updates a new load balancer pool.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **name** | **string**|  | 
-  **edgelbV2Pool** | [**EdgelbV2Pool**](EdgelbV2Pool.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string**|  | 
+**edgelbV2Pool** | [**EdgelbV2Pool**](EdgelbV2Pool.md)|  | 
 
 ### Return type
 
@@ -223,18 +261,23 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Version**
+
+## Version
+
 > string Version(ctx, )
 
 
 Returns the installed Edge-LB package version.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -247,8 +290,10 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text/plain
+- **Content-Type**: Not defined
+- **Accept**: text/plain
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 

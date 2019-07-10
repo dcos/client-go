@@ -1,6 +1,7 @@
 # IamldapUserSearchConfig
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SearchBase** | **string** |  | 

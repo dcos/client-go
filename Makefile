@@ -22,7 +22,7 @@ generate: generate-client fmt
 define run_generator
 docker run -u $(shell id -u):$(shell id -g) \
 	-v $(CURDIR):/local -w /local \
-	openapitools/openapi-generator-cli:v4.0.0-beta2 \
+	openapitools/openapi-generator-cli:v4.0.2 \
 	generate -i openapi/dcos.yaml -g go -o dcos \
 	-t templates \
 	-DpackageName=dcos -DwithGoCodegenComment=true -Dmodels -Dapis \
@@ -37,7 +37,6 @@ generate-client:
 	$(call run_generator,-DsupportingFiles=response.go)
 	$(call run_generator,-DsupportingFiles=configuration.go)
 	$(call run_generator,-DsupportingFiles=README.md)
-	cp templates/model_edgelb_v2_frontend.go.tmpl dcos/model_edgelb_v2_frontend.go
 
 .PHONY: validate
 validate: generate

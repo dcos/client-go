@@ -1,6 +1,7 @@
 # IamError
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Title** | **string** |  | [optional] 

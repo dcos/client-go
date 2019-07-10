@@ -1,6 +1,7 @@
 # EdgelbV2RewriteHttpPath
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FromPath** | **string** |  | [optional] 

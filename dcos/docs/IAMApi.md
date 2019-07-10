@@ -61,7 +61,9 @@ Method | HTTP request | Description
 [**UpdateUser**](IAMApi.md#UpdateUser) | **Patch** /acs/api/v1/users/{uid} | Update user account.
 
 
-# **ConfigureOIDCProvider**
+
+## ConfigureOIDCProvider
+
 > ConfigureOIDCProvider(ctx, providerId, iamoidcProviderConfig)
 Configure a new OIDC provider.
 
@@ -69,11 +71,12 @@ Set up OIDC provider with the ID as specified in the URL, and with the config as
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **providerId** | **string**| The ID of the provider to create. | 
-  **iamoidcProviderConfig** | [**IamoidcProviderConfig**](IamoidcProviderConfig.md)| Provider config JSON object | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the provider to create. | 
+**iamoidcProviderConfig** | [**IamoidcProviderConfig**](IamoidcProviderConfig.md)| Provider config JSON object | 
 
 ### Return type
 
@@ -85,12 +88,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ConfigureSAMLProvider**
+
+## ConfigureSAMLProvider
+
 > ConfigureSAMLProvider(ctx, providerId, iamsamlProviderConfig)
 Configure a new SAML provider.
 
@@ -98,11 +105,12 @@ Set up a SAML provider with the ID as specified in the URL, and with the config 
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **providerId** | **string**| The ID of the provider to create. | 
-  **iamsamlProviderConfig** | [**IamsamlProviderConfig**](IamsamlProviderConfig.md)| Provider config JSON object | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the provider to create. | 
+**iamsamlProviderConfig** | [**IamsamlProviderConfig**](IamsamlProviderConfig.md)| Provider config JSON object | 
 
 ### Return type
 
@@ -114,12 +122,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **CreateGroup**
+
+## CreateGroup
+
 > CreateGroup(ctx, gid, iamGroupCreate)
 Create a group.
 
@@ -127,11 +139,12 @@ Create a group.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **gid** | **string**| The ID of the group. | 
-  **iamGroupCreate** | [**IamGroupCreate**](IamGroupCreate.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**gid** | **string**| The ID of the group. | 
+**iamGroupCreate** | [**IamGroupCreate**](IamGroupCreate.md)|  | 
 
 ### Return type
 
@@ -143,12 +156,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **CreateGroupUser**
+
+## CreateGroupUser
+
 > CreateGroupUser(ctx, gid, uid)
 Add account to group.
 
@@ -156,11 +173,12 @@ Add account to group.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **gid** | **string**| The ID of the group to add the user account to. | 
-  **uid** | **string**| The ID of the account to add. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**gid** | **string**| The ID of the group to add the user account to. | 
+**uid** | **string**| The ID of the account to add. | 
 
 ### Return type
 
@@ -172,12 +190,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **CreateLDAPConfiguration**
+
+## CreateLDAPConfiguration
+
 > CreateLDAPConfiguration(ctx, iamldapConfiguration)
 Set new LDAP configuration.
 
@@ -185,10 +207,11 @@ Set new directory (LDAP) back-end configuration. Replace current configuration, 
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **iamldapConfiguration** | [**IamldapConfiguration**](IamldapConfiguration.md)| JSON object containing the LDAP configuration details. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**iamldapConfiguration** | [**IamldapConfiguration**](IamldapConfiguration.md)| JSON object containing the LDAP configuration details. | 
 
 ### Return type
 
@@ -200,12 +223,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **CreateResourceACL**
+
+## CreateResourceACL
+
 > CreateResourceACL(ctx, rid, iamaclCreate)
 Create ACL for a certain resource.
 
@@ -213,11 +240,12 @@ Create new ACL for resource with ID `rid` (description in body, no permissions b
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **rid** | **string**| The ID of the resource for which the ACL should be created. | 
-  **iamaclCreate** | [**IamaclCreate**](IamaclCreate.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| The ID of the resource for which the ACL should be created. | 
+**iamaclCreate** | [**IamaclCreate**](IamaclCreate.md)|  | 
 
 ### Return type
 
@@ -229,12 +257,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **CreateUser**
+
+## CreateUser
+
 > CreateUser(ctx, uid, iamUserCreate)
 Create user account.
 
@@ -242,11 +274,12 @@ Create user (uid in url, details incl. credentials in body).
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **uid** | **string**| The ID of the user account to create. | 
-  **iamUserCreate** | [**IamUserCreate**](IamUserCreate.md)| Password/description. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uid** | **string**| The ID of the user account to create. | 
+**iamUserCreate** | [**IamUserCreate**](IamUserCreate.md)| Password/description. | 
 
 ### Return type
 
@@ -258,12 +291,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteGroup**
+
+## DeleteGroup
+
 > DeleteGroup(ctx, gid)
 Delete group.
 
@@ -271,10 +308,11 @@ Delete group.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **gid** | **string**| The ID of the group to delete. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**gid** | **string**| The ID of the group to delete. | 
 
 ### Return type
 
@@ -286,12 +324,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteGroupUser**
+
+## DeleteGroupUser
+
 > DeleteGroupUser(ctx, gid, uid)
 Delete user account from group.
 
@@ -299,11 +341,12 @@ Delete user account from group.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **gid** | **string**| The ID of the group to delete from. | 
-  **uid** | **string**| The ID of the user account. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**gid** | **string**| The ID of the group to delete from. | 
+**uid** | **string**| The ID of the user account. | 
 
 ### Return type
 
@@ -315,18 +358,23 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteLDAPConfiguration**
+
+## DeleteLDAPConfiguration
+
 > DeleteLDAPConfiguration(ctx, )
 Delete current LDAP configuration.
 
 Delete current directory (LDAP) back-end configuration. This deactivates the LDAP authentication.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -339,12 +387,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteOIDCProvider**
+
+## DeleteOIDCProvider
+
 > DeleteOIDCProvider(ctx, providerId)
 Delete provider.
 
@@ -352,10 +404,11 @@ Delete provider (disables authentication with that provider).
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **providerId** | **string**| The ID of the OIDC provider to delete. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the OIDC provider to delete. | 
 
 ### Return type
 
@@ -367,12 +420,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteResourceACL**
+
+## DeleteResourceACL
+
 > DeleteResourceACL(ctx, rid)
 Delete ACL for a certain resource.
 
@@ -380,10 +437,11 @@ Delete ACL of resource with ID `rid`.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **rid** | **string**| The ID of resource for which the ACL should be deleted. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| The ID of resource for which the ACL should be deleted. | 
 
 ### Return type
 
@@ -395,12 +453,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteSAMLProvider**
+
+## DeleteSAMLProvider
+
 > DeleteSAMLProvider(ctx, providerId)
 Delete provider.
 
@@ -408,10 +470,11 @@ Delete provider (disables authentication with that provider).
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **providerId** | **string**| The ID of the SAML provider to delete. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the SAML provider to delete. | 
 
 ### Return type
 
@@ -423,12 +486,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteUser**
+
+## DeleteUser
+
 > DeleteUser(ctx, uid)
 Delete account.
 
@@ -436,10 +503,11 @@ Delete account.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **uid** | **string**| The ID of the user account to delete. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uid** | **string**| The ID of the user account to delete. | 
 
 ### Return type
 
@@ -451,12 +519,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ForbidResourceGroupActions**
+
+## ForbidResourceGroupActions
+
 > ForbidResourceGroupActions(ctx, rid, gid)
 Forbid all actions of given group to given resource.
 
@@ -464,11 +536,12 @@ Forbid all actions of given group to given resource.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **rid** | **string**| resource ID. | 
-  **gid** | **string**| group ID. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID. | 
+**gid** | **string**| group ID. | 
 
 ### Return type
 
@@ -480,12 +553,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ForbidResourceUserAction**
+
+## ForbidResourceUserAction
+
 > ForbidResourceUserAction(ctx, rid, uid, action)
 Forbid single action for given account and resource.
 
@@ -493,12 +570,13 @@ Forbid single action for given account and resource.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **rid** | **string**| resource ID. | 
-  **uid** | **string**| account ID. | 
-  **action** | **string**| action name | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID. | 
+**uid** | **string**| account ID. | 
+**action** | **string**| action name | 
 
 ### Return type
 
@@ -510,12 +588,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ForbidResourceUserActions**
+
+## ForbidResourceUserActions
+
 > ForbidResourceUserActions(ctx, rid, uid)
 Forbid all actions of given account to given resource.
 
@@ -523,11 +605,12 @@ Forbid all actions of given account to given resource.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **rid** | **string**| resource ID. | 
-  **uid** | **string**| account ID. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID. | 
+**uid** | **string**| account ID. | 
 
 ### Return type
 
@@ -539,12 +622,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ForbitResourceGroupAction**
+
+## ForbitResourceGroupAction
+
 > ForbitResourceGroupAction(ctx, rid, gid, action)
 Forbid single action for given resource and group.
 
@@ -552,12 +639,13 @@ Forbid single action for given resource and group.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **rid** | **string**| resource ID. | 
-  **gid** | **string**| group ID. | 
-  **action** | **string**| action name | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID. | 
+**gid** | **string**| group ID. | 
+**action** | **string**| action name | 
 
 ### Return type
 
@@ -569,18 +657,23 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetACLs**
+
+## GetACLs
+
 > IamAcls GetACLs(ctx, )
 Retrieve all ACL objects.
 
 Get array of `ACL` objects.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -593,12 +686,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetGroup**
+
+## GetGroup
+
 > IamGroup GetGroup(ctx, gid)
 Get single group object.
 
@@ -606,10 +703,11 @@ Get specific `Group` object.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **gid** | **string**| The ID of the group to retrieve. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**gid** | **string**| The ID of the group to retrieve. | 
 
 ### Return type
 
@@ -621,12 +719,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetGroupPermissions**
+
+## GetGroupPermissions
+
 > IamGroupPermissions GetGroupPermissions(ctx, gid)
 Retrieve group permissions.
 
@@ -634,10 +736,11 @@ Retrieve permissions of this group.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **gid** | **string**| The group ID. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**gid** | **string**| The group ID. | 
 
 ### Return type
 
@@ -649,12 +752,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetGroupUsers**
+
+## GetGroupUsers
+
 > IamGroupUsers GetGroupUsers(ctx, gid, optional)
 Retrieve members of a group.
 
@@ -662,14 +769,17 @@ Retrieve users that are member of this group. Allows to query service accounts, 
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **gid** | **string**| The group ID. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**gid** | **string**| The group ID. | 
  **optional** | ***GetGroupUsersOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a GetGroupUsersOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -686,18 +796,23 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetGroups**
+
+## GetGroups
+
 > IamGroups GetGroups(ctx, )
 Retrieve all group objects.
 
 Retrieve array of `Group` objects.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -710,18 +825,23 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetJWKS**
+
+## GetJWKS
+
 > GetJWKS(ctx, )
 Get the IAM's JSON Web Key Set (JWKS, according to RFCs 7517/7518).
 
 This endpoint provides the IAM's JSON Web Key Set (JWKS), exposing public key details required for the process of DC/OS authentication token verification: the public key material can be used for verifying authentication tokens signed by the IAM's private key. The DC/OS authentication token is a JSON Web Token (JWT) of type RS256, and is required to have the two claims `exp` and `uid`. For interpretation of the data provided by the JWKS endpoint see https://tools.ietf.org/html/rfc7517 and https://tools.ietf.org/html/rfc7518.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -734,18 +854,23 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetLDAPConfiguration**
+
+## GetLDAPConfiguration
+
 > IamldapConfiguration GetLDAPConfiguration(ctx, )
 Retrieve current LDAP configuration.
 
 Retrieve current directory (LDAP) back-end configuration.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -758,12 +883,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetOIDCProvider**
+
+## GetOIDCProvider
+
 > IamoidcProviderConfig GetOIDCProvider(ctx, providerId)
 Get configuration for a specific provider.
 
@@ -771,10 +900,11 @@ Get configuration for a specific provider.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **providerId** | **string**| The ID of the OIDC provider to retrieve the config for. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the OIDC provider to retrieve the config for. | 
 
 ### Return type
 
@@ -786,18 +916,23 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetOIDCProviders**
+
+## GetOIDCProviders
+
 > GetOIDCProviders(ctx, )
 Get an overview for the configured OIDC providers.
 
 Get an overview for the configured OIDC providers. The response contains a JSON object, with each key being an OIDC provider ID, and each value being the corresponding provider description string. This endpoint does not expose sensitive provider configuration details.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -810,12 +945,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetResourceACLs**
+
+## GetResourceACLs
+
 > Iamacl GetResourceACLs(ctx, rid)
 Retrieve ACL for a certain resource.
 
@@ -823,10 +962,11 @@ Retrieve single `ACL` object, for a specific resource.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **rid** | **string**| The ID of the resource to retrieve the ACL for. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| The ID of the resource to retrieve the ACL for. | 
 
 ### Return type
 
@@ -838,12 +978,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetResourceGroupAction**
+
+## GetResourceGroupAction
+
 > IamActionAllowed GetResourceGroupAction(ctx, rid, gid, action)
 Query whether action is allowed or not.
 
@@ -851,12 +995,13 @@ Query whether action is allowed or not.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **rid** | **string**| resource ID | 
-  **gid** | **string**| group ID | 
-  **action** | **string**| action name | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID | 
+**gid** | **string**| group ID | 
+**action** | **string**| action name | 
 
 ### Return type
 
@@ -868,12 +1013,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetResourceGroupActions**
+
+## GetResourceGroupActions
+
 > IamActions GetResourceGroupActions(ctx, rid, gid)
 Get allowed actions for given resource and group.
 
@@ -881,11 +1030,12 @@ Get allowed actions for given resource and group.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **rid** | **string**| resource ID | 
-  **gid** | **string**| group ID | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID | 
+**gid** | **string**| group ID | 
 
 ### Return type
 
@@ -897,12 +1047,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetResourcePermissions**
+
+## GetResourcePermissions
+
 > IamaclPermissions GetResourcePermissions(ctx, rid)
 Retrieve all permissions for resource.
 
@@ -910,10 +1064,11 @@ Retrieve all permissions that are set for a specific resource.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **rid** | **string**| resource ID | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID | 
 
 ### Return type
 
@@ -925,12 +1080,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetResourceUserAction**
+
+## GetResourceUserAction
+
 > IamActionAllowed GetResourceUserAction(ctx, rid, uid, action)
 Query whether action is allowed or not.
 
@@ -938,12 +1097,13 @@ Query whether action is allowed or not.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **rid** | **string**| resource ID | 
-  **uid** | **string**| account ID | 
-  **action** | **string**| action name | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID | 
+**uid** | **string**| account ID | 
+**action** | **string**| action name | 
 
 ### Return type
 
@@ -955,12 +1115,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetResourceUserActions**
+
+## GetResourceUserActions
+
 > InlineResponse200 GetResourceUserActions(ctx, rid, uid)
 Get allowed actions for given resource and user.
 
@@ -968,11 +1132,12 @@ Get allowed actions for given resource and user.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **rid** | **string**| resource ID | 
-  **uid** | **string**| account ID | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID | 
+**uid** | **string**| account ID | 
 
 ### Return type
 
@@ -984,12 +1149,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetSAMLProvider**
+
+## GetSAMLProvider
+
 > IamsamlProviderConfig GetSAMLProvider(ctx, providerId)
 Get configuration for a specific SAML provider.
 
@@ -997,10 +1166,11 @@ Get configuration for a specific SAML provider.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **providerId** | **string**| The ID of the SAML provider to retrieve the config for. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the SAML provider to retrieve the config for. | 
 
 ### Return type
 
@@ -1012,12 +1182,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetSAMLProviderACSCallbackURL**
+
+## GetSAMLProviderACSCallbackURL
+
 > IamsamlacsCallbackUrlObject GetSAMLProviderACSCallbackURL(ctx, providerId)
 Get the authentication callback URL for this SP.
 
@@ -1025,10 +1199,11 @@ The IAM acts as SAML service provider (SP). A SAML identity provider (IdP) usual
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **providerId** | **string**| The ID of the SAML provider to retrieve the ACS callback URL for. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the SAML provider to retrieve the ACS callback URL for. | 
 
 ### Return type
 
@@ -1040,12 +1215,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetSAMLProviderSPMetadata**
+
+## GetSAMLProviderSPMetadata
+
 > string GetSAMLProviderSPMetadata(ctx, providerId)
 Get SP metadata (XML).
 
@@ -1053,10 +1232,11 @@ The IAM acts as SAML service provider (SP). This endpoint provides the SP metada
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **providerId** | **string**| The ID of the SAML provider to retrieve the metadata for. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the SAML provider to retrieve the metadata for. | 
 
 ### Return type
 
@@ -1068,18 +1248,23 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/samlmetadata+xml, application/json
+- **Content-Type**: Not defined
+- **Accept**: application/samlmetadata+xml, application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetSAMLProviders**
+
+## GetSAMLProviders
+
 > GetSAMLProviders(ctx, )
 Get an overview for the configured SAML 2.0 providers.
 
 Get an overview for the configured SAML 2.0 providers. The response contains a JSON object, with each key being a SAML provider ID, and each value being the corresponding provider description string. This endpoint does not expose sensitive provider configuration details.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1092,12 +1277,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetUser**
+
+## GetUser
+
 > IamUser GetUser(ctx, uid)
 Get single user object.
 
@@ -1105,10 +1294,11 @@ Get specific `User` object.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **uid** | **string**| The ID of the user object to retrieve. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uid** | **string**| The ID of the user object to retrieve. | 
 
 ### Return type
 
@@ -1120,12 +1310,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetUserGroups**
+
+## GetUserGroups
+
 > IamUserGroups GetUserGroups(ctx, uid)
 Retrieve groups the user is member of.
 
@@ -1133,10 +1327,11 @@ Retrieve groups the user is member of.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **uid** | **string**| The ID of the user. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uid** | **string**| The ID of the user. | 
 
 ### Return type
 
@@ -1148,12 +1343,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetUserPermissions**
+
+## GetUserPermissions
+
 > IamUserPermissions GetUserPermissions(ctx, uid)
 Retrieve permissions an account has.
 
@@ -1161,10 +1360,11 @@ Retrieve the permissions for this account with direct permissions distinguished 
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **uid** | **string**| The id of the user. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uid** | **string**| The id of the user. | 
 
 ### Return type
 
@@ -1176,12 +1376,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetUsers**
+
+## GetUsers
+
 > IamUsers GetUsers(ctx, optional)
 Retrieve all regular user accounts or service user accounts.
 
@@ -1189,13 +1393,16 @@ Retrieve `User` objects. By default the list consists of regular user accounts, 
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
  **optional** | ***GetUsersOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a GetUsersOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1211,12 +1418,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ImportLDAPGroup**
+
+## ImportLDAPGroup
+
 > ImportLDAPGroup(ctx, iamldapImportGroupObject)
 Import an LDAP group.
 
@@ -1224,10 +1435,11 @@ Attempt to import a group of users from the configured directory (LDAP) back-end
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **iamldapImportGroupObject** | [**IamldapImportGroupObject**](IamldapImportGroupObject.md)| A JSON object specifying the name of the group to be imported. The meaning of the name depends on the group search settings. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**iamldapImportGroupObject** | [**IamldapImportGroupObject**](IamldapImportGroupObject.md)| A JSON object specifying the name of the group to be imported. The meaning of the name depends on the group search settings. | 
 
 ### Return type
 
@@ -1239,12 +1451,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ImportLDAPUser**
+
+## ImportLDAPUser
+
 > ImportLDAPUser(ctx, iamldapImportUserObject)
 Import an LDAP user.
 
@@ -1252,10 +1468,11 @@ Attempt to import a user from the configured directory (LDAP) back-end.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **iamldapImportUserObject** | [**IamldapImportUserObject**](IamldapImportUserObject.md)| A JSON object specifying the username (read: \&quot;login\&quot; or \&quot;user ID\&quot;) of the user that should be imported. That string is equivalent to the &#x60;uid&#x60; the user is supposed to log in with after successful import. The exact meaning of this string depends on the configured LDAP authentication method. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**iamldapImportUserObject** | [**IamldapImportUserObject**](IamldapImportUserObject.md)| A JSON object specifying the username (read: \&quot;login\&quot; or \&quot;user ID\&quot;) of the user that should be imported. That string is equivalent to the &#x60;uid&#x60; the user is supposed to log in with after successful import. The exact meaning of this string depends on the configured LDAP authentication method. | 
 
 ### Return type
 
@@ -1267,12 +1484,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Login**
+
+## Login
+
 > IamAuthToken Login(ctx, iamLoginObject)
 Log in (obtain a DC/OS authentication token).
 
@@ -1280,10 +1501,11 @@ Exchange user credentials (regular user account: uid and password; service user 
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **iamLoginObject** | [**IamLoginObject**](IamLoginObject.md)| uid &amp; password or uid &amp; service login token. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**iamLoginObject** | [**IamLoginObject**](IamLoginObject.md)| uid &amp; password or uid &amp; service login token. | 
 
 ### Return type
 
@@ -1295,12 +1517,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **LoginWithProvider**
+
+## LoginWithProvider
+
 > LoginWithProvider(ctx, optional)
 Log in using an external identity provider.
 
@@ -1308,13 +1534,16 @@ Log in using an external identity provider (via e.g. OpenID Connect), as specifi
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
  **optional** | ***LoginWithProviderOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a LoginWithProviderOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1330,18 +1559,23 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **OpenIDConnectCallbackURL**
+
+## OpenIDConnectCallbackURL
+
 > OpenIDConnectCallbackURL(ctx, )
 OpenID Connect callback URL.
 
 After successfully logging in to an OpenID Connect identity provider, the end-user is being redirected back to the IAM via this callback URL. API consumers are not required to explicitly interact with this endpoint. This URL usually needs to be handed over to an OpenID Connect provider (often called \"redirect\" or \"callback\" URL).
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1354,12 +1588,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **PermitResourceGroupAction**
+
+## PermitResourceGroupAction
+
 > PermitResourceGroupAction(ctx, rid, gid, action)
 Permit single action for given resource and group.
 
@@ -1367,12 +1605,13 @@ Permit single action for given resource and group.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **rid** | **string**| resource ID. | 
-  **gid** | **string**| group ID. | 
-  **action** | **string**| action name | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID. | 
+**gid** | **string**| group ID. | 
+**action** | **string**| action name | 
 
 ### Return type
 
@@ -1384,12 +1623,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **PermitResourceUserAction**
+
+## PermitResourceUserAction
+
 > PermitResourceUserAction(ctx, rid, uid, action)
 Permit single action for given account and resource.
 
@@ -1397,12 +1640,13 @@ Permit single action for given account and resource.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **rid** | **string**| resource ID. | 
-  **uid** | **string**| account ID. | 
-  **action** | **string**| action name | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| resource ID. | 
+**uid** | **string**| account ID. | 
+**action** | **string**| action name | 
 
 ### Return type
 
@@ -1414,12 +1658,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **SAMLProviderACSCallbackEndpoint**
+
+## SAMLProviderACSCallbackEndpoint
+
 > SAMLProviderACSCallbackEndpoint(ctx, providerId)
 The SP ACS callback endpoint.
 
@@ -1427,10 +1675,11 @@ The IAM acts as SAML service provider (SP). As part of the authentication flow, 
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **providerId** | **string**| The ID of the provider the authentication response is meant for. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the provider the authentication response is meant for. | 
 
 ### Return type
 
@@ -1442,12 +1691,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **TestLDAPBackendConnection**
+
+## TestLDAPBackendConnection
+
 > IamldapTestResultObject TestLDAPBackendConnection(ctx, iamldapTestCredentials)
 Test connection to the LDAP back-end.
 
@@ -1455,10 +1708,11 @@ Perform basic feature tests. Verify that the current directory (LDAP) configurat
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **iamldapTestCredentials** | [**IamldapTestCredentials**](IamldapTestCredentials.md)| JSON object containing &#x60;uid&#x60; and password of an LDAP user. For the most expressive test result, choose credentials different from the lookup credentials. The &#x60;uid&#x60; is the string the user is supposed to log in with after successful LDAP back-end configuration. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**iamldapTestCredentials** | [**IamldapTestCredentials**](IamldapTestCredentials.md)| JSON object containing &#x60;uid&#x60; and password of an LDAP user. For the most expressive test result, choose credentials different from the lookup credentials. The &#x60;uid&#x60; is the string the user is supposed to log in with after successful LDAP back-end configuration. | 
 
 ### Return type
 
@@ -1470,12 +1724,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: */*, application/json
+- **Content-Type**: application/json
+- **Accept**: */*, application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **UpdateGroup**
+
+## UpdateGroup
+
 > UpdateGroup(ctx, gid, iamGroupUpdate)
 Update group.
 
@@ -1483,11 +1741,12 @@ Update existing group (description).
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **gid** | **string**| The ID of the group to modify. | 
-  **iamGroupUpdate** | [**IamGroupUpdate**](IamGroupUpdate.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**gid** | **string**| The ID of the group to modify. | 
+**iamGroupUpdate** | [**IamGroupUpdate**](IamGroupUpdate.md)|  | 
 
 ### Return type
 
@@ -1499,12 +1758,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **UpdateOIDCProvider**
+
+## UpdateOIDCProvider
+
 > UpdateOIDCProvider(ctx, providerId, iamoidcProviderConfig)
 Update OIDC provider config.
 
@@ -1512,11 +1775,12 @@ Update config for existing OIDC provider.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **providerId** | **string**| The ID of the provider to modify. | 
-  **iamoidcProviderConfig** | [**IamoidcProviderConfig**](IamoidcProviderConfig.md)| Provider config JSON object | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the provider to modify. | 
+**iamoidcProviderConfig** | [**IamoidcProviderConfig**](IamoidcProviderConfig.md)| Provider config JSON object | 
 
 ### Return type
 
@@ -1528,12 +1792,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **UpdateResourceACL**
+
+## UpdateResourceACL
+
 > UpdateResourceACL(ctx, rid, iamaclUpdate)
 Update ACL for a certain resource.
 
@@ -1541,11 +1809,12 @@ Update ACL for resource with ID `rid`.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **rid** | **string**| The ID of the resource for which the ACL should be created. | 
-  **iamaclUpdate** | [**IamaclUpdate**](IamaclUpdate.md)| New ACL. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**rid** | **string**| The ID of the resource for which the ACL should be created. | 
+**iamaclUpdate** | [**IamaclUpdate**](IamaclUpdate.md)| New ACL. | 
 
 ### Return type
 
@@ -1557,12 +1826,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **UpdateSAMLProvider**
+
+## UpdateSAMLProvider
+
 > UpdateSAMLProvider(ctx, providerId, iamsamlProviderConfig)
 Update SAML provider config.
 
@@ -1570,11 +1843,12 @@ Update config for existing SAML provider.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **providerId** | **string**| The ID of the provider to modify. | 
-  **iamsamlProviderConfig** | [**IamsamlProviderConfig**](IamsamlProviderConfig.md)| Provider config JSON object | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**providerId** | **string**| The ID of the provider to modify. | 
+**iamsamlProviderConfig** | [**IamsamlProviderConfig**](IamsamlProviderConfig.md)| Provider config JSON object | 
 
 ### Return type
 
@@ -1586,12 +1860,16 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **UpdateUser**
+
+## UpdateUser
+
 > UpdateUser(ctx, uid, iamUserUpdate)
 Update user account.
 
@@ -1599,11 +1877,12 @@ Update existing user account (meta data and/or password).
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **uid** | **string**| The ID of the user account to modify. | 
-  **iamUserUpdate** | [**IamUserUpdate**](IamUserUpdate.md)| Password/description. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uid** | **string**| The ID of the user account to modify. | 
+**iamUserUpdate** | [**IamUserUpdate**](IamUserUpdate.md)| Password/description. | 
 
 ### Return type
 
@@ -1615,8 +1894,10 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 

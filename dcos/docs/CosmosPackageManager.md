@@ -1,6 +1,7 @@
 # CosmosPackageManager
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PackageName** | **string** |  | 

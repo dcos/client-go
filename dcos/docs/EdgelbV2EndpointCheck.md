@@ -1,6 +1,7 @@
 # EdgelbV2EndpointCheck
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | **bool** |  | [optional] 

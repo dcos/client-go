@@ -1,6 +1,7 @@
 # IamGroups
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Array** | [**[]IamGroup**](IAMGroup.md) |  | [optional] 

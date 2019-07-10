@@ -1,6 +1,7 @@
 # EdgelbV2Endpoint
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** |  | [optional] 

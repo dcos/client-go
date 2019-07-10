@@ -53,7 +53,8 @@ type APIClient struct {
 
 	Secrets *SecretsApiService
 
-	Metadata *MetadataApiService
+	Metadata  *MetadataApiService
+	Metronome *MetronomeApiService
 }
 
 type service struct {
@@ -99,6 +100,7 @@ func NewClientWithConfig(config *Config) (*APIClient, error) {
 	c.IAM = (*IAMApiService)(&c.common)
 	c.Secrets = (*SecretsApiService)(&c.common)
 	c.Metadata = (*MetadataApiService)(&c.common)
+	c.Metronome = (*MetronomeApiService)(&c.common)
 
 	return c, nil
 }

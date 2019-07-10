@@ -1,6 +1,7 @@
 # CosmosPackageDescribeV1Request
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PackageName** | **string** |  | 

@@ -1,6 +1,7 @@
 # CosmosPackageCommand
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pip** | **[]string** | [Deprecated v3.x] An array of strings representing of the requirements file to use for installing the subcommand for Pip. Each item is interpreted as a line in the requirements file. | 

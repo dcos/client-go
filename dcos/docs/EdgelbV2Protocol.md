@@ -1,6 +1,7 @@
 # EdgelbV2Protocol
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

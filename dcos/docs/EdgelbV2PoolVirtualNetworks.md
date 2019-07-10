@@ -1,6 +1,7 @@
 # EdgelbV2PoolVirtualNetworks
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | The name of the virtual network to join. | [optional] 

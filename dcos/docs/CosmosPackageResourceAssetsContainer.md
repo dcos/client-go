@@ -1,6 +1,7 @@
 # CosmosPackageResourceAssetsContainer
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Docker** | **map[string]string** |  | [optional] 
