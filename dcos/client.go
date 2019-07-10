@@ -105,12 +105,7 @@ func NewClientWithConfig(config *Config) (*APIClient, error) {
 	return c, nil
 }
 
-// CurrentConfig returns the *Configuration used by *APIClient
-func (a *APIClient) CurrentConfig() *Configuration {
-	return a.cfg
-}
-
-// CurrentDCOSConfig returns a copy of Config used to create *APIClient.
+// CurrentDCOSConfig returns a copy of dcos.Config used to create *APIClient.
 func (a *APIClient) CurrentDCOSConfig() Config {
 	return *a.dcosConfig
 }

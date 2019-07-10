@@ -44,10 +44,10 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	config := client.CurrentConfig()
+	dcosConfig := client.CurrentDCOSConfig()
 
 	marathonConfig := marathon.NewDefaultConfig()
-	marathonConfig.URL = config.BasePath + "/service/marathon"
+	marathonConfig.URL = dcosConfig.URL() + "/service/marathon"
 	marathonConfig.HTTPClient = client.HTTPClient()
 	marathonClient, err := marathon.NewClient(marathonConfig)
 	if err != nil {
