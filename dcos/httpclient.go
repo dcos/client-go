@@ -3,10 +3,12 @@ package dcos
 import (
 	"crypto/tls"
 	"fmt"
+	"mime"
 	"net"
 	"net/http"
 	"net/http/httputil"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/sirupsen/logrus"
@@ -54,7 +56,8 @@ func (t *DefaultTransport) RoundTrip(req *http.Request) (*http.Response, error) 
 	req2.Header.Set("User-Agent", userAgent)
 
 	if t.Logger != nil && t.Logger.Level >= logrus.DebugLevel {
-		reqDump, err := httputil.DumpRequestOut(req2, true)
+		dumpBody := t.isText(req.Header.Get("Content-Type"))
+		reqDump, err := httputil.DumpRequestOut(req2, dumpBody)
 		if err != nil {
 			t.Logger.Debugf("Couldn't dump request: %s", err)
 		} else {
@@ -65,7 +68,8 @@ func (t *DefaultTransport) RoundTrip(req *http.Request) (*http.Response, error) 
 	resp, err := t.base().RoundTrip(req2)
 
 	if err == nil && t.Logger != nil && t.Logger.Level >= logrus.DebugLevel {
-		respDump, err := httputil.DumpResponse(resp, true)
+		dumpBody := t.isText(resp.Header.Get("Content-Type"))
+		respDump, err := httputil.DumpResponse(resp, dumpBody)
 		if err != nil {
 			t.Logger.Debugf("Couldn't dump response: %s", err)
 		} else {
@@ -74,6 +78,19 @@ func (t *DefaultTransport) RoundTrip(req *http.Request) (*http.Response, error) 
 	}
 
 	return resp, err
+}
+
+// isText returns whether the Content-type header refers to a textual body.
+func (t *DefaultTransport) isText(contentType string) bool {
+	mediaType, _, err := mime.ParseMediaType(contentType)
+	if err != nil {
+		t.Logger.Debug(err)
+		return false
+	}
+	if mediaType == "application/json" || strings.HasSuffix(mediaType, "+json") {
+		return true
+	}
+	return strings.HasPrefix(mediaType, "text/")
 }
 
 func cloneRequest(req *http.Request) *http.Request {
