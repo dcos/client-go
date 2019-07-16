@@ -53,7 +53,7 @@ func (t *DefaultTransport) RoundTrip(req *http.Request) (*http.Response, error) 
 	}
 	req2.Header.Set("User-Agent", userAgent)
 
-	if t.Logger != nil && os.Getenv("DCOS_DEBUG") != "" {
+	if t.Logger != nil && t.Logger.Level >= logrus.DebugLevel {
 		reqDump, err := httputil.DumpRequestOut(req2, true)
 		if err != nil {
 			t.Logger.Debugf("Couldn't dump request: %s", err)
@@ -64,7 +64,7 @@ func (t *DefaultTransport) RoundTrip(req *http.Request) (*http.Response, error) 
 
 	resp, err := t.base().RoundTrip(req2)
 
-	if err == nil && t.Logger != nil && os.Getenv("DCOS_DEBUG") != "" {
+	if err == nil && t.Logger != nil && t.Logger.Level >= logrus.DebugLevel {
 		respDump, err := httputil.DumpResponse(resp, true)
 		if err != nil {
 			t.Logger.Debugf("Couldn't dump response: %s", err)
