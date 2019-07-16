@@ -53,3 +53,19 @@ func TestDefaultHTTPClientAuth(t *testing.T) {
 	require.NoError(t, err)
 	require.Equal(t, 401, respDflt.StatusCode, "expect a forbidden state with http.DefaultClient")
 }
+
+func TestDefaultHTTPClientUserAgent(t *testing.T) {
+	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		assert.Equal(t, "dcos-cli/0.7.1 linux", r.Header.Get("User-Agent"))
+	}))
+	defer s.Close()
+
+	transport := NewDefaultTransport(NewConfig(nil))
+	transport.UserAgent = "dcos-cli/0.7.1 linux"
+
+	httpClient := &http.Client{Transport: transport}
+
+	resp, err := httpClient.Get(s.URL)
+	require.NoError(t, err)
+	require.Equal(t, 200, resp.StatusCode)
+}

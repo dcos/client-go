@@ -27,9 +27,10 @@ const (
 
 // DefaultTransport is a http.RoundTripper that adds authentication based on Config
 type DefaultTransport struct {
-	Config *Config
-	Base   http.RoundTripper
-	Logger *logrus.Logger
+	Config    *Config
+	Base      http.RoundTripper
+	Logger    *logrus.Logger
+	UserAgent string
 }
 
 func (t *DefaultTransport) base() http.RoundTripper {
@@ -44,7 +45,13 @@ func (t *DefaultTransport) RoundTrip(req *http.Request) (*http.Response, error) 
 	// meet the requirements of RoundTripper and only modify a copy
 	req2 := cloneRequest(req)
 	req2.Header.Set("Authorization", fmt.Sprintf("token=%s", t.Config.ACSToken()))
-	req2.Header.Set("User-Agent", fmt.Sprintf("%s(%s)", ClientName, Version))
+
+	// Specify a custom User-Agent if any, otherwise fallback to "client-go({version})".
+	userAgent := t.UserAgent
+	if userAgent == "" {
+		userAgent = fmt.Sprintf("%s(%s)", ClientName, Version)
+	}
+	req2.Header.Set("User-Agent", userAgent)
 
 	if t.Logger != nil && os.Getenv("DCOS_DEBUG") != "" {
 		reqDump, err := httputil.DumpRequestOut(req2, true)
@@ -82,8 +89,8 @@ func cloneRequest(req *http.Request) *http.Request {
 	return req2
 }
 
-// NewHTTPClient provides a http.Client able to communicate to dcos in an authenticated way
-func NewHTTPClient(config *Config) *http.Client {
+// NewDefaultTransport returns a new HTTP transport for a given Config.
+func NewDefaultTransport(config *Config) *DefaultTransport {
 	baseTransport := &http.Transport{
 		// Allow http_proxy, https_proxy, and no_proxy.
 		Proxy: http.ProxyFromEnvironment,
@@ -110,14 +117,18 @@ func NewHTTPClient(config *Config) *http.Client {
 		logger.SetLevel(logrus.DebugLevel)
 	}
 
-	client := &http.Client{}
-	client.Transport = &DefaultTransport{
+	return &DefaultTransport{
 		Config: config,
 		Base:   baseTransport,
 		Logger: logger,
 	}
+}
 
-	return client
+// NewHTTPClient provides a http.Client able to communicate to dcos in an authenticated way
+func NewHTTPClient(config *Config) *http.Client {
+	return &http.Client{
+		Transport: NewDefaultTransport(config),
+	}
 }
 
 // AddTransportHTTPClient adds dcos.DefaultTransport to http.Client to add dcos authentication
