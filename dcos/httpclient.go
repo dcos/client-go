@@ -27,7 +27,7 @@ const (
 	defaultTransportMaxIdleConns = 30
 )
 
-// DefaultTransport is a http.RoundTripper that adds authentication based on Config
+// DefaultTransport is a http.RoundTripper that adds authentication based on Config.
 type DefaultTransport struct {
 	Config    *Config
 	Base      http.RoundTripper
@@ -42,7 +42,7 @@ func (t *DefaultTransport) base() http.RoundTripper {
 	return http.DefaultTransport
 }
 
-// RoundTrip authorizes requests to DC/OS by adding dcos_acs_token to Authorization header
+// RoundTrip authorizes requests to DC/OS by adding dcos_acs_token to Authorization header.
 func (t *DefaultTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	// meet the requirements of RoundTripper and only modify a copy
 	req2 := cloneRequest(req)
@@ -141,14 +141,14 @@ func NewDefaultTransport(config *Config) *DefaultTransport {
 	}
 }
 
-// NewHTTPClient provides a http.Client able to communicate to dcos in an authenticated way
+// NewHTTPClient provides a http.Client able to communicate to dcos in an authenticated way.
 func NewHTTPClient(config *Config) *http.Client {
 	return &http.Client{
 		Transport: NewDefaultTransport(config),
 	}
 }
 
-// AddTransportHTTPClient adds dcos.DefaultTransport to http.Client to add dcos authentication
+// AddTransportHTTPClient adds dcos.DefaultTransport to http.Client to add dcos authentication.
 func AddTransportHTTPClient(client *http.Client, config *Config) *http.Client {
 	transport := DefaultTransport{
 		Config: config,
