@@ -71,10 +71,6 @@ func (c *APIClient) LoginWithServiceAccount(ctx context.Context, opt ServiceAcco
 		}
 	}
 
-	if block.Type != "PRIVATE KEY" {
-		return localEmptyIamToken, nil, fmt.Errorf("Private key PEM block is not 'PRIVATE KEY'")
-	}
-
 	// Create a new JWT signer
 	sig, err := jose.NewSigner(jose.SigningKey{
 		Algorithm: jose.RS256,
