@@ -41,7 +41,7 @@ dcos security secrets create-sa-secret.
 func (c *APIClient) LoginWithServiceAccount(ctx context.Context, opt ServiceAccountOptions) (IamAuthToken, *http.Response, error) {
 	var (
 		localEmptyIamToken IamAuthToken
-		key                *rsa.PrivateKey = nil
+		key                *rsa.PrivateKey
 		ok                 bool
 		err                error
 	)
