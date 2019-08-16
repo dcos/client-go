@@ -1963,6 +1963,38 @@ paths:
 
       tags:
       - cosmos
+  /package/list-versions:
+    post:
+      description: |
+        Lists the versions of a given package.
+      operationId: package-list-versions
+      requestBody:
+        content:
+          application/vnd.dcos.package.list-versions-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/CosmosPackageListVersionsV1Request'
+        required: true
+      responses:
+        200:
+          description: List versions successful
+          content:
+            application/vnd.dcos.package.list-versions-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosPackageListVersionsV1Response'
+        400:
+          description: List versions failed due to a bad request
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+        409:
+          description: List versions failed due to a version conflict
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+      tags:
+      - cosmos
   /package/search:
     post:
       description: |
@@ -3117,6 +3149,25 @@ components:
           type: array
       required:
       - repositories
+      type: object
+    CosmosPackageListVersionsV1Request:
+      properties:
+        packageName:
+          type: string
+        includePackageVersions:
+          type: boolean
+      required:
+      - packageName
+      - includePackageVersions
+      type: object
+    CosmosPackageListVersionsV1Response:
+      properties:
+        versions:
+          items:
+            type: string
+          type: array
+      required:
+      - versions
       type: object
     CosmosPackageListRepoV1Request:
       type: object
