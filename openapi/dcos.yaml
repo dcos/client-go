@@ -3162,12 +3162,12 @@ components:
       type: object
     CosmosPackageListVersionsV1Response:
       properties:
-        versions:
-          items:
+        results:
+          additionalProperties:
             type: string
-          type: array
+          type: object
       required:
-      - versions
+      - results
       type: object
     CosmosPackageListRepoV1Request:
       type: object

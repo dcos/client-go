@@ -11,5 +11,5 @@
 package dcos
 
 type CosmosPackageListVersionsV1Response struct {
-	Versions []string `json:"versions"`
+	Results map[string]string `json:"results"`
 }
