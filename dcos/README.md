@@ -35,6 +35,7 @@ Class | Method | HTTP request | Description
 *CosmosApi* | [**PackageDescribe**](docs/CosmosApi.md#packagedescribe) | **Post** /package/describe | 
 *CosmosApi* | [**PackageInstall**](docs/CosmosApi.md#packageinstall) | **Post** /package/install | 
 *CosmosApi* | [**PackageList**](docs/CosmosApi.md#packagelist) | **Post** /package/list | 
+*CosmosApi* | [**PackageListVersions**](docs/CosmosApi.md#packagelistversions) | **Post** /package/list-versions | 
 *CosmosApi* | [**PackageRepositoryAdd**](docs/CosmosApi.md#packagerepositoryadd) | **Post** /package/repository/add | 
 *CosmosApi* | [**PackageRepositoryDelete**](docs/CosmosApi.md#packagerepositorydelete) | **Post** /package/repository/delete | 
 *CosmosApi* | [**PackageRepositoryList**](docs/CosmosApi.md#packagerepositorylist) | **Post** /package/repository/list | 
@@ -148,6 +149,8 @@ Class | Method | HTTP request | Description
  - [CosmosPackageListV1PackageInformation](docs/CosmosPackageListV1PackageInformation.md)
  - [CosmosPackageListV1Request](docs/CosmosPackageListV1Request.md)
  - [CosmosPackageListV1Response](docs/CosmosPackageListV1Response.md)
+ - [CosmosPackageListVersionsV1Request](docs/CosmosPackageListVersionsV1Request.md)
+ - [CosmosPackageListVersionsV1Response](docs/CosmosPackageListVersionsV1Response.md)
  - [CosmosPackageManager](docs/CosmosPackageManager.md)
  - [CosmosPackageMarathon](docs/CosmosPackageMarathon.md)
  - [CosmosPackageRepo](docs/CosmosPackageRepo.md)
