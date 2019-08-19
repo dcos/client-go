@@ -1821,7 +1821,30 @@ paths:
                 $ref: '#/components/schemas/CosmosError'
       tags:
       - cosmos
-
+  /package/render:
+    post:
+      description: Generates the Marathon application definition for the package name, version, and optional configuration JSON object.
+      operationId: package-render
+      requestBody:
+        content:
+          application/vnd.dcos.package.render-request+json;charset=utf-8;version=v1:
+            schema:
+              $ref: '#/components/schemas/CosmosPackageRenderV1Request'
+      responses:
+        200:
+          description: Request successful
+          content:
+            application/vnd.dcos.package.render-response+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosPackageRenderV1Response'
+        400:
+          description: Request failed due to a bad request
+          content:
+            application/vnd.dcos.package.error+json;charset=utf-8;version=v1:
+              schema:
+                $ref: '#/components/schemas/CosmosError'
+      tags:
+      - cosmos
   /package/install:
     post:
       description: Runs a service from a Universe package.
@@ -1855,7 +1878,7 @@ paths:
       - cosmos
   /package/list:
     post:
-      description: Lists all of the running DC/OS services started from a DC/OS package..
+      description: Lists all of the running DC/OS services started from a DC/OS package.
       operationId: package-list
       requestBody:
         content:
@@ -2960,6 +2983,26 @@ components:
       required:
       - packageName
       - packageVersion
+      type: object
+    CosmosPackageRenderV1Request:
+      properties:
+        appId:
+          type: string
+        options:
+          type: object
+        packageName:
+          type: string
+        packageVersion:
+          type: string
+      required:
+      - packageName
+      type: object
+    CosmosPackageRenderV1Response:
+      properties:
+        marathonJson:
+          type: object
+      required:
+      - marathonJson
       type: object
     CosmosPackageRepo:
       properties:

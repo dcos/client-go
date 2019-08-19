@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**PackageInstall**](CosmosApi.md#PackageInstall) | **Post** /package/install | 
 [**PackageList**](CosmosApi.md#PackageList) | **Post** /package/list | 
 [**PackageListVersions**](CosmosApi.md#PackageListVersions) | **Post** /package/list-versions | 
+[**PackageRender**](CosmosApi.md#PackageRender) | **Post** /package/render | 
 [**PackageRepositoryAdd**](CosmosApi.md#PackageRepositoryAdd) | **Post** /package/repository/add | 
 [**PackageRepositoryDelete**](CosmosApi.md#PackageRepositoryDelete) | **Post** /package/repository/delete | 
 [**PackageRepositoryList**](CosmosApi.md#PackageRepositoryList) | **Post** /package/repository/list | 
@@ -98,7 +99,7 @@ No authorization required
 > CosmosPackageListV1Response PackageList(ctx, optional)
 
 
-Lists all of the running DC/OS services started from a DC/OS package..
+Lists all of the running DC/OS services started from a DC/OS package.
 
 ### Required Parameters
 
@@ -162,6 +163,48 @@ No authorization required
 
 - **Content-Type**: application/vnd.dcos.package.list-versions-request+json;charset=utf-8;version=v1
 - **Accept**: application/vnd.dcos.package.list-versions-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PackageRender
+
+> CosmosPackageRenderV1Response PackageRender(ctx, optional)
+
+
+Generates the Marathon application definition for the package name, version, and optional configuration JSON object.
+
+### Required Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***PackageRenderOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+
+Optional parameters are passed through a pointer to a PackageRenderOpts struct
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cosmosPackageRenderV1Request** | [**optional.Interface of CosmosPackageRenderV1Request**](CosmosPackageRenderV1Request.md)|  | 
+
+### Return type
+
+[**CosmosPackageRenderV1Response**](CosmosPackageRenderV1Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.dcos.package.render-request+json;charset=utf-8;version=v1
+- **Accept**: application/vnd.dcos.package.render-response+json;charset=utf-8;version=v1, application/vnd.dcos.package.error+json;charset=utf-8;version=v1
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
