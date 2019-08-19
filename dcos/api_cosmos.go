@@ -248,7 +248,7 @@ func (a *CosmosApiService) PackageInstall(ctx context.Context, cosmosPackageInst
 
 /*
 CosmosApiService
-Lists all of the running DC/OS services started from a DC/OS package..
+Lists all of the running DC/OS services started from a DC/OS package.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *PackageListOpts - Optional Parameters:
  * @param "CosmosPackageListV1Request" (optional.Interface of CosmosPackageListV1Request) -
@@ -443,6 +443,118 @@ func (a *CosmosApiService) PackageListVersions(ctx context.Context, cosmosPackag
 			return localVarReturnValue, localVarHttpResponse, newErr
 		}
 		if localVarHttpResponse.StatusCode == 409 {
+			var v CosmosError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		return localVarReturnValue, localVarHttpResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHttpResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHttpResponse, nil
+}
+
+/*
+CosmosApiService
+Generates the Marathon application definition for the package name, version, and optional configuration JSON object.
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param optional nil or *PackageRenderOpts - Optional Parameters:
+ * @param "CosmosPackageRenderV1Request" (optional.Interface of CosmosPackageRenderV1Request) -
+@return CosmosPackageRenderV1Response
+*/
+
+type PackageRenderOpts struct {
+	CosmosPackageRenderV1Request optional.Interface
+}
+
+func (a *CosmosApiService) PackageRender(ctx context.Context, localVarOptionals *PackageRenderOpts) (CosmosPackageRenderV1Response, *http.Response, error) {
+	var (
+		localVarHttpMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  CosmosPackageRenderV1Response
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/package/render"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"application/vnd.dcos.package.render-request+json;charset=utf-8;version=v1"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{"application/vnd.dcos.package.render-response+json;charset=utf-8;version=v1", "application/vnd.dcos.package.error+json;charset=utf-8;version=v1"}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	if localVarOptionals != nil && localVarOptionals.CosmosPackageRenderV1Request.IsSet() {
+		localVarOptionalCosmosPackageRenderV1Request, localVarOptionalCosmosPackageRenderV1Requestok := localVarOptionals.CosmosPackageRenderV1Request.Value().(CosmosPackageRenderV1Request)
+		if !localVarOptionalCosmosPackageRenderV1Requestok {
+			return localVarReturnValue, nil, reportError("cosmosPackageRenderV1Request should be CosmosPackageRenderV1Request")
+		}
+		localVarPostBody = &localVarOptionalCosmosPackageRenderV1Request
+	}
+
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarHttpResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	if localVarHttpResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHttpResponse.Status,
+		}
+		if localVarHttpResponse.StatusCode == 200 {
+			var v CosmosPackageRenderV1Response
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHttpResponse, newErr
+			}
+			newErr.model = v
+			return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 400 {
 			var v CosmosError
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
