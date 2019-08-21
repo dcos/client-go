@@ -3180,6 +3180,7 @@ components:
           format: int32
           minimum: 0
           type: integer
+          nullable: true
       required:
       - name
       - uri
