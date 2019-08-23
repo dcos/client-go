@@ -2900,8 +2900,6 @@ components:
           items:
             type: string
           type: array
-      required:
-      - pip
       type: object
     CosmosPackageDescribeV1Request:
       properties:
