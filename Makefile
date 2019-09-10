@@ -22,7 +22,7 @@ generate: generate-client fmt
 define run_generator
 docker run -u $(shell id -u):$(shell id -g) \
 	-v $(CURDIR):/local -w /local \
-	openapitools/openapi-generator-cli:v4.0.2 \
+	openapitools/openapi-generator-cli:v4.0.3 \
 	generate -i openapi/dcos.yaml -g go -o dcos \
 	-t templates \
 	-DpackageName=dcos -DwithGoCodegenComment=true -Dmodels -Dapis \

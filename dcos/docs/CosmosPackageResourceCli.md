@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Binaries** | [**CosmosPackageResourceCliBinaries**](CosmosPackageResourceCliBinaries.md) |  | 
+**Binaries** | [**CosmosPackageResourceCliBinaries**](CosmosPackageResourceCliBinaries.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

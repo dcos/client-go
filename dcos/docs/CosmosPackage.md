@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **Resource** | [**CosmosPackageResource**](CosmosPackageResource.md) |  | [optional] 
 **Scm** | **string** |  | [optional] 
 **Selected** | **bool** | Flag indicating if the package is selected in search results | [optional] [default to false]
-**Tags** | **[]string** |  | 
+**Tags** | **[]string** |  | [optional] 
 **UpgradesFrom** | **[]string** | List of versions that can upgrade to this package. If the property is a list containing the string &#39;*&#39;, any version can upgrade to this package. If the property is not set or the empty list, no version can upgrade to this package. | [optional] 
 **Version** | **string** |  | 
 **Website** | **string** |  | [optional] 
