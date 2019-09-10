@@ -3091,17 +3091,24 @@ components:
       type: object
     CosmosPackageUninstallV1Response:
       properties:
-        appId:
-          type: string
-        packageName:
-          type: string
-        packageVersion:
-          type: string
-        postUninstallNotes:
-          type: string
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              appId:
+                type: string
+              packageName:
+                type: string
+              packageVersion:
+                type: string
+              postUninstallNotes:
+                type: string
+            required:
+            - appId
+            - packageName
       required:
-      - appId
-      - packageName
+      - results
       type: object
     CosmosPackageLicense:
       properties:
