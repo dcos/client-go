@@ -2865,8 +2865,6 @@ components:
       properties:
         binaries:
           $ref: '#/components/schemas/CosmosPackageResourceCliBinaries'
-      required:
-      - binaries
       type: object
     CosmosPackageResourceCliArtifact:
       properties:
@@ -2884,10 +2882,6 @@ components:
           format: uri
           pattern: ^https?://
           type: string
-      required:
-      - contentHash
-      - kind
-      - url
       type: object
     CosmosPackageCommand:
       properties:
@@ -2934,9 +2928,6 @@ components:
           $ref: '#/components/schemas/CosmosHashAlgo'
         value:
           type: string
-      required:
-      - algo
-      - value
       type: object
     CosmosPackageResourceImages:
       properties:
@@ -3137,8 +3128,6 @@ components:
       properties:
         x86-64:
           $ref: '#/components/schemas/CosmosPackageResourceCliArtifact'
-      required:
-      - x86-64
       type: object
     CosmosServiceDescribeV1Request:
       properties:
@@ -3370,7 +3359,6 @@ components:
       - name
       - packagingVersion
       - releaseVersion
-      - tags
       - version
       type: object
     CosmosPackageManager:
@@ -3379,8 +3367,6 @@ components:
           type: string
         minPackageVersion:
           type: string
-      required:
-      - packageName
       type: object
     CosmosPackageResourceAssetsContainer:
       properties:
