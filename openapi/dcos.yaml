@@ -3332,7 +3332,7 @@ components:
           type: string
         releaseVersion:
           description: Corresponds to the revision index from the universe directory structure
-          format: int32
+          format: int64
           minimum: 0
           type: integer
         resource:

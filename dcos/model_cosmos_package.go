@@ -32,7 +32,7 @@ type CosmosPackage struct {
 	// Pre installation notes that would be useful to the user of this package.
 	PreInstallNotes string `json:"preInstallNotes,omitempty"`
 	// Corresponds to the revision index from the universe directory structure
-	ReleaseVersion int32                 `json:"releaseVersion"`
+	ReleaseVersion int64                 `json:"releaseVersion"`
 	Resource       CosmosPackageResource `json:"resource,omitempty"`
 	Scm            string                `json:"scm,omitempty"`
 	// Flag indicating if the package is selected in search results

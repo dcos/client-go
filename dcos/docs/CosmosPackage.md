@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **PostInstallNotes** | **string** | Post installation notes that would be useful to the user of this package. | [optional] 
 **PostUninstallNotes** | **string** | Post uninstallation notes that would be useful to the user of this package. | [optional] 
 **PreInstallNotes** | **string** | Pre installation notes that would be useful to the user of this package. | [optional] 
-**ReleaseVersion** | **int32** | Corresponds to the revision index from the universe directory structure | 
+**ReleaseVersion** | **int64** | Corresponds to the revision index from the universe directory structure | 
 **Resource** | [**CosmosPackageResource**](CosmosPackageResource.md) |  | [optional] 
 **Scm** | **string** |  | [optional] 
 **Selected** | **bool** | Flag indicating if the package is selected in search results | [optional] [default to false]
