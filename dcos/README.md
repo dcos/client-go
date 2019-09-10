@@ -170,6 +170,7 @@ Class | Method | HTTP request | Description
  - [CosmosPackageSearchV1Response](docs/CosmosPackageSearchV1Response.md)
  - [CosmosPackageUninstallV1Request](docs/CosmosPackageUninstallV1Request.md)
  - [CosmosPackageUninstallV1Response](docs/CosmosPackageUninstallV1Response.md)
+ - [CosmosPackageUninstallV1ResponseResults](docs/CosmosPackageUninstallV1ResponseResults.md)
  - [CosmosServiceDescribeV1Request](docs/CosmosServiceDescribeV1Request.md)
  - [CosmosServiceDescribeV1Response](docs/CosmosServiceDescribeV1Response.md)
  - [CosmosServiceUpdateV1Request](docs/CosmosServiceUpdateV1Request.md)
