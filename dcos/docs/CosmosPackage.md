@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **Version** | **string** |  | 
 **Website** | **string** |  | [optional] 
 **Manager** | [**CosmosPackageManager**](CosmosPackageManager.md) |  | [optional] 
+**LastUpdated** | **int64** | When this DC/OS package was last updated | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
