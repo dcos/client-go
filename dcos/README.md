@@ -121,6 +121,7 @@ Class | Method | HTTP request | Description
 *MetronomeApi* | [**V1StartJobRun**](docs/MetronomeApi.md#v1startjobrun) | **Post** /service/metronome/v1/jobs/{jobId}/runs | 
 *MetronomeApi* | [**V1StopJobRunByRunId**](docs/MetronomeApi.md#v1stopjobrunbyrunid) | **Post** /service/metronome/v1/jobs/{jobId}/runs/{runId}/actions/stop | 
 *MetronomeApi* | [**V1UpdateJob**](docs/MetronomeApi.md#v1updatejob) | **Put** /service/metronome/v1/jobs/{jobId} | 
+*NetworkingApi* | [**V1Nodes**](docs/NetworkingApi.md#v1nodes) | **Get** /net/v1/nodes | 
 *SecretsApi* | [**CreateSecret**](docs/SecretsApi.md#createsecret) | **Put** /secrets/v1/secret/{store}/{path-to-secret} | Create a secret in the store at the path.
 *SecretsApi* | [**DeleteSecret**](docs/SecretsApi.md#deletesecret) | **Delete** /secrets/v1/secret/{store}/{path-to-secret} | Delete a secret.
 *SecretsApi* | [**GetSecret**](docs/SecretsApi.md#getsecret) | **Get** /secrets/v1/secret/{store}/{path-to-secret} | Read or list a secret from the store by its path.
@@ -254,6 +255,7 @@ Class | Method | HTTP request | Description
  - [MetronomeV1JobRunUcrImage](docs/MetronomeV1JobRunUcrImage.md)
  - [MetronomeV1JobRunVolumes](docs/MetronomeV1JobRunVolumes.md)
  - [MetronomeV1JobSchedule](docs/MetronomeV1JobSchedule.md)
+ - [NetworkingV1Node](docs/NetworkingV1Node.md)
  - [SecretsV1Secret](docs/SecretsV1Secret.md)
 
 
