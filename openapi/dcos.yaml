@@ -32,6 +32,8 @@ tags:
   description: DC/OS Cluster metadata
 - name: metronome
   description: Create and manage scheduled Jobs with DCOS Metronome API
+- name: networking
+  description: Exposes the public IP addresses for nodes in a cluster
 
 paths:
   /secrets/v1/secret/{store}/{path-to-secret}:
@@ -2786,6 +2788,23 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/MetronomeV1Error"
+  /net/v1/nodes:
+    get:
+      description: Exposes the public IP addresses for nodes in a cluster
+      operationId: V1Nodes
+      tags:
+        - networking
+      responses:
+        "401":
+          description: Unauthorized. Authentication is enabled and you did not provide enough or wrong information to authenticate that request.
+        "200":
+          description: public IP addresses for nodes in a cluster
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/NetworkingV1Node"
 
 components:
   requestBodies:
@@ -4716,6 +4735,20 @@ components:
       type: object
       properties:
         secret:
+          type: string
+    NetworkingV1Node:
+      type: object
+      properties:
+        updated:
+          type: string
+          format: date-time
+        private_ip:
+          type: string
+        public_ips:
+          type: array
+          items:
+            type: string
+        hostname:
           type: string
 
   securitySchemes:
