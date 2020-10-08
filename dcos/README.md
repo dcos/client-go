@@ -53,6 +53,10 @@ Class | Method | HTTP request | Description
 *EdgelbApi* | [**V2GetPools**](docs/EdgelbApi.md#v2getpools) | **Get** /service/edgelb/v2/pools | 
 *EdgelbApi* | [**V2UpdatePool**](docs/EdgelbApi.md#v2updatepool) | **Put** /service/edgelb/v2/pools/{name} | 
 *EdgelbApi* | [**Version**](docs/EdgelbApi.md#version) | **Get** /service/edgelb/version | 
+*HealthApi* | [**V1SystemHealth**](docs/HealthApi.md#v1systemhealth) | **Get** /system/health/v1 | 
+*HealthApi* | [**V1SystemHealthNodes**](docs/HealthApi.md#v1systemhealthnodes) | **Get** /system/health/v1/nodes | 
+*HealthApi* | [**V1SystemHealthReport**](docs/HealthApi.md#v1systemhealthreport) | **Get** /system/health/v1/report | 
+*HealthApi* | [**V1SystemHealthUnits**](docs/HealthApi.md#v1systemhealthunits) | **Get** /system/health/v1/units | 
 *IAMApi* | [**ConfigureOIDCProvider**](docs/IAMApi.md#configureoidcprovider) | **Put** /acs/api/v1/auth/oidc/providers/{provider-id} | Configure a new OIDC provider.
 *IAMApi* | [**ConfigureSAMLProvider**](docs/IAMApi.md#configuresamlprovider) | **Put** /acs/api/v1/auth/saml/providers/{provider-id} | Configure a new SAML provider.
 *IAMApi* | [**CreateGroup**](docs/IAMApi.md#creategroup) | **Put** /acs/api/v1/groups/{gid} | Create a group.
@@ -264,6 +268,12 @@ Class | Method | HTTP request | Description
  - [MetronomeV1JobSchedule](docs/MetronomeV1JobSchedule.md)
  - [NetworkingV1Node](docs/NetworkingV1Node.md)
  - [SecretsV1Secret](docs/SecretsV1Secret.md)
+ - [V1SystemHealth](docs/V1SystemHealth.md)
+ - [V1SystemHealthNode](docs/V1SystemHealthNode.md)
+ - [V1SystemHealthNodes](docs/V1SystemHealthNodes.md)
+ - [V1SystemHealthReport](docs/V1SystemHealthReport.md)
+ - [V1SystemHealthUnit](docs/V1SystemHealthUnit.md)
+ - [V1SystemHealthUnits](docs/V1SystemHealthUnits.md)
 
 
 ## Documentation For Authorization
