@@ -49,6 +49,8 @@ type APIClient struct {
 
 	Edgelb *EdgelbApiService
 
+	Health *HealthApiService
+
 	IAM *IAMApiService
 
 	Secrets *SecretsApiService
@@ -98,6 +100,7 @@ func NewClientWithConfig(config *Config) (*APIClient, error) {
 	// API Services
 	c.Cosmos = (*CosmosApiService)(&c.common)
 	c.Edgelb = (*EdgelbApiService)(&c.common)
+	c.Health = (*HealthApiService)(&c.common)
 	c.IAM = (*IAMApiService)(&c.common)
 	c.Secrets = (*SecretsApiService)(&c.common)
 	c.Metadata = (*MetadataApiService)(&c.common)

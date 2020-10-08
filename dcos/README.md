@@ -32,27 +32,31 @@ All URIs are relative to *http://your-dcos-cluster.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CosmosApi* | [**PackageDescribe**](docs/CosmosApi.md#packagedescribe) | **Post** /package/describe | 
-*CosmosApi* | [**PackageInstall**](docs/CosmosApi.md#packageinstall) | **Post** /package/install | 
-*CosmosApi* | [**PackageList**](docs/CosmosApi.md#packagelist) | **Post** /package/list | 
-*CosmosApi* | [**PackageListVersions**](docs/CosmosApi.md#packagelistversions) | **Post** /package/list-versions | 
-*CosmosApi* | [**PackageRender**](docs/CosmosApi.md#packagerender) | **Post** /package/render | 
-*CosmosApi* | [**PackageRepositoryAdd**](docs/CosmosApi.md#packagerepositoryadd) | **Post** /package/repository/add | 
-*CosmosApi* | [**PackageRepositoryDelete**](docs/CosmosApi.md#packagerepositorydelete) | **Post** /package/repository/delete | 
-*CosmosApi* | [**PackageRepositoryList**](docs/CosmosApi.md#packagerepositorylist) | **Post** /package/repository/list | 
-*CosmosApi* | [**PackageSearch**](docs/CosmosApi.md#packagesearch) | **Post** /package/search | 
-*CosmosApi* | [**PackageUninstall**](docs/CosmosApi.md#packageuninstall) | **Post** /package/uninstall | 
-*CosmosApi* | [**ServiceDescribe**](docs/CosmosApi.md#servicedescribe) | **Post** /cosmos/service/describe | 
-*CosmosApi* | [**ServiceUpdate**](docs/CosmosApi.md#serviceupdate) | **Post** /cosmos/service/update | 
-*EdgelbApi* | [**GetConfigContainer**](docs/EdgelbApi.md#getconfigcontainer) | **Get** /service/edgelb/config | 
-*EdgelbApi* | [**GetPoolContainer**](docs/EdgelbApi.md#getpoolcontainer) | **Get** /service/edgelb/pools/{name} | 
-*EdgelbApi* | [**Ping**](docs/EdgelbApi.md#ping) | **Get** /service/edgelb/ping | 
-*EdgelbApi* | [**V2CreatePool**](docs/EdgelbApi.md#v2createpool) | **Post** /service/edgelb/v2/pools | 
-*EdgelbApi* | [**V2DeletePool**](docs/EdgelbApi.md#v2deletepool) | **Delete** /service/edgelb/v2/pools/{name} | 
-*EdgelbApi* | [**V2GetPool**](docs/EdgelbApi.md#v2getpool) | **Get** /service/edgelb/v2/pools/{name} | 
-*EdgelbApi* | [**V2GetPools**](docs/EdgelbApi.md#v2getpools) | **Get** /service/edgelb/v2/pools | 
-*EdgelbApi* | [**V2UpdatePool**](docs/EdgelbApi.md#v2updatepool) | **Put** /service/edgelb/v2/pools/{name} | 
-*EdgelbApi* | [**Version**](docs/EdgelbApi.md#version) | **Get** /service/edgelb/version | 
+*CosmosApi* | [**PackageDescribe**](docs/CosmosApi.md#packagedescribe) | **Post** /package/describe |
+*CosmosApi* | [**PackageInstall**](docs/CosmosApi.md#packageinstall) | **Post** /package/install |
+*CosmosApi* | [**PackageList**](docs/CosmosApi.md#packagelist) | **Post** /package/list |
+*CosmosApi* | [**PackageListVersions**](docs/CosmosApi.md#packagelistversions) | **Post** /package/list-versions |
+*CosmosApi* | [**PackageRender**](docs/CosmosApi.md#packagerender) | **Post** /package/render |
+*CosmosApi* | [**PackageRepositoryAdd**](docs/CosmosApi.md#packagerepositoryadd) | **Post** /package/repository/add |
+*CosmosApi* | [**PackageRepositoryDelete**](docs/CosmosApi.md#packagerepositorydelete) | **Post** /package/repository/delete |
+*CosmosApi* | [**PackageRepositoryList**](docs/CosmosApi.md#packagerepositorylist) | **Post** /package/repository/list |
+*CosmosApi* | [**PackageSearch**](docs/CosmosApi.md#packagesearch) | **Post** /package/search |
+*CosmosApi* | [**PackageUninstall**](docs/CosmosApi.md#packageuninstall) | **Post** /package/uninstall |
+*CosmosApi* | [**ServiceDescribe**](docs/CosmosApi.md#servicedescribe) | **Post** /cosmos/service/describe |
+*CosmosApi* | [**ServiceUpdate**](docs/CosmosApi.md#serviceupdate) | **Post** /cosmos/service/update |
+*EdgelbApi* | [**GetConfigContainer**](docs/EdgelbApi.md#getconfigcontainer) | **Get** /service/edgelb/config |
+*EdgelbApi* | [**GetPoolContainer**](docs/EdgelbApi.md#getpoolcontainer) | **Get** /service/edgelb/pools/{name} |
+*EdgelbApi* | [**Ping**](docs/EdgelbApi.md#ping) | **Get** /service/edgelb/ping |
+*EdgelbApi* | [**V2CreatePool**](docs/EdgelbApi.md#v2createpool) | **Post** /service/edgelb/v2/pools |
+*EdgelbApi* | [**V2DeletePool**](docs/EdgelbApi.md#v2deletepool) | **Delete** /service/edgelb/v2/pools/{name} |
+*EdgelbApi* | [**V2GetPool**](docs/EdgelbApi.md#v2getpool) | **Get** /service/edgelb/v2/pools/{name} |
+*EdgelbApi* | [**V2GetPools**](docs/EdgelbApi.md#v2getpools) | **Get** /service/edgelb/v2/pools |
+*EdgelbApi* | [**V2UpdatePool**](docs/EdgelbApi.md#v2updatepool) | **Put** /service/edgelb/v2/pools/{name} |
+*EdgelbApi* | [**Version**](docs/EdgelbApi.md#version) | **Get** /service/edgelb/version |
+*HealthApi* | [**V1SystemHealth**](docs/HealthApi.md#v1systemhealth) | **Get** /system/health/v1 |
+*HealthApi* | [**V1SystemHealthNodes**](docs/HealthApi.md#v1systemhealthnodes) | **Get** /system/health/v1/nodes |
+*HealthApi* | [**V1SystemHealthReport**](docs/HealthApi.md#v1systemhealthreport) | **Get** /system/health/v1/report |
+*HealthApi* | [**V1SystemHealthUnits**](docs/HealthApi.md#v1systemhealthunits) | **Get** /system/health/v1/units |
 *IAMApi* | [**ConfigureOIDCProvider**](docs/IAMApi.md#configureoidcprovider) | **Put** /acs/api/v1/auth/oidc/providers/{provider-id} | Configure a new OIDC provider.
 *IAMApi* | [**ConfigureSAMLProvider**](docs/IAMApi.md#configuresamlprovider) | **Put** /acs/api/v1/auth/saml/providers/{provider-id} | Configure a new SAML provider.
 *IAMApi* | [**CreateGroup**](docs/IAMApi.md#creategroup) | **Put** /acs/api/v1/groups/{gid} | Create a group.
@@ -108,22 +112,22 @@ Class | Method | HTTP request | Description
 *IAMApi* | [**UpdateResourceACL**](docs/IAMApi.md#updateresourceacl) | **Patch** /acs/api/v1/acls/{rid} | Update ACL for a certain resource.
 *IAMApi* | [**UpdateSAMLProvider**](docs/IAMApi.md#updatesamlprovider) | **Patch** /acs/api/v1/auth/saml/providers/{provider-id} | Update SAML provider config.
 *IAMApi* | [**UpdateUser**](docs/IAMApi.md#updateuser) | **Patch** /acs/api/v1/users/{uid} | Update user account.
-*MetadataApi* | [**Metadata**](docs/MetadataApi.md#metadata) | **Get** /metadata | 
-*MetronomeApi* | [**V1CreateJob**](docs/MetronomeApi.md#v1createjob) | **Post** /service/metronome/v1/jobs | 
-*MetronomeApi* | [**V1CreateJobSchedules**](docs/MetronomeApi.md#v1createjobschedules) | **Post** /service/metronome/v1/jobs/{jobId}/schedules | 
-*MetronomeApi* | [**V1DeleteJob**](docs/MetronomeApi.md#v1deletejob) | **Delete** /service/metronome/v1/jobs/{jobId} | 
-*MetronomeApi* | [**V1DeleteJobSchedulesByScheduleId**](docs/MetronomeApi.md#v1deletejobschedulesbyscheduleid) | **Delete** /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId} | 
-*MetronomeApi* | [**V1GetJob**](docs/MetronomeApi.md#v1getjob) | **Get** /service/metronome/v1/jobs/{jobId} | 
-*MetronomeApi* | [**V1GetJobIdRuns**](docs/MetronomeApi.md#v1getjobidruns) | **Get** /service/metronome/v1/jobs/{jobId}/runs | 
-*MetronomeApi* | [**V1GetJobRunByRunId**](docs/MetronomeApi.md#v1getjobrunbyrunid) | **Get** /service/metronome/v1/jobs/{jobId}/runs/{runId} | 
-*MetronomeApi* | [**V1GetJobSchedules**](docs/MetronomeApi.md#v1getjobschedules) | **Get** /service/metronome/v1/jobs/{jobId}/schedules | 
-*MetronomeApi* | [**V1GetJobSchedulesByScheduleId**](docs/MetronomeApi.md#v1getjobschedulesbyscheduleid) | **Get** /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId} | 
-*MetronomeApi* | [**V1GetJobs**](docs/MetronomeApi.md#v1getjobs) | **Get** /service/metronome/v1/jobs | 
-*MetronomeApi* | [**V1PutJobSchedulesByScheduleId**](docs/MetronomeApi.md#v1putjobschedulesbyscheduleid) | **Put** /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId} | 
-*MetronomeApi* | [**V1StartJobRun**](docs/MetronomeApi.md#v1startjobrun) | **Post** /service/metronome/v1/jobs/{jobId}/runs | 
-*MetronomeApi* | [**V1StopJobRunByRunId**](docs/MetronomeApi.md#v1stopjobrunbyrunid) | **Post** /service/metronome/v1/jobs/{jobId}/runs/{runId}/actions/stop | 
-*MetronomeApi* | [**V1UpdateJob**](docs/MetronomeApi.md#v1updatejob) | **Put** /service/metronome/v1/jobs/{jobId} | 
-*NetworkingApi* | [**V1Nodes**](docs/NetworkingApi.md#v1nodes) | **Get** /net/v1/nodes | 
+*MetadataApi* | [**Metadata**](docs/MetadataApi.md#metadata) | **Get** /metadata |
+*MetronomeApi* | [**V1CreateJob**](docs/MetronomeApi.md#v1createjob) | **Post** /service/metronome/v1/jobs |
+*MetronomeApi* | [**V1CreateJobSchedules**](docs/MetronomeApi.md#v1createjobschedules) | **Post** /service/metronome/v1/jobs/{jobId}/schedules |
+*MetronomeApi* | [**V1DeleteJob**](docs/MetronomeApi.md#v1deletejob) | **Delete** /service/metronome/v1/jobs/{jobId} |
+*MetronomeApi* | [**V1DeleteJobSchedulesByScheduleId**](docs/MetronomeApi.md#v1deletejobschedulesbyscheduleid) | **Delete** /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId} |
+*MetronomeApi* | [**V1GetJob**](docs/MetronomeApi.md#v1getjob) | **Get** /service/metronome/v1/jobs/{jobId} |
+*MetronomeApi* | [**V1GetJobIdRuns**](docs/MetronomeApi.md#v1getjobidruns) | **Get** /service/metronome/v1/jobs/{jobId}/runs |
+*MetronomeApi* | [**V1GetJobRunByRunId**](docs/MetronomeApi.md#v1getjobrunbyrunid) | **Get** /service/metronome/v1/jobs/{jobId}/runs/{runId} |
+*MetronomeApi* | [**V1GetJobSchedules**](docs/MetronomeApi.md#v1getjobschedules) | **Get** /service/metronome/v1/jobs/{jobId}/schedules |
+*MetronomeApi* | [**V1GetJobSchedulesByScheduleId**](docs/MetronomeApi.md#v1getjobschedulesbyscheduleid) | **Get** /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId} |
+*MetronomeApi* | [**V1GetJobs**](docs/MetronomeApi.md#v1getjobs) | **Get** /service/metronome/v1/jobs |
+*MetronomeApi* | [**V1PutJobSchedulesByScheduleId**](docs/MetronomeApi.md#v1putjobschedulesbyscheduleid) | **Put** /service/metronome/v1/jobs/{jobId}/schedules/{scheduleId} |
+*MetronomeApi* | [**V1StartJobRun**](docs/MetronomeApi.md#v1startjobrun) | **Post** /service/metronome/v1/jobs/{jobId}/runs |
+*MetronomeApi* | [**V1StopJobRunByRunId**](docs/MetronomeApi.md#v1stopjobrunbyrunid) | **Post** /service/metronome/v1/jobs/{jobId}/runs/{runId}/actions/stop |
+*MetronomeApi* | [**V1UpdateJob**](docs/MetronomeApi.md#v1updatejob) | **Put** /service/metronome/v1/jobs/{jobId} |
+*NetworkingApi* | [**V1Nodes**](docs/NetworkingApi.md#v1nodes) | **Get** /net/v1/nodes |
 *SecretsApi* | [**CreateSecret**](docs/SecretsApi.md#createsecret) | **Put** /secrets/v1/secret/{store}/{path-to-secret} | Create a secret in the store at the path.
 *SecretsApi* | [**DeleteSecret**](docs/SecretsApi.md#deletesecret) | **Delete** /secrets/v1/secret/{store}/{path-to-secret} | Delete a secret.
 *SecretsApi* | [**GetSecret**](docs/SecretsApi.md#getsecret) | **Get** /secrets/v1/secret/{store}/{path-to-secret} | Read or list a secret from the store by its path.
@@ -264,6 +268,12 @@ Class | Method | HTTP request | Description
  - [MetronomeV1JobSchedule](docs/MetronomeV1JobSchedule.md)
  - [NetworkingV1Node](docs/NetworkingV1Node.md)
  - [SecretsV1Secret](docs/SecretsV1Secret.md)
+ - [V1SystemHealth](docs/V1SystemHealth.md)
+ - [V1SystemHealthNode](docs/V1SystemHealthNode.md)
+ - [V1SystemHealthNodes](docs/V1SystemHealthNodes.md)
+ - [V1SystemHealthReport](docs/V1SystemHealthReport.md)
+ - [V1SystemHealthUnit](docs/V1SystemHealthUnit.md)
+ - [V1SystemHealthUnits](docs/V1SystemHealthUnits.md)
 
 
 ## Documentation For Authorization
@@ -286,6 +296,3 @@ r, err := client.Service.Operation(auth, args)
 
 
 ## Author
-
-
-

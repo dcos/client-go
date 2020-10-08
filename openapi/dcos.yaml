@@ -34,6 +34,8 @@ tags:
   description: Create and manage scheduled Jobs with DCOS Metronome API
 - name: networking
   description: Exposes the public IP addresses for nodes in a cluster
+- name: health
+  description: DC/OS Cluster health
 
 paths:
   /secrets/v1/secret/{store}/{path-to-secret}:
@@ -2329,7 +2331,58 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Metadata"
-
+  /system/health/v1:
+    get:
+      description: Public IP and Cluster ID
+      operationId: V1SystemHealth
+      tags:
+        - health
+      responses:
+        "200":
+          description: DC/OS System health data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/V1SystemHealth"
+  /system/health/v1/nodes:
+    get:
+      description: Public IP and Cluster ID
+      operationId: V1SystemHealthNodes
+      tags:
+        - health
+      responses:
+        "200":
+          description: DC/OS System Nodes health data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/V1SystemHealthNodes"
+  /system/health/v1/units:
+    get:
+      description: Public IP and Cluster ID
+      operationId: V1SystemHealthUnits
+      tags:
+        - health
+      responses:
+        "200":
+          description: DC/OS System Units health data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/V1SystemHealthUnits"
+  /system/health/v1/report:
+    get:
+      description: Public IP and Cluster ID
+      operationId: V1SystemHealthReport
+      tags:
+        - health
+      responses:
+        "200":
+          description: DC/OS System Nodes and Units health data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/V1SystemHealthReport"
   /service/metronome/v1/jobs:
     get:
       description: Get the list of all jobs.
@@ -4406,6 +4459,75 @@ components:
         CLUSTER_ID:
           type: string
           format: uuid
+    V1SystemHealth:
+      type: object
+      properties:
+        units:
+          type: array
+          items:
+            $ref: "#/components/schemas/V1SystemHealthUnit"
+        hostname:
+          type: string
+        ip:
+          type: string
+          format: ipv4
+        dcos_version:
+          type: string
+        node_role:
+          type: string
+        mesos_id:
+          type: string
+        dcos_diagnostics_version:
+          type: string
+    V1SystemHealthNodes:
+      type: object
+      properties:
+        nodes:
+          type: array
+          items:
+            $ref: "#/components/schemas/V1SystemHealthNode"
+    V1SystemHealthNode:
+      type: object
+      properties:
+        host_ip:
+          type: string
+        health:
+          type: int32
+        role:
+          type: string
+    V1SystemHealthUnit:
+      type: object
+      properties:
+        id:
+          type: string
+        health:
+          type: int32
+        output:
+          type: string
+        description:
+          type: string
+        help:
+          type: string
+        name:
+          type: string
+    V1SystemHealthUnits:
+      type: object
+      properties:
+        units:
+          type: array
+          items:
+            $ref: "#/components/schemas/V1SystemHealthUnit"
+    V1SystemHealthReport:
+      type: object
+      properties:
+        nodes:
+          type: array
+          items:
+            $ref: "#/components/schemas/V1SystemHealthNode"
+        units:
+          type: array
+          items:
+            $ref: "#/components/schemas/V1SystemHealthUnit"
     MetronomeEmbeded:
       type: string
       enum:
