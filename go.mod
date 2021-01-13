@@ -17,6 +17,6 @@ require (
 	github.com/sirupsen/logrus v1.3.0
 	github.com/spf13/afero v1.2.1
 	github.com/spf13/cast v1.3.0
-	github.com/stretchr/testify v1.3.0
+	github.com/stretchr/testify v1.7.0
 	gopkg.in/square/go-jose.v2 v2.3.1
 )
