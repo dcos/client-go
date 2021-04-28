@@ -1,0 +1,33 @@
+version: 2
+updates:
+- package-ecosystem: gomod
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "11:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: github.com/go-openapi/runtime
+    versions:
+    - 0.19.26
+    - 0.19.27
+  - dependency-name: github.com/sirupsen/logrus
+    versions:
+    - 1.7.0
+    - 1.7.1
+    - 1.8.0
+  - dependency-name: github.com/go-openapi/strfmt
+    versions:
+    - 0.20.0
+  - dependency-name: github.com/go-openapi/validate
+    versions:
+    - 0.20.1
+  - dependency-name: github.com/spf13/afero
+    versions:
+    - 1.5.1
+  - dependency-name: github.com/go-openapi/errors
+    versions:
+    - 0.19.9
+  - dependency-name: github.com/pelletier/go-toml
+    versions:
+    - 1.8.1
